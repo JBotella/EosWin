@@ -1,0 +1,71 @@
+Notas Laravel 7 para el proyecto 'EosWin Cloud'
+
+** Instalación **
+
+	- Instalador laravel (Para alternativa a Composer)
+		composer global require laravel/installer
+	
+	- Crear proyecto (Alternativa al modo de crear con Composer)
+		laravel new eoswin
+			(Se ha instalado la v.7.19)
+
+** Para el AUTH **
+
+	- Instalar NODE.js
+	
+	- Luego, ejecutar:
+		composer require laravel/ui
+		php artisan ui vue --auth
+		
+	- Compilar:
+		npm install && npm run dev
+
+** Idiomas **
+
+	- Instalar Inglés:
+		composer require laraveles/spanish
+		
+	- Actualizar traducciones:
+		php artisan vendor:publish --tag=lang
+		
+	- Crear Middleware:
+		php artisan make:middleware SetLang
+		
+	- Contenido del Middleware:
+		use Session;
+		use App;
+		...
+		public function handle($request, Closure $next)
+		{
+			if(Session::has("lang")){
+				$lang = Session::get("lang");
+			}else{
+				$lang = substr($request->server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
+				if($lang != 'es' && $lang != 'en'){
+					$lang = 'en';
+				}
+			}
+			App::setLocale($lang);
+			return $next($request);
+		}
+	- En app/Http/Kernel.php
+		protected $middlewareGroups = [
+			'web' => [
+				...
+				\App\Http\Middleware\SetLang::class,
+			],
+			...
+		];
+	- Crear Ruta
+		Route::get('lang/{lang}', function($lang) {
+		  \Session::put('lang', $lang);
+		  return \Redirect::back();
+		})->middleware('web')->name('change_lang');
+		
+** Bootstrap **
+
+	- Instalar:
+		php artisan ui bootstrap
+		
+	- Compilar:
+		npm install && npm run dev
