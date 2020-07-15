@@ -1,4 +1,4 @@
-Notas Laravel 7 para el proyecto 'EosWin Cloud' Cambio
+Notas Laravel 7 para el proyecto 'EosWin Cloud'
 
 ** Instalación **
 
