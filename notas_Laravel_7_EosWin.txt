@@ -48,6 +48,7 @@ Notas Laravel 7 para el proyecto 'EosWin Cloud'
 			App::setLocale($lang);
 			return $next($request);
 		}
+		
 	- En app/Http/Kernel.php
 		protected $middlewareGroups = [
 			'web' => [
@@ -56,6 +57,7 @@ Notas Laravel 7 para el proyecto 'EosWin Cloud'
 			],
 			...
 		];
+		
 	- Crear Ruta
 		Route::get('lang/{lang}', function($lang) {
 		  \Session::put('lang', $lang);
@@ -69,3 +71,14 @@ Notas Laravel 7 para el proyecto 'EosWin Cloud'
 		
 	- Compilar:
 		npm install && npm run dev
+
+** VUE **
+
+	- Reemplazar en webpack.mix.js:
+		mix.js('resources/js/app.js', 'public/js')
+			.sass('resources/sass/app.scss', 'public/css');
+			
+	- Por:
+		mix.js('resources/js/app.js', 'public/js')
+			.sass('resources/sass/app.scss', 'public/css').js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps();
+	
