@@ -1,6 +1,6 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 	<a class="navbar-brand" href="#">EosWin</a>
-	<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+	<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#" onclick="clickSidebar()"><i class="fas fa-bars"></i></button>
 	<!-- Navbar Search-->
 	<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 		<div class="input-group">
@@ -23,3 +23,37 @@
 		</li>
 	</ul>
 </nav>
+<script>
+function clickSidebar(){
+	if($('#layoutSidenav_nav').hasClass('side-oculta')){
+		var plegado = 'no';
+	}else{
+		var plegado = 'si';
+	}
+	if($('body').hasClass('sb-sidenav-toggled')){
+		$('#layoutSidenav_nav').removeClass('side-oculta');
+	}else{
+		$('#layoutSidenav_nav').addClass('side-oculta');
+	}
+	compruebaSidebar();
+	procesaValorSidebar(plegado);
+}
+function procesaValorSidebar(plegado){
+	var ruta = '{{ route("menu_plegado", ":plegado") }}';
+	ruta = ruta.replace(':plegado', plegado);
+	$.get(ruta);
+}
+function compruebaSidebar(){
+	if($('#layoutSidenav_nav').hasClass('side-oculta')){
+		var content = $(".side-oculta").css("display");
+		if(content == 'none'){
+			$('#layoutSidenav_nav').removeClass('side-oculta');
+			$('body').removeClass('sb-sidenav-toggled');
+			procesaValorSidebar('no');
+		}
+	}
+}
+$(document).ready(function(){
+	compruebaSidebar();
+});
+</script>

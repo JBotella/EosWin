@@ -10,9 +10,10 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 	<!-- Font Awesome -->
-	{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>--}}
 	<script src="{{ asset('theme/fontawesome/js/all.min.js') }}" crossorigin="anonymous"></script>
     <!-- Styles -->
     <link href="{{ asset('theme/dist/css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('theme/dist/css/estilos.css') }}" rel="stylesheet">
+	<!-- Scripts -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 </head>

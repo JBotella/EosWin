@@ -26,3 +26,8 @@ Route::get('lang/{lang}', function($lang) {
   \Session::put('lang', $lang);
   return \Redirect::back();
 })->middleware('web')->name('change_lang');
+
+/* ------- */
+/* SIDEBAR */
+/* ------- */
+Route::get('menu_plegado/{plegado}','GeneralController@menuPlegado')->name('menu_plegado');

@@ -7,8 +7,11 @@
 /* -----|||||----- ************* -----|||||----- */
 
 :root {
-	--corporativo-1:#4d9445;
-	--corporativo-1:#4d9445;
+	--verdeCorporativo:#4d9445;
+	--verdeCorporativo2:#72b177;
+	--fuenteBlanca:#FFFFFF;
+	--fuenteClara:#EBEBEB;
+	--fuenteClara2:#999;
 }
 
 /* -----|||||----- ************ -----|||||----- */
@@ -20,16 +23,39 @@
 /* -----|||||----- *************************** -----|||||----- */
 
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
-	padding: 0.75rem 1rem 0.75rem;
+	padding:0.75rem 1rem 0.75rem;
+	padding:0.50rem 1rem 0.50rem;
 	text-transform:none;
-	font-size: 0.85rem;
-    font-weight: bold;
+	font-size:0.85rem;
+    font-weight:bold;
 }
+	.lineaBloqueMenu {
+		border-bottom:solid 1px #434343;
+	}
 .sb-sidenav .sb-sidenav-menu .nav .nav-link {
-	font-size: 0.85rem;
+	font-size:0.85rem;
+	padding-top:0.25rem;
+	padding-bottom:0.25rem;
+	margin-bottom:0.2rem;
+	color:var(--fuenteClara);
 }
+	
+	.nav-link:hover {
+		color:var(--fuenteBlanca)!important;
+		background-color:var(--verdeCorporativo)!important;
+	}
+	
 	.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
-		font-size: 0.85rem;
+		font-size:0.85rem;
+		color:var(--fuenteClara2);
+	}
+	.side-oculta {
+		display:block;
+	}
+	@media (max-width: 992px){
+		.side-oculta {
+			display:none;
+		}
 	}
 
 /* -----|||||----- ************** -----|||||----- */
