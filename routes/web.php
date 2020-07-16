@@ -16,7 +16,7 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('pages.dashboard');
-});
+})->name('dashboard');
 
 
 
