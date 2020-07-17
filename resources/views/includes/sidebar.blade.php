@@ -5,7 +5,6 @@
 	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 		<div class="sb-sidenav-menu">
 			<div class="nav mt-3">
-				
 				<a class="nav-link @if(in_array($vActual,['dashboard'])) nav-link-selected @endif" href="{!!route('dashboard')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 					Dashboard
@@ -25,7 +24,6 @@
 					<div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
 					Bancos
 				</a>
-				
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
@@ -45,7 +43,6 @@
 					<div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
 					Extractos
 				</a>
-				
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
@@ -57,7 +54,6 @@
 					<div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
 					Amortizaciones
 				</a>
-				
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
@@ -65,7 +61,6 @@
 					<div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
 					Libros Oficiales
 				</a>
-				
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
@@ -73,7 +68,6 @@
 					<div class="sb-nav-link-icon"><i class="fas fa-percent"></i></div>
 					Impuestos
 				</a>
-				
 				{{--<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
@@ -81,9 +75,7 @@
 					<div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
 					Configuración
 				</a>--}}
-				
 			</div>
-			
 		</div>
 		<div class="sb-sidenav-footer d-none">
 			<div class="row">
