@@ -1,6 +1,8 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark">
-	<a class="navbar-brand" href="#">EosWin</a>
-	<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#" onclick="clickSidebar()"><i class="fas fa-bars"></i></button>
+	<a class="navbar-brand" href="{!!route('dashboard')!!}">
+		<img src="{!! asset('theme/img/logoEosWin_n_pq.png') !!}" />
+	</a>
+	<button class="btn btn-link btn-sm order-1 order-lg-0 btn-menu" id="sidebarToggle" href="#" onclick="clickSidebar()"><i class="fas fa-bars"></i></button>
 	<!-- Navbar Search-->
 	{{--<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 		<div class="input-group">

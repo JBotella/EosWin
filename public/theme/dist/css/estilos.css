@@ -7,33 +7,38 @@
 /* -----|||||----- ************* -----|||||----- */
 
 :root {
-	--verdeCorporativo:#4d9445;
-	--verdeCorporativo2:#72b177;
 	--fuenteBlanca:#FFFFFF;
 	--fuenteClara:#EBEBEB;
-	/* Paleta Colores 0*/
-	--corporativo:#4d9445;
-	--corporativoOscuro:#497344;
-	--grisOscuro:#212529;
-	/**/
 	/* Paleta Colores 1*/
 	--principal:#2c8852;
-	--principalClaro:#4fbf7d;
-	--principalMasClaro:#aad6bc;
-	--oscuro:#464646;
-	--claro:#FFFFFF;
+	--principalClaro:#7dc492;
+	--principalMasClaro:#b4e2c8;
+	--grisOscuro:#212529;
+	--blanco:#FFFFFF;
 	/**/
 }
 
 /* -----|||||----- ************ -----|||||----- */
 /* -----|||||----- * Cabecera * -----|||||----- */
 /* -----|||||----- ************ -----|||||----- */
+
 .navbar {
 	background-color:var(--principal)!important;
 }
+	.navbar-brand img {
+		max-width:100%;
+	}
+	.btn-menu {
+		font-size:1.5rem!important;
+	}
+	.btn-menu:hover {
+		color:var(--fuenteBlanca)!important;
+	}
+	
 /* -----|||||----- *************************** -----|||||----- */
 /* -----|||||----- * Menú Lateral Navegación * -----|||||----- */
 /* -----|||||----- *************************** -----|||||----- */
+
 .sb-sidenav {
 	background-color:var(--grisOscuro)!important;
 }
@@ -54,11 +59,14 @@
 	margin-bottom:0.2rem;
 	color:var(--fuenteClara);
 }
-	
-	.nav-link:hover {
-		color:var(--fuenteBlanca)!important;
-		background-color:var(--principalClaro)!important;
+	.nav-link {
+		transition:0.3s;
 	}
+	
+.nav-link:hover, .nav-link-selected {
+	color:var(--fuenteBlanca)!important;
+	background-color:var(--principal)!important;
+}
 	
 	.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
 		font-size:0.85rem;
@@ -77,5 +85,10 @@
 /* -----|||||----- ************** -----|||||----- */
 /* -----|||||----- * Contenidos * -----|||||----- */
 /* -----|||||----- ************** -----|||||----- */
+
+.container-fluid {
+	
+}
+
 
 
