@@ -7,6 +7,7 @@
 		<div id="layoutSidenav">
 			@include('includes.sidebar')
 			@include('includes.content')
+			@include('includes.extrabar')
 		</div>
 	</div>
 	<!-- Scripts -->

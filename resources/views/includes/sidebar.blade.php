@@ -70,32 +70,6 @@
 				</a>
 			</div>
 		</div>
-		<div class="sb-sidenav-footer d-none">
-			<div class="row">
-				<div class="col-12 mb-1">
-					<select class="custom-select form-control selectorSidebar">
-						<option value="1">Empresa 1 de prueba</option>
-						<option value="2">Empresa 2 de prueba</option>
-						<option value="3">Empresa 3 de prueba</option>
-						<option value="4">Empresa 4 de prueba</option>
-					</select>
-				</div>
-				<div class="col-12">
-					<select class="custom-select form-control selectorSidebar">
-						<option value="2020">Ejercicio 2020</option>
-						<option value="2019">Ejercicio 2019</option>
-						<option value="2018">Ejercicio 2018</option>
-						<option value="2017">Ejercicio 2017</option>
-					</select>
-				</div>
-				<div class="col-12">
-					<div class="selectorSidebarLink">
-						<span>@lang('texto.configuracion')</span>
-						<i class="fas fa-cog"></i>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="sb-sidenav-footer bg-dark">
 			<div class="botonUsuario" onclick="bloqueOpcionesPie()">
 				<div class="circuloUsuario">
