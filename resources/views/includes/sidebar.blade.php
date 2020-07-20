@@ -7,74 +7,67 @@
 			<div class="nav mt-3">
 				<a class="nav-link @if(in_array($vActual,['dashboard'])) nav-link-selected @endif" href="{!!route('dashboard')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-					Dashboard
+					@lang('texto.dashboard')
 				</a>
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-					Clientes
+					@lang('texto.clientes')
 				</a>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-dolly"></i></div>
-					Proveedores
+					@lang('texto.proveedores')
 				</a>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
-					Bancos
+					@lang('texto.bancos')
 				</a>
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-pencil-alt"></i></div>
-					Apuntes
+					@lang('texto.apuntes')
 				</a>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-calendar-alt"></i></div>
-					Apuntes periódicos
+					@lang('texto.apuntes_periodicos')
 				</a>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
-					Cobros/Pagos
+					@lang('texto.cobros') / @lang('texto.pagos')
 				</a>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
-					Extractos
+					@lang('texto.extractos')
 				</a>
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-coins"></i></div>
-					Bienes Inversión
+					@lang('texto.bienes_inversion')
 				</a>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
-					Amortizaciones
+					@lang('texto.amortizaciones')
 				</a>
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
-					Libros Oficiales
+					@lang('texto.libros_oficiales')
 				</a>
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-percent"></i></div>
-					Impuestos
+					@lang('texto.impuestos')
 				</a>
-				{{--<div class="sb-sidenav-menu-heading">
-					<div class="lineaBloqueMenu"></div>
-				</div>
-				<a class="nav-link" href="">
-					<div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-					Configuración
-				</a>--}}
 			</div>
 		</div>
 		<div class="sb-sidenav-footer d-none">
@@ -97,7 +90,7 @@
 				</div>
 				<div class="col-12">
 					<div class="selectorSidebarLink">
-						<span>Configuración</span>
+						<span>@lang('texto.configuracion')</span>
 						<i class="fas fa-cog"></i>
 					</div>
 				</div>
@@ -116,6 +109,35 @@
 	</nav>
 </div>
 <script>
+function clickSidebar(){
+	if($('#layoutSidenav_nav').hasClass('side-oculta')){
+		var plegado = 'no';
+	}else{
+		var plegado = 'si';
+	}
+	if($('body').hasClass('sb-sidenav-toggled')){
+		$('#layoutSidenav_nav').removeClass('side-oculta');
+	}else{
+		$('#layoutSidenav_nav').addClass('side-oculta');
+	}
+	compruebaSidebar();
+	procesaValorSidebar(plegado);
+}
+function procesaValorSidebar(plegado){
+	var ruta = '{{ route("menu_plegado", ":plegado") }}';
+	ruta = ruta.replace(':plegado', plegado);
+	$.get(ruta);
+}
+function compruebaSidebar(){
+	if($('#layoutSidenav_nav').hasClass('side-oculta')){
+		var content = $(".side-oculta").css("display");
+		if(content == 'none'){
+			$('#layoutSidenav_nav').removeClass('side-oculta');
+			$('body').removeClass('sb-sidenav-toggled');
+			procesaValorSidebar('no');
+		}
+	}
+}
 function bloqueOpcionesPie(){
 	if($('#contenedorEmergenteAjustes').hasClass('ocultaEmergenteAjustes')){
 		$('#contenedorEmergenteAjustes').removeClass('ocultaEmergenteAjustes');
@@ -123,4 +145,7 @@ function bloqueOpcionesPie(){
 		$('#contenedorEmergenteAjustes').addClass('ocultaEmergenteAjustes');
 	}
 }
+$(document).ready(function(){
+	compruebaSidebar();
+});
 </script>
