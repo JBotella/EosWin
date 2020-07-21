@@ -70,32 +70,6 @@
 				</a>
 			</div>
 		</div>
-		<div class="sb-sidenav-footer d-none">
-			<div class="row">
-				<div class="col-12 mb-1">
-					<select class="custom-select form-control selectorSidebar">
-						<option value="1">Empresa 1 de prueba</option>
-						<option value="2">Empresa 2 de prueba</option>
-						<option value="3">Empresa 3 de prueba</option>
-						<option value="4">Empresa 4 de prueba</option>
-					</select>
-				</div>
-				<div class="col-12">
-					<select class="custom-select form-control selectorSidebar">
-						<option value="2020">Ejercicio 2020</option>
-						<option value="2019">Ejercicio 2019</option>
-						<option value="2018">Ejercicio 2018</option>
-						<option value="2017">Ejercicio 2017</option>
-					</select>
-				</div>
-				<div class="col-12">
-					<div class="selectorSidebarLink">
-						<span>@lang('texto.configuracion')</span>
-						<i class="fas fa-cog"></i>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="sb-sidenav-footer bg-dark">
 			<div class="botonUsuario" onclick="bloqueOpcionesPie()">
 				<div class="circuloUsuario">
@@ -138,6 +112,10 @@ function compruebaSidebar(){
 		}
 	}
 }
+$(document).ready(function(){
+	compruebaSidebar();
+});
+/* Bloque Ajustes */
 function bloqueOpcionesPie(){
 	if($('#contenedorEmergenteAjustes').hasClass('ocultaEmergenteAjustes')){
 		$('#contenedorEmergenteAjustes').removeClass('ocultaEmergenteAjustes');
@@ -145,7 +123,16 @@ function bloqueOpcionesPie(){
 		$('#contenedorEmergenteAjustes').addClass('ocultaEmergenteAjustes');
 	}
 }
-$(document).ready(function(){
-	compruebaSidebar();
+$(document).on('click',function(e){
+	// Control del contenedor emergente de ajustes
+	if(!$('#contenedorEmergenteAjustes').hasClass('ocultaEmergenteAjustes')){
+		var fP = 0; // Click fuera del botón ajustes en el pié
+		var fC = 0; // Click fuera del contenedor emergente de ajustes
+		if($(e.target).closest(".sb-sidenav-footer").length === 0){ fP++; }
+		if($(e.target).closest("#contenedorEmergenteAjustes").length === 0){ fC++; }
+		if(fP && fC){
+			bloqueOpcionesPie();
+		}
+	}
 });
 </script>

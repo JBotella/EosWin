@@ -18,8 +18,8 @@
 			<div class="cabeceraEmAjuste">
 				@lang('texto.empresas')
 				<div class="botonesCabeceraEmAjuste">
-					<i class="fas fa-sort-alpha-down botonCabeceraEmAjuste" title="@lang('texto.orden')"></i>
-					<i class="fas fa-sort-numeric-down botonCabeceraEmAjuste" title="@lang('texto.orden')"></i>
+					<i class="fas fa-sort-alpha-down btn-pq" title="@lang('texto.orden')"></i>
+					<i class="fas fa-sort-numeric-down btn-pq ml-1" title="@lang('texto.orden')"></i>
 				</div>
 			</div>
 			<div class="buscadorCabecera">
@@ -41,7 +41,7 @@
 			<div class="cabeceraEmAjuste">
 				@lang('texto.empresas_recientes')
 				<div class="botonesCabeceraEmAjuste">
-					<i class="fas fa-trash-alt botonCabeceraEmAjuste" title="@lang('texto.borrar') @lang('texto.recientes')"></i>
+					<i class="fas fa-trash-alt btn-pq" title="@lang('texto.borrar') @lang('texto.recientes')"></i>
 				</div>
 			</div>
 			<div class="contenidoEmAjuste">
@@ -71,8 +71,8 @@
 		</div>
 	</div>
 	<div class="pieEmergenteAjustes">
-		<i class="fas fa-chevron-circle-left btn-md principal mr-auto mt-2" onclick="bloqueOpcionesPie()"></i>
-		<div class="bntCargaAjustes btn-link-sc blanco bgPrincipal">
+		<i class="fas fa-chevron-circle-left btn-md principal mr-auto mt-1" onclick="bloqueOpcionesPie()"></i>
+		<div class="bntCargaAjustes btn-link-sc blanco bgPrincipal mt-1">
 			@lang('texto.aplicar')
 		</div>
 	</div>
