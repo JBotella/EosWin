@@ -1,6 +1,5 @@
 <div class="contenedorEmergenteAjustes ocultaEmergenteAjustes" id="contenedorEmergenteAjustes">
 	<div class="cabeceraEmergenteAjustes">
-		
 		<div class="botonUsuario">
 			<div class="circuloUsuario">
 				<i class="fas fa-user-circle iconoUsuario"></i>
@@ -11,7 +10,6 @@
 			<i class="fas fa-cog btn-pq" title="@lang('texto.configuracion')"></i>
 			<i class="fas fa-plus-circle btn-pq ml-1" title="@lang('texto.nueva') @lang('texto.empresa')"></i>
 		</div>
-		
 	</div>
 	<div class="intEmergenteAjustes" id="intEmergenteAjustes">
 		<div class="bloqueEmAjuste blh-55 blBgColor">
@@ -72,9 +70,9 @@
 	</div>
 	<div class="pieEmergenteAjustes">
 		<i class="fas fa-chevron-circle-left btn-md principal mr-auto mt-1" onclick="bloqueOpcionesPie()"></i>
-		<div class="bntCargaAjustes btn-link-sc blanco bgPrincipal mt-1">
+		<button class="btn btn-form mt-1 btn-form">
 			@lang('texto.aplicar')
-		</div>
+		</button>
 	</div>
 </div>
 <script>
