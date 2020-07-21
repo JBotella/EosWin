@@ -8,10 +8,10 @@
 
 :root {
 	/* Paleta Colores 1*/
-	--principal:#2c8852;
-	--principalClaro:#7dc492;
-	--principalMasClaro:#b4e2c8;
-	--principalOscuro:#1c5031;
+	--principal:#2C8852;
+	--principalClaro:#7DC492;
+	--principalMasClaro:#B4E2C8;
+	--principalOscuro:#1C5031;
 	--grisOscuro:#212529;
 	--grisMedio:#434343;
 	--grisClaro:#CCCCCC;
@@ -19,6 +19,7 @@
 	--blanco:#FFFFFF;
 	--fuenteBlanca:#FFFFFF;
 	--fuenteClara:#EBEBEB;
+	--amarilloMasClaro:#F1EFDC;
 	/**/
 }
 
@@ -50,8 +51,8 @@ body {
 	cursor:pointer;
 }
 .btn-pq:hover, .btn-md:hover { opacity:1; }
-	.btn-pq { font-size:0.85rem; }
-	.btn-md { font-size:1.4rem; }
+	.btn-pq { font-size:1rem; }
+	.btn-md { font-size:28px; }
 .btn-link-blanco {
 	cursor:pointer;
 	color:var(--fuenteBlanca);
@@ -263,13 +264,6 @@ body {
 					.botonesCabeceraEmAjuste {
 						float:right;
 					}
-						.botonCabeceraEmAjuste {
-							font-size:1rem;
-							margin-left:5px;
-							cursor:pointer;
-							opacity:0.8;
-						}
-						.botonCabeceraEmAjuste:hover { opacity:1; }
 					.buscadorCabecera {
 						position:relative;
 						height:28px;
@@ -326,8 +320,8 @@ body {
 			justify-content: flex-end;
 		}
 			.bntCargaAjustes {
-				height:34px;
-				line-height:34px;
+				height:28px;
+				line-height:28px;
 				padding:0px 10px 0px 10px; 
 				font-size:0.9rem;
 				border-radius:5px;
@@ -364,15 +358,17 @@ body {
 	background-color:var(--grisMasClaro);
 	border-left:solid 1px var(--grisClaro);
 	transition:0.2s;
+	overflow-y:auto;
 }
 	.mLExtraVisible { right:0px!important; opacity:1!important; }
 	.cSeccExtraVisible { width:calc(100% - 225px)!important; }
 	.menuLateral_extraInt {
-		padding-top:56px;
-		display:flex;
-		flex-direction:column;
-		height:100%;
-		flex-wrap:nowrap;
+		display:block;
+		position:relative;
+		padding:0rem 0.5rem;
+		/*padding-top:56px;*/
+		margin-top:56px;
+		padding-bottom:1rem;
 	}
 
 /* -----|||||----- ************** -----|||||----- */
@@ -404,6 +400,37 @@ body {
 		margin-top:1rem;
 		font-size:0.85rem;
 	}
+
+/* -----|||||----- ********** -----|||||----- */
+/* -----|||||----- * Tablas * -----|||||----- */
+/* -----|||||----- ********** -----|||||----- */
+
+.table thead th {
+    vertical-align:bottom;
+	background-color:var(--grisMedio);
+	color:var(--fuenteClara);
+    border-bottom:1px solid var(--principalClaro);
+	padding:0.5rem;
+}
+.table tbody td {
+    vertical-align:middle;
+	color:var(--grisOscuro);
+    border-bottom:1px solid var(--principalMasClaro);
+	padding:0.4rem 0.5rem;
+}
+.table tbody tr:hover td {
+	background-color:var(--principalMasClaro);
+	border-bottom:1px solid var(--principalClaro);
+}
+.table tbody tr td:focus {
+	box-sizing: border-box;
+	outline:0px solid var(--principalClaro);
+	/*border:1px solid var(--principalClaro);*/
+	/*border:1px solid var(--principalClaro);
+	padding-left:calc(0.4rem - 2px);
+	padding-right:calc(0.4rem - 2px);*/
+	background-color:var(--amarilloMasClaro);
+}
 	
 /* -----|||||----- *************** -----|||||----- */
 /* -----|||||----- * Formularios * -----|||||----- */
@@ -434,13 +461,14 @@ body {
 		padding:0.25rem 0.5rem;
 		background-color:var(--principal);
 		font-size:0.85rem;
-		line-height:1rem;
+		line-height:20px;
 		color:var(--fuenteClara);
 	}
 	.btn:hover {
 		color:var(--principal);
 		background-color:var(--principalMasClaro);
 	}
+	
 /* -----|||||----- ********** -----|||||----- */
 /* -----|||||----- * Varios * -----|||||----- */
 /* -----|||||----- ********** -----|||||----- */
@@ -463,6 +491,7 @@ body {
 /* -----|||||-----*********************-----|||||----- */
 /* -----|||||-----* Selección de HTML *-----|||||----- */
 /* -----|||||-----*********************-----|||||----- */
+
 .siSelect {
 	-webkit-touch-callout:text; /* iOS Safari */
 	-webkit-user-select:text; /* Safari */

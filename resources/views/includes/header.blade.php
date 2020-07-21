@@ -1,6 +1,6 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark">
 	<a class="navbar-brand" href="{!!route('dashboard')!!}">
-		<img src="{!! asset('theme/img/logoEosWin_n_pq.png') !!}" />
+		<img src="{!! asset('theme/img/logoEosWin_nb_pq.png') !!}" />
 	</a>
 	<button class="btn btn-link btn-sm order-1 order-lg-0 btn-menu" id="sidebarToggle" href="#" onclick="clickSidebar()"><i class="fas fa-bars"></i></button>
 	<!-- Navbar Search-->

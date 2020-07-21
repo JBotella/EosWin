@@ -112,6 +112,10 @@ function compruebaSidebar(){
 		}
 	}
 }
+$(document).ready(function(){
+	compruebaSidebar();
+});
+/* Bloque Ajustes */
 function bloqueOpcionesPie(){
 	if($('#contenedorEmergenteAjustes').hasClass('ocultaEmergenteAjustes')){
 		$('#contenedorEmergenteAjustes').removeClass('ocultaEmergenteAjustes');
@@ -119,7 +123,16 @@ function bloqueOpcionesPie(){
 		$('#contenedorEmergenteAjustes').addClass('ocultaEmergenteAjustes');
 	}
 }
-$(document).ready(function(){
-	compruebaSidebar();
+$(document).on('click',function(e){
+	// Control del contenedor emergente de ajustes
+	if(!$('#contenedorEmergenteAjustes').hasClass('ocultaEmergenteAjustes')){
+		var fP = 0; // Click fuera del botón ajustes en el pié
+		var fC = 0; // Click fuera del contenedor emergente de ajustes
+		if($(e.target).closest(".sb-sidenav-footer").length === 0){ fP++; }
+		if($(e.target).closest("#contenedorEmergenteAjustes").length === 0){ fC++; }
+		if(fP && fC){
+			bloqueOpcionesPie();
+		}
+	}
 });
 </script>
