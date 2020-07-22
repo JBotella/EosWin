@@ -81,4 +81,14 @@ Notas Laravel 7 para el proyecto 'EosWin Cloud'
 	- Por:
 		mix.js('resources/js/app.js', 'public/js')
 			.sass('resources/sass/app.scss', 'public/css').js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps();
+			
+** Migraciones **
+
+	- Añadir campos a la tabla users:
+		php artisan make:migration add_campos_users --table=users
+		
+	- Up en add_campos_users:
+		$table->string('instanciaDB');
+		$table->string('ultimaEmpresa')->nullable();
+		$table->integer('ultimoEjercicio')->nullable();
 	
