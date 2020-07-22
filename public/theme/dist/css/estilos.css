@@ -8,10 +8,12 @@
 
 :root {
 	/* Paleta Colores 1*/
-	--principal:#2C8852;
-	--principalClaro:#7DC492;
-	--principalMasClaro:#B4E2C8;
-	--principalOscuro:#1C5031;
+	--principalOscuro:#39674b;
+	--principal:#62af82;
+	--principalMedio:#8ac3a2;
+	--principalClaro:#b0d8c0;
+	--principalMasClaro:#d7ebe0;
+	--principalTrans:rgba(98,175,130,0.6);
 	--grisOscuro:#212529;
 	--grisOscuroTrans:rgba(33,37,41,0.3);
 	--grisMedio:#434343;
@@ -25,16 +27,12 @@
 	--amarilloClaro:#FFFFDD;
 	--amarilloMasClaro:#FFFFEE;
 	/**/
-	/* Paleta Colores 2 */
-	--principal:#62af82;
-	--principalTrans:rgba(98,175,130,0.6);
-	/**/
 	/* Dimensiones */
 	--anchoSideBar:225px;
 	--anchoExtraBar:225px;
 	/**/
 	/* Degradados */
-	--degradadoPrincipalMasClaro:linear-gradient(to right, var(--grisMasClaro) 0%, var(--principalMasClaro) 10%, var(--principalMasClaro) 95%, var(--principalClaro) 100%);
+	--degradadoPrincipalMasClaro:linear-gradient(to right, var(--grisMasClaro) 0%, var(--principalClaro) 10%, var(--principalClaro) 95%, var(--principalMedio) 100%);
 	/**/
 }
 
@@ -70,7 +68,7 @@ body {
 }
 .btn:hover {
 	color:var(--principalOscuro);
-	background-color:var(--principalMasClaro);
+	background-color:var(--principalClaro);
 }
 .btn:focus { outline:none; box-shadow:0rem 0rem 0.2rem var(--principal); }
 .btn-pq, .btn-md {
@@ -98,7 +96,7 @@ body {
 	box-shadow:1px 1px 1px var(--grisOscuroTrans);
 }
 .btn-form:active {
-	box-shadow:1px 1px 1px var(--principalClaro);
+	box-shadow:1px 1px 1px var(--principalMedio);
 }
 
 /* -----|||||----- ************ -----|||||----- */
@@ -342,7 +340,7 @@ body {
 							transition:0.3s;
 						}
 						.contenidoEmAjuste ul li:hover {
-							background-color:var(--principalClaro);
+							background-color:var(--principalMedio);
 						}
 						.listaCuadrados li {
 							font-size:0.8rem;
@@ -351,7 +349,7 @@ body {
 							margin-top:2px;
 							border:solid 1px var(--grisClaro);
 						}
-						.radSel { background-color:var(--principalClaro); }
+						.radSel { background-color:var(--principalMedio); }
 			.blBgColor { background-color:var(--blanco); }
 			.blh-55 { height:calc(55% - 55px)!important; max-height:calc(55% - 55px)!important; }
 			.blh-45 { height:calc(45% - 55px)!important; max-height:calc(45% - 55px)!important; }
@@ -439,15 +437,15 @@ body {
     vertical-align:bottom;
 	background-color:var(--grisMedio);
 	color:var(--fuenteClara);
-    border-bottom:1px solid var(--principalClaro);
+    border-bottom:1px solid var(--principalMedio);
 	padding:0.5rem;
 }
 .table tbody tr {
 	cursor:default;
 }
 .table tbody tr:hover  {
-	background-color:var(--principalMasClaro);
-	border-bottom:1px solid var(--principalClaro);
+	background-color:var(--principalClaro);
+	border-bottom:1px solid var(--principalMedio);
 }
 .table tbody .trEditable:hover {
 	background-color:var(--amarilloClaro);
@@ -455,7 +453,7 @@ body {
 .table tbody tr td {
     vertical-align:middle;
 	color:var(--grisOscuro);
-    border-bottom:1px solid var(--principalMasClaro);
+    border-bottom:1px solid var(--principalClaro);
 	padding:0.3rem 0.5rem;
 }
 	.table tbody tr .tdEditable {
@@ -463,14 +461,14 @@ body {
 	}
 	.table tbody tr .tdEditable:hover {
 		background-color:var(--amarilloMasClaro);
-		box-shadow:inset 0px 0px 0.1rem var(--principalClaro);
+		box-shadow:inset 0px 0px 0.1rem var(--principalMedio);
 	}
 	
 .table tbody tr td:focus {
 	box-sizing:border-box;
-	outline:0px solid var(--principalClaro);
+	outline:0px solid var(--principalMedio);
 	background-color:var(--amarilloMasClaro);
-	box-shadow:inset 0px 0px 0.1rem var(--principalClaro)!important;
+	box-shadow:inset 0px 0px 0.1rem var(--principalMedio)!important;
 }
 	
 /* -----|||||----- *************** -----|||||----- */
@@ -499,8 +497,8 @@ body {
 	.form-row > div >  select { padding:0rem 0.50rem; }
 .form-control:focus {
 	outline:none;
-	border:solid 1px var(--principalClaro)!important;
-	box-shadow:0rem 0rem 0.2rem var(--principalClaro)!important;
+	border:solid 1px var(--principalMedio)!important;
+	box-shadow:0rem 0rem 0.2rem var(--principalMedio)!important;
 }
 /* -----|||||----- ********** -----|||||----- */
 /* -----|||||----- * Media Query * -----|||||----- */
@@ -532,8 +530,8 @@ body {
 /* -----|||||----- ********** -----|||||----- */
 
 ::selection {
-  color:var(--principalMasClaro);
-  background:var(--principalClaro);
+  color:var(--principalClaro);
+  background:var(--principalMedio);
 }
 
 /* -----|||||----- ************ -----|||||----- */
