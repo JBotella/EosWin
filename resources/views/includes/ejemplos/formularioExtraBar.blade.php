@@ -58,7 +58,7 @@
 	</div>
 	<div class="form-row">
 		<div class="col-12 text-right">
-			<button class="btn" type="submit">Aplicar</button>
+			<button class="btn btn-form" type="submit">Aplicar</button>
 		</div>
 	</div>
 </form>
