@@ -13,35 +13,35 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
+			<tr class="trEditable">
 				<td scope="row">1</td>
-				<td contenteditable='true'>Nombre</td>
-				<td contenteditable='true'>Editable</td>
-				<td contenteditable='true'>True</td>
-				<td contenteditable='true'>True</td>
-				<td contenteditable='true'>True</td>
-				<td contenteditable='true'>True</td>
-				<td contenteditable='true'>True</td>
+				<td class="tdEditable" contenteditable='true'>Nombre</td>
+				<td class="tdEditable" contenteditable='true'>Editable</td>
+				<td class="tdEditable" contenteditable='true'>True</td>
+				<td class="tdEditable" contenteditable='true'>True</td>
+				<td class="tdEditable" contenteditable='true'>True</td>
+				<td class="tdEditable" contenteditable='true'>True</td>
+				<td class="tdEditable" contenteditable='true'>True</td>
 			</tr>
-			<tr>
-				<td scope="row">2</td>
-				<td contenteditable='true'>Linea</td>
-				<td contenteditable='true'>Prueba</td>
-				<td contenteditable='true'>Test</td>
-				<td contenteditable='true'>Test</td>
-				<td contenteditable='true'>Test</td>
-				<td contenteditable='true'>Test</td>
-				<td contenteditable='true'>Test</td>
+			<tr class="trEditable">
+				<td class="tdEditable" scope="row">2</td>
+				<td class="tdEditable" contenteditable='true'>Linea</td>
+				<td class="tdEditable" contenteditable='true'>Prueba</td>
+				<td class="tdEditable" contenteditable='true'>Test</td>
+				<td class="tdEditable" contenteditable='true'>Test</td>
+				<td class="tdEditable" contenteditable='true'>Test</td>
+				<td class="tdEditable" contenteditable='true'>Test</td>
+				<td class="tdEditable" contenteditable='true'>Test</td>
 			</tr>
-			<tr>
-				<td scope="row">3</td>
-				<td contenteditable='true'>Otra</td>
-				<td contenteditable='true'>Linea</td>
-				<td contenteditable='true'>Tabla</td>
-				<td contenteditable='true'>Tabla</td>
-				<td contenteditable='true'>Tabla</td>
-				<td contenteditable='true'>Tabla</td>
-				<td contenteditable='true'>Algo más de texto en esta columna</td>
+			<tr class="trEditable">
+				<td class="tdEditable" scope="row">3</td>
+				<td class="tdEditable" contenteditable='true'>Otra</td>
+				<td class="tdEditable" contenteditable='true'>Linea</td>
+				<td class="tdEditable" contenteditable='true'>Tabla</td>
+				<td class="tdEditable" contenteditable='true'>Tabla</td>
+				<td class="tdEditable" contenteditable='true'>Tabla</td>
+				<td class="tdEditable" contenteditable='true'>Tabla</td>
+				<td class="tdEditable" contenteditable='true'>Algo más de texto en esta columna</td>
 			</tr>
 		</tbody>
 	</table>
