@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/', function () {
-    return view('pages.dashboard');
-})->name('dashboard');
+/* Dashboard */
+Route::get('/', function(){ return view('pages.dashboard'); })->name('dashboard');
+
+/* Clientes */
+Route::get('clientes', 'ClientesController@clientes')->name('clientes');
+	// Lista Clientes (Asíncrona)
+	Route::get('listaClientes', 'ClientesController@listaClientes')->name('listaClientes');
 
 
 

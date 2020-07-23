@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-@include('includes.head')
+<head>
+	@include('includes.head')
+</head>
 <body class="sb-nav-fixed @if(Session::get('menuPlegado')=='si') sb-sidenav-toggled @endif">
 	<div id="app">
 		@include('includes.header')

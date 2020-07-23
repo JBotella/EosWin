@@ -409,6 +409,7 @@ body {
 }
 	.cabeceraSeccion {
 		display:flex;
+		align-items:center;
 		font-size:0.95rem;
 		font-weight:bold;
 		height:28px;
@@ -419,7 +420,6 @@ body {
 		border-bottom:solid 1px var(--grisClaro);
 		margin:0rem -1rem;
 		padding:0rem 1rem;
-		align-items:center;
 	}
 		.cabeceraSeccion span { line-height:0.95rem; }
 		.cabeceraSeccion {}
@@ -428,6 +428,16 @@ body {
 		margin:1rem -1rem;
 		padding:0rem 1rem;
 	}
+	
+/* -----|||||----- ******************** -----|||||----- */
+/* -----|||||----- * Barra de Filtros * -----|||||----- */
+/* -----|||||----- ******************** -----|||||----- */
+
+.barraFiltros {
+	position:relative;
+	width:100%;
+	margin-bottom:1rem;
+}
 
 /* -----|||||----- ********** -----|||||----- */
 /* -----|||||----- * Tablas * -----|||||----- */
@@ -439,6 +449,7 @@ body {
 	color:var(--fuenteClara);
     border-bottom:1px solid var(--principalMedio);
 	padding:0.5rem;
+	font-size:0.85rem;
 }
 .table tbody tr {
 	cursor:default;

@@ -12,15 +12,15 @@
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
-				<a class="nav-link" href="">
+				<a class="nav-link @if(in_array($vActual,['clientes','cliente'])) nav-link-selected @endif" href="{!!route('clientes')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
 					@lang('texto.clientes')
 				</a>
-				<a class="nav-link" href="">
+				<a class="nav-link @if(in_array($vActual,['proveedores','proveedor'])) nav-link-selected @endif" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-dolly"></i></div>
 					@lang('texto.proveedores')
 				</a>
-				<a class="nav-link" href="">
+				<a class="nav-link @if(in_array($vActual,['bancos','banco'])) nav-link-selected @endif" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
 					@lang('texto.bancos')
 				</a>
