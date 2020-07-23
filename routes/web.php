@@ -13,18 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-/* Dashboard */
-Route::get('/', function(){ return view('pages.dashboard'); })->name('dashboard');
+/* ----- Filtrado por login auth ----- */
+Route::group(['middleware' => 'auth'], function(){
+	/* Dashboard */
+	Route::get('/', function(){ return view('pages.dashboard'); })->name('dashboard');
 
-/* Clientes */
-Route::get('clientes', 'ClientesController@clientes')->name('clientes');
-	// Lista Clientes (Asíncrona)
-	Route::get('listaClientes', 'ClientesController@listaClientes')->name('listaClientes');
+	/* Clientes */
+	Route::get('clientes', 'ClientesController@clientes')->name('clientes');
+		// Lista Clientes (Asíncrona)
+		Route::get('listaClientes', 'ClientesController@listaClientes')->name('listaClientes');
+});
 
 
-
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('lang/{lang}', function($lang) {
   \Session::put('lang', $lang);
