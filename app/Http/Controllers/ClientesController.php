@@ -10,9 +10,15 @@ class ClientesController extends Controller
 		return view('pages.clientes');
 	}
     public function listaClientes(){
-		$cliente = new Cliente();
-		$listado = $cliente->listadoCompletoClientes();
+		$clientes = new Cliente();
+		$listado = $clientes->listadoCompletoClientes();
 		return view('pages.listas.listaClientes', ['listado' => $listado]);
 	}
+	public function cliente($id){
+		$cliente = new Cliente();
+		$datos = $cliente->datosCliente($id);
+		return $datos;
+	}
+	
 	
 }

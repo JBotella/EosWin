@@ -12,4 +12,8 @@ class Cliente extends Model
 		$clienteCompleto = DB::connection($this->connection)->select('select (select top 1 TELETELEFONO from [TELEFON] WHERE TELECODIGO = ClientesTabla.CliCodigo) as Telefono, * from ClientesTabla;');
 		return $clienteCompleto;
 	}
+	public function datosCliente($CliCodigo){
+		$cliente = Cliente::where('CliCodigo',$CliCodigo)->first();
+		return $cliente;
+	}
 }
