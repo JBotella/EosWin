@@ -10,19 +10,29 @@
 		</div>
 		<div class="contenidoSeccion">
 			
-			<div class="barraFiltros"></div>
+			<div class="barraOpcionesLista">
+			
+				<div class="row justify-content-end">
+					<div class="lineaBuscador order-1 order-sm-1 order-md-2 order-lg-2 order-xl-2 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-5">
+						@include('includes.complementos.buscador')
+					</div>
+				</div>
+				
+			</div>
 			
 			<div class="table-responsive">
 				<table class="table table-striped">
-					<thead>
+					<thead id="cabeceraLista_0" class="thead-th-ocultos">
 						<tr>
 							<th scope="col">Codigo</th>
 							<th scope="col">Nombre</th>
 							<th scope="col">Cif</th>
+							<th scope="col">Teléfono</th>
+							<th scope="col">Email</th>
+							<th scope="col" class="tdBtnAcciones"></th>
 						</tr>
 					</thead>
-					<tbody id="docuCont0">
-					</tbody>
+					<tbody id="docuCont0"></tbody>
 				</table>
 			</div>
 			
@@ -33,7 +43,7 @@
 		function cargaListado(){
 			var ruta = '{{ route("listaClientes") }}';
 			$('#docuCont0').load(ruta, function(){
-				
+				mostrarThCabecera(0);
 			});
 		}
 		$(document).ready(function(){

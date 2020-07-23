@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-use DB;
 use App\Tablas\Cliente;
 
 use Illuminate\Http\Request;
@@ -11,7 +10,9 @@ class ClientesController extends Controller
 		return view('pages.clientes');
 	}
     public function listaClientes(){
-		$listado = Cliente::get();
+		$cliente = new Cliente();
+		$listado = $cliente->listadoCompletoClientes();
 		return view('pages.listas.listaClientes', ['listado' => $listado]);
 	}
+	
 }

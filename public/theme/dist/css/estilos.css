@@ -8,11 +8,11 @@
 
 :root {
 	/* Paleta Colores 1*/
-	--principalOscuro:#39674b;
-	--principal:#62af82;
-	--principalMedio:#8ac3a2;
-	--principalClaro:#b0d8c0;
-	--principalMasClaro:#d7ebe0;
+	--principalOscuro:#39674B;
+	--principal:#62AF82;
+	--principalMedio:#8AC3A2;
+	--principalClaro:#B0D8C0;
+	--principalMasClaro:#D7EBE0;
 	--principalTrans:rgba(98,175,130,0.6);
 	--grisOscuro:#212529;
 	--grisOscuroTrans:rgba(33,37,41,0.3);
@@ -27,6 +27,9 @@
 	--amarilloClaro:#FFFFDD;
 	--amarilloMasClaro:#FFFFEE;
 	/**/
+	--principalComplementario:#AF628F;
+	--principalRojoOpuesto:#B05751;
+	--principalAzulAnalogo:#628FAF;
 	/* Dimensiones */
 	--anchoSideBar:225px;
 	--anchoExtraBar:225px;
@@ -45,6 +48,7 @@
 .bgGrisMasClaro { background-color:var(--grisMasClaro)!important; }
 .principal { color:var(--principal)!important; }
 .bgPrincipal { background-color:var(--principal)!important; }
+.rojoOpuesto { color:var(--principalRojoOpuesto)!important; }
 
 /* -----|||||----- *********** -----|||||----- */
 /* -----|||||----- * General * -----|||||----- */
@@ -98,6 +102,9 @@ body {
 .btn-form:active {
 	box-shadow:1px 1px 1px var(--principalMedio);
 }
+
+.btnEditar { color:var(--principalAzulAnalogo); }
+.btnBorrar { color:var(--principalRojoOpuesto); }
 
 /* -----|||||----- ************ -----|||||----- */
 /* -----|||||----- * Cabecera * -----|||||----- */
@@ -429,15 +436,23 @@ body {
 		padding:0rem 1rem;
 	}
 	
-/* -----|||||----- ******************** -----|||||----- */
-/* -----|||||----- * Barra de Filtros * -----|||||----- */
-/* -----|||||----- ******************** -----|||||----- */
+/* -----|||||----- ********************* -----|||||----- */
+/* -----|||||----- * Barra de Opciones * -----|||||----- */
+/* -----|||||----- ********************* -----|||||----- */
 
-.barraFiltros {
+.barraOpcionesLista {
 	position:relative;
 	width:100%;
 	margin-bottom:1rem;
 }
+/* Buscador */
+.lineaBuscador { width:100%; }
+	.lineaBuscador input { font-size:0.85rem; border-left:none; }
+	.botonBuscar, .botonLimpiarBusqueda { cursor:pointer; }
+	.botonBuscar { border-radius:0px; background-color:var(--principalMasClaro); color:var(--principal); }
+		.botonBuscar:hover { background-color:var(--principal); color:var(--principalMasClaro); }
+	.botonLimpiarBusqueda { border-radius:0px; background-color:var(--grisMasClaro); color:var(--principalRojoOpuesto); }
+		.botonLimpiarBusqueda:hover { background-color:var(--principalRojoOpuesto); color:var(--grisMasClaro); }
 
 /* -----|||||----- ********** -----|||||----- */
 /* -----|||||----- * Tablas * -----|||||----- */
@@ -450,7 +465,11 @@ body {
     border-bottom:1px solid var(--principalMedio);
 	padding:0.5rem;
 	font-size:0.85rem;
+	transition:.3s;
 }
+	.thead-th-ocultos th {
+		color:rgba(0,0,0,0)!important;	
+	}
 .table tbody tr {
 	cursor:default;
 }
@@ -458,14 +477,17 @@ body {
 	background-color:var(--principalClaro);
 	border-bottom:1px solid var(--principalMedio);
 }
+	.trClicable { cursor:pointer!important; }
 .table tbody .trEditable:hover {
 	background-color:var(--amarilloClaro);
 }
-.table tbody tr td {
+.table tbody tr td, .table tbody tr th {
     vertical-align:middle;
 	color:var(--grisOscuro);
     border-bottom:1px solid var(--principalClaro);
 	padding:0.3rem 0.5rem;
+	font-size:0.8rem;
+	font-weight:normal;
 }
 	.table tbody tr .tdEditable {
 		cursor:text;
@@ -481,6 +503,19 @@ body {
 	background-color:var(--amarilloMasClaro);
 	box-shadow:inset 0px 0px 0.1rem var(--principalMedio)!important;
 }
+
+	.tdBtnAcciones {
+		min-width:100px;
+		max-width:100px;
+		text-align:right;
+	}
+		.tdBtnAccion {
+			display:inline-block;
+			font-size:1rem!important;
+			width:20px;
+			margin-left:5px;
+			cursor:pointer;
+		}
 	
 /* -----|||||----- *************** -----|||||----- */
 /* -----|||||----- * Formularios * -----|||||----- */
