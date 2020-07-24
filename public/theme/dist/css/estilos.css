@@ -16,6 +16,7 @@
 	--principalTrans:rgba(98,175,130,0.6);
 	--grisOscuro:#212529;
 	--grisOscuroTrans:rgba(33,37,41,0.3);
+	--grisOscuroMasTrans:rgba(33,37,41,0.2);
 	--grisMedio:#434343;
 	--grisClaro:#CCCCCC;
 	--grisMasClaro:#EBEBEB;
@@ -436,6 +437,29 @@ body {
 		padding:0rem 1rem;
 	}
 	
+	/* SCSF - Sobreescribe los estilos para aplicar la cabecera de seccion para estar fija */
+	.contenedorSeccion {
+		overflow:hidden!important;
+	}
+	.cabeceraSeccion {
+		position:sticky;
+		top:0px;
+		z-index:85;
+		box-shadow:0px 1px 10px var(--grisOscuroMasTrans);
+	}
+		.cabeceraSeccion .icoCab { color:var(--principal); }
+	.contenidoSeccion {
+		position:relative;
+		margin:0rem -1rem;
+		padding:1rem 1rem;
+		height:calc(100vh - 56px * 2);
+		overflow:hidden;
+		overflow-y:auto;
+		border:none!important;
+	}
+	/* SCSF - ... */
+	
+	
 /* -----|||||----- ********************* -----|||||----- */
 /* -----|||||----- * Barra de Opciones * -----|||||----- */
 /* -----|||||----- ********************* -----|||||----- */
@@ -449,8 +473,8 @@ body {
 .lineaBuscador { width:100%; }
 	.lineaBuscador input { font-size:0.85rem; border-left:none; }
 	.botonBuscar, .botonLimpiarBusqueda { cursor:pointer; }
-	.botonBuscar { border-radius:0px; background-color:var(--principalMasClaro); color:var(--principal); }
-		.botonBuscar:hover { background-color:var(--principal); color:var(--principalMasClaro); }
+	.botonBuscar { border-radius:0px; background-color:var(--grisMasClaro); color:var(--principalAzulAnalogo); }
+		.botonBuscar:hover { background-color:var(--principalAzulAnalogo); color:var(--grisMasClaro); }
 	.botonLimpiarBusqueda { border-radius:0px; background-color:var(--grisMasClaro); color:var(--principalRojoOpuesto); }
 		.botonLimpiarBusqueda:hover { background-color:var(--principalRojoOpuesto); color:var(--grisMasClaro); }
 

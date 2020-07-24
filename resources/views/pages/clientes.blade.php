@@ -5,7 +5,7 @@
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion">
-			<span><i class="fas fa-users mr-2"></i></span>
+			<span><i class="fas fa-users icoCab mr-2"></i></span>
 			<span>@lang('texto.clientes')</span>
 		</div>
 		<div class="contenidoSeccion">
