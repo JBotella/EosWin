@@ -54,6 +54,7 @@
 /* -----|||||----- *********** -----|||||----- */
 /* -----|||||----- * General * -----|||||----- */
 /* -----|||||----- *********** -----|||||----- */
+
 body {
 	color:var(--grisOscuro);
 	overflow-y:hidden;
@@ -262,6 +263,7 @@ body {
 			opacity:1;
 			transition:0.3s;
 		}
+		
 	/* -- Pie Desplegable -- */
 	.contenedorEmergenteAjustes {
 		position:fixed;
@@ -401,16 +403,18 @@ body {
 /* -----|||||----- ************** -----|||||----- */
 /* -----|||||----- * Contenidos * -----|||||----- */
 /* -----|||||----- ************** -----|||||----- */
-
+.container-fluid {
+	height:calc(100vh - 56px);
+}
 .contenedorSeccion {
 	position:relative;
 	transition:0.2s;
 	width:calc(100% + 3rem)!important;
 	height:calc(100vh - 56px);
+	height:inherit;
 	margin-left:-1.5rem;
 	padding:0rem 1rem;
 	overflow:hidden;
-	overflow-y:auto;
 }
 .cSeccExtraVisible {
 	width:calc(100% + 3rem - var(--anchoExtraBar))!important;
@@ -452,10 +456,22 @@ body {
 		position:relative;
 		margin:0rem -1rem;
 		padding:1rem 1rem;
-		height:calc(100vh - 56px * 2);
-		overflow:hidden;
-		overflow-y:auto;
 		border:none!important;
+		/*height:calc(100vh - 56px * 2);
+		overflow:hidden;
+		overflow-y:auto;*/
+		overflow:hidden;
+		height:inherit;
+		
+		margin:0rem -1rem;
+		padding:0rem 1rem;
+	}
+	.seccion-responsive {
+		overflow:none;
+		overflow-y:auto;
+		height:100%;
+		margin:0rem -1rem;
+		padding:1rem 1rem;
 	}
 	/* SCSF - ... */
 	
@@ -467,12 +483,14 @@ body {
 .barraOpcionesLista {
 	position:relative;
 	width:100%;
-	margin-bottom:1rem;
+	margin-top:1rem;
+	margin-bottom:0rem;
 }
 /* Buscador */
 .lineaBuscador { width:100%; }
 	.lineaBuscador input { font-size:0.85rem; border-left:none; }
-	.botonBuscar, .botonLimpiarBusqueda { cursor:pointer; }
+	.botonBuscar, .botonLimpiarBusqueda { height:28px!important; cursor:pointer; }
+	.botonBuscar svg, .botonLimpiarBusqueda svg { width:1rem!important; }
 	.botonBuscar { border-radius:0px; background-color:var(--grisMasClaro); color:var(--principalAzulAnalogo); }
 		.botonBuscar:hover { background-color:var(--principalAzulAnalogo); color:var(--grisMasClaro); }
 	.botonLimpiarBusqueda { border-radius:0px; background-color:var(--grisMasClaro); color:var(--principalRojoOpuesto); }
@@ -540,6 +558,40 @@ body {
 			margin-left:5px;
 			cursor:pointer;
 		}
+	
+/* Redefinimos la table-responsive y el table-fixed */
+.table-responsive {
+	overflow-x:auto!important;
+	overflow:none;
+	overflow-y:auto;
+	height:100%;
+}
+.table-responsive-w-auto {
+	overflow-x:auto!important;
+	overflow-y:auto;
+	height:auto;
+	resize:vertical;
+}
+	.altMinTabla {
+		min-height:100px!important;
+		resize:vertical;
+	}
+
+.table-fixed thead th {
+	position:sticky;
+	top:0px;
+	z-index: 999;
+	margin-bottom:5px;
+}
+.table-fixed thead th {
+	box-shadow:0px -5px 0px var(--grisMedio);
+}
+.table-fixed tbody::before{
+  content:'';
+  display:block;
+  height:5px;
+}
+/* ... */
 	
 /* -----|||||----- *************** -----|||||----- */
 /* -----|||||----- * Formularios * -----|||||----- */
@@ -610,6 +662,7 @@ body {
 /* -----|||||----- ************ -----|||||----- */
 /* -----|||||----- * Scroller * -----|||||----- */
 /* -----|||||----- ************ -----|||||----- */
+
 ::-webkit-scrollbar {
 	width:10px;
 	height:10px;

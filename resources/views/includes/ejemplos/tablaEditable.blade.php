@@ -1,5 +1,5 @@
-<div class="table-responsive">
-	<table class="table mt-5">
+<div class="table-responsive-w-auto altMinTabla mb-2" >
+	<table class="table table-fixed">
 		<thead>
 			<tr>
 				<th scope="col">Id</th>

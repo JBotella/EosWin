@@ -9,9 +9,11 @@
 			<span>@lang('texto.dashboard')</span>
 		</div>
 		<div class="contenidoSeccion">
-			@include('includes.ejemplos.formulario')
-			@include('includes.ejemplos.tabla')
-			@include('includes.ejemplos.tablaEditable')
+			<div class="seccion-responsive">
+				@include('includes.ejemplos.formulario')
+				@include('includes.ejemplos.tabla')
+				@include('includes.ejemplos.tablaEditable')
+			</div>
 		</div>
 	</div>
 @endsection
