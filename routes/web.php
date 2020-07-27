@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function(){
 		// Lista Clientes (Asíncrona)
 		Route::get('listaClientes', 'ClientesController@listaClientes')->name('listaClientes');
 	Route::get('cliente/{id}', 'ClientesController@cliente')->name('cliente');
+		// Ver Cliente (Asíncrona)
+		Route::get('verCliente/{id}', 'ClientesController@verCliente')->name('verCliente');
 	
 	/* Proveedores */
 	Route::get('proveedores', function(){ return view('pages.proveedores'); })->name('proveedores');

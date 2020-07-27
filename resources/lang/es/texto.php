@@ -1,18 +1,20 @@
 <?php
 /* -----|||||----- * Textos Español * -----|||||----- */
 return [
-	/* -*****- Idiomas -*****- */
+/* -*****- Idiomas -*****- */
 	'espanol' => 'Español',
 	'catalan' => 'Català',
 	'ingles' => 'English',
-	/* -*****- General -*****- */
+/* -*****- General -*****- */
 	'empresa' => 'Empresa',
 	'empresas' => 'Empresas',
 	'empresas_recientes' => 'Empresas recientes',
 	'recientes' => 'Recientes',
 	'ejercicio' => 'Ejercicio',
 	'ejercicios' => 'Ejercicios',
-	/* -*****- Menú nav lateral -*****- */
+	'cliente' => 'Cliente',
+	'proveedor' => 'Proveedor',
+/* -*****- Menú nav lateral -*****- */
 	'dashboard' => 'Dashboard',
 	'clientes' => 'Clientes',
 	'proveedores' => 'Proveedores',
@@ -26,11 +28,13 @@ return [
 	'amortizaciones' => 'Amortizaciones',
 	'libros_oficiales' => 'Libros oficiales',
 	'impuestos' => 'Impuestos',
-	/* -*****- Acciones -*****- */
+/* -*****- Acciones -*****- */
 	'login' => 'Iniciar sesión',
 	'logout' => 'Cerrar sesión',
 	'ajustes' => 'Ajustes',
 	'configuracion' => 'Configuración',
+	'recargar' => 'Recargar',
+	'actualizar' => 'Actualizar',
 	'nuevo' => 'Nuevo',
 	'nueva' => 'Nueva',
 	'crear' => 'Crear',
@@ -40,4 +44,23 @@ return [
 	'guardar' => 'Guardar',
 	'ordenar' => 'Ordenar',
 	'orden' => 'Orden',
+	'volver' => 'Volver',
+	'atras' => 'Atrás',
+/* -*****- Campos Formulario -*****- */
+	'codigo' => 'Código',
+	'nombre' => 'Nombre',
+	'cif' => 'Cif',
+	'nif' => 'Nif',
+	'dni' => 'Dni',
+	'telefono' => 'Teléfono',
+	'email' => 'Email',
+	'direccion' => 'Dirección',
+	'localidad' => 'Localidad',
+	'cp' => 'CP',
+	'provincia' => 'Provincia',
+	'pais' => 'País',
+	'cuenta_contable' => 'Cuenta Contable',
+/* -*****- Bloques Categoría Formulario -*****- */
+	'datos_generales' => 'Datos Generales',
+	'contabilidad' => 'Contabilidad',
 ];
