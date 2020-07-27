@@ -1,6 +1,3 @@
-@php
-	$vActual=Request::route()->getName();
-@endphp
 <div id="layoutSidenav_nav" class="@if(Session::get('menuPlegado')=='si') side-oculta @endif">
 	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 		<div class="sb-sidenav-menu">
