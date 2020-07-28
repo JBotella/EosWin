@@ -1,8 +1,7 @@
 <?php
 namespace App\Http\Controllers;
-use App\Tablas\Cliente;
-
 use Illuminate\Http\Request;
+use App\Tablas\Cliente;
 
 class ClientesController extends Controller
 {
@@ -12,7 +11,8 @@ class ClientesController extends Controller
     public function listaClientes(){
 		$clientes = new Cliente();
 		$listado = $clientes->listadoCompletoClientes();
-		return view('pages.clientes.listaClientes', ['listado' => $listado]);
+		$rutaVer = route("verCliente", [":id"]);
+		return view('pages.clientes.listaClientes', ['listado' => $listado, 'rutaVer' => $rutaVer]);
 	}
 	public function cliente($id){
 		$cliente = new Cliente();

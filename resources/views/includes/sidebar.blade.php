@@ -4,66 +4,66 @@
 			<div class="nav mt-3">
 				<a class="nav-link @if(in_array($vActual,['dashboard'])) nav-link-selected @endif" href="{!!route('dashboard')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-					@lang('texto.dashboard')
+					@lang('texto.sidebar_nav.dashboard')
 				</a>
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
 				<a class="nav-link @if(in_array($vActual,['clientes','cliente'])) nav-link-selected @endif" href="{!!route('clientes')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-					@lang('texto.clientes')
+					@lang('texto.sidebar_nav.clientes')
 				</a>
-				<a class="nav-link @if(in_array($vActual,['proveedores','proveedor'])) nav-link-selected @endif" href="">
+				<a class="nav-link @if(in_array($vActual,['proveedores','proveedor'])) nav-link-selected @endif" href="{!!route('proveedores')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-dolly"></i></div>
-					@lang('texto.proveedores')
+					@lang('texto.sidebar_nav.proveedores')
 				</a>
 				<a class="nav-link @if(in_array($vActual,['bancos','banco'])) nav-link-selected @endif" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
-					@lang('texto.bancos')
+					@lang('texto.sidebar_nav.bancos')
 				</a>
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-pencil-alt"></i></div>
-					@lang('texto.apuntes')
+					@lang('texto.sidebar_nav.apuntes')
 				</a>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-calendar-alt"></i></div>
-					@lang('texto.apuntes_periodicos')
+					@lang('texto.sidebar_nav.apuntes_periodicos')
 				</a>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
-					@lang('texto.cobros') / @lang('texto.pagos')
+					@lang('texto.sidebar_nav.cobros_pagos')
 				</a>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-list-alt"></i></div>
-					@lang('texto.extractos')
+					@lang('texto.sidebar_nav.extractos')
 				</a>
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-coins"></i></div>
-					@lang('texto.bienes_inversion')
+					@lang('texto.sidebar_nav.bienes_inversion')
 				</a>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
-					@lang('texto.amortizaciones')
+					@lang('texto.sidebar_nav.amortizaciones')
 				</a>
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
-					@lang('texto.libros_oficiales')
+					@lang('texto.sidebar_nav.libros_oficiales')
 				</a>
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
 				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon"><i class="fas fa-percent"></i></div>
-					@lang('texto.impuestos')
+					@lang('texto.sidebar_nav.impuestos')
 				</a>
 			</div>
 		</div>

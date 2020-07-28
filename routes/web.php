@@ -30,12 +30,12 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('verCliente/{id}', 'ClientesController@verCliente')->name('verCliente');
 	
 	/* Proveedores */
-	//Route::get('proveedores', 'ProveedoresController@proveedores')->name('proveedores');
+	Route::get('proveedores', 'ProveedoresController@proveedores')->name('proveedores');
 		// Lista Proveedores (Asíncrona)
-		//Route::get('listaProveedores ', 'ProveedoresController@listaProveedores ')->name('listaProveedores ');
-	//Route::get('proveedor/{id}', 'ProveedoresController@proveedor')->name('proveedor');
+		Route::get('listaProveedores', 'ProveedoresController@listaProveedores')->name('listaProveedores');
+	Route::get('proveedor/{id}', 'ProveedoresController@proveedor')->name('proveedor');
 		// Ver Proveedor (Asíncrona)
-		//Route::get('verProveedor/{id}', 'ProveedoresController@verProveedor')->name('verProveedor');
+		Route::get('verProveedor/{id}', 'ProveedoresController@verProveedor')->name('verProveedor');
 	
 	
 

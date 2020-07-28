@@ -7,7 +7,14 @@ function extraBar(){
 		$('.menuLateral_extra').removeClass('mLExtraVisible');
 	}
 }
-/* Abre o cierra la ficha asociada a la fila de una tabla (oculta o muestra la tabla en función del estado de la ficha) */
+/* Abre o cierra la ficha asociada a la fila de una tabla */
+function verLinea(id,ruta){
+	ruta = ruta.replace(':id', id);
+	$('#visorFicha_0').load(ruta, function(){
+		visorFichaTabla(0);
+	});
+}
+/* Abre o cierra el visor de la ficha asociada a la fila de una tabla (oculta o muestra la tabla en función del estado de la ficha) */
 function visorFichaTabla(n){
 	if($('#visorFicha_'+n).hasClass('ocultaContenedor')){
 		$('#tabla_'+n).addClass('ocultaContenedor');
@@ -18,6 +25,7 @@ function visorFichaTabla(n){
 			$('.barraOpcionesLista').addClass('d-none');
 			$('#visorFicha_'+n).removeClass('ocultaContenedor');
 			$('#visorFicha_'+n).removeClass('d-none');
+			contenidoSeccionHeight();
 		},300);
 	}else{
 		$('#visorFicha_'+n).addClass('ocultaContenedor').addClass('colapsaContenedor');
@@ -28,6 +36,7 @@ function visorFichaTabla(n){
 			$('#visorFicha_'+n).addClass('d-none');
 			$('#tabla_'+n).removeClass('ocultaContenedor');
 			$('.barraOpcionesLista').removeClass('ocultaContenedor');
+			contenidoSeccionHeight();
 		},300);
 	}
 }
@@ -45,7 +54,7 @@ function contenidoSeccionHeight(){
 	var barraOpcionesLista = $('.barraOpcionesLista').outerHeight(true);
 		if(!barraOpcionesLista){ var barraOpcionesLista = 0; }
 	var resta = Math.round(contenedorSeccion - topNav - cabeceraSeccion - barraOpcionesLista);
-	$('.contenidoSeccion').css( 'height','' + resta + 'px' );
+	$('.contenidoSeccion').css('height',''+resta+'px');
 }
 /* Evento resize */
 $(window).bind('resize', function() {

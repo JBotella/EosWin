@@ -6,7 +6,7 @@
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion">
 			<span><i class="fas fa-users icoCab mr-2"></i></span>
-			<span>@lang('texto.clientes')</span>
+			<span>@lang('texto.sidebar_nav.clientes')</span>
 			<div class="cabSeccBtnAcciones">
 				<i class="fas fa-sync cabSeccBtnAccion btnActualizar btnAccion" title="@lang('texto.actualizar')" onclick="cargaListado()"></i>
 				<i class="fas fa-plus-circle cabSeccBtnAccion btnCrear btnAccion" title="@lang('texto.crear')"></i>
@@ -26,11 +26,11 @@
 					<table class="table table-striped table-fixed">
 						<thead id="cabeceraLista_0" class="thead-th-ocultos">
 							<tr>
-								<th scope="col">@lang('texto.codigo')</th>
-								<th scope="col">@lang('texto.nombre')</th>
-								<th scope="col">@lang('texto.cif')</th>
-								<th scope="col">@lang('texto.telefono')</th>
-								<th scope="col">@lang('texto.email')</th>
+								<th scope="col">@lang('texto.datos_generales.codigo')</th>
+								<th scope="col">@lang('texto.datos_generales.nombre')</th>
+								<th scope="col">@lang('texto.datos_generales.cif')</th>
+								<th scope="col">@lang('texto.datos_generales.telefono')</th>
+								<th scope="col">@lang('texto.datos_generales.email')</th>
 								<th scope="col" class="tdBtnAcciones"></th>
 							</tr>
 						</thead>
@@ -50,12 +50,5 @@
 		$(document).ready(function(){
 			cargaListado();
 		});
-		function verLinea(id){
-			var ruta = '{{ route("verCliente", [":id"]) }}';
-			ruta = ruta.replace(':id', id);
-			$('#visorFicha_0').load(ruta, function(){
-				visorFichaTabla(0);
-			});
-		}
 	</script>
 @endsection
