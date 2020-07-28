@@ -8,8 +8,6 @@
 <title>EosWin</title>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-<!-- Font Awesome -->
-<script src="{{ asset('theme/fontawesome/js/all.min.js') }}" crossorigin="anonymous"></script>
 <!-- Styles -->
 <link href="{{ asset('theme/dist/css/styles.css') }}" rel="stylesheet">
 <link href="{{ asset('theme/dist/css/estilos.css') }}" rel="stylesheet">

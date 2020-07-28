@@ -2,13 +2,18 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @php
 	$vActual = Request::route()->getName();
+	if(in_array($vActual,['login','register','verify','password.confirm','password.email','password.update','password.reset','password.request'])){
+		$rutasLogin = 'si';
+	}else{
+		$rutasLogin = 'no';
+	}
 @endphp
 <head>
 	@include('includes.head')
 </head>
-<body class="sb-nav-fixed @if(Session::get('menuPlegado')=='si') sb-sidenav-toggled @endif">
+<body class="sb-nav-fixed @if(Session::get('menuPlegado') == 'si') sb-sidenav-toggled @endif">
 	<div id="app">
-		@if(!in_array($vActual,['login','register','verify','password.confirm','password.email','password.update','password.reset','password.request']))
+		@if($rutasLogin == 'no')
 			@include('includes.header')
 			<div id="layoutSidenav">
 				@include('includes.sidebar')
@@ -26,9 +31,12 @@
 			</div>
 		@endif
 	</div>
-	<!-- Scripts -->
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-	<script src="{{ asset('theme/dist/js/scripts.js') }}"></script>
-	<script src="{{ asset('theme/dist/js/scriptsFin.js') }}"></script>
+	<!-- Scripts -->@if($rutasLogin == 'no')
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+		<script src="{{ asset('theme/dist/js/scripts.js') }}"></script>
+		<script src="{{ asset('theme/dist/js/scriptsFin.js') }}"></script>
+		<!-- Font Awesome -->
+		<script src="{{ asset('theme/fontawesome/js/all.min.js') }}" crossorigin="anonymous"></script>
+	@endif
 </body>
 </html>

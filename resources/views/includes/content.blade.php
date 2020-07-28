@@ -3,6 +3,8 @@
 		<div class="container-fluid">
 			@yield('content')
 		</div>
-		@include('includes.emergenteAjustes')
+		@if($rutasLogin == 'no')
+			@include('includes.emergenteAjustes')
+		@endif
 	</main>
 </div>

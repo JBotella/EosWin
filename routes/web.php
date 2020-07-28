@@ -12,13 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
 
 /* ----- Filtrado por login auth ----- */
 Route::group(['middleware' => 'auth'], function(){
 	/* Dashboard */
-	Route::get('/', function(){ return view('pages.dashboard'); })->name('dashboard');
+	Route::get('/', 'DashboardController@dashboard')->name('dashboard');
 
 	/* Clientes */
 	Route::get('clientes', 'ClientesController@clientes')->name('clientes');
@@ -29,18 +30,26 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('verCliente/{id}', 'ClientesController@verCliente')->name('verCliente');
 	
 	/* Proveedores */
-	Route::get('proveedores', function(){ return view('pages.proveedores'); })->name('proveedores');
+	//Route::get('proveedores', 'ProveedoresController@proveedores')->name('proveedores');
+		// Lista Proveedores (Asíncrona)
+		//Route::get('listaProveedores ', 'ProveedoresController@listaProveedores ')->name('listaProveedores ');
+	//Route::get('proveedor/{id}', 'ProveedoresController@proveedor')->name('proveedor');
+		// Ver Proveedor (Asíncrona)
+		//Route::get('verProveedor/{id}', 'ProveedoresController@verProveedor')->name('verProveedor');
+	
+	
+
+	/* ------- */
+	/* SIDEBAR */
+	/* ------- */
+	Route::get('menu_plegado/{plegado}','GeneralController@menuPlegado')->name('menu_plegado');
+	
 });
-
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
+/* ------ */
+/* IDIOMA */
+/* ------ */
 Route::get('lang/{lang}', function($lang) {
-  \Session::put('lang', $lang);
-  return \Redirect::back();
+	\Session::put('lang', $lang);
+	return \Redirect::back();
 })->middleware('web')->name('change_lang');
 
-/* ------- */
-/* SIDEBAR */
-/* ------- */
-Route::get('menu_plegado/{plegado}','GeneralController@menuPlegado')->name('menu_plegado');
