@@ -49,14 +49,14 @@ return [
 	],
 /* -*****- Campos Formularios -*****- */
 	/* --- Cliente --- */
-	'datos_generales' => [
-		'datos_generales' => 'Datos Generales',
+	'datos_identificativos' => [
+		'datos_identificativos' => 'Datos identificativos',
 		'codigo' => 'Código',
-		'nombre' => 'Nombre',
-		'cif' => 'Cif',
-		'nif' => 'Nif',
-		'dni' => 'Dni',
-		'telefono' => 'Teléfono',
+		'nombre_completo' => 'Nombre completo',
+		'organizacion' => 'Organización',
+		'tipo_identificador' => 'Tipo de identificador',
+		'nif' => 'N.I.F.',
+		'cliente_obsoleto' => 'Cliente obsoleto',
 		'email' => 'Email',
 		'direccion' => [
 			'direccion' => 'Dirección',
@@ -68,14 +68,40 @@ return [
 			'pais' => 'País',
 		],
 	],
-	'representante_y_zonas' => [
-		'representante_y_zonas' => 'Representante y Zonas',
-		'representante' => 'Representante',
-		'zona' => 'Zona',
-		'descripcion' => 'Descripción',
+	'numeros_telefono' => [
+		'numeros_telefono' => 'Números de teléfono',
+		'trabajo' => 'Trabajo',
+		'particular' => 'Particular',
+		'movil' => 'Móvil',
+		'fax' => 'Fax',
 	],
-	'contabilidad' => [
-		'contabilidad' => 'Contabilidad',
-		'cuenta_contable' => 'Cuenta Contable',
+	'parametrizacion_contable' => [
+		'parametrizacion_contable' => 'Parametrización Contable',
+		'tipo_operacion' => 'Tipo de operación',
+		'tipo_iva_igic' => 'Tipo de I.V.A./I.G.I.C.',
+		'tipo_irpf' => 'Tipo de I.R.P.F.',
+		'operacion_habitual' => 'Operación habitual',
+	],
+	'opciones_adicionales' => [
+		'opciones_adicionales' => 'Opciones adicionales',
+		'correo_electronico' => 'Correo electrónico',
+		'bic_swift' => 'BIC/SWIFT',
+		'fecha_orden_sepa' => 'Fecha orden SEPA',
+		'iban' => 'IBAN',
+		'mensaje_aviso' => 'Mensaje de aviso',
+	],
+	'domicilio_fiscal' => [
+		'domicilio_fiscal' => 'Domicilio Fiscal',
+		'direccion' => [
+			'piso' => 'Piso',
+			'puerta' => 'Puerta',
+		],
+		'codigo_postal' => 'Código Postal',
+		'localidad' => 'Localidad',
+		'provincia' => 'Provincia',
+		'pais' => 'País',
+	],
+	'notas' => [
+		'notas' => 'Notas',
 	],
 ];

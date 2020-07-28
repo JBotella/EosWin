@@ -26,11 +26,11 @@
 					<table class="table table-striped table-fixed">
 						<thead id="cabeceraLista_0" class="thead-th-ocultos">
 							<tr>
-								<th scope="col">@lang('texto.datos_generales.codigo')</th>
-								<th scope="col">@lang('texto.datos_generales.nombre')</th>
-								<th scope="col">@lang('texto.datos_generales.cif')</th>
-								<th scope="col">@lang('texto.datos_generales.telefono')</th>
-								<th scope="col">@lang('texto.datos_generales.email')</th>
+								<th scope="col">@lang('texto.codigo')</th>
+								<th scope="col">@lang('texto.nombre')</th>
+								<th scope="col">@lang('texto.cif')</th>
+								<th scope="col">@lang('texto.telefono')</th>
+								<th scope="col">@lang('texto.email')</th>
 								<th scope="col" class="tdBtnAcciones"></th>
 							</tr>
 						</thead>

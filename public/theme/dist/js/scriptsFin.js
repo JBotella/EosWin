@@ -51,7 +51,8 @@ function contenidoSeccionHeight(){
 		if(!topNav){ var topNav = 0; }
 	var cabeceraSeccion = $('.cabeceraSeccion').outerHeight(true);
 		if(!cabeceraSeccion){ var cabeceraSeccion = 0; }
-	var barraOpcionesLista = $('.barraOpcionesLista').outerHeight(true);
+	//var barraOpcionesLista = $('.barraOpcionesLista').outerHeight(true);
+	var barraOpcionesLista = $('.barraOpcionesLista').height();
 		if(!barraOpcionesLista){ var barraOpcionesLista = 0; }
 	var resta = Math.round(contenedorSeccion - topNav - cabeceraSeccion - barraOpcionesLista);
 	$('.contenidoSeccion').css('height',''+resta+'px');
