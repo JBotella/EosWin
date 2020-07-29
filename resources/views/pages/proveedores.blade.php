@@ -4,13 +4,11 @@
 		$extrabar = 'oculta';
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
-		<div class="cabeceraSeccion">
-			<span><i class="fas fa-users icoCab mr-2"></i></span>
-			<span>@lang('texto.sidebar_nav.proveedores')</span>
-			<div class="cabSeccBtnAcciones">
-				<i class="fas fa-sync cabSeccBtnAccion btnActualizar btnAccion" title="@lang('texto.actualizar')" onclick="cargaListado()"></i>
-				<i class="fas fa-plus-circle cabSeccBtnAccion btnCrear btnAccion" title="@lang('texto.crear')"></i>
-			</div>
+		<div class="cabeceraSeccion" id="cabeceraSeccionTabla">
+			@include('includes.cabeceras.cabeceraProveedores')
+		</div>
+		<div class="cabeceraSeccion ocultaContenedor" id="cabeceraSeccionVer">
+			@include('includes.cabeceras.cabeceraVerProveedor')
 		</div>
 		<div class="barraOpcionesLista">
 			<div class="row justify-content-end">

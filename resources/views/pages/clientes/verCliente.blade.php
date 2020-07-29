@@ -1,11 +1,13 @@
 <div class="contenedorFicha">
 	<div class="contenedorFichaInt">
+		
 		<div class="accionesFicha">
 			<div class="btnAccionFicha btnAccion" onclick="visorFichaTabla(0)">
 				<i class="fas fa-arrow-circle-left btnAtras mr-2" title="@lang('texto.volver')"></i>
 				<span>@lang('texto.volver')</span>
 			</div>
 		</div>
+		
 		{{--<div class="cabeceraFicha">
 			@lang('texto.cliente')
 		</div>--}}
