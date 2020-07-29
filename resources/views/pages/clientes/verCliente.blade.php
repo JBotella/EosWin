@@ -6,6 +6,7 @@
 		<div class="cabeceraFicha">
 			@lang('texto.cliente'): {{$datos->CliCodigo}}
 		</div>
+		
 		<div class="contenidoFicha">
 		
 			<div class="row">
@@ -14,18 +15,18 @@
 					<div class="categoriaItems">@lang('texto.datos_identificativos.datos_identificativos')</div>
 					<div class="row">
 						<div class="col-12 col-md-12">
-							<div class="itemFicha">
-								<div class="nombreItemFicha">@lang('texto.datos_identificativos.codigo')</div>
-								<div class="valorItemFicha">{{$datos->CliCodigo}}</div>
-							</div>
+							@component('components.itemFicha')
+								@slot('nombre', trans('texto.datos_identificativos.codigo'))
+								@slot('valor', $datos->CliCodigo)
+							@endcomponent
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-12 col-md-12">
-							<div class="itemFicha">
-								<div class="nombreItemFicha">@lang('texto.datos_identificativos.nombre_completo')</div>
-								<div class="valorItemFicha">{{$datos->CliNombre}}</div>
-							</div>
+							@component('components.itemFicha')
+								@slot('nombre', trans('texto.datos_identificativos.nombre_completo'))
+								@slot('valor', $datos->CliNombre)
+							@endcomponent
 						</div>
 					</div>
 				</div>
