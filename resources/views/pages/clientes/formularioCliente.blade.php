@@ -26,7 +26,7 @@
 								<div class="categoriaBloque">@lang('texto.datos_identificativos.datos_identificativos')</div>
 								<div class="row">
 									@component('components.itemFormulario')
-										@slot('class', 'col-12 col-md-12 col-lg-6')
+										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.datos_identificativos.codigo'))
 										@slot('valor')
 											<input type="text" class="form-control" name="" value="{{$datos->CliCodigo}}" />
@@ -34,7 +34,7 @@
 									@endcomponent
 									
 									@component('components.itemFormulario')
-										@slot('class', 'col-12 col-md-12 col-lg-6')
+										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.datos_identificativos.nombre'))
 										@slot('valor')
 											<input type="text" class="form-control" name="" value="{{$datos->CliNombre}}" />
@@ -42,7 +42,7 @@
 									@endcomponent
 									
 									@component('components.itemFormulario')
-										@slot('class', 'col-12 col-md-12 col-lg-6')
+										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.datos_identificativos.apellido_1'))
 										@slot('valor')
 											<input type="text" class="form-control" name="" value="{{$datos->CliApellido1}}" />
@@ -50,7 +50,7 @@
 									@endcomponent
 									
 									@component('components.itemFormulario')
-										@slot('class', 'col-12 col-md-12 col-lg-6')
+										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.datos_identificativos.apellido_2'))
 										@slot('valor')
 											<input type="text" class="form-control" name="" value="{{$datos->CliApellido2}}" />
