@@ -5,10 +5,10 @@
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion" id="cabeceraSeccionTabla">
-			@include('includes.cabeceras.cabeceraClientes')
+			@include('includes.cabeceras.clientes.cabeceraClientes')
 		</div>
-		<div class="cabeceraSeccion ocultaContenedor" id="cabeceraSeccionVer">
-			@include('includes.cabeceras.cabeceraVerCliente')
+		<div class="cabeceraSeccion ocultaContenedor colapsaContenedor" id="cabeceraSeccionVer">
+			@include('includes.cabeceras.clientes.cabeceraVerCliente')
 		</div>
 		<div class="barraOpcionesLista">
 			<div class="row justify-content-end">

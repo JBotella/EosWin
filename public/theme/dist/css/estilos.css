@@ -631,6 +631,9 @@ body {
 			.accionesFicha {
 				width:100%;
 			}
+				.accionesFicha a {
+					text-decoration:none;
+				}
 				.btnAccionFicha {
 					display:inline-flex;
 					align-items: center;
@@ -670,6 +673,49 @@ body {
 						font-weight:normal;
 					}
 						.valorItemFicha span {
+							font-weight:bold;
+							color:var(--principalAzulAnalogo);
+						}
+
+/* -----|||||----- ************** -----|||||----- */
+/* -----|||||----- * Formulario * -----|||||----- */
+/* -----|||||----- ************** -----|||||----- */
+
+.contenedorFormulario {
+	width:100%;
+	margin:auto;
+	max-width:1600px;
+	margin-top:-1rem;
+}
+	.contenedorFormularioInt {
+		width:100%;
+		padding:1rem 1rem;
+		/*background-color:var(--blanco);
+		box-shadow:-1px 1px 10px 0px var(--grisMasClaro), 1px 1px 10px 0px var(--grisMasClaro);*/
+	}
+		.contenidoFormulario {
+			width:100%;
+			margin-top:1rem;
+		}
+			.categoriaBloque {
+				font-size:0.95rem;
+				font-weight:bold;
+				color:var(--principal);
+				margin:1rem 0rem;
+				border-bottom:solid 1px var(--principalMasClaro);
+			}
+				.itemFormulario {
+					font-size:0.85rem;
+					margin-bottom:0.75rem;
+				}
+					.nombreItemFormulario {
+						font-weight:bold;
+						margin-bottom:0.2rem;
+					}
+					.valorItemFormulario {
+						font-weight:normal;
+					}
+						.valorItemFormulario span {
 							font-weight:bold;
 							color:var(--principalAzulAnalogo);
 						}

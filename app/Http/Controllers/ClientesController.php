@@ -14,10 +14,11 @@ class ClientesController extends Controller
 		$rutaVer = route("verCliente", [":id"]);
 		return view('pages.clientes.listaClientes', ['listado' => $listado, 'rutaVer' => $rutaVer]);
 	}
-	public function consultaCliente($id){
+	public function formularioCliente($id){
 		$cliente = new Cliente();
 		$datos = $cliente->datosCliente($id);
-		return $datos;
+		$telefonos = $cliente->telefonosCliente($id);
+		return view('pages.clientes.formularioCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
 	}
 	public function verCliente($id){
 		$cliente = new Cliente();
