@@ -883,8 +883,8 @@ body {
 /* -----|||||----- ************ -----|||||----- */
 
 ::-webkit-scrollbar {
-	width:10px;
-	height:10px;
+	width:12px;
+	height:15px;
 }
 ::-webkit-scrollbar-track {
 	background-color:none;

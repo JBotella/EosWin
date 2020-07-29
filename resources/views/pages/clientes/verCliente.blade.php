@@ -14,20 +14,39 @@
 					{{-- Datos identificativos --}}
 					<div class="categoriaItems">@lang('texto.datos_identificativos.datos_identificativos')</div>
 					<div class="row">
-						<div class="col-12 col-md-12">
-							@component('components.itemFicha')
-								@slot('nombre', trans('texto.datos_identificativos.codigo'))
-								@slot('valor', $datos->CliCodigo)
-							@endcomponent
-						</div>
+						@component('components.itemFicha')
+							@slot('class', 'col-12 col-md-12')
+							@slot('nombre', trans('texto.datos_identificativos.codigo'))
+							@slot('valor', $datos->CliCodigo)
+						@endcomponent
 					</div>
 					<div class="row">
-						<div class="col-12 col-md-12">
-							@component('components.itemFicha')
-								@slot('nombre', trans('texto.datos_identificativos.nombre_completo'))
-								@slot('valor', $datos->CliNombre)
-							@endcomponent
-						</div>
+						@component('components.itemFicha')
+							@slot('class', 'col-12 col-md-12')
+							@slot('nombre', trans('texto.datos_identificativos.nombre_completo'))
+							@slot('valor', $datos->CliNombre.' '.$datos->CliApellido1.' '.$datos->CliApellido2)
+						@endcomponent
+					</div>
+					<div class="row">
+						@component('components.itemFicha')
+							@slot('class', 'col-12 col-md-12')
+							@slot('nombre', trans('texto.datos_identificativos.organizacion'))
+							@slot('valor', '')
+						@endcomponent
+					</div>
+					<div class="row">
+						@component('components.itemFicha')
+							@slot('class', 'col-12 col-md-12')
+							@slot('nombre', trans('texto.datos_identificativos.tipo_identificador'))
+							@slot('valor', '')
+						@endcomponent
+					</div>
+					<div class="row">
+						@component('components.itemFicha')
+							@slot('class', 'col-12 col-md-12')
+							@slot('nombre', trans('texto.datos_identificativos.nif'))
+							@slot('valor', $datos->CliCif)
+						@endcomponent
 					</div>
 				</div>
 				<div class="col-12 col-md-6">
