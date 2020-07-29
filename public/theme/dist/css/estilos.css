@@ -628,9 +628,19 @@ body {
 			background-color:var(--blanco);
 			box-shadow:-1px 1px 10px 0px var(--grisMasClaro), 1px 1px 10px 0px var(--grisMasClaro);
 		}
-			.accionFicha {
+			.accionesFicha {
 				width:100%;
 			}
+				.btnAccionFicha {
+					display:inline-flex;
+					align-items: center;
+					cursor:pointer;
+				}
+				.btnAccionFicha span {
+					font-weight:bold;
+					font-size:0.9rem;
+					color:var(--principalAzulAnalogo);
+				}
 			.cabeceraFicha {
 				width:100%;
 				margin-top:1rem;
@@ -655,11 +665,14 @@ body {
 					.nombreItemFicha {
 						font-weight:bold;
 						margin-bottom:0.2rem;
-						content:'ss';
 					}
 					.valorItemFicha {
 						font-weight:normal;
 					}
+						.valorItemFicha span {
+							font-weight:bold;
+							color:var(--principalAzulAnalogo);
+						}
 
 /* -----|||||----- ********************* -----|||||----- */
 /* -----|||||----- * Barra de Opciones * -----|||||----- */

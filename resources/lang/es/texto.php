@@ -12,8 +12,6 @@ return [
 	'recientes' => 'Recientes',
 	'ejercicio' => 'Ejercicio',
 	'ejercicios' => 'Ejercicios',
-	'cliente' => 'Cliente',
-	'proveedor' => 'Proveedor',
 /* -*****- Acciones -*****- */
 	'login' => 'Iniciar sesión',
 	'logout' => 'Cerrar sesión',
@@ -47,6 +45,27 @@ return [
 		'libros_oficiales' => 'Libros oficiales',
 		'impuestos' => 'Impuestos',
 	],
+/* -*****- Tablas -*****- */
+	/* --- Clientes --- */
+	'cliente' => 'Cliente',
+	'clientes' => 'Clientes',
+	'tabla_clientes' => [
+		'codigo' => 'Código',
+		'nombre' => 'Nombre',
+		'nif' => 'NIF',
+		'telefono' => 'Teléfono',
+		'email' => 'Email',
+	],
+	/* --- Proveedores --- */
+	'proveedor' => 'Proveedor',
+	'proveedores' => 'Proveedores',
+	'tabla_proveedores' => [
+		'codigo' => 'Código',
+		'nombre' => 'Nombre',
+		'nif' => 'NIF',
+		'telefono' => 'Teléfono',
+		'email' => 'Email',
+	],
 /* -*****- Campos Formularios -*****- */
 	/* --- Cliente --- */
 	'datos_identificativos' => [
@@ -57,16 +76,6 @@ return [
 		'tipo_identificador' => 'Tipo de identificador',
 		'nif' => 'N.I.F.',
 		'cliente_obsoleto' => 'Cliente obsoleto',
-		'email' => 'Email',
-		'direccion' => [
-			'direccion' => 'Dirección',
-			'piso' => 'Piso',
-			'puerta' => 'Puerta',
-			'localidad' => 'Localidad',
-			'cp' => 'CP',
-			'provincia' => 'Provincia',
-			'pais' => 'País',
-		],
 	],
 	'numeros_telefono' => [
 		'numeros_telefono' => 'Números de teléfono',
@@ -92,7 +101,8 @@ return [
 	],
 	'domicilio_fiscal' => [
 		'domicilio_fiscal' => 'Domicilio Fiscal',
-		'direccion' => [
+		'domicilio' => [
+			'domicilio' => 'Domicilio',
 			'piso' => 'Piso',
 			'puerta' => 'Puerta',
 		],

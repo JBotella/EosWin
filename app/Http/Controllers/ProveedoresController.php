@@ -13,7 +13,7 @@ class ProveedoresController extends Controller
 		$rutaVer = route("verProveedor", [":id"]);
 		return view('pages.proveedores.listaProveedores', ['listado' => $listado, 'rutaVer' => $rutaVer]);
 	}
-	public function proveedor($id){
+	public function consultaProveedor($id){
 	}
 	public function verProveedor($id){
 	}

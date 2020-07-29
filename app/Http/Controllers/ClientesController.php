@@ -14,7 +14,7 @@ class ClientesController extends Controller
 		$rutaVer = route("verCliente", [":id"]);
 		return view('pages.clientes.listaClientes', ['listado' => $listado, 'rutaVer' => $rutaVer]);
 	}
-	public function cliente($id){
+	public function consultaCliente($id){
 		$cliente = new Cliente();
 		$datos = $cliente->datosCliente($id);
 		return $datos;
@@ -22,8 +22,7 @@ class ClientesController extends Controller
 	public function verCliente($id){
 		$cliente = new Cliente();
 		$datos = $cliente->datosCliente($id);
-		return view('pages.clientes.verCliente', ['datos' => $datos]);
+		$telefonos = $cliente->telefonosCliente($id);
+		return view('pages.clientes.verCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
 	}
-	
-	
 }

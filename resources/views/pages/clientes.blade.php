@@ -4,13 +4,11 @@
 		$extrabar = 'oculta';
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
-		<div class="cabeceraSeccion">
-			<span><i class="fas fa-users icoCab mr-2"></i></span>
-			<span>@lang('texto.sidebar_nav.clientes')</span>
-			<div class="cabSeccBtnAcciones">
-				<i class="fas fa-sync cabSeccBtnAccion btnActualizar btnAccion" title="@lang('texto.actualizar')" onclick="cargaListado()"></i>
-				<i class="fas fa-plus-circle cabSeccBtnAccion btnCrear btnAccion" title="@lang('texto.crear')"></i>
-			</div>
+		<div class="cabeceraSeccion" id="cabeceraSeccionTabla">
+			@include('includes.cabeceras.cabeceraClientes')
+		</div>
+		<div class="cabeceraSeccion ocultaContenedor" id="cabeceraSeccionVer">
+			@include('includes.cabeceras.cabeceraVerCliente')
 		</div>
 		<div class="barraOpcionesLista">
 			<div class="row justify-content-end">
@@ -26,11 +24,11 @@
 					<table class="table table-striped table-fixed">
 						<thead id="cabeceraLista_0" class="thead-th-ocultos">
 							<tr>
-								<th scope="col">@lang('texto.codigo')</th>
-								<th scope="col">@lang('texto.nombre')</th>
-								<th scope="col">@lang('texto.cif')</th>
-								<th scope="col">@lang('texto.telefono')</th>
-								<th scope="col">@lang('texto.email')</th>
+								<th scope="col">@lang('texto.tabla_clientes.codigo')</th>
+								<th scope="col">@lang('texto.tabla_clientes.nombre')</th>
+								<th scope="col">@lang('texto.tabla_clientes.nif')</th>
+								<th scope="col">@lang('texto.tabla_clientes.telefono')</th>
+								<th scope="col">@lang('texto.tabla_clientes.email')</th>
 								<th scope="col" class="tdBtnAcciones"></th>
 							</tr>
 						</thead>

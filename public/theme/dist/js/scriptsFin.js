@@ -19,7 +19,8 @@ function visorFichaTabla(n){
 	if($('#visorFicha_'+n).hasClass('ocultaContenedor')){
 		$('#tabla_'+n).addClass('ocultaContenedor');
 		$('.barraOpcionesLista').addClass('ocultaContenedor');
-		$('.cabeceraSeccion').addClass('ocultaContenedor').addClass('colapsaContenedor');
+		$('#cabeceraSeccionTabla').addClass('ocultaContenedor').addClass('colapsaContenedor');
+		$('#cabeceraSeccionVer').removeClass('ocultaContenedor').removeClass('colapsaContenedor');
 		setTimeout(function(){
 			$('#tabla_'+n).addClass('d-none');
 			$('.barraOpcionesLista').addClass('d-none');
@@ -30,7 +31,8 @@ function visorFichaTabla(n){
 	}else{
 		$('#visorFicha_'+n).addClass('ocultaContenedor').addClass('colapsaContenedor');
 		$('#tabla_'+n).removeClass('d-none');
-		$('.cabeceraSeccion').removeClass('ocultaContenedor').removeClass('colapsaContenedor');
+		$('#cabeceraSeccionTabla').removeClass('ocultaContenedor').removeClass('colapsaContenedor');
+		$('#cabeceraSeccionVer').addClass('ocultaContenedor').addClass('colapsaContenedor');
 		setTimeout(function(){
 			$('.barraOpcionesLista').removeClass('d-none');
 			$('#visorFicha_'+n).addClass('d-none');
