@@ -14,6 +14,11 @@ function verLinea(id,ruta){
 		visorFichaTabla(0);
 	});
 }
+/* Abre una ruta */
+function abrirLinea(id,ruta){
+	ruta = ruta.replace(':id', id);
+	window.open(ruta,"_self");
+}
 /* Abre o cierra el visor de la ficha asociada a la fila de una tabla (oculta o muestra la tabla en función del estado de la ficha) */
 function visorFichaTabla(n){
 	if($('#visorFicha_'+n).hasClass('ocultaContenedor')){
