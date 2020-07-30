@@ -81,7 +81,9 @@ return [
 		'nif' => 'N.I.F.',
 		'cliente_obsoleto' => 'Cliente obsoleto',
 	],
-	'numeros_telefono' => [
+	'contacto' => [
+		'contacto' => 'Contacto',
+		'correo_electronico' => 'Correo electrónico',
 		'numeros_telefono' => 'Números de teléfono',
 		'trabajo' => 'Trabajo',
 		'particular' => 'Particular',
@@ -95,17 +97,16 @@ return [
 		'tipo_irpf' => 'Tipo de I.R.P.F.',
 		'operacion_habitual' => 'Operación habitual',
 	],
-	'opciones_adicionales' => [
-		'opciones_adicionales' => 'Opciones adicionales',
-		'correo_electronico' => 'Correo electrónico',
+	'banco' => [
+		'banco' => 'Banco',
 		'bic_swift' => 'BIC/SWIFT',
 		'fecha_orden_sepa' => 'Fecha orden SEPA',
 		'iban' => 'IBAN',
-		'mensaje_aviso' => 'Mensaje de aviso',
 	],
 	'domicilio_fiscal' => [
 		'domicilio_fiscal' => 'Domicilio Fiscal',
 		'domicilio' => [
+			'direccion' => 'Dirección',
 			'domicilio' => 'Domicilio',
 			'piso' => 'Piso',
 			'puerta' => 'Puerta',
@@ -115,7 +116,9 @@ return [
 		'provincia' => 'Provincia',
 		'pais' => 'País',
 	],
-	'notas' => [
+	'avisos_notas' => [
+		'avisos_notas' => 'Avisos y notas',
+		'mensaje_aviso' => 'Mensaje de aviso',
 		'notas' => 'Notas',
 	],
 ];

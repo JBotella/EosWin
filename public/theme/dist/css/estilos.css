@@ -692,6 +692,7 @@ body {
 		padding:1rem 1rem;
 		/*background-color:var(--blanco);
 		box-shadow:-1px 1px 10px 0px var(--grisMasClaro), 1px 1px 10px 0px var(--grisMasClaro);*/
+		
 	}
 		.contenidoFormulario {
 			width:100%;
@@ -706,18 +707,34 @@ body {
 			}
 				.itemFormulario {
 					font-size:0.85rem;
-					margin-bottom:0.75rem;
+					margin-bottom:0rem;
 				}
 					.nombreItemFormulario {
 						font-weight:bold;
 						margin-bottom:0.2rem;
+						height:28px;
+						display:flex;
+						justify-content:left;
+						align-items:flex-end;
 					}
 					.valorItemFormulario {
 						font-weight:normal;
+						margin-bottom:0.2rem;
+						min-height:28px;
 					}
 						.valorItemFormulario span {
 							font-weight:bold;
 							color:var(--principalAzulAnalogo);
+						}
+						.valorItemFormulario input, select {
+							line-height:1.2rem;
+							padding:0px 5px!important;
+						}
+						.valorItemFormulario textarea {
+							min-height:122px;
+						}
+						.valorItemFormulario input, select, textarea {
+							border:solid 1px var(--principalClaro)!important;
 						}
 
 /* -----|||||----- ********************* -----|||||----- */
@@ -933,8 +950,13 @@ body {
 /* -----|||||----- ********** -----|||||----- */
 
 ::selection {
-  color:var(--principalClaro);
-  background:var(--principalMedio);
+	color:var(--principalClaro);
+	background:var(--principalMedio);
+}
+::placeholder {
+	color:var(--principal)!important;
+	font-style:italic;
+	opacity:1;
 }
 
 /* -----|||||----- ************ -----|||||----- */
