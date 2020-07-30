@@ -6,9 +6,13 @@
 	</div>
 @endforeach
 </div>
+
 <script>
-$("#buscador").on("keyup", function () {
-	var busqueda = $("#buscador").val();
-	resaltaBusqueda(busqueda,'.mLE_ListaMin','.mLE_ListaMinLinea');
+var rutaBuscadorExtraBar = '{{ route("buscadorExtraBar") }}';
+$(".menuLateral_extraCabInt").load(rutaBuscadorExtraBar,function(){
+	$("#buscadorExtraBar").on("keyup", function () {
+		var busqueda = $("#buscadorExtraBar").val();
+		resaltaBusqueda(busqueda,'.mLE_ListaMin','.mLE_ListaMinLinea');
+	});
 });
 </script>

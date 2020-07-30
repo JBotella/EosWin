@@ -40,7 +40,14 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('verProveedor/{id}', 'ProveedoresController@verProveedor')->name('verProveedor');
 	
 	
-
+	
+	/* ----------------- */
+	/* Buscador ExtraBar */
+	/* ----------------- */
+	Route::get('buscadorExtraBar', function(){
+		return view('includes.complementos.buscadorExtraBar');
+	})->name('buscadorExtraBar');
+	
 	/* ------- */
 	/* SIDEBAR */
 	/* ------- */
