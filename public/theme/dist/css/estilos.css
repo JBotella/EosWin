@@ -120,6 +120,7 @@ body {
 	.btnEditar { color:var(--principalAzulAnalogo); }
 	.btnBorrar { color:var(--principalRojoOpuesto); }
 	.btnAtras { color:var(--principal); }
+	.btnPlegar { color:var(--principalAzulAnalogo); }
 
 /* -----|||||----- ********* -----|||||----- */
 /* -----|||||----- * Login * -----|||||----- */
@@ -496,7 +497,9 @@ body {
 }
 	.mLExtraVisible { right:0px!important; }
 	.menuLateral_extraCab {
-		display:block;
+		display:flex;
+		flex-direction:row;
+		align-items:center;
 		position:sticky;
 		top:0;
 		z-index:80;
@@ -505,6 +508,10 @@ body {
 		border-bottom:solid 1px var(--grisClaro);
 		box-shadow:0px 1px 10px var(--grisOscuroMasTrans);
 	}
+		.menuLateral_extraCabInt {
+			margin-left: auto;
+			padding:0rem 0.5rem;
+		}
 	.menuLateral_extraInt {
 		display:block;
 		height:calc(100% - 56px);
@@ -542,7 +549,7 @@ body {
 					box-sizing:border-box;
 					
 				}
-					.c1 { flex:0; margin-right:0.5rem; }
+					.c1 { flex:0; margin-right:0.5rem; font-weight:bold; }
 					.c2 { flex:1; }
 
 /* -----|||||----- ************** -----|||||----- */
@@ -731,7 +738,6 @@ body {
 		padding:1rem 1rem;
 		/*background-color:var(--blanco);
 		box-shadow:-1px 1px 10px 0px var(--grisMasClaro), 1px 1px 10px 0px var(--grisMasClaro);*/
-		
 	}
 		.contenidoFormulario {
 			width:100%;
@@ -994,6 +1000,7 @@ body {
 /* -----|||||----- * Varios * -----|||||----- */
 /* -----|||||----- ********** -----|||||----- */
 
+.resaltarTexto { background-color:var(--principalTrans); }
 ::selection {
 	color:var(--principalClaro);
 	background:var(--principalMedio);

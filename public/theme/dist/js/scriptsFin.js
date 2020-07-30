@@ -17,9 +17,40 @@ function listaExtra(ruta){
 		extraBar();
 	}
 }
+/* Resaltar Búsqueda */
+$.fn.extend({
+	resaltar: function(busqueda,claseCSSbusqueda){
+		var regex = new RegExp("(<[^>]*>)|("+busqueda.replace(/([-.*+?^${}()|[\]\/\\])/g,"\\$1")+')','ig');
+		var nuevoHtml = this.html(this.html().replace(regex,function(a,b,c){
+			return (a.charAt(0) == "<") ? a : "<span class=\""+claseCSSbusqueda+"\">"+c+"</span>";
+		}));
+		return nuevoHtml;
+	}
+});
+function resaltaBusqueda(busqueda,desde,linea){
+	$(desde+' span').contents().unwrap(); // Elimina el anterior resaltado
+	if(busqueda.length >= 1){
+		$(desde).resaltar(busqueda,"resaltarTexto");
+		ocultarSinResaltado(desde,linea,1);
+	}else{
+		ocultarSinResaltado(desde,linea,0);
+	}
+}
+function ocultarSinResaltado(desde,linea,acc){
+	//var linea = $(desde).children().attr("class");
+	var divs = $(desde).find("span").parent().parent();
+	if(acc == 1){
+		$(linea).addClass('d-none');
+		$.each(divs , function (index, value){
+			$('#'+value.id).removeClass('d-none');		
+		});
+	}else{
+		$(linea).removeClass('d-none');
+	}
+}
 /* Abre o cierra la ficha asociada a la fila de una tabla */
 function verLinea(id,ruta){
-	ruta = ruta.replace(':id', id);
+	ruta = ruta.replace(':id',id);
 	$('#visorFicha_0').load(ruta, function(){
 		visorFichaTabla(0);
 	});
