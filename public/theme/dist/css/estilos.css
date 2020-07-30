@@ -491,25 +491,64 @@ body {
 	height:calc(100vh - 56px);
 	z-index:99;
 	background-color:var(--grisMasClaro);
-	border-left:solid 1px var(--grisClaro);
 	transition:0.2s;
-	overflow-y:auto;
+	overflow:hidden;
 }
 	.mLExtraVisible { right:0px!important; }
+	.menuLateral_extraCab {
+		display:block;
+		position:sticky;
+		top:0;
+		z-index:80;
+		height:56px;
+		background-color:var(--grisMasClaro);
+		border-bottom:solid 1px var(--grisClaro);
+		box-shadow:0px 1px 10px var(--grisOscuroMasTrans);
+	}
 	.menuLateral_extraInt {
 		display:block;
+		height:calc(100% - 56px);
 		position:relative;
 		padding:0rem 0.5rem;
-		/*padding-top:56px;*/
-		margin-top:56px;
+		padding-top:1rem;
 		padding-bottom:1rem;
+		border-left:solid 1px var(--grisClaro);
+		overflow-y:auto;
 		/*transform:scale(.95);
 		transform-origin:50% 0;*/
 	}
+		.mLE_ListaMin {
+			width:100%;
+			font-size:0.75rem;
+			padding-bottom:1rem;
+		}
+			.mLE_ListaMinLinea {
+				width:100%;
+				cursor:pointer;
+				padding:0.1rem 0rem;
+				border-bottom:solid 1px var(--principalClaro);
+				display: flex;
+				flex-direction:row;
+				flex-wrap:wrap;
+				justify-content:space-between;
+				overflow:hidden;
+				overflow-wrap: break-word;
+				word-wrap: break-word;
+			}
+			.mLE_ListaMinLinea:hover {
+				background-color:var(--principalMasClaro);
+			}
+				.mLE_ListaMinLinea > div {
+					box-sizing:border-box;
+					
+				}
+					.c1 { flex:0; margin-right:0.5rem; }
+					.c2 { flex:1; }
 
 /* -----|||||----- ************** -----|||||----- */
 /* -----|||||----- * Contenidos * -----|||||----- */
 /* -----|||||----- ************** -----|||||----- */
+
 .container-fluid {
 	height:calc(100vh - 56px);
 }
@@ -698,12 +737,18 @@ body {
 			width:100%;
 			margin-top:1rem;
 		}
-			.categoriaBloque {
+			.categoriaBloqueFormulario {
 				font-size:0.95rem;
 				font-weight:bold;
 				color:var(--principal);
 				margin:1rem 0rem;
-				border-bottom:solid 1px var(--principalMasClaro);
+				border:solid 1px var(--principalClaro);
+				background-color:var(--principalMasClaro);
+				padding:0.2rem 0.5rem;
+				border-radius:0.25rem 0.25rem 0rem 0rem;
+			}
+			.bloqueFormulario{
+				margin-bottom:1.5rem;
 			}
 				.itemFormulario {
 					font-size:0.85rem;
@@ -731,7 +776,7 @@ body {
 							padding:0px 5px!important;
 						}
 						.valorItemFormulario textarea {
-							min-height:122px;
+							min-height:184px;
 						}
 						.valorItemFormulario input, select, textarea {
 							border:solid 1px var(--principalClaro)!important;

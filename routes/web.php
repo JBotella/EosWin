@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('clientes', 'ClientesController@clientes')->name('clientes');
 		// Lista Clientes (Asíncrona)
 		Route::get('listaClientes', 'ClientesController@listaClientes')->name('listaClientes');
+		// Lista Clientes Mínima (Asíncrona)
+		Route::get('listaClientesMin', 'ClientesController@listaClientesMin')->name('listaClientesMin');
 	Route::get('cliente/{id}', 'ClientesController@formularioCliente')->name('cliente');
 		// Ver Cliente (Asíncrona)
 		Route::get('verCliente/{id}', 'ClientesController@verCliente')->name('verCliente');

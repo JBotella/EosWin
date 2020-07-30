@@ -15,6 +15,13 @@ class ClientesController extends Controller
 		$rutaAbrir = route("cliente", [":id"]);
 		return view('pages.clientes.listaClientes', ['listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir]);
 	}
+    public function listaClientesMin(){
+		$clientes = new Cliente();
+		$listado = $clientes->listadoCompletoClientes();
+		$rutaVer = route("verCliente", [":id"]);
+		$rutaAbrir = route("cliente", [":id"]);
+		return view('pages.clientes.listaClientesMin', ['listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir]);
+	}
 	public function formularioCliente($id){
 		$cliente = new Cliente();
 		$datos = $cliente->datosCliente($id);

@@ -7,6 +7,16 @@ function extraBar(){
 		$('.menuLateral_extra').removeClass('mLExtraVisible');
 	}
 }
+/* Carga el contenido de una ruta en la extraBar */
+function listaExtra(ruta){
+	if(!$('.menuLateral_extra').hasClass('mLExtraVisible')){
+		$('.menuLateral_extraInt').load(ruta, function(){
+			extraBar();
+		});
+	}else{
+		extraBar();
+	}
+}
 /* Abre o cierra la ficha asociada a la fila de una tabla */
 function verLinea(id,ruta){
 	ruta = ruta.replace(':id', id);
