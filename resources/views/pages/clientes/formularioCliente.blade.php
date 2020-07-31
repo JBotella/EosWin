@@ -36,7 +36,7 @@
 											@endslot
 										@endcomponent
 										@component('components.itemFormulario')
-											@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
+											@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
 											@slot('nombre', trans('texto.datos_identificativos.nombre'))
 											@slot('valor')
 												<input type="text" class="form-control" name="nombre" value="{{$datos->CliNombre}}" />

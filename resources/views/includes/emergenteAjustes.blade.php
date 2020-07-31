@@ -5,7 +5,7 @@
 				<i class="fas fa-user-circle iconoUsuario"></i>
 			</div>
 			<div class="nombreUsuario">
-				Nombre Empresa
+				Microarea Next
 			</div>
 			<i class="fas fa-cog btn-pq" title="@lang('texto.configuracion')"></i>
 			<i class="fas fa-plus-circle btn-pq ml-1" title="@lang('texto.nueva') @lang('texto.empresa')"></i>
@@ -25,10 +25,10 @@
 			</div>
 			<div class="contenidoEmAjuste alturaContEmAjusteConBuscador">
 				<ul>
-					@php $emps = array(1,2,3,4,5,6,7,8,9,10) @endphp
+					@php $emps = array(1,2,3,4,5,6,7,8,9) @endphp
 					@foreach($emps as $emp)
 						<li class="radList checkEmpresa" id="checkEmpresa_{{$emp}}">
-							<b>{{$emp}}</b> - Empresa de prueba {{$emp}}
+							<b>0000{{$emp}}</b> - Empresa de prueba 0000{{$emp}}
 							<input type="radio" class="d-none" name="empresa" value="{{$emp}}" />
 						</li>
 					@endforeach
@@ -44,10 +44,10 @@
 			</div>
 			<div class="contenidoEmAjuste">
 				<ul>
-					@php $emps = array(1,2,3,4,5,6,7,8,9,10) @endphp
+					@php $emps = array(1,2,3,4,5,6,7,8,9) @endphp
 					@foreach($emps as $emp)
 						<li class="radList checkEmpresaPrueba" id="checkEmpresaPrueba_{{$emp}}">
-							<b>{{$emp}}</b> - Empresa de prueba {{$emp}}
+							<b>0000{{$emp}}</b> - Empresa de prueba 0000{{$emp}}
 							<input type="radio" class="d-none" name="empresaPrueba" value="{{$emp}}" />
 						</li>
 					@endforeach

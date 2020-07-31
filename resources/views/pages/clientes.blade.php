@@ -19,6 +19,7 @@
 		</div>
 		<div class="contenidoSeccion">
 			<div class="seccion-responsive">
+			
 				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
 				<div class="table-responsive" id="tabla_0">
 					<table class="table table-striped table-fixed" id="tabla">
@@ -35,6 +36,7 @@
 						<tbody id="docuCont_0"></tbody>
 					</table>
 				</div>
+				
 			</div>
 		</div>
 	</div>
