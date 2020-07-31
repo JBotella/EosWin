@@ -30,6 +30,10 @@
 	--amarilloClaro:#FFFFDD;
 	--amarilloMasClaro:#FFFFEE;
 	/**/
+	/* Resaltados */
+	--bgResaltado:#F1D58C;
+	--txResaltado:#000000;
+	/**/
 	--principalComplementario:#AF628F;
 	--principalRojoOpuesto:#B05751;
 	--principalAzulAnalogo:#628FAF;
@@ -1000,7 +1004,7 @@ body {
 /* -----|||||----- * Varios * -----|||||----- */
 /* -----|||||----- ********** -----|||||----- */
 
-.resaltarTexto { background-color:var(--principalTrans); }
+.resaltarTexto { background-color:var(--bgResaltado); color:var(--txResaltado); }
 ::selection {
 	color:var(--principalClaro);
 	background:var(--principalMedio);

@@ -1,6 +1,6 @@
 @foreach($listado as $item)
-	<tr class="trClicable" onclick="abrirLinea('{{$item->CliCodigo}}','{{$rutaAbrir}}')">
-		<th scope="row">{{$item->CliCodigo}}</th>
+	<tr class="trClicable fila" id="{{$item->CliCodigo}}" onclick="abrirLinea('{{$item->CliCodigo}}','{{$rutaAbrir}}')">
+		<td>{{$item->CliCodigo}}</td>
 		<td>{{$item->CliNombre}}</td>
 		<td>{{$item->CliCif}}</td>
 		<td>{{$item->Telefono}}</td>

@@ -18,6 +18,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 /* ----- Filtrado por login auth ----- */
 Route::group(['middleware' => 'auth'], function(){
+	
 	/* Dashboard */
 	Route::get('/', 'DashboardController@dashboard')->name('dashboard');
 
@@ -35,7 +36,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('proveedores', 'ProveedoresController@proveedores')->name('proveedores');
 		// Lista Proveedores (Asíncrona)
 		Route::get('listaProveedores', 'ProveedoresController@listaProveedores')->name('listaProveedores');
-	Route::get('proveedor/{id}', 'ProveedoresController@proveedor')->name('proveedor');
+	Route::get('proveedor/{id}', 'ProveedoresController@formularioCliente')->name('proveedor');
 		// Ver Proveedor (Asíncrona)
 		Route::get('verProveedor/{id}', 'ProveedoresController@verProveedor')->name('verProveedor');
 	
@@ -54,11 +55,11 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('menu_plegado/{plegado}','GeneralController@menuPlegado')->name('menu_plegado');
 	
 });
+
 /* ------ */
 /* IDIOMA */
 /* ------ */
-Route::get('lang/{lang}', function($lang) {
-	\Session::put('lang', $lang);
-	return \Redirect::back();
+Route::get('lang/{lang}', function($lang){
+	Session::put('lang', $lang);
+	return Redirect::back();
 })->middleware('web')->name('change_lang');
-

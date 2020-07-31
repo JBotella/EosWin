@@ -10,9 +10,12 @@
 <script>
 var rutaBuscadorExtraBar = '{{ route("buscadorExtraBar") }}';
 $(".menuLateral_extraCabInt").load(rutaBuscadorExtraBar,function(){
+	cargaBuscador();
+});
+function cargaBuscador(){
 	$("#buscadorExtraBar").on("keyup", function () {
 		var busqueda = $("#buscadorExtraBar").val();
 		resaltaBusqueda(busqueda,'.mLE_ListaMin','.mLE_ListaMinLinea');
 	});
-});
+}
 </script>

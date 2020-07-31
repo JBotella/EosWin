@@ -11,9 +11,10 @@ class ProveedoresController extends Controller
 	public function listaProveedores(){
 		$listado = Proveedor::get();
 		$rutaVer = route("verProveedor", [":id"]);
-		return view('pages.proveedores.listaProveedores', ['listado' => $listado, 'rutaVer' => $rutaVer]);
+		$rutaAbrir = route("proveedor", [":id"]);
+		return view('pages.proveedores.listaProveedores', ['listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir]);
 	}
-	public function consultaProveedor($id){
+	public function formularioCliente($id){
 	}
 	public function verProveedor($id){
 	}

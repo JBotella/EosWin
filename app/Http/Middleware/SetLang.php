@@ -24,6 +24,7 @@ class SetLang
 			if($lang != 'es' && $lang != 'en'){
 				$lang = 'en';
 			}
+			Session::put('lang', $lang);
 		}
 		App::setLocale($lang);
 		return $next($request);
