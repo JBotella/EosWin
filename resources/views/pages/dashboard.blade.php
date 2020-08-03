@@ -6,7 +6,7 @@
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion">
 			<span><i class="fas fa-tachometer-alt icoCab mr-2" onclick="extraBar()"></i></span>
-			<span>@lang('texto.dashboard')</span>
+			<span>@lang('texto.dashboard.dashboard')</span>
 			<span class="guionEnCabecera">-</span>
 			<span class="nombreEnCabecera">Microarea Next</span>
 		</div>
@@ -19,7 +19,7 @@
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-lista">
 							<div class="tarjeta-titulo">
 								<i class="fas fa-calendar-day mr-1"></i>
-								Hoy
+								@lang('texto.dashboard.hoy')
 							</div>
 							<div class="tarjeta-body">
 								<div class="contenidoEmAjuste">
@@ -41,7 +41,7 @@
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-lista">
 							<div class="tarjeta-titulo">
 								<i class="far fa-clock mr-1"></i>
-								Amortizaciones pendientes
+								@lang('texto.dashboard.amortizaciones_pendientes')
 							</div>
 							<div class="tarjeta-body">
 								<div class="contenidoEmAjuste">
@@ -70,7 +70,7 @@
 					<div class="col-md-6 col-xl-3 mb-4">
 						@component('components.tarjetaDashboard')
 							@slot('class','estilo-tarjeta-principal')
-							@slot('titulo','Ingresos')
+							@slot('titulo',trans('texto.dashboard.ingresos'))
 							@slot('valor',number_format($b,2,',','.').'€')
 							@slot('nota','Ejercicio 2019')
 							@slot('icono','fas fa-euro-sign')
@@ -80,9 +80,9 @@
 					<div class="col-md-6 col-xl-3 mb-4">
 						@component('components.tarjetaDashboard')
 							@slot('class','estilo-tarjeta-azulAnalogo')
-							@slot('titulo','Gastos')
+							@slot('titulo',trans('texto.dashboard.gastos'))
 							@slot('valor',number_format($g,2,',','.').'€')
-							@slot('nota','Ejercicio 2019')
+							@slot('nota',trans('texto.ejercicio').' 2019')
 							@slot('icono','fas fa-shopping-bag')
 						@endcomponent
 					</div>
@@ -92,7 +92,7 @@
 							@slot('class','estilo-tarjeta-moradoAnalogo')
 							@slot('titulo','Beneficios')
 							@slot('valor',number_format(($b-$g),2,',','.').'€')
-							@slot('nota','Ejercicio 2019')
+							@slot('nota',trans('texto.ejercicio').' 2019')
 							@slot('icono','fas fa-award')
 						@endcomponent
 					</div>
@@ -100,9 +100,9 @@
 					<div class="col-md-6 col-xl-3 mb-4">
 						@component('components.tarjetaDashboard')
 							@slot('class','estilo-tarjeta-rojoOpuesto')
-							@slot('titulo','Pendiente Cobros / Pagos')
+							@slot('titulo',trans('texto.dashboard.pendiente_cobros_pagos'))
 							@slot('valor',number_format((-$p),2,',','.').'€')
-							@slot('nota','Ejercicio 2019')
+							@slot('nota',trans('texto.ejercicio').' 2019')
 							@slot('icono','fas fa-tags')
 						@endcomponent
 					</div>
@@ -114,7 +114,7 @@
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-diagrama mb-3">
 							<div class="tarjeta-titulo">
 								<i class="fas fa-chart-pie mr-1"></i>
-								Distribución de operaciones
+								@lang('texto.dashboard.distribucion_operaciones')
 							</div>
 							<div class="tarjeta-body pt-4">
 								<canvas class="canvasPie" id="myPieChart"></canvas>
@@ -157,7 +157,7 @@
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-diagrama estilo-tarjeta-diagrama-barras mb-4">
 							<div class="tarjeta-titulo">
 								<i class="fas fa-chart-bar mr-1"></i>
-								Gráfica anual
+								@lang('texto.dashboard.grafica_anual')
 							</div>
 							<div class="tarjeta-body pt-4">
 								<canvas class="canvasBarras" id="myBarChart"></canvas>
@@ -170,20 +170,37 @@
 		</div>
 	</div>
 	
+	@php
+		/* Datos provisionales */
+		// Diagrama Sectores
+		$arrayCifrasDiagrama = array(30520.5,22198.15,8322.35,2198.15);
+			$cifrasDiagrama = implode(",",$arrayCifrasDiagrama);
+		// Diagrama Barras
+		$arrayAnualIngresos = array(1000,3000,500,2000,2200,1200,950,1200,6250,650,980,3500);
+			$anualIngresos = implode(",",$arrayAnualIngresos);
+		$arrayAnualGastos = array(800,2500,600,1800,1000,1000,1300,1000,5000,1100,800,3000);
+			$anualGastos = implode(",",$arrayAnualGastos);
+		for($m=0;$m<12;$m++){
+			$arrayAnualResultado[$m] = $arrayAnualIngresos[$m] - $arrayAnualGastos[$m];
+		}
+			$anualResultado = implode(", ", $arrayAnualResultado);
+	@endphp
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 	{{-- Llamada al diagrama de sectores --}}
 	<script id="diagramaOperaciones" src="{{ asset('theme/dist/assets/graficas/chart-pie-dashboard.js') }}" 
-	data-label="Ingresos, Gastos, Beneficios, Pendiente Cobros / Pagos" 
-	data-cifras="30520.5, 22198.15, 8322.35, 2198.15"
+	data-label="@lang('texto.dashboard.ingresos'), @lang('texto.dashboard.gastos'), @lang('texto.dashboard.beneficios'), @lang('texto.dashboard.pendiente_cobros_pagos')" 
+	data-colores="#62af82,#628faf,#8262af,#b05751" 
+	data-cifras="{{$cifrasDiagrama}}"
 	></script>
 	{{-- Llamada al diagrama de barras --}}
 	<script id="graficaAnual" src="{{ asset('theme/dist/assets/graficas/chart-bar-dashboard.js') }}" 
-	data-labels="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre" 
-	data-label="Ingresos, Gastos, Resultados" 
-	data-ingresos="1000, 3000, 500, 2000, 2200, 1200, 950, 1200, 6250, 650, 980, 3500" 
-	data-gastos="800, 2500, 600, 1800, 2000, 1000, 1300, 1000, 5000, 1100, 800, 3000" 
-	data-resultados="200, 500, -100, 200, 200, 200, -350, 200, 1250, -450, 180, 500" 
+	data-labels="@lang('texto.mes.enero'), @lang('texto.mes.febrero'), @lang('texto.mes.marzo'), @lang('texto.mes.abril'), @lang('texto.mes.mayo'), @lang('texto.mes.junio'), @lang('texto.mes.julio'), @lang('texto.mes.agosto'), @lang('texto.mes.septiembre'), @lang('texto.mes.octubre'), @lang('texto.mes.noviembre'), @lang('texto.mes.diciembre')" 
+	data-label="@lang('texto.dashboard.ingresos'), @lang('texto.dashboard.gastos'), @lang('texto.dashboard.resultado')" 
+	data-colores="#62af82,#628faf,#8262af" 
+	data-ingresos="{{$anualIngresos}}" 
+	data-gastos="{{$anualGastos}}" 
+	data-resultados="{{$anualResultado}}" 
 	></script>
 	
 @endsection

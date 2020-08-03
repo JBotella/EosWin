@@ -5,6 +5,7 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 // Recoger datos
 var labels = $("#graficaAnual").data('labels');
 var label = $("#graficaAnual").data('label');
+var colores = $("#graficaAnual").data('colores');
 var ingresos = $("#graficaAnual").data('ingresos');
 var gastos = $("#graficaAnual").data('gastos');
 var resultados = $("#graficaAnual").data('resultados');
@@ -12,6 +13,7 @@ var resultados = $("#graficaAnual").data('resultados');
 // Convertir en array
 var array_labels = labels.split(',');
 var array_label = label.split(',');
+var array_colores = colores.split(',');
 var array_ingresos = ingresos.split(',');
 var array_gastos = gastos.split(',');
 var array_resultados = resultados.split(',');
@@ -54,19 +56,19 @@ var myLineChart = new Chart(ctx, {
     datasets: [
 		{
 		  label: array_label[0],
-		  backgroundColor: "#62af82",
+		  backgroundColor: array_colores[0],
 		  borderWidth:0,
 		  data: array_ingresos,
 		},
 		{
 		  label: array_label[1],
-		  backgroundColor: "#628faf",
+		  backgroundColor: array_colores[1],
 		  borderWidth:0,
 		  data: array_gastos,
 		},
 		{
 		  label: array_label[2],
-		  backgroundColor: "#8262af",
+		  backgroundColor: array_colores[2],
 		  borderWidth:0,
 		  data: array_resultados,
 		}
@@ -76,7 +78,7 @@ var myLineChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         time: {
-          unit: 'mes'
+          unit: 'month'
         },
         gridLines: {
           display: true

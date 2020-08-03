@@ -760,10 +760,12 @@ body {
 			flex-direction:column;
 			color:var(--principal);
 			height:auto;
-			width:75px;
+			max-height:100%;
+			width:70px;
+			overflow:hidden;
 			text-align:center;
 			font-size:2rem!important;
-			margin:-0.4rem 0rem!important;
+			margin:0rem 0rem!important;
 		}
 			.ejericio-trimestre {
 				text-align:right;

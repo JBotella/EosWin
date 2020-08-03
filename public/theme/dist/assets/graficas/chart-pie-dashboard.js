@@ -4,10 +4,12 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Recoger datos
 var label = $("#diagramaOperaciones").data('label');
+var colores = $("#diagramaOperaciones").data('colores');
 var cifras = $("#diagramaOperaciones").data('cifras');
 
 // Convertir en array
 var array_label = label.split(',');
+var array_colores = colores.split(',');
 var array_cifras = cifras.split(',');
 
 
@@ -19,7 +21,7 @@ var myPieChart = new Chart(ctx, {
 		labels: array_label,
 		datasets: [{
 			data: array_cifras,
-			backgroundColor: ['#62af82', '#628faf', '#8262af', '#b05751'],
+			backgroundColor: array_colores,
 		}],
 	},
 	options: {

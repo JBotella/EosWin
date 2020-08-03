@@ -15,8 +15,8 @@
 <div class="tarjeta estilo-tarjeta estilo-tarjeta-trimestre">
 	<div class="tarjeta-body body-trimestre">
 		<div class="row no-gutters align-items-center h-100">
-			<div class="col-logo num-trimestre">
-				<span>Tr.{{$trimestre}}</span>
+			<div class="col-logo num-trimestre" title="@lang('texto.dashboard.trimestre') {{$trimestre}}">
+				<span>@lang('texto.dashboard.abrevia_trimestre'){{$trimestre}}</span>
 				<span class="ejericio-trimestre">{{$ejercicio}}</span>
 			</div>
 			<div class="resumen-trimestre">
@@ -30,7 +30,7 @@
 						</div>
 					</div>
 					<div class="indice-barra-trimestre principal">
-						Ingresos
+						@lang('texto.dashboard.ingresos')
 					</div>
 				</div>
 				
@@ -43,7 +43,7 @@
 						</div>
 					</div>
 					<div class="indice-barra-trimestre azulAnalogo">
-						Gastos
+						@lang('texto.dashboard.gastos')
 					</div>
 				</div>
 				
@@ -56,7 +56,7 @@
 						</div>
 					</div>
 					<div class="indice-barra-trimestre moradoAnalogo">
-						Resultado
+						@lang('texto.dashboard.resultado')
 					</div>
 				</div>
 				

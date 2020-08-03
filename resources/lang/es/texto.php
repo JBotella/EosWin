@@ -12,6 +12,35 @@ return [
 	'recientes' => 'Recientes',
 	'ejercicio' => 'Ejercicio',
 	'ejercicios' => 'Ejercicios',
+/* -*****- Dias -*****- */
+	'dia' => [
+		'dia' => 'Dia',
+		'dias' => 'Dias',
+		'lunes' => 'Lunes',
+		'martes' => 'Martes',
+		'miercoles' => 'Miércoles',
+		'jueves' => 'Jueves',
+		'viernes' => 'Viernes',
+		'sabado' => 'Sabado',
+		'domingo' => 'Domingo',
+	],
+/* -*****- Meses -*****- */
+	'mes' => [
+		'mes' => 'Mes',
+		'meses' => 'Meses',
+		'enero' => 'Enero',
+		'febrero' => 'Febrero',
+		'marzo' => 'Marzo',
+		'abril' => 'Abril',
+		'mayo' => 'Mayo',
+		'junio' => 'Junio',
+		'julio' => 'Julio',
+		'agosto' => 'Agosto',
+		'septiembre' => 'Septiembre',
+		'octubre' => 'Octubre',
+		'noviembre' => 'Noviembre',
+		'diciembre' => 'Diciembre',
+	],
 /* -*****- Acciones -*****- */
 	'login' => 'Iniciar sesión',
 	'logout' => 'Cerrar sesión',
@@ -44,6 +73,21 @@ return [
 		'amortizaciones' => 'Amortizaciones',
 		'libros_oficiales' => 'Libros oficiales',
 		'impuestos' => 'Impuestos',
+	],
+/* -*****- Dashboard -*****- */
+	'dashboard' => [
+		'dashboard' => 'Dashboard',
+		'hoy' => 'Hoy',
+		'amortizaciones_pendientes' => 'Amortizaciones pendientes',
+		'ingresos' => 'Ingresos',
+		'gastos' => 'Gastos',
+		'beneficios' => 'Beneficios',
+		'pendiente_cobros_pagos' => 'Pendiente Cobros / Pagos',
+		'resultado' => 'Resultado',
+		'distribucion_operaciones' => 'Distribución de operaciones',
+		'abrevia_trimestre' => 'Tr.',
+		'trimestre' => 'Trimestre',
+		'grafica_anual' => 'Gráfica anual',
 	],
 /* -*****- Tablas -*****- */
 	/* --- Clientes --- */
