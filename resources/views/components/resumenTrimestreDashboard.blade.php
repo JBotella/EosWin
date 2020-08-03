@@ -1,7 +1,10 @@
 <div class="tarjeta estilo-tarjeta estilo-tarjeta-trimestre">
 	<div class="tarjeta-body body-trimestre">
 		<div class="row no-gutters align-items-center h-100">
-			<div class="col-logo num-trimestre">Tr.{{$trimestre}}</div>
+			<div class="col-logo num-trimestre">
+				<span>Tr.{{$trimestre}}</span>
+				<span class="ejericio-trimestre">{{$ejercicio}}</span>
+			</div>
 			<div class="resumen-trimestre">
 			
 				<div class="linea-trimestre">

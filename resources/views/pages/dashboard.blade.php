@@ -17,7 +17,10 @@
 					
 					<div id="lista-hoy" class="col-12 col-md-6 col-xl-6 mb-4">
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-lista">
-							<div class="tarjeta-titulo">Hoy</div>
+							<div class="tarjeta-titulo">
+								<i class="fas fa-calendar-day mr-1"></i>
+								Hoy
+							</div>
 							<div class="tarjeta-body">
 								<div class="contenidoEmAjuste">
 									<ul>
@@ -36,7 +39,10 @@
 					
 					<div id="lista-amortizaciones" class="col-12 col-md-6 col-xl-6 mb-4">
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-lista">
-							<div class="tarjeta-titulo">Amortizaciones pendientes</div>
+							<div class="tarjeta-titulo">
+								<i class="far fa-clock mr-1"></i>
+								Amortizaciones pendientes
+							</div>
 							<div class="tarjeta-body">
 								<div class="contenidoEmAjuste">
 									<ul>
@@ -104,51 +110,64 @@
 				
 				<div class="row mt-2">
 				
-					<div id="diagrama_operaciones" class="col-12 col-md-6 col-xl-6 mb-4">
-						<div class="tarjeta estilo-tarjeta estilo-tarjeta-diagrama mb-4">
+					<div id="diagrama_operaciones" class="col-12 col-md-6 col-xl-6 mb-3">
+						<div class="tarjeta estilo-tarjeta estilo-tarjeta-diagrama mb-3">
 							<div class="tarjeta-titulo">
 								<i class="fas fa-chart-pie mr-1"></i>
 								Distribución de operaciones
 							</div>
-							<div class="tarjeta-body pt-3">
+							<div class="tarjeta-body pt-4">
 								<canvas class="canvasPie" id="myPieChart"></canvas>
 							</div>
 							{{--<div class="tarjeta-pie small text-muted">...</div>--}}
 						</div>
 					</div>
 					
-					<div id="graficos-trimestre" class="col-12 col-md-6 col-xl-6 mb-4">
-						
+					<div id="graficos-trimestre" class="col-12 col-md-6 col-xl-6 mb-3">
 						@component('components.resumenTrimestreDashboard')
+							@slot('ejercicio',2019)
 							@slot('trimestre',1)
 							@slot('ingresos',75)
 							@slot('gastos',25)
 							@slot('resultado',25)
 						@endcomponent
-						
 						@component('components.resumenTrimestreDashboard')
+							@slot('ejercicio',2019)
 							@slot('trimestre',2)
 							@slot('ingresos',55)
 							@slot('gastos',45)
 							@slot('resultado',10)
 						@endcomponent
-						
 						@component('components.resumenTrimestreDashboard')
+							@slot('ejercicio',2019)
 							@slot('trimestre',3)
 							@slot('ingresos',50)
 							@slot('gastos',50)
 							@slot('resultado',0)
 						@endcomponent
-						
 						@component('components.resumenTrimestreDashboard')
+							@slot('ejercicio',2019)
 							@slot('trimestre',4)
 							@slot('ingresos',60)
 							@slot('gastos',40)
 							@slot('resultado',20)
 						@endcomponent
-						
 					</div>
 					
+				</div>
+				
+				<div class="row" id="dashboard-diagrama-barras-anual">
+					<div id="diagrama-barras-anual" class="col-12">
+						<div class="tarjeta estilo-tarjeta estilo-tarjeta-diagrama estilo-tarjeta-diagrama-barras mb-4">
+							<div class="tarjeta-titulo">
+								<i class="fas fa-chart-bar mr-1"></i>
+								Gráfica anual
+							</div>
+							<div class="tarjeta-body pt-4">
+								<canvas class="canvasPie" id="myBarChart"></canvas>
+							</div>
+						</div>
+					</div>
 				</div>
 				
 			</div>
@@ -158,5 +177,6 @@
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 	<script src="{{ asset('theme/dist/assets/graficas/chart-pie-dashboard.js') }}"></script>
+	<script src="{{ asset('theme/dist/assets/graficas/chart-bar-dashboard.js') }}"></script>
 	
 @endsection
