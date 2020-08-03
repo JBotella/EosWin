@@ -807,8 +807,16 @@ body {
 	
 	/* Diagrama Barras */
 	.estilo-tarjeta-diagrama-barras {
-		height:auto;
+		height:100%!important;
 	}
+		.canvasBarras {
+			padding-left: 0;
+			padding-right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+			max-width:1000px!important;
+		}
 	
 /* ... */
 	.tarjeta-body {

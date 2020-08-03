@@ -110,7 +110,7 @@
 				
 				<div class="row mt-2">
 				
-					<div id="diagrama-operaciones" class="col-12 col-md-6 col-xl-6 mb-3">
+					<div id="diagrama-operaciones" class="col-12 col-lg-6 mb-3">
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-diagrama mb-3">
 							<div class="tarjeta-titulo">
 								<i class="fas fa-chart-pie mr-1"></i>
@@ -123,30 +123,30 @@
 						</div>
 					</div>
 					
-					<div id="graficos-trimestre" class="col-12 col-md-6 col-xl-6 mb-3">
+					<div id="graficos-trimestre" class="col-12 col-lg-6 mb-3">
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
 							@slot('trimestre',1)
-							@slot('ingresos',6000)
-							@slot('gastos',4000)
+							@slot('ingresos',6325.3)
+							@slot('gastos',3960.5)
 						@endcomponent
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
 							@slot('trimestre',2)
-							@slot('ingresos',4200)
-							@slot('gastos',4900)
+							@slot('ingresos',4213.65)
+							@slot('gastos',5921.35)
 						@endcomponent
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
 							@slot('trimestre',3)
-							@slot('ingresos',3500)
-							@slot('gastos',2500)
+							@slot('ingresos',3512.21)
+							@slot('gastos',2496.85)
 						@endcomponent
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
 							@slot('trimestre',4)
-							@slot('ingresos',2950)
-							@slot('gastos',2610)
+							@slot('ingresos',2955.12)
+							@slot('gastos',2630.67)
 						@endcomponent
 					</div>
 					
@@ -160,7 +160,7 @@
 								Gráfica anual
 							</div>
 							<div class="tarjeta-body pt-4">
-								<canvas class="canvasPie" id="myBarChart"></canvas>
+								<canvas class="canvasBarras" id="myBarChart"></canvas>
 							</div>
 						</div>
 					</div>

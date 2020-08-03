@@ -23,7 +23,11 @@
 			
 				<div class="linea-trimestre">
 					<div class="barra-trimestre progress">
-						<div class="progress-bar bgPrincipal" role="progressbar" style="width:{{$percIngresos}}%; margin-left:{{$marginNegativo}}%;" aria-valuenow="{{$ingresos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}"><span>{{$ingresos}}</span></div>
+						<div class="progress-bar bgPrincipal" role="progressbar" style="width:{{$percIngresos}}%; margin-left:{{$marginNegativo}}%;" aria-valuenow="{{$ingresos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">
+							<span>
+								{{@number_format($ingresos,2,',','.')}}
+							</span>
+						</div>
 					</div>
 					<div class="indice-barra-trimestre principal">
 						Ingresos
@@ -32,7 +36,11 @@
 				
 				<div class="linea-trimestre">
 					<div class="barra-trimestre progress">
-						<div class="progress-bar bgAzulAnalogo" role="progressbar" style="width:{{$percGastos}}%; margin-left:{{$marginNegativo}}%;" aria-valuenow="{{$gastos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}"><span>{{$gastos}}</span></div>
+						<div class="progress-bar bgAzulAnalogo" role="progressbar" style="width:{{$percGastos}}%; margin-left:{{$marginNegativo}}%;" aria-valuenow="{{$gastos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">
+							<span>
+								{{@number_format($gastos,2,',','.')}}
+							</span>
+						</div>
 					</div>
 					<div class="indice-barra-trimestre azulAnalogo">
 						Gastos
@@ -41,7 +49,11 @@
 				
 				<div class="linea-trimestre">
 					<div class="barra-trimestre progress">
-						<div class="progress-bar bgMoradoAnalogo" role="progressbar" style="width:{{abs($percResultado)}}%;" aria-valuenow="{{$resultado}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}"><span>{{$resultado}}</span></div>
+						<div class="progress-bar bgMoradoAnalogo" role="progressbar" style="width:{{abs($percResultado)}}%;" aria-valuenow="{{$resultado}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">
+							<span>
+								{{@number_format($resultado,2,',','.')}}
+							</span>
+						</div>
 					</div>
 					<div class="indice-barra-trimestre moradoAnalogo">
 						Resultado
