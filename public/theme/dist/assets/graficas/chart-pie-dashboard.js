@@ -2,15 +2,35 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-// Pie Chart Example
+// Recoger datos
+var label = $("#diagramaOperaciones").data('label');
+var cifras = $("#diagramaOperaciones").data('cifras');
+
+// Convertir en array
+var array_label = label.split(',');
+var array_cifras = cifras.split(',');
+
+
+// Pie Chart
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
 	type: 'doughnut',
 	data: {
-		labels: ["Ingresos", "Gastos", "Beneficios", "Pendiente Cobros / Pagos"],
+		labels: array_label,
 		datasets: [{
-			data: [30520.5, 22198.15, 8322.35, 2198.15],
+			data: array_cifras,
 			backgroundColor: ['#62af82', '#628faf', '#8262af', '#b05751'],
 		}],
 	},
+	options: {
+		responsive: true,
+		legend: {
+		  display: true,
+		  position: 'top',
+		  labels: {
+			padding: 20,
+			boxWidth: 10
+		  }
+		}
+	}
 });

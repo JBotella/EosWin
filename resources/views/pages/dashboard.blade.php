@@ -110,7 +110,7 @@
 				
 				<div class="row mt-2">
 				
-					<div id="diagrama_operaciones" class="col-12 col-md-6 col-xl-6 mb-3">
+					<div id="diagrama-operaciones" class="col-12 col-md-6 col-xl-6 mb-3">
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-diagrama mb-3">
 							<div class="tarjeta-titulo">
 								<i class="fas fa-chart-pie mr-1"></i>
@@ -127,30 +127,26 @@
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
 							@slot('trimestre',1)
-							@slot('ingresos',75)
-							@slot('gastos',25)
-							@slot('resultado',25)
+							@slot('ingresos',6000)
+							@slot('gastos',4000)
 						@endcomponent
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
 							@slot('trimestre',2)
-							@slot('ingresos',55)
-							@slot('gastos',45)
-							@slot('resultado',10)
+							@slot('ingresos',4200)
+							@slot('gastos',4500)
 						@endcomponent
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
 							@slot('trimestre',3)
-							@slot('ingresos',50)
-							@slot('gastos',50)
-							@slot('resultado',0)
+							@slot('ingresos',3500)
+							@slot('gastos',2500)
 						@endcomponent
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
 							@slot('trimestre',4)
-							@slot('ingresos',60)
-							@slot('gastos',40)
-							@slot('resultado',20)
+							@slot('ingresos',2650)
+							@slot('gastos',2610)
 						@endcomponent
 					</div>
 					
@@ -176,7 +172,18 @@
 	
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-	<script src="{{ asset('theme/dist/assets/graficas/chart-pie-dashboard.js') }}"></script>
-	<script src="{{ asset('theme/dist/assets/graficas/chart-bar-dashboard.js') }}"></script>
+	{{-- Llamada al diagrama de sectores --}}
+	<script id="diagramaOperaciones" src="{{ asset('theme/dist/assets/graficas/chart-pie-dashboard.js') }}" 
+	data-label="Ingresos, Gastos, Beneficios, Pendiente Cobros / Pagos" 
+	data-cifras="30520.5, 22198.15, 8322.35, 2198.15"
+	></script>
+	{{-- Llamada al diagrama de barras --}}
+	<script id="graficaAnual" src="{{ asset('theme/dist/assets/graficas/chart-bar-dashboard.js') }}" 
+	data-labels="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre" 
+	data-label="Ingresos, Gastos, Resultados" 
+	data-ingresos="1000, 3000, 500, 2000, 2200, 1200, 950, 1200, 6250, 650, 980, 3500" 
+	data-gastos="800, 2500, 600, 1800, 2000, 1000, 1300, 1000, 5000, 1100, 800, 3000" 
+	data-resultados="200, 500, -100, 200, 200, 200, -350, 200, 1250, -450, 180, 500" 
+	></script>
 	
 @endsection

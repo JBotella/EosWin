@@ -2,30 +2,54 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-// Bar Chart Example
+// Recoger datos
+var labels = $("#graficaAnual").data('labels');
+var label = $("#graficaAnual").data('label');
+var ingresos = $("#graficaAnual").data('ingresos');
+var gastos = $("#graficaAnual").data('gastos');
+var resultados = $("#graficaAnual").data('resultados');
+
+// Convertir en array
+var array_labels = labels.split(',');
+var array_label = label.split(',');
+var array_ingresos = ingresos.split(',');
+var array_gastos = gastos.split(',');
+var array_resultados = resultados.split(',');
+
+var maxIngresos = Math.max.apply(Math,array_ingresos);
+var minIngresos = Math.min.apply(Math,array_ingresos);
+var maxGastos = Math.max.apply(Math,array_gastos);
+var minGastos = Math.min.apply(Math,array_gastos);
+var maxResultados = Math.max.apply(Math,array_resultados);
+var minResultados = Math.min.apply(Math,array_resultados);
+
+var maxY = Math.max.apply(Math,[maxIngresos,maxGastos,maxResultados]);
+var minY = Math.min.apply(Math,[minIngresos,minGastos,minResultados]);
+
+// Bar Chart
 var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+    labels: array_labels,
     datasets: [
 		{
-		  label: "Ingresos",
+		  label: array_label[0],
 		  backgroundColor: "#62af82",
 		  borderWidth:0,
-		  data: [1000, 3000, 500, 2000, 2200, 1200, 950, 1200, 6250, 650, 980, 3500],
+		  data: array_ingresos,
 		},
 		{
-		  label: "Gastos",
+		  label: array_label[1],
 		  backgroundColor: "#628faf",
 		  borderWidth:0,
-		  data: [800, 2500, 600, 1800, 2000, 1000, 1300, 1000, 5000, 1100, 800, 3000],
+		  data: array_gastos,
 		},
 		{
-		  label: "Resultado",
+		  label: array_label[2],
 		  backgroundColor: "#8262af",
 		  borderWidth:0,
-		  data: [200, 500, -100, 200, 200, 200, -350, 200, 1250, -450, 180, 500],
+		  data: array_resultados,
 		}
 	],
   },
@@ -33,10 +57,10 @@ var myLineChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         time: {
-          unit: 'month'
+          unit: 'mes'
         },
         gridLines: {
-          display: false
+          display: true
         },
         ticks: {
           maxTicksLimit: 12
@@ -44,8 +68,8 @@ var myLineChart = new Chart(ctx, {
       }],
       yAxes: [{
         ticks: {
-          min: -500,
-          max: 7000,
+          min: minY,
+          max: maxY,
           maxTicksLimit: 10
         },
         gridLines: {
@@ -54,7 +78,8 @@ var myLineChart = new Chart(ctx, {
       }],
     },
     legend: {
-      display: true
+      display: true,
+      position: 'top'
     }
   }
 });
