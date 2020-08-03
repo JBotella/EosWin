@@ -13,9 +13,9 @@
 		<div class="contenidoSeccion">
 			<div id="contenidoDashboard" class="seccion-responsive">
 			
-				<div id="dashboard-listas" class="row mt-3">
+				<div class="row mt-3" id="dashboard-listas">
 					
-					<div id="lista1" class="col-12 col-md-6 col-xl-6 mb-4">
+					<div id="lista-hoy" class="col-12 col-md-6 col-xl-6 mb-4">
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-lista">
 							<div class="tarjeta-titulo">Hoy</div>
 							<div class="tarjeta-body">
@@ -34,7 +34,7 @@
 						</div>
 					</div>
 					
-					<div id="lista1" class="col-12 col-md-6 col-xl-6 mb-4">
+					<div id="lista-amortizaciones" class="col-12 col-md-6 col-xl-6 mb-4">
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-lista">
 							<div class="tarjeta-titulo">Amortizaciones pendientes</div>
 							<div class="tarjeta-body">
@@ -55,7 +55,7 @@
 					
 				</div>
 				
-				<div id="dashboard-tarjetas" class="row mt-2">
+				<div class="row mt-2" id="dashboard-tarjetas-resumen">
 					@php
 						$b = 30520.5;
 						$g = 22198.15;
@@ -102,21 +102,53 @@
 					</div>
 				</div>
 				
-				<div id="dashboard-diagrama-sectores" class="row mt-2">
-					<div id="diagrama1" class="col-12 col-md-6 col-xl-6 mb-4">
-					
+				<div class="row mt-2">
+				
+					<div id="diagrama_operaciones" class="col-12 col-md-6 col-xl-6 mb-4">
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-diagrama mb-4">
 							<div class="tarjeta-titulo">
 								<i class="fas fa-chart-pie mr-1"></i>
 								Distribución de operaciones
 							</div>
 							<div class="tarjeta-body pt-3">
-								<canvas id="myPieChart" width="50%" height="30%"></canvas>
+								<canvas class="canvasPie" id="myPieChart"></canvas>
 							</div>
-							<div class="tarjeta-pie small text-muted">...</div>
+							{{--<div class="tarjeta-pie small text-muted">...</div>--}}
 						</div>
-				
 					</div>
+					
+					<div id="graficos-trimestre" class="col-12 col-md-6 col-xl-6 mb-4">
+						
+						@component('components.resumenTrimestreDashboard')
+							@slot('trimestre',1)
+							@slot('ingresos',75)
+							@slot('gastos',25)
+							@slot('resultado',25)
+						@endcomponent
+						
+						@component('components.resumenTrimestreDashboard')
+							@slot('trimestre',2)
+							@slot('ingresos',55)
+							@slot('gastos',45)
+							@slot('resultado',10)
+						@endcomponent
+						
+						@component('components.resumenTrimestreDashboard')
+							@slot('trimestre',3)
+							@slot('ingresos',50)
+							@slot('gastos',50)
+							@slot('resultado',0)
+						@endcomponent
+						
+						@component('components.resumenTrimestreDashboard')
+							@slot('trimestre',4)
+							@slot('ingresos',60)
+							@slot('gastos',40)
+							@slot('resultado',20)
+						@endcomponent
+						
+					</div>
+					
 				</div>
 				
 			</div>
