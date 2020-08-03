@@ -134,7 +134,7 @@
 							@slot('ejercicio',2019)
 							@slot('trimestre',2)
 							@slot('ingresos',4200)
-							@slot('gastos',4500)
+							@slot('gastos',4900)
 						@endcomponent
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
@@ -145,7 +145,7 @@
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
 							@slot('trimestre',4)
-							@slot('ingresos',2650)
+							@slot('ingresos',2950)
 							@slot('gastos',2610)
 						@endcomponent
 					</div>

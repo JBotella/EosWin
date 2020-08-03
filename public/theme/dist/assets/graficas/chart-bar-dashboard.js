@@ -26,6 +26,25 @@ var minResultados = Math.min.apply(Math,array_resultados);
 var maxY = Math.max.apply(Math,[maxIngresos,maxGastos,maxResultados]);
 var minY = Math.min.apply(Math,[minIngresos,minGastos,minResultados]);
 
+// Índice de redondeo
+var proxMax = 5;
+var proxMin = 5;
+var maxYLength = Math.ceil(maxY).toString().length;
+var minYLength = Math.ceil(minY).toString().length;
+for(rmax = 2; rmax < maxYLength; rmax++){
+	var proxMax = proxMax+'0';
+}
+for(rmin = 2; rmin < minYLength; rmin++){
+	var proxMin = proxMin+'0';
+}
+
+// Redondeo de máximos y mínimos
+var maxYRound = Math.ceil(maxY/proxMax)*proxMax;
+var minYRound = Math.ceil(Math.abs(minY)/proxMin)*proxMin;
+if(minY < 0){
+	minYRound = minYRound * -1;
+}
+
 // Bar Chart
 var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
@@ -68,8 +87,8 @@ var myLineChart = new Chart(ctx, {
       }],
       yAxes: [{
         ticks: {
-          min: minY,
-          max: maxY,
+          min: minYRound,
+          max: maxYRound,
           maxTicksLimit: 10
         },
         gridLines: {

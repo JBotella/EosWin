@@ -789,6 +789,12 @@ body {
 					.progress-bar {
 						height:100%;
 						overflow:visible;
+						color:var(--blanco);
+						text-shadow:1px 1px 0px var(--principalOscuro),-1px -1px 0px var(--principalOscuro),1px -1px 0px var(--principalOscuro),-1px 1px 0px var(--principalOscuro);
+						text-indent:5px;
+					}
+					.progress-bar span {
+						background-color:var(--grisMedio);
 					}
 				.indice-barra-trimestre {
 					width:100px;
