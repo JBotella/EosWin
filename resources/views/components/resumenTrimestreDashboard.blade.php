@@ -5,7 +5,12 @@
 	$percIngresos = 100 / $maxH * $ingresos;
 	$percGastos = 100 / $maxH * $gastos;
 	$percResultado = 100 / $maxH * $resultado;
-	
+	$marginNegativo = 0;
+	if(0>$percResultado){
+		$marginNegativo = abs($percResultado);
+		$percIngresos = $percIngresos - $marginNegativo;
+		$percGastos = $percGastos - $marginNegativo;
+	}
 @endphp
 <div class="tarjeta estilo-tarjeta estilo-tarjeta-trimestre">
 	<div class="tarjeta-body body-trimestre">
@@ -18,7 +23,7 @@
 			
 				<div class="linea-trimestre">
 					<div class="barra-trimestre progress">
-						<div class="progress-bar bgPrincipal" role="progressbar" style="width:{{$percIngresos}}%;" aria-valuenow="{{$ingresos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">{{$ingresos}}</div>
+						<div class="progress-bar bgPrincipal" role="progressbar" style="width:{{$percIngresos}}%; margin-left:{{$marginNegativo}}%;" aria-valuenow="{{$ingresos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">{{$ingresos}}</div>
 					</div>
 					<div class="indice-barra-trimestre principal">
 						Ingresos
@@ -27,7 +32,7 @@
 				
 				<div class="linea-trimestre">
 					<div class="barra-trimestre progress">
-						<div class="progress-bar bgAzulAnalogo" role="progressbar" style="width:{{$percGastos}}%;" aria-valuenow="{{$gastos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">{{$gastos}}</div>
+						<div class="progress-bar bgAzulAnalogo" role="progressbar" style="width:{{$percGastos}}%; margin-left:{{$marginNegativo}}%;" aria-valuenow="{{$gastos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">{{$gastos}}</div>
 					</div>
 					<div class="indice-barra-trimestre azulAnalogo">
 						Gastos
@@ -36,7 +41,7 @@
 				
 				<div class="linea-trimestre">
 					<div class="barra-trimestre progress">
-						<div class="progress-bar bgMoradoAnalogo" role="progressbar" style="width:{{$percResultado}}%;" aria-valuenow="{{$resultado}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">{{$resultado}}</div>
+						<div class="progress-bar bgMoradoAnalogo" role="progressbar" style="width:{{abs($percResultado)}}%;" aria-valuenow="{{$resultado}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">{{$resultado}}</div>
 					</div>
 					<div class="indice-barra-trimestre moradoAnalogo">
 						Resultado

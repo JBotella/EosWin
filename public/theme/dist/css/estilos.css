@@ -776,10 +776,28 @@ body {
 		.resumen-trimestre {
 			width:calc(100% - 75px);
 		}
-			.linea-trimestre { width:100%; display:flex; margin:0.35rem 0rem; }
-				.barra-trimestre { width:100%; height:1rem; background-color:var(--grisMasClaro); }
-					.progress-bar { height:100%; }
-				.indice-barra-trimestre { width:100px; height:1rem; line-height:1rem; margin-left:1rem; margin-right:1rem; font-size:0.8rem; }
+			.linea-trimestre {
+				width:100%;
+				display:flex;
+				margin:0.35rem 0rem;
+			}
+				.barra-trimestre {
+					width:100%;
+					height:1rem;
+					background-color:var(--grisMasClaro);
+				}
+					.progress-bar {
+						height:100%;
+						overflow:visible;
+					}
+				.indice-barra-trimestre {
+					width:100px;
+					height:1rem;
+					line-height:1rem;
+					margin-left:1rem;
+					margin-right:1rem;
+					font-size:0.8rem;
+				}
 	
 	/* Diagrama Barras */
 	.estilo-tarjeta-diagrama-barras {
