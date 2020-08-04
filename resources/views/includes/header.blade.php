@@ -36,9 +36,15 @@
 		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-				<a class="dropdown-item" href="#">@lang('texto.configuracion')</a>
+				<a class="dropdown-item" href="#">
+					<i class="fas fa-cog mr-1"></i>
+					@lang('texto.configuracion')
+				</a>
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="{{route('logout')}}">@lang('texto.logout')</a>
+				<a class="dropdown-item" href="{{route('logout')}}">
+					<i class="fas fa-power-off mr-1"></i>
+					@lang('texto.logout')
+				</a>
 			</div>
 		</li>
 	</ul>

@@ -21,4 +21,18 @@
 		$("body").toggleClass("sb-sidenav-toggled");
 	});
 })(jQuery);
+
+/* Loader Gráfico */
+function loaderGrafico(id){
+	$(id).html('<div class="animationload"><div class="osahanloadingBack"></div><div class="osahanloading"></div></div>');
+}
+function loaderGraficoTabla(id,colspan){
+	$(id).html('<div><div colspan="'+colspan+'"><div class="d-flex justify-content-center"><div class="spinner-border text-primary " role="status"><span class="sr-only">Loading...</span></div></div></div></div>');
+}
+function loaderGraficoForm(id){
+	$(id).html('<div class="animationloadForm"><div class="osahanloadingBackForm"></div><div class="osahanloadingForm"></div></div>');
+}
+function goToByScroll(id){
+	$('html,body').animate({ scrollTop: $(id).offset().top-80 }, 'slow');
+}
 	

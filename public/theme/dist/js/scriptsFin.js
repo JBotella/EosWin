@@ -72,8 +72,10 @@ function extraBar(){
 function listaExtra(cont){
 	var ruta = $(cont).data('href');
 	if(!$('.menuLateral_extra').hasClass('mLExtraVisible')){
+		extraBar();
+		loaderGrafico('.menuLateral_extraInt');
 		$('.menuLateral_extraInt').load(ruta, function(){
-			extraBar();
+			//extraBar();
 		});
 	}else{
 		extraBar();
@@ -115,9 +117,9 @@ function ocultarSinResaltado(desde,linea,acc){
 	}
 }
 
-/* ----- **************** ----- */
-/* ----- * Abrir Fichas * ----- */
-/* ----- **************** ----- */
+/* ----- ************************ ----- */
+/* ----- * Fichas y Formularios * ----- */
+/* ----- ************************ ----- */
 
 /* Abre o cierra la ficha asociada a la fila de una tabla */
 function verLinea(id,ruta){
@@ -161,6 +163,21 @@ function visorFichaTabla(n){
 /* Muestra la cabecera de una tabla tras la carga de sus filas */
 function mostrarThCabecera(cab){
 	$('#cabeceraLista_'+cab).removeClass('thead-th-ocultos');
+}
+/* Preguntar antes de borrar linea */
+function preguntaBorrarLinea(id){
+	if($('#tdConfirmarBorrar_'+id).hasClass('d-none')){
+		$('.tdBorrar').removeClass('d-none');
+		$('.tdConfirmaAccion').addClass('d-none');
+		$('#tdConfirmarBorrar_'+id).removeClass('d-none');
+		$('#tdBorrar_'+id).addClass('d-none');
+	}else{
+		$('.tdBorrar').removeClass('d-none');
+		$('.tdConfirmaAccion').addClass('d-none');
+	}
+	
+	// Detener la función de abrir linea
+	event.stopImmediatePropagation();
 }
 
 /* ----- ********* ----- */

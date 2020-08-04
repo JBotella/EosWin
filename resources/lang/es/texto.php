@@ -81,7 +81,7 @@ return [
 		'amortizaciones_pendientes' => 'Amortizaciones pendientes',
 		'ingresos' => 'Ingresos',
 		'gastos' => 'Gastos',
-		'beneficios' => 'Beneficis',
+		'beneficios' => 'Beneficios',
 		'pendiente_cobros_pagos' => 'Pendiente Cobros / Pagos',
 		'resultado' => 'Resultado',
 		'distribucion_operaciones' => 'Distribución de operaciones',

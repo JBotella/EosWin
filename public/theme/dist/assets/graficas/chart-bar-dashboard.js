@@ -50,57 +50,57 @@ if(minY < 0){
 // Bar Chart
 var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: array_labels,
-    datasets: [
-		{
-		  label: array_label[0],
-		  backgroundColor: array_colores[0],
-		  borderWidth:0,
-		  data: array_ingresos,
+	type: 'bar',
+	data: {
+		labels: array_labels,
+		datasets: [
+			{
+				label: array_label[0],
+				backgroundColor: array_colores[0],
+				borderWidth:0,
+				data: array_ingresos,
+			},
+			{
+				label: array_label[1],
+				backgroundColor: array_colores[1],
+				borderWidth:0,
+				data: array_gastos,
+			},
+			{
+				label: array_label[2],
+				backgroundColor: array_colores[2],
+				borderWidth:0,
+				data: array_resultados,
+			}
+		],
+	},
+	options: {
+		scales: {
+			xAxes: [{
+				time: {
+					unit: 'month'
+				},
+				gridLines: {
+					display: true
+				},
+				ticks: {
+					maxTicksLimit: 12
+				}
+			}],
+			yAxes: [{
+				ticks: {
+					min: minYRound,
+					max: maxYRound,
+					maxTicksLimit: 10
+				},
+				gridLines: {
+					display: true
+				}
+			}],
 		},
-		{
-		  label: array_label[1],
-		  backgroundColor: array_colores[1],
-		  borderWidth:0,
-		  data: array_gastos,
-		},
-		{
-		  label: array_label[2],
-		  backgroundColor: array_colores[2],
-		  borderWidth:0,
-		  data: array_resultados,
+		legend: {
+			display: true,
+			position: 'top'
 		}
-	],
-  },
-  options: {
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'month'
-        },
-        gridLines: {
-          display: true
-        },
-        ticks: {
-          maxTicksLimit: 12
-        }
-      }],
-      yAxes: [{
-        ticks: {
-          min: minYRound,
-          max: maxYRound,
-          maxTicksLimit: 10
-        },
-        gridLines: {
-          display: true
-        }
-      }],
-    },
-    legend: {
-      display: true,
-      position: 'top'
-    }
-  }
+	}
 });

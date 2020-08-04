@@ -132,6 +132,7 @@ body {
 	.btnBorrar { color:var(--principalRojoOpuesto); }
 	.btnAtras { color:var(--principal); }
 	.btnPlegar { color:var(--principalAzulAnalogo); }
+	.btnCancelar { color:var(--grisMedio); }
 
 /* -----|||||----- ********* -----|||||----- */
 /* -----|||||----- * Login * -----|||||----- */
@@ -745,7 +746,7 @@ body {
 			border-top:1px solid rgba(0, 0, 0, 0.125);
 			text-align:center;
 		}
-		.canvasPie {
+		.canvasSectores {
 			padding-left: 0;
 			padding-right: 0;
 			margin-left: auto;
@@ -861,12 +862,12 @@ body {
 	.estilo-tarjeta-diagrama {
 		height:100%!important;
 	}
-	.canvasPie {
+	.canvasSectores {
 		max-height:100%;
 	}
 }
 @media(max-width:992px){
-	.canvasPie {
+	.canvasSectores {
 		
 	}
 }
@@ -950,6 +951,35 @@ body {
 							font-weight:bold;
 							color:var(--principalAzulAnalogo);
 						}
+						
+/* -----|||||----- *************** -----|||||----- */
+/* -----|||||----- * Formularios * -----|||||----- */
+/* -----|||||----- *************** -----|||||----- */
+
+.form {
+	font-size:0.85rem;
+}
+.form-row > div {
+	margin-bottom:0.75rem!important;
+}
+.form-row > div > label {
+	margin-bottom:0.5rem!important;
+	font-weight:bold;
+}
+	.form-check-label {
+		margin-top:0.3rem;
+	}
+.form-control, .input-group-text {
+	font-size:inherit;
+	height:calc(1em + 0.9rem);
+    padding:0.45rem 0.50rem;
+}
+	.form-row > div >  select { padding:0rem 0.50rem; }
+.form-control:focus {
+	outline:none;
+	border:solid 1px var(--principalMedio)!important;
+	box-shadow:0rem 0rem 0.2rem var(--principalMedio)!important;
+}
 
 /* -----|||||----- ************** -----|||||----- */
 /* -----|||||----- * Formulario * -----|||||----- */
@@ -969,18 +999,28 @@ body {
 	}
 		.contenidoFormulario {
 			width:100%;
-			margin-top:1rem;
+			margin-top:0rem;
 		}
 			.categoriaBloqueFormulario {
-				font-size:0.95rem;
-				font-weight:bold;
+				font-size:0.9rem;
+				font-weight:normal;
 				color:var(--principal);
-				margin:1rem 0rem;
-				border:solid 1px var(--principalClaro);
+				/*border:none;*/
+				border-bottom:solid 1px var(--principalClaro);
 				background-color:var(--principalMasClaro);
-				padding:0.2rem 0.5rem;
+				padding:0.2rem 1rem;
 				border-radius:0.25rem 0.25rem 0rem 0rem;
+				box-shadow:0px 1px 5px 0px var(--grisMasClaro);
+				/* Para coincidir con los inputs y labels */
+				margin:0rem 0rem;
+				height:28px;
+				margin-top:calc(0.2rem + 28px)!important;
+				margin-bottom:0.2rem!important;
 			}
+				.categoriaBloqueFormulario:first-letter {
+					font-size:0.95rem;
+					font-weight:bold;
+				}
 			.bloqueFormulario{
 				margin-bottom:1.5rem;
 			}
@@ -1013,7 +1053,8 @@ body {
 							min-height:184px;
 						}
 						.valorItemFormulario input, select, textarea {
-							border:solid 1px var(--principalClaro)!important;
+							border:solid 1px var(--principalMasClaro)!important;
+							border-bottom:solid 1px var(--principalClaro)!important;
 						}
 
 /* -----|||||----- ********************* -----|||||----- */
@@ -1117,6 +1158,7 @@ body {
 }
 
 	.tdBtnAcciones {
+		width:100px;
 		min-width:100px;
 		max-width:100px;
 		text-align:right;
@@ -1128,6 +1170,13 @@ body {
 			margin-left:5px;
 			cursor:pointer;
 		}
+		.tdConfirmaAccion {
+			text-align:right;
+		}
+			.tdConfirmaAccionPregunta {
+				display:block;
+				margin-bottom:0.2rem;
+			}
 	
 /* Redefinimos la table-responsive y el table-fixed */
 .table-responsive {
@@ -1167,35 +1216,6 @@ body {
 }
 /* ... */
 	
-/* -----|||||----- *************** -----|||||----- */
-/* -----|||||----- * Formularios * -----|||||----- */
-/* -----|||||----- *************** -----|||||----- */
-
-.form {
-	font-size:0.85rem;
-	line-height:0.85rem;
-}
-.form-row > div {
-	margin-bottom:0.75rem!important;
-}
-.form-row > div > label {
-	margin-bottom:0.5rem!important;
-	font-weight:bold;
-}
-	.form-check-label {
-		margin-top:0.3rem;
-	}
-.form-control, .input-group-text {
-	font-size:inherit;
-	height:calc(1em + 0.9rem);
-    padding:0.45rem 0.50rem;
-}
-	.form-row > div >  select { padding:0rem 0.50rem; }
-.form-control:focus {
-	outline:none;
-	border:solid 1px var(--principalMedio)!important;
-	box-shadow:0rem 0rem 0.2rem var(--principalMedio)!important;
-}
 /* -----|||||----- ********** -----|||||----- */
 /* -----|||||----- * Media Query * -----|||||----- */
 /* -----|||||----- ********** -----|||||----- */	
@@ -1228,7 +1248,10 @@ body {
 /* -----|||||----- * Varios * -----|||||----- */
 /* -----|||||----- ********** -----|||||----- */
 
-.resaltarTexto { background-color:var(--bgResaltado); color:var(--txResaltado); }
+.resaltarTexto {
+	background-color:var(--bgResaltado);
+	color:var(--txResaltado);
+}
 ::selection {
 	color:var(--blanco);
 	background:var(--principalMedio);
@@ -1256,11 +1279,17 @@ body {
 }
 ::-webkit-scrollbar-thumb {
 	background-color:var(--principalTrans);
-	border-radius:5px;
+	border-radius:10px;
 	border:0.1rem solid rgba(0, 0, 0, 0);
 	background-clip: padding-box;
 	box-shadow:inset 0px 0px 2px var(--principalTrans);
 }
+	::-webkit-scrollbar-thumb:hover {
+		background-color:var(--principal);
+	}
+	::-webkit-scrollbar-thumb:active {
+		background-color:var(--principalAzulAnalogo);
+	}
 ::-webkit-scrollbar-button:vertical:decrement {
 	height:0px;
 	background-color:#222222;
@@ -1274,7 +1303,7 @@ body {
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 /* -----|||||-----**********-----|||||----- */
@@ -1305,4 +1334,84 @@ html {
 	-moz-user-select:none; /* Firefox */
 	-ms-user-select:none; /* Internet Explorer/Edge */
 	user-select:none;
+}
+
+/* -----|||||-----**********-----|||||----- */
+/* -----|||||-----* Loader *-----|||||----- */
+/* -----|||||-----**********-----|||||----- */
+
+.animationload, .animationloadForm {
+    background-color:transparent;
+    /*height: 100%;*/
+    left: 0;
+    position:absolute;
+    top:150px;
+    width:100%;
+    z-index:10000;
+}
+.animationloadForm { position:relative; top:0px; padding-top:15px; padding-bottom:30px; }
+.osahanloadingBack, .osahanloadingBackForm {
+	background:url('../../img/favicosnVerde/favicon-32x32.png');
+	background-size:20px 20px;
+	background-position:center center;
+	background-repeat:no-repeat;
+    height:30px;
+    width:30px;
+    left:50%;
+    margin-left:-30px;
+    margin-top:-30px;
+    position:absolute;
+    top:50%;
+}
+.osahanloadingBackForm { position:relative; float:left; top:0%; margin-top:-5px; }
+.osahanloading, .osahanloadingForm {
+    animation:1s linear 0s normal none infinite running osahanloading;
+	background-size:20px 20px;
+    border-radius:50px;
+    height:20px;
+    width:20px;
+    left:50%;
+    margin-left:-25px;
+    margin-top:-25px;
+    position:absolute;
+    top:50%;
+}
+.osahanloadingForm { position:relative; float:left; top:0%; margin-top:0px; }
+.osahanloading::after, .osahanloadingForm::after {
+    animation:1.5s linear 0s normal none infinite running osahanloading_after;
+    border-color:var(--principal) transparent;
+    border-radius:80px;
+    border-style:solid;
+    border-width:5px;
+    content:"";
+    height:50px;
+    left:-15px;
+    position:absolute;
+    top:-15px;
+    width:50px;
+}
+.osahanloadingForm::after { position:absolute; }
+@keyframes osahanloading {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		/*background: transparent none repeat scroll 0 0;*/
+		transform: rotate(180deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes osahanloadingForm {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		/*background: transparent none repeat scroll 0 0;*/
+		transform: rotate(180deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }

@@ -27,12 +27,12 @@ var myPieChart = new Chart(ctx, {
 	options: {
 		responsive: true,
 		legend: {
-		  display: true,
-		  position: 'top',
-		  labels: {
-			padding: 20,
-			boxWidth: 10
-		  }
+			display: true,
+			position: 'top',
+			labels: {
+				padding: 20,
+				boxWidth: 10
+			}
 		}
 	}
 });

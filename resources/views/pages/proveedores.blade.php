@@ -43,6 +43,7 @@
 	<script>
 		function cargaListado(){
 			var ruta = '{{ route("listaProveedores") }}';
+			loaderGrafico('#docuCont_0');
 			$('#docuCont_0').load(ruta, function(){
 				mostrarThCabecera(0);
 				cargaBuscador();

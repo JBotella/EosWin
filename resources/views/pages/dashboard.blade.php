@@ -117,9 +117,8 @@
 								@lang('texto.dashboard.distribucion_operaciones')
 							</div>
 							<div class="tarjeta-body pt-4">
-								<canvas class="canvasPie" id="myPieChart"></canvas>
+								<canvas class="canvasSectores" id="myPieChart"></canvas>
 							</div>
-							{{--<div class="tarjeta-pie small text-muted">...</div>--}}
 						</div>
 					</div>
 					
@@ -186,7 +185,7 @@
 			$anualResultado = implode(", ", $arrayAnualResultado);
 	@endphp
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+	<script src="{{ asset('theme/dist/assets/graficas/Chart.min.js') }}" crossorigin="anonymous"></script>
 	{{-- Llamada al diagrama de sectores --}}
 	<script id="diagramaOperaciones" src="{{ asset('theme/dist/assets/graficas/chart-pie-dashboard.js') }}" 
 	data-label="@lang('texto.dashboard.ingresos'), @lang('texto.dashboard.gastos'), @lang('texto.dashboard.beneficios'), @lang('texto.dashboard.pendiente_cobros_pagos')" 

@@ -68,7 +68,7 @@ return [
 		'apuntes' => 'Notes',
 		'apuntes_periodicos' => 'Periodic notes',
 		'cobros_pagos' => 'Collections / Payments',
-		'extractos' => 'Excerpts',
+		'extractos' => 'Statements',
 		'bienes_inversion' => 'Investment goods',
 		'amortizaciones' => 'Amortizations',
 		'libros_oficiales' => 'Official books',
