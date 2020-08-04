@@ -23,39 +23,39 @@
 			
 				<div class="linea-trimestre">
 					<div class="barra-trimestre progress">
-						<div class="progress-bar bgPrincipal" role="progressbar" style="width:{{$percIngresos}}%; margin-left:{{$marginNegativo}}%;" aria-valuenow="{{$ingresos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">
+						<div class="progress-bar bgAzulAnalogo" role="progressbar" style="width:{{$percIngresos}}%; margin-left:{{$marginNegativo}}%;" aria-valuenow="{{$ingresos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">
 							<span>
 								{{@number_format($ingresos,2,',','.')}}
 							</span>
 						</div>
 					</div>
-					<div class="indice-barra-trimestre principal">
+					<div class="indice-barra-trimestre azulAnalogo">
 						@lang('texto.dashboard.ingresos')
 					</div>
 				</div>
 				
 				<div class="linea-trimestre">
 					<div class="barra-trimestre progress">
-						<div class="progress-bar bgAzulAnalogo" role="progressbar" style="width:{{$percGastos}}%; margin-left:{{$marginNegativo}}%;" aria-valuenow="{{$gastos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">
+						<div class="progress-bar bgRojoOpuesto" role="progressbar" style="width:{{$percGastos}}%; margin-left:{{$marginNegativo}}%;" aria-valuenow="{{$gastos}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">
 							<span>
 								{{@number_format($gastos,2,',','.')}}
 							</span>
 						</div>
 					</div>
-					<div class="indice-barra-trimestre azulAnalogo">
+					<div class="indice-barra-trimestre rojoOpuesto">
 						@lang('texto.dashboard.gastos')
 					</div>
 				</div>
 				
 				<div class="linea-trimestre">
 					<div class="barra-trimestre progress">
-						<div class="progress-bar bgMoradoAnalogo" role="progressbar" style="width:{{abs($percResultado)}}%;" aria-valuenow="{{$resultado}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">
+						<div class="progress-bar bgPrincipal" role="progressbar" style="width:{{abs($percResultado)}}%;" aria-valuenow="{{$resultado}}" aria-valuemin="{{$minH}}" aria-valuemax="{{$maxH}}">
 							<span>
 								{{@number_format($resultado,2,',','.')}}
 							</span>
 						</div>
 					</div>
-					<div class="indice-barra-trimestre moradoAnalogo">
+					<div class="indice-barra-trimestre principal">
 						@lang('texto.dashboard.resultado')
 					</div>
 				</div>

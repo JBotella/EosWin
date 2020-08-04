@@ -48,13 +48,22 @@
 									<ul>
 										@php $items = array(1,2,3,4,5,6,7,8,9,10) @endphp
 										@foreach($items as $item)
-											<li>
+											<li class="chkList checkAmortizacion" id="checkAmortizacion_{{$item}}">
+												<div class="cuadroCheck"></div>
 												<b>{{$item}}</b> - Amortización pendiente de prueba {{$item}}
+												<input type="checkbox" class="d-none" name="amortizacion" value="{{$item}}" />
 											</li>
 										@endforeach
 									</ul>
 								</div>
 							
+							</div>
+							<div class="tarjeta-pie">
+								<div class="cuadroCkeckSelTodos">
+									<div class="cuadroCheck" id="checkAmortizacion" data-checked=""></div>
+									<span>Seleccionar todos<span>
+								</div>
+								<button class="btn boton-tarjeta-pie d-inline-block">Contabilizar</button>
 							</div>
 						</div>
 					</div>
@@ -69,41 +78,45 @@
 					@endphp
 					<div class="col-md-6 col-xl-3 mb-4">
 						@component('components.tarjetaDashboard')
-							@slot('class','estilo-tarjeta-principal')
+							@slot('class','estilo-tarjeta-azulAnalogo')
 							@slot('titulo',trans('texto.dashboard.ingresos'))
 							@slot('valor',number_format($b,2,',','.').'€')
 							@slot('nota','Ejercicio 2019')
 							@slot('icono','fas fa-euro-sign')
-						@endcomponent
-					</div>
-					
-					<div class="col-md-6 col-xl-3 mb-4">
-						@component('components.tarjetaDashboard')
-							@slot('class','estilo-tarjeta-azulAnalogo')
-							@slot('titulo',trans('texto.dashboard.gastos'))
-							@slot('valor',number_format($g,2,',','.').'€')
-							@slot('nota',trans('texto.ejercicio').' 2019')
-							@slot('icono','fas fa-shopping-bag')
-						@endcomponent
-					</div>
-					
-					<div class="col-md-6 col-xl-3 mb-4">
-						@component('components.tarjetaDashboard')
-							@slot('class','estilo-tarjeta-moradoAnalogo')
-							@slot('titulo',trans('texto.dashboard.beneficios'))
-							@slot('valor',number_format(($b-$g),2,',','.').'€')
-							@slot('nota',trans('texto.ejercicio').' 2019')
-							@slot('icono','fas fa-award')
+							@slot('link','')
 						@endcomponent
 					</div>
 					
 					<div class="col-md-6 col-xl-3 mb-4">
 						@component('components.tarjetaDashboard')
 							@slot('class','estilo-tarjeta-rojoOpuesto')
+							@slot('titulo',trans('texto.dashboard.gastos'))
+							@slot('valor',number_format($g,2,',','.').'€')
+							@slot('nota',trans('texto.ejercicio').' 2019')
+							@slot('icono','fas fa-shopping-bag')
+							@slot('link','')
+						@endcomponent
+					</div>
+					
+					<div class="col-md-6 col-xl-3 mb-4">
+						@component('components.tarjetaDashboard')
+							@slot('class','estilo-tarjeta-principal')
+							@slot('titulo',trans('texto.dashboard.beneficios'))
+							@slot('valor',number_format(($b-$g),2,',','.').'€')
+							@slot('nota',trans('texto.ejercicio').' 2019')
+							@slot('icono','fas fa-award')
+							@slot('link','')
+						@endcomponent
+					</div>
+					
+					<div class="col-md-6 col-xl-3 mb-4">
+						@component('components.tarjetaDashboard')
+							@slot('class','estilo-tarjeta-moradoAnalogo')
 							@slot('titulo',trans('texto.dashboard.pendiente_cobros_pagos'))
 							@slot('valor',number_format((-$p),2,',','.').'€')
 							@slot('nota',trans('texto.ejercicio').' 2019')
 							@slot('icono','fas fa-tags')
+							@slot('link','')
 						@endcomponent
 					</div>
 				</div>
@@ -188,15 +201,15 @@
 	<script src="{{ asset('theme/dist/assets/graficas/Chart.min.js') }}" crossorigin="anonymous"></script>
 	{{-- Llamada al diagrama de sectores --}}
 	<script id="diagramaOperaciones" src="{{ asset('theme/dist/assets/graficas/chart-pie-dashboard.js') }}" 
-	data-label="@lang('texto.dashboard.ingresos'), @lang('texto.dashboard.gastos'), @lang('texto.dashboard.beneficios'), @lang('texto.dashboard.pendiente_cobros_pagos')" 
-	data-colores="#62af82,#628faf,#8262af,#b05751" 
+	data-label="@lang('texto.dashboard.ingresos'), @lang('texto.dashboard.gastos'), @lang('texto.dashboard.beneficios'), @lang('texto.dashboard.pendiente_cobros_pagos')"  
+	data-colores="#628faf,#b05751,#62af82,#8262af" 
 	data-cifras="{{$cifrasDiagrama}}"
 	></script>
 	{{-- Llamada al diagrama de barras --}}
 	<script id="graficaAnual" src="{{ asset('theme/dist/assets/graficas/chart-bar-dashboard.js') }}" 
 	data-labels="@lang('texto.mes.enero'), @lang('texto.mes.febrero'), @lang('texto.mes.marzo'), @lang('texto.mes.abril'), @lang('texto.mes.mayo'), @lang('texto.mes.junio'), @lang('texto.mes.julio'), @lang('texto.mes.agosto'), @lang('texto.mes.septiembre'), @lang('texto.mes.octubre'), @lang('texto.mes.noviembre'), @lang('texto.mes.diciembre')" 
 	data-label="@lang('texto.dashboard.ingresos'), @lang('texto.dashboard.gastos'), @lang('texto.dashboard.resultado')" 
-	data-colores="#62af82,#628faf,#8262af" 
+	data-colores="#628faf,#b05751,#62af82" 
 	data-ingresos="{{$anualIngresos}}" 
 	data-gastos="{{$anualGastos}}" 
 	data-resultados="{{$anualResultado}}" 

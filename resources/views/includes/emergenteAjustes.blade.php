@@ -75,11 +75,3 @@
 		</button>
 	</div>
 </div>
-<script>
-$('.radList').click(function(){
-	var valor = $('#'+this.id+' input').val();
-	var prefijo = this.id.split('_',1)[0];
-	$('.'+prefijo).removeClass('radSel');
-	$(this).addClass('radSel');
-});
-</script>

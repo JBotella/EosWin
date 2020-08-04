@@ -1,4 +1,4 @@
-<div class="tarjeta estilo-tarjeta {{$class}}">
+<div class="tarjeta estilo-tarjeta {{$class}} tarjeta-link">
 	<div class="tarjeta-body">
 		<div class="row no-gutters align-items-center h-100">
 			<div class="col">

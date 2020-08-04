@@ -55,6 +55,54 @@ $(document).on('click',function(e){
 	}
 });
 
+/* ----- ************** ----- */
+/* ----- * Selectores * ----- */
+/* ----- ************** ----- */
+
+// Seleccionar radio list
+$('.radList').click(function(){
+	var valor = $('#'+this.id+' input').val();
+	var prefijo = this.id.split('_',1)[0];
+	$('.'+prefijo).removeClass('radSel');
+	$('.'+prefijo+' input').prop('checked',false);
+	$(this).addClass('radSel');
+	$('#'+this.id+' input').prop('checked',true);
+});
+
+// Seleccionar checkbox list
+$('.chkList').click(function(){
+	var valor = $('#'+this.id+' input').val();
+	var prefijo = this.id.split('_',1)[0];
+	if(!$(this).hasClass('chkSel')){
+		$(this).addClass('chkSel');
+		$('#'+this.id+' input').prop('checked',true);
+		$('#'+this.id+' .cuadroCheck').html('<i class="fas fa-check chkIcoSel"></i>');
+	}else{
+		$(this).removeClass('chkSel');
+		$('#'+this.id+' input').prop('checked',false);
+		$('#'+this.id+' .cuadroCheck').html('');
+	}
+});
+
+// Seleccionar todo
+$('.cuadroCkeckSelTodos').click(function(){
+	var id = $(this).children('.cuadroCheck').attr('id');
+	var checked = $("#"+id).data('checked');
+	
+	if(checked == 'checked'){ // Desmarcar (Lleno)
+		$("#"+id).data('checked','');
+		$("#"+id).html('');
+		$('.'+id).children('.cuadroCheck').html('');
+		$('.'+id).removeClass('chkSel');
+		
+	}else{ // Marcar (Vacio)
+		$("#"+id).data('checked','checked');
+		$("#"+id).html('<i class="fas fa-check chkIcoSel"></i>');
+		$('.'+id).children('.cuadroCheck').html('<i class="fas fa-check chkIcoSel"></i>');
+		$('.'+id).addClass('chkSel');
+	}
+});
+
 /* ----- ************* ----- */
 /* ----- * Extra Bar * ----- */
 /* ----- ************* ----- */
