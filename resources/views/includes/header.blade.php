@@ -16,12 +16,21 @@
 	<ul class="navbar-nav ml-auto ml-md-auto">
 		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle navIdioma" id="langDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				{{ Session::get("lang") }}
+				<img src="{!! asset('theme/img/banderas/'.Session::get('lang').'.svg') !!}" />
 			</a>
 			<div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
-				<a class="dropdown-item" href="{{route('change_lang','es')}}">@lang('texto.espanol')</a>
-				<a class="dropdown-item" href="{{route('change_lang','ca')}}">@lang('texto.catalan')</a>
-				<a class="dropdown-item" href="{{route('change_lang','en')}}">@lang('texto.ingles')</a>
+				<a class="dropdown-item" href="{{route('change_lang','es')}}">
+					<img src="{!! asset('theme/img/banderas/es.svg') !!}" />
+					@lang('texto.espanol')
+				</a>
+				<a class="dropdown-item" href="{{route('change_lang','ca')}}">
+					<img src="{!! asset('theme/img/banderas/ca.svg') !!}" />
+					@lang('texto.catalan')
+				</a>
+				<a class="dropdown-item" href="{{route('change_lang','en')}}">
+					<img src="{!! asset('theme/img/banderas/en.svg') !!}" />
+					@lang('texto.ingles')
+				</a>
 			</div>
 		</li>
 		<li class="nav-item dropdown">
