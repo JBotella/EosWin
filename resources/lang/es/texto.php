@@ -14,7 +14,7 @@ return [
 	'ejercicios' => 'Ejercicios',
 /* -*****- Dias -*****- */
 	'dia' => [
-		'dia' => 'Dia',
+		'dia' => 'Día',
 		'dias' => 'Dias',
 		'lunes' => 'Lunes',
 		'martes' => 'Martes',
@@ -81,11 +81,11 @@ return [
 		'amortizaciones_pendientes' => 'Amortizaciones pendientes',
 		'ingresos' => 'Ingresos',
 		'gastos' => 'Gastos',
-		'beneficios' => 'Beneficios',
+		'beneficios' => 'Beneficis',
 		'pendiente_cobros_pagos' => 'Pendiente Cobros / Pagos',
 		'resultado' => 'Resultado',
 		'distribucion_operaciones' => 'Distribución de operaciones',
-		'abrevia_trimestre' => 'Tr.',
+		'abrevia_trimestre' => 'T.',
 		'trimestre' => 'Trimestre',
 		'grafica_anual' => 'Gráfica anual',
 	],
@@ -122,7 +122,7 @@ return [
 		'apellido_2' => 'Apellido 2',
 		'organizacion' => 'Organización',
 		'tipo_identificador' => 'Tipo de identificador',
-		'nif' => 'N.I.F.',
+		'nif' => 'NIF',
 		'cliente_obsoleto' => 'Cliente obsoleto',
 	],
 	'contacto' => [
@@ -137,8 +137,8 @@ return [
 	'parametrizacion_contable' => [
 		'parametrizacion_contable' => 'Parametrización Contable',
 		'tipo_operacion' => 'Tipo de operación',
-		'tipo_iva_igic' => 'Tipo de I.V.A./I.G.I.C.',
-		'tipo_irpf' => 'Tipo de I.R.P.F.',
+		'tipo_iva_igic' => 'Tipo de IVA/IGIC',
+		'tipo_irpf' => 'Tipo de IRPF',
 		'operacion_habitual' => 'Operación habitual',
 	],
 	'banco' => [

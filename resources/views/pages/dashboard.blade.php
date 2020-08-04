@@ -90,7 +90,7 @@
 					<div class="col-md-6 col-xl-3 mb-4">
 						@component('components.tarjetaDashboard')
 							@slot('class','estilo-tarjeta-moradoAnalogo')
-							@slot('titulo','Beneficios')
+							@slot('titulo',trans('texto.dashboard.beneficios'))
 							@slot('valor',number_format(($b-$g),2,',','.').'€')
 							@slot('nota',trans('texto.ejercicio').' 2019')
 							@slot('icono','fas fa-award')

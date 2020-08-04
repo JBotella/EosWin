@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		<div class="bloqueEmAjuste blh-fijo blBgColor">
-			<div class="cabeceraEmAjuste">Ejercicios</div>
+			<div class="cabeceraEmAjuste">@lang('texto.ejercicios')</div>
 			<div class="contenidoEmAjuste">
 				<ul class="text-center listaCuadrados">
 					@for($anyo = (date('Y')+5); $anyo > (date('Y')-16); $anyo--)
