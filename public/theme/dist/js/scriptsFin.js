@@ -173,7 +173,7 @@ function ocultarSinResaltado(desde,linea,acc){
 function verLinea(id,ruta){
 	ruta = ruta.replace(':id',id);
 	$('#visorFicha_0').load(ruta, function(){
-		visorFichaTabla(0);
+		visorFicha(0);
 	});
 }
 /* Abre una ruta */
@@ -181,28 +181,28 @@ function abrirLinea(id,ruta){
 	ruta = ruta.replace(':id', id);
 	window.open(ruta,"_self");
 }
-/* Abre o cierra el visor de la ficha asociada a la fila de una tabla (oculta o muestra la tabla en función del estado de la ficha) */
-function visorFichaTabla(n){
+/* Abre o cierra el visor de la ficha asociada a la fila de una tabla o al elemento de una sección (oculta o muestra la tabla en función del estado de la ficha) */
+function visorFicha(n){
 	if($('#visorFicha_'+n).hasClass('ocultaContenedor')){
-		$('#tabla_'+n).addClass('ocultaContenedor');
+		$('#contenido_'+n).addClass('ocultaContenedor');
 		$('.barraOpcionesLista').addClass('ocultaContenedor');
 		$('#cabeceraSeccionTabla').addClass('ocultaContenedor').addClass('colapsaContenedor');
 		$('#cabeceraSeccionVer').removeClass('ocultaContenedor').removeClass('colapsaContenedor');
 		setTimeout(function(){
-			$('#tabla_'+n).addClass('d-none');
+			$('#contenido_'+n).addClass('d-none');
 			$('.barraOpcionesLista').addClass('d-none');
 			$('#visorFicha_'+n).removeClass('ocultaContenedor').removeClass('d-none');
 			contenidoSeccionHeight();
 		},300);
 	}else{
 		$('#visorFicha_'+n).addClass('ocultaContenedor').addClass('colapsaContenedor');
-		$('#tabla_'+n).removeClass('d-none');
+		$('#contenido_'+n).removeClass('d-none');
 		$('#cabeceraSeccionTabla').removeClass('ocultaContenedor').removeClass('colapsaContenedor');
 		$('#cabeceraSeccionVer').addClass('ocultaContenedor').addClass('colapsaContenedor');
 		setTimeout(function(){
 			$('.barraOpcionesLista').removeClass('d-none');
 			$('#visorFicha_'+n).addClass('d-none');
-			$('#tabla_'+n).removeClass('ocultaContenedor');
+			$('#contenido_'+n).removeClass('ocultaContenedor');
 			$('.barraOpcionesLista').removeClass('ocultaContenedor');
 			contenidoSeccionHeight();
 		},300);

@@ -72,7 +72,7 @@ return [
 		'bienes_inversion' => 'Béns inversió',
 		'amortizaciones' => 'Amortitzacions',
 		'libros_oficiales' => 'Llibres oficials',
-		'impuestos' => 'Imposats',
+		'impuestos' => 'Impostos',
 	],
 /* -*****- Dashboard -*****- */
 	'dashboard' => [

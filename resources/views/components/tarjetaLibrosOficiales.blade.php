@@ -1,4 +1,4 @@
-<div class="tarjeta estilo-tarjeta {{$class}} tarjeta-link @if(!isset($link) or empty($link)) estilo-tarjeta-desactivada @endif mb-3 p-0" onclick="">
+<div class="tarjeta estilo-tarjeta {{$class}} tarjeta-link @if(!isset($link) or empty($link)) estilo-tarjeta-desactivada @endif mb-3 p-0">
 	<div class="tarjeta-body py-2">
 		<div class="row no-gutters align-items-center h-100">
 			<div class="col">

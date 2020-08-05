@@ -123,19 +123,19 @@
 				
 				<div class="row mt-2">
 				
-					<div id="diagrama-operaciones" class="col-12 col-lg-6 mb-3">
+					<div id="diagrama-operaciones" class="col-12 col-md-12 col-lg-12 col-xl-6 mb-3">
 						<div class="tarjeta estilo-tarjeta estilo-tarjeta-diagrama mb-3">
 							<div class="tarjeta-titulo">
 								<i class="fas fa-chart-pie mr-1"></i>
 								@lang('texto.dashboard.distribucion_operaciones')
 							</div>
-							<div class="tarjeta-body pt-4">
+							<div class="tarjeta-body pt-4 bodyCanvasSectores">
 								<canvas class="canvasSectores" id="myPieChart"></canvas>
 							</div>
 						</div>
 					</div>
 					
-					<div id="graficos-trimestre" class="col-12 col-lg-6 mb-3">
+					<div id="graficos-trimestre" class="col-12 col-md-12 col-lg-12 col-xl-6 mb-3">
 						@component('components.resumenTrimestreDashboard')
 							@slot('ejercicio',2019)
 							@slot('trimestre',1)
@@ -171,7 +171,7 @@
 								<i class="fas fa-chart-bar mr-1"></i>
 								@lang('texto.dashboard.grafica_anual')
 							</div>
-							<div class="tarjeta-body pt-4">
+							<div class="tarjeta-body pt-4 bodyCanvasBarras">
 								<canvas class="canvasBarras" id="myBarChart"></canvas>
 							</div>
 						</div>

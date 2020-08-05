@@ -63,6 +63,8 @@
 .bgAzulAnalogo { background-color:var(--principalAzulAnalogo)!important; }
 .moradoAnalogo { color:var(--principalMoradoAnalogo)!important; }
 .bgMoradoAnalogo { background-color:var(--principalMoradoAnalogo)!important; }
+.complementario { color:var(--principalComplementario)!important; }
+.bgComplementario { background-color:var(--principalComplementario)!important; }
 
 /* -----|||||----- *********** -----|||||----- */
 /* -----|||||----- * General * -----|||||----- */
@@ -772,6 +774,18 @@ body {
 		color:var(--principalRojoOpuesto);
 		border-left:0.25rem solid var(--principalRojoOpuesto)!important;
 	}
+	.estilo-tarjeta-complementario {
+		color:var(--principalComplementario);
+		border-left:0.25rem solid var(--principalComplementario)!important;
+	}
+	.estilo-tarjeta-desactivada {
+		color:var(--grisMedioClaro);
+		border-left:0.25rem solid var(--grisClaro)!important;
+		cursor:no-drop;
+	}
+		.estilo-tarjeta-desactivada .tarjeta-nombre {
+			color:var(--grisMedioClaro);
+		}
 	/* Tarjetas Diagrama */
 	.estilo-tarjeta-diagrama {
 		padding:0rem 0rem;
@@ -909,18 +923,6 @@ body {
 				font-size:0.7rem;
 				font-style:italic;
 			}
-			/* Para usos en tarjetas link de modelos de formulario */
-			.tarjeta-nombre {
-				font-size:1.3rem;
-				line-height:1.5rem;
-				margin-bottom:0.5rem;
-				font-weight:bold;
-				color:var(--grisMedio);
-			}
-			.tarjeta-resumen {
-				font-size:0.7rem;
-				font-style:normal;
-			}
 		.col-logo {
 			transition:0.3s;
 			font-size:3rem;
@@ -933,15 +935,53 @@ body {
 	.estilo-tarjeta-diagrama {
 		height:100%!important;
 	}
-	.canvasSectores {
-		max-height:100%;
+	.bodyCanvasSectores {
+		
 	}
+		.canvasSectores {
+			
+		}
+	.bodyCanvasBarras {
+		
+	}
+		.canvasBarras {
+			
+		}
 }
 @media(max-width:992px){
 	.canvasSectores {
 		
 	}
 }
+
+/* -----|||||----- *********************************** -----|||||----- */
+/* -----|||||----- * Secciones con links en columnas * -----|||||----- */
+/* -----|||||----- *********************************** -----|||||----- */
+
+.tituloColumna {
+	display: flex;
+	font-size:0.95rem;
+	font-weight:bold;
+	line-height:1rem;
+	margin-bottom:1.5rem;
+	min-height:3rem;
+	color:var(--grisMedio);
+}
+	.tituloColumna span {
+		align-self: flex-end;
+	}
+			/* Para usos en tarjetas link de modelos de formulario */
+			.tarjeta-nombre {
+				font-size:0.9rem;
+				line-height:1.2rem;
+				margin-bottom:0.3rem;
+				font-weight:bold;
+				color:var(--grisMedio);
+			}
+			.tarjeta-resumen {
+				font-size:0.7rem;
+				font-style:normal;
+			}
 
 /* -----|||||----- ******************* -----|||||----- */
 /* -----|||||----- * Visor de Fichas * -----|||||----- */

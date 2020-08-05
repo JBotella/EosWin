@@ -75,6 +75,7 @@ var myLineChart = new Chart(ctx, {
 		],
 	},
 	options: {
+		responsive: true,
 		scales: {
 			xAxes: [{
 				time: {

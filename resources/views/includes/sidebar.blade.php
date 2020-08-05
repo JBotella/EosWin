@@ -50,7 +50,7 @@
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
-				<a class="nav-link" href="">
+				<a class="nav-link @if(in_array($vActual,['librosOficiales'])) nav-link-selected @endif" href="{!!route('librosOficiales')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
 					@lang('texto.sidebar_nav.libros_oficiales')
 				</a>

@@ -194,4 +194,29 @@ return [
 		'registro_inmediato_facturas_expedidas' => 'Registro inmediato facturas expedidas',
 		'registro_inmediato_facturas_expedidas_resumen' => 'IVA. Libros registro de IVA repercutido a través de la Sede electrónica de la AEAT.',
 	],
+/* -*****- Libros Oficiales -*****- */
+	'libros_oficiales' => [
+		'libros_oficiales' => 'Libros oficiales',
+		'compras'  => [
+			'compras' => 'Compras',
+			'libro_oficial_compras' => 'Libro oficial de compras',
+			'libro_oficial_gastos' => 'Libro de oficial de gastos',
+			'resumen_iva_soportado' => 'Resumen de IVA soportado',
+			'libro_facturas_recibidas' => 'Libro de facturas recibidas',
+		],
+		'ventas' => [
+			'ventas' => 'Ventas',
+			'libro_oficial_ventas' => 'Libro oficial de ventas',
+			'resumen_iva_repercutido' => 'Resumen de IVA repercutido',
+			'libro_facturas_expedidas' => 'Libro de facturas expedidas',
+		],
+		'otros' => [
+			'otros' => 'Otros',
+			'libro_oficial_suplidos' => 'Libro oficial de suplidos',
+			'libro_oficial_provision_fondos' => 'Libro oficial de provisión de fondos',
+			'libro_bienes_inversion' => 'Libro de bienes de inversión',
+			'cuenta_resultado' => 'Cuenta de resultado',
+			'exportar_libros_formato_excel' => 'Exportar libros en formato Excel',
+		],
+	],
 ];
