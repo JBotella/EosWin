@@ -57,7 +57,7 @@
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
-				<a class="nav-link" href="">
+				<a class="nav-link @if(in_array($vActual,['impuestos'])) nav-link-selected @endif" href="{!!route('impuestos')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-percent"></i></div>
 					@lang('texto.sidebar_nav.impuestos')
 				</a>

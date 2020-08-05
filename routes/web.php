@@ -42,6 +42,12 @@ Route::group(['middleware' => 'auth'], function(){
 	
 	
 	
+	
+	/* Impuestos */
+	Route::get('impuestos', 'ImpuestosController@impuestos')->name('impuestos');
+	
+	
+	
 	/* ----------------- */
 	/* Buscador ExtraBar */
 	/* ----------------- */

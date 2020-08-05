@@ -79,6 +79,8 @@ return [
 		'dashboard' => 'Dashboard',
 		'hoy' => 'Today',
 		'amortizaciones_pendientes' => 'Pending amortizations',
+		'seleccionar_todas' => 'Select all',
+		'contabilizar' => 'Account',
 		'ingresos' => 'Income',
 		'gastos' => 'Expenses',
 		'beneficios' => 'Benefits',

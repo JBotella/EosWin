@@ -5,7 +5,7 @@
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion">
-			<span><i class="fas fa-tachometer-alt icoCab mr-2" onclick="extraBar()"></i></span>
+			<span><i class="fas fa-tachometer-alt icoCab mr-2"></i></span>
 			<span>@lang('texto.dashboard.dashboard')</span>
 			<span class="guionEnCabecera">-</span>
 			<span class="nombreEnCabecera">Microarea Next</span>
@@ -61,9 +61,9 @@
 							<div class="tarjeta-pie">
 								<div class="cuadroCkeckSelTodos">
 									<div class="cuadroCheck" id="checkAmortizacion" data-checked=""></div>
-									<span>Seleccionar todos<span>
+									<span>@lang('texto.dashboard.seleccionar_todas')<span>
 								</div>
-								<button class="btn boton-tarjeta-pie d-inline-block">Contabilizar</button>
+								<button class="btn boton-tarjeta-pie d-inline-block">@lang('texto.dashboard.contabilizar')</button>
 							</div>
 						</div>
 					</div>

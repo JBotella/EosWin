@@ -671,6 +671,7 @@ body {
 	height:100%!important;
     flex-direction:column;
     min-width:0;
+	width:100%!important;
     word-wrap:break-word;
     background-clip:border-box;
     border:1px solid var(--grisMasClaro);
@@ -729,7 +730,7 @@ body {
 			.cuadroCkeckSelTodos span {
 				font-style:italic;
 				font-size:0.8rem;
-				margin-left:0.2rem;
+				margin-left:0rem;
 				color:var(--principal);
 			}
 			.cuadroCheck {
@@ -908,13 +909,24 @@ body {
 				font-size:0.7rem;
 				font-style:italic;
 			}
+			/* Para usos en tarjetas link de modelos de formulario */
+			.tarjeta-nombre {
+				font-size:1.3rem;
+				line-height:1.5rem;
+				margin-bottom:0.5rem;
+				font-weight:bold;
+				color:var(--grisMedio);
+			}
+			.tarjeta-resumen {
+				font-size:0.7rem;
+				font-style:normal;
+			}
 		.col-logo {
-			/*position:absolute;
-			right:1rem;*/
 			transition:0.3s;
 			font-size:3rem;
 			opacity:0.5;
 			margin:-1rem 0rem;
+			margin-left:0.5rem;
 		}
 	
 @media(max-width: 768px){
@@ -1039,11 +1051,7 @@ body {
 	border:solid 1px var(--principalMedio)!important;
 	box-shadow:0rem 0rem 0.2rem var(--principalMedio)!important;
 }
-
-/* -----|||||----- ************** -----|||||----- */
-/* -----|||||----- * Formulario * -----|||||----- */
-/* -----|||||----- ************** -----|||||----- */
-
+/* Contenedor Formulario */
 .contenedorFormulario {
 	width:100%;
 	margin:auto;

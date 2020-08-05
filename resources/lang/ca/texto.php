@@ -79,6 +79,8 @@ return [
 		'dashboard' => 'Dashboard',
 		'hoy' => 'Avui',
 		'amortizaciones_pendientes' => 'Amortitzacions pendents',
+		'seleccionar_todas' => 'Seleccionar totes',
+		'contabilizar' => 'Comptabilitzar',
 		'ingresos' => 'Ingressos',
 		'gastos' => 'Despeses',
 		'beneficios' => 'Beneficis',
