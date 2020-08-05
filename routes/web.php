@@ -44,9 +44,11 @@ Route::group(['middleware' => 'auth'], function(){
 	
 	/* Libros Oficiales */
 	Route::get('libros-oficiales', 'LibrosOficialesController@librosOficiales')->name('librosOficiales');
+		Route::get('libros-oficiales/listado/{id}', 'LibrosOficialesController@librosOficialesListado')->name('librosOficialesListado');
 	
 	/* Impuestos */
 	Route::get('impuestos', 'ImpuestosController@impuestos')->name('impuestos');
+		Route::get('impuestos/formulario/{id}', 'ImpuestosController@impuestosFormulario')->name('impuestosFormulario');
 	
 	
 	

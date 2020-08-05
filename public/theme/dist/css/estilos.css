@@ -680,6 +680,7 @@ body {
     border-radius:0.25rem;
 	padding:0.5rem 0rem;
 	box-shadow:0px 5px 5px 0px var(--grisMasClaro);
+	box-sizing: border-box!important;
 }
 .tarjeta:hover .col-logo {
 	transition:0.3s;
@@ -691,6 +692,14 @@ body {
 	}
 	.tarjeta-link {
 		cursor:pointer;
+	}
+	.tarjeta-link:hover {
+		border:1px solid var(--grisClaro);
+		box-shadow:0px 5px 5px 0px var(--grisMasClaro);
+	}
+	.tarjeta-link:active {
+		border:1px solid var(--grisClaro);
+		box-shadow:0px 5px 5px 0px var(--grisMasMasClaro);
 	}
 	/* Tarjetas Listas */
 	.estilo-tarjeta-lista {
@@ -1434,7 +1443,7 @@ html {
 	-ms-user-select:text; /* Internet Explorer/Edge */
 	user-select:text;
 }
-.noSelect, .sb-topnav, .sb-sidenav, .cabeceraSeccion, .contenedorEmergenteAjustes, #contenidoDashboard {
+.noSelect, .sb-topnav, .sb-sidenav, .cabeceraSeccion, .contenedorEmergenteAjustes, #contenidoDashboard, #contenidoTarjetasLinks {
 	-webkit-touch-callout:none; /* iOS Safari */
 	-webkit-user-select:none; /* Safari */
 	-khtml-user-select:none; /* Konqueror HTML */
