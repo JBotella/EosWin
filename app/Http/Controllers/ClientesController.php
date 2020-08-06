@@ -8,9 +8,9 @@ class ClientesController extends Controller
     public function clientes(){
 		return view('pages.clientes');
 	}
-    public function listaClientes(){
+    public function listaClientes($variables){
 		$clientes = new Cliente();
-		$listado = $clientes->listadoCompletoClientes();
+		$listado = $clientes->listadoCompletoClientes($variables);
 		$rutaVer = route("verCliente", [":id"]);
 		$rutaAbrir = route("cliente", [":id"]);
 		return view('pages.clientes.listaClientes', ['listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir]);

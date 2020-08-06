@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth'], function(){
 	/* Clientes */
 	Route::get('clientes', 'ClientesController@clientes')->name('clientes');
 		// Lista Clientes (Asíncrona)
-		Route::get('listaClientes', 'ClientesController@listaClientes')->name('listaClientes');
+		Route::get('listaClientes/{variables}', 'ClientesController@listaClientes')->name('listaClientes');
 		// Lista Clientes Mínima (Asíncrona)
 		Route::get('listaClientesMin', 'ClientesController@listaClientesMin')->name('listaClientesMin');
 	Route::get('cliente/{id}', 'ClientesController@formularioCliente')->name('cliente');
@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function(){
 	/* Proveedores */
 	Route::get('proveedores', 'ProveedoresController@proveedores')->name('proveedores');
 		// Lista Proveedores (Asíncrona)
-		Route::get('listaProveedores', 'ProveedoresController@listaProveedores')->name('listaProveedores');
+		Route::get('listaProveedores/{variables}', 'ProveedoresController@listaProveedores')->name('listaProveedores');
 	Route::get('proveedor/{id}', 'ProveedoresController@formularioCliente')->name('proveedor');
 		// Ver Proveedor (Asíncrona)
 		Route::get('verProveedor/{id}', 'ProveedoresController@verProveedor')->name('verProveedor');
@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('impuestos', 'ImpuestosController@impuestos')->name('impuestos');
 		Route::get('impuestos/{id}', 'ImpuestosController@impuestosFormulario')->name('impuestosFormulario');
 	
+	/* Utilidades */
+	Route::get('utilidades', 'UtilidadesController@utilidades')->name('utilidades');
 	
 	
 	/* ----------------- */

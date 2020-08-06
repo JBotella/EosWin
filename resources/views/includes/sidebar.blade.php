@@ -54,12 +54,16 @@
 					<div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
 					@lang('texto.sidebar_nav.libros_oficiales')
 				</a>
-				<div class="sb-sidenav-menu-heading">
-					<div class="lineaBloqueMenu"></div>
-				</div>
 				<a class="nav-link @if(in_array($vActual,['impuestos'])) nav-link-selected @endif" href="{!!route('impuestos')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-percent"></i></div>
 					@lang('texto.sidebar_nav.impuestos')
+				</a>
+				<div class="sb-sidenav-menu-heading">
+					<div class="lineaBloqueMenu"></div>
+				</div>
+				<a class="nav-link @if(in_array($vActual,['utilidades'])) nav-link-selected @endif" href="{!!route('utilidades')!!}">
+					<div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
+					@lang('texto.sidebar_nav.utilidades')
 				</a>
 			</div>
 		</div>

@@ -165,6 +165,17 @@ function ocultarSinResaltado(desde,linea,acc){
 	}
 }
 
+/* Función para la Búsqueda en Listado */
+function buscarLista(nLista){
+	$('#alertaBusqueda_'+nLista).empty();
+	var busqueda = $('#busqueda_'+nLista).val().trim();
+	if(busqueda.length>=3){
+		listar(nLista);
+	}else{
+		$('#alertaBusqueda_'+nLista).html('Introduzca 3 o más caracteres para la búsqueda');
+	}
+}
+
 /* ----- ************************ ----- */
 /* ----- * Fichas y Formularios * ----- */
 /* ----- ************************ ----- */
@@ -209,6 +220,9 @@ function visorFicha(n){
 	}
 }
 /* Muestra la cabecera de una tabla tras la carga de sus filas */
+function ocultarThCabecera(cab){
+	$('#cabeceraLista_'+cab).addClass('thead-th-ocultos');
+}
 function mostrarThCabecera(cab){
 	$('#cabeceraLista_'+cab).removeClass('thead-th-ocultos');
 }
@@ -232,7 +246,52 @@ function preguntaBorrarLinea(id){
 /* ----- * Orden * ----- */
 /* ----- ********* ----- */
 
-/* Ordenar tabla */
+/* Función para el Orden de Listado */
+$('th').click(function (){
+	var thead = $(this).parent().parent();
+	var idLista = thead.attr('id');
+	var nLista = idLista.split('_')[1];
+	var orden = $(this).data('orden');
+	if(orden){
+		var ordenActual = $('#'+idLista).data('orden');
+		var direccionActual = $('#'+idLista).data('direccion');
+		$('.flechaOrdenTh').remove();
+		if(orden == ordenActual){
+			$('#'+idLista).data('orden', orden);
+			$('#'+idLista).data('direccion', dirOrdenOpuesta(direccionActual));
+			var flecha = flechaDirOrden(dirOrdenOpuesta(direccionActual));
+		}else{
+			$('#'+idLista).data('orden', orden);
+			$('#'+idLista).data('direccion', 'ASC');
+			var flecha = flechaDirOrden('ASC');
+			
+		}
+		ocultarThCabecera(nLista);
+		var obj = this;
+			$(obj).append(flecha);
+		setTimeout(function(){
+			listar(nLista);
+		},300);
+	}
+});
+function dirOrdenOpuesta(direccion){
+	if(direccion == 'ASC'){
+		opuesta = 'DESC'; 
+	}else if(direccion == 'DESC'){
+		opuesta = 'ASC';
+	}
+	return opuesta;
+}
+function flechaDirOrden(direccion){
+	if(direccion == 'ASC'){
+		flecha = '<i class="flechaOrdenTh fas fa-long-arrow-alt-up"></i>';
+	}else if(direccion == 'DESC'){
+		flecha = '<i class="flechaOrdenTh fas fa-long-arrow-alt-down"></i>';
+	}
+	return flecha;
+}
+
+/* Ordenar tabla (No funciona bien - Sin uso) */
 function sortTable(tabla,n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById(tabla);
@@ -308,6 +367,64 @@ function searchTable(tabla) {
       }
     }
   }
+}
+
+/* ----- **************** ----- */
+/* ----- * Carga Listas * ----- */
+/* ----- **************** ----- */
+
+function cargaListado(idLista,variables,desde = null){
+	var variables = JSON.stringify(variables);
+	var ruta = $('#cabeceraLista_'+idLista).data('ruta');
+	ruta = ruta.replace(':variables', variables);
+	if(desde == null){ var desde = 0; }
+	var contenedorLista = $('.contenedorLista[data-lista-id = "'+idLista+'"][data-lista-desde = "'+desde+'"]');
+	loaderGrafico(contenedorLista);
+	$(contenedorLista).load(ruta, function(){
+		mostrarThCabecera(idLista);
+	});
+}
+
+/* ----- *************** ----- */
+/* ----- * Auto Scroll * ----- */
+/* ----- *************** ----- */
+
+/* Listado Automático-Scroll */
+function cargaListadoAutomatico(){
+	if($(window).scrollTop() + $(window).height() > $(document).height() - 50){
+		// Inicio Marcador de variable vDesde
+		if($("#vDesde").length == 0){
+			/* N */$('#tablaReg').append('<input id="vDesde" type="hidden" value="'+vDesde+'">');
+		}
+		//
+		tm=setTimeout(function(){
+			if($('#docuCont'+vDesde).is(':empty')) {
+				cargaListado(vDesde,vLimite);
+			}else{
+				var totalCuenta = $('#totalCuenta').val();
+				/* N */ var vDesde = $('#vDesde').val();
+				if(eval(totalCuenta) > eval(vDesde)){
+					if(eval(totalCuenta) > eval(vLimite)){
+						$(window).scrollTop($(window).scrollTop()-50);
+						//vDesde=vDesde+vLimite;
+						/* N */ vDesde = eval(vDesde) + eval(vLimite);
+						/* N */ $('#vDesde').val(vDesde);
+						$('#tablaReg').append('<tbody class="extraCont" id="docuCont'+vDesde+'"></tbody>');
+						cargaListado(vDesde,vLimite);
+					}
+				}
+				clearTimeout(tm);
+			}
+		}, 500);
+	}
+}
+/* Listado Automático-Scroll */
+if(typeof(listaAuto)!=='undefined'){
+	if(listaAuto=='ok'){
+		$(window).stop().scroll(function(){
+			cargaListadoAutomatico();
+		});
+	}
 }
 
 /* ----- ****************** ----- */

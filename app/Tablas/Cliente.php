@@ -8,8 +8,23 @@ class Cliente extends Model
 	protected $connection= 'sqlsrv2';
     protected $table = 'ClientesTabla';
 	
-	public function listadoCompletoClientes(){
-		$clienteCompleto = DB::connection($this->connection)->select('SELECT (SELECT TOP 1 TELETELEFONO FROM [TELEFON] WHERE TELECODIGO = ClientesTabla.CliCodigo) AS Telefono, * FROM ClientesTabla;');
+	public function listadoCompletoClientes($variables = NULL){
+		$filtroConsulta = '';
+		/* Variables de consulta */
+		if(isset($variables)){
+			$variables = json_decode($variables);
+			if(isset($variables->busqueda)){
+				$busqueda = $variables->busqueda;
+				$filtroConsulta .= " WHERE (CliCodigo LIKE '%".$busqueda."%' OR CliNombre LIKE '%".$busqueda."%' OR CliCif LIKE '%".$busqueda."%' OR CliEMail LIKE '%".$busqueda."%') ";
+			}
+			if(isset($variables->orden) and isset($variables->direccion)){
+				$orden = $variables->orden;
+				$direccion = $variables->direccion;
+				$filtroConsulta .= " ORDER BY '".$orden."' ".$direccion." ";
+			}
+		}
+		/* ... */
+		$clienteCompleto = DB::connection($this->connection)->select("SELECT (SELECT TOP 1 TELETELEFONO FROM [TELEFON] WHERE TELECODIGO = ClientesTabla.CliCodigo) AS Telefono, * FROM ClientesTabla ".$filtroConsulta." ;");
 		return $clienteCompleto;
 	}
 	public function datosCliente($CliCodigo){

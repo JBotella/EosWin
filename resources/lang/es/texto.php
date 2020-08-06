@@ -73,6 +73,7 @@ return [
 		'amortizaciones' => 'Amortizaciones',
 		'libros_oficiales' => 'Libros oficiales',
 		'impuestos' => 'Impuestos',
+		'utilidades' => 'Utilidades',
 	],
 /* -*****- Dashboard -*****- */
 	'dashboard' => [

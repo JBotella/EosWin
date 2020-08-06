@@ -13,55 +13,41 @@
 		<div class="barraOpcionesLista">
 			<div class="row justify-content-end">
 				<div class="lineaBuscador order-1 order-sm-1 order-md-2 order-lg-2 order-xl-2 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-5">
-					@include('includes.complementos.buscador')
+					@include('includes.complementos.buscador',['nLista'=>0])
 				</div>
 			</div>
 		</div>
 		<div class="contenidoSeccion">
 			<div class="seccion-responsive">
-			
 				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
 				<div class="table-responsive" id="contenido_0">
 					<table class="table table-striped table-fixed" id="tabla">
-						<thead id="cabeceraLista_0" class="thead-th-ocultos">
+						<thead id="cabeceraLista_0" class="thead-th-ocultos" data-orden="ProvCodigo" data-direccion="ASC" data-ruta="{{ route('listaProveedores', ':variables') }}">
 							<tr>
-								<th scope="col" id="0">@lang('texto.tabla_proveedores.codigo')</th>
-								<th scope="col" id="1">@lang('texto.tabla_proveedores.nombre')</th>
-								<th scope="col" id="2">@lang('texto.tabla_proveedores.nif')</th>
-								<th scope="col" id="3">@lang('texto.tabla_proveedores.telefono')</th>
-								<th scope="col" id="4">@lang('texto.tabla_proveedores.email')</th>
+								<th scope="col" data-orden="ProvCodigo">@lang('texto.tabla_proveedores.codigo')</th>
+								<th scope="col" data-orden="ProvNombre">@lang('texto.tabla_proveedores.nombre')</th>
+								<th scope="col" data-orden="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
+								<th scope="col" data-orden="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
+								<th scope="col" data-orden="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
 								<th scope="col" class="tdBtnAcciones"></th>
 							</tr>
 						</thead>
-						<tbody id="docuCont_0"></tbody>
+						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>
 					</table>
 				</div>
-				
 			</div>
 		</div>
 	</div>
 	<script>
-		function cargaListado(){
-			var ruta = '{{ route("listaProveedores") }}';
-			loaderGrafico('#docuCont_0');
-			$('#docuCont_0').load(ruta, function(){
-				mostrarThCabecera(0);
-				cargaBuscador();
-			});
+		function listar(idLista,desde){
+			var busqueda = $('#busqueda_'+idLista).val();
+			var orden = $('#cabeceraLista_'+idLista).data('orden');
+			var direccion = $('#cabeceraLista_'+idLista).data('direccion');
+			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda }; 
+			cargaListado(idLista,variables,desde);
 		}
 		$(document).ready(function(){
-			cargaListado();
+			listar(0,0);
 		});
-		/* Orden javascript */
-		$('#tabla thead tr th').click(function(){
-			sortTable('tabla',this.id);
-		});
-		/* Buscador javascript */
-		function cargaBuscador(){
-			$("#busqueda").on("keyup", function () {
-				var busqueda = $("#busqueda").val();
-				resaltaBusqueda(busqueda,'#tabla tbody','.fila');
-			});
-		}
 	</script>
 @endsection

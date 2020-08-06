@@ -1227,6 +1227,10 @@ body {
 	padding:0.5rem;
 	font-size:0.85rem;
 	transition:.3s;
+	padding-right:1rem;
+}
+.table thead th[data-orden] {
+	cursor:pointer;
 }
 	.thead-th-ocultos th {
 		color:rgba(0,0,0,0)!important;	
@@ -1293,6 +1297,9 @@ body {
 				display:block;
 				margin-bottom:0.2rem;
 			}
+	.flechaOrdenTh {
+		margin-left:0.5rem;
+	}
 	
 /* Redefinimos la table-responsive y el table-fixed */
 .table-responsive {
