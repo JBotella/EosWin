@@ -33,6 +33,7 @@
 								<th scope="col" class="tdBtnAcciones"></th>
 							</tr>
 						</thead>
+						<input type="hidden" id="ordenLista" value="CliCodigo_ORDEN_DESC">
 						<tbody id="docuCont_0"></tbody>
 					</table>
 				</div>
@@ -43,6 +44,8 @@
 	<script>
 		function cargaListado(){
 			var ruta = '{{ route("listaClientes") }}';
+			var orden = $('#ordenLista').val();
+			var busqueda = $('#busqueda').val();
 			loaderGrafico('#docuCont_0');
 			$('#docuCont_0').load(ruta, function(){
 				mostrarThCabecera(0);
