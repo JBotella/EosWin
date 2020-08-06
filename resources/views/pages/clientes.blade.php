@@ -24,12 +24,13 @@
 					<table class="table table-striped table-fixed" id="tabla">
 						<thead id="cabeceraLista_0" class="thead-th-ocultos" data-orden="CliCodigo" data-direccion="ASC" data-ruta="{{ route('listaClientes', ':variables') }}">
 							<tr>
+								<th scope="col" class="thBtnAcciones"><input type="checkbox" /></th>
 								<th scope="col" data-orden="CliCodigo">@lang('texto.tabla_clientes.codigo')</th>
 								<th scope="col" data-orden="CliNombre">@lang('texto.tabla_clientes.nombre')</th>
 								<th scope="col" data-orden="CliCif">@lang('texto.tabla_clientes.nif')</th>
 								<th scope="col" data-orden="Telefono">@lang('texto.tabla_clientes.telefono')</th>
 								<th scope="col" data-orden="CliEMail">@lang('texto.tabla_clientes.email')</th>
-								<th scope="col" class="tdBtnAcciones"></th>
+								{{--<th scope="col" class="thBtnAcciones">@lang('texto.accion')</th>--}}
 							</tr>
 						</thead>
 						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>

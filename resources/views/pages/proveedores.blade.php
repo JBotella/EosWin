@@ -29,7 +29,7 @@
 								<th scope="col" data-orden="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
 								<th scope="col" data-orden="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
 								<th scope="col" data-orden="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
-								<th scope="col" class="tdBtnAcciones"></th>
+								<th scope="col" class="tdBtnAcciones">@lang('texto.accion')</th>
 							</tr>
 						</thead>
 						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>

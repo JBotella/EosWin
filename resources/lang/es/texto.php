@@ -59,6 +59,7 @@ return [
 	'orden' => 'Orden',
 	'volver' => 'Volver',
 	'atras' => 'Atrás',
+	'accion' => 'Acción',
 /* -*****- Menú nav lateral -*****- */
 	'sidebar_nav' => [
 		'dashboard' => 'Dashboard',

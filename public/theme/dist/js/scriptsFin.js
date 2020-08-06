@@ -256,6 +256,9 @@ $('th').click(function (){
 		var ordenActual = $('#'+idLista).data('orden');
 		var direccionActual = $('#'+idLista).data('direccion');
 		$('.flechaOrdenTh').remove();
+		console.log(obj);
+		$('th').removeClass('thResaltado');
+		
 		if(orden == ordenActual){
 			$('#'+idLista).data('orden', orden);
 			$('#'+idLista).data('direccion', dirOrdenOpuesta(direccionActual));
@@ -270,6 +273,7 @@ $('th').click(function (){
 		var obj = this;
 			$(obj).append(flecha);
 		setTimeout(function(){
+			$(obj).addClass('thResaltado');
 			listar(nLista);
 		},300);
 	}
