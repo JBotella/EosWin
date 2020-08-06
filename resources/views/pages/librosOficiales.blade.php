@@ -2,6 +2,7 @@
 @section('content')
 	@php
 		$extrabar = 'oculta';
+		$rutaLink = 'libroOficial';
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion">
@@ -23,28 +24,28 @@
 								@slot('icono','')
 								@slot('nombre',trans('texto.libros_oficiales.compras.libro_oficial_compras.nombre'))
 								@slot('resumen',trans('texto.libros_oficiales.compras.libro_oficial_compras.resumen'))
-								@slot('link',['ruta' => 'librosOficialesListado', 'id' => 'libro-registro-compras-gastos'])
+								@slot('link',['ruta' => $rutaLink, 'id' => 'libro-registro-compras-gastos'])
 							@endcomponent
 							@component('components.tarjetaLibrosOficiales')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('texto.libros_oficiales.compras.libro_oficial_gastos.nombre'))
 								@slot('resumen',trans('texto.libros_oficiales.compras.libro_oficial_gastos.resumen'))
-								{{-- @slot('link',['ruta' => 'librosOficialesListado', 'id' => 'libro-gastos']) --}}
+								@slot('link',['ruta' => $rutaLink, 'id' => 'libro-gastos'])
 							@endcomponent
 							@component('components.tarjetaLibrosOficiales')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('texto.libros_oficiales.compras.resumen_iva_soportado.nombre'))
 								@slot('resumen',trans('texto.libros_oficiales.compras.resumen_iva_soportado.resumen'))
-								@slot('link','resumen_iva_soportado')
+								@slot('link',['ruta' => $rutaLink, 'id' => 'resumen-iva-soportado'])
 							@endcomponent
 							@component('components.tarjetaLibrosOficiales')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('texto.libros_oficiales.compras.libro_facturas_recibidas.nombre'))
 								@slot('resumen',trans('texto.libros_oficiales.compras.libro_facturas_recibidas.resumen'))
-								@slot('link','libro_facturas_recibidas')
+								@slot('link',['ruta' => $rutaLink, 'id' => 'libro-facturas-recibidas'])
 							@endcomponent
 						</div>
 					</div>

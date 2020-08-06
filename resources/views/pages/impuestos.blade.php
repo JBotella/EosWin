@@ -2,6 +2,7 @@
 @section('content')
 	@php
 		$extrabar = 'oculta';
+		$rutaLink = 'impuestosFormulario';
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion">
@@ -23,42 +24,42 @@
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 111')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_111'))
-								@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-111'])
+								@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-111'])
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 115')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_115'))
-								@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-115'])
+								@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-115'])
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 123')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_123'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-123'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-123'])--}}
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 130')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_130'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-130'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-130'])--}}
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 131')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_131'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-131'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-131'])--}}
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 303')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_303'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-303'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-303'])--}}
 							@endcomponent
 						</div>
 					</div>
@@ -73,42 +74,42 @@
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 180')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_180'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-180'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-180'])--}}
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-azulAnalogo')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 190')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_190'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-190'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-190'])--}}
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-azulAnalogo')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 340')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_340'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-340'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-340'])--}}
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-azulAnalogo')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 347')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_347'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-347'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-347'])--}}
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-azulAnalogo')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 349')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_349'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-349'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-349'])--}}
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-azulAnalogo')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.modelos.modelo').' 390')
 								@slot('resumen',trans('texto.impuestos.modelos.resumen_390'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-390'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-390'])--}}
 							@endcomponent
 						</div>
 					</div>
@@ -123,14 +124,14 @@
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.registro_inmediato_facturas_recibidas.nombre'))
 								@slot('resumen',trans('texto.impuestos.registro_inmediato_facturas_recibidas.resumen'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-regifr'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-regifr'])--}}
 							@endcomponent
 							@component('components.tarjetaImpuestos')
 								@slot('class','estilo-tarjeta-moradoAnalogo')
 								@slot('icono','')
 								@slot('nombre',trans('texto.impuestos.registro_inmediato_facturas_expedidas.nombre'))
 								@slot('resumen',trans('texto.impuestos.registro_inmediato_facturas_expedidas.resumen'))
-								{{--@slot('link',['ruta' => 'impuestosFormulario', 'id' => 'modelo-regife'])--}}
+								{{--@slot('link',['ruta' => $rutaLink, 'id' => 'modelo-regife'])--}}
 							@endcomponent
 						</div>
 					</div>

@@ -7,7 +7,7 @@ class LibrosOficialesController extends Controller
     public function librosOficiales(){
 		return view('pages.librosOficiales');
 	}
-	public function librosOficialesListado($id){
+	public function libroOficial($id){
 		return view('pages.librosOficiales.listado', ['id' => $id]);
 	}
 }

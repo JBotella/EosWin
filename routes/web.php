@@ -44,10 +44,11 @@ Route::group(['middleware' => 'auth'], function(){
 	
 	/* Libros Oficiales */
 	Route::get('libros-oficiales', 'LibrosOficialesController@librosOficiales')->name('librosOficiales');
+		Route::get('libros-oficiales/{id}', 'LibrosOficialesController@libroOficial')->name('libroOficial');
 	
 	/* Impuestos */
 	Route::get('impuestos', 'ImpuestosController@impuestos')->name('impuestos');
-		Route::get('impuestos/formulario/{id}', 'ImpuestosController@impuestosFormulario')->name('impuestosFormulario');
+		Route::get('impuestos/{id}', 'ImpuestosController@impuestosFormulario')->name('impuestosFormulario');
 	
 	
 	

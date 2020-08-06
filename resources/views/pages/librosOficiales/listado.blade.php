@@ -11,13 +11,9 @@
 			</div>
 		</div>
 		
-		@include('pages.librosOficiales.listados.'.$id.'')
+		
 		
 	</div>
 	<script>
-		/*$(document).ready(function(){
-			var nombreFormulario = $('#nombreFormulario').data('formulario');
-			$('#nombreCabecera').html(nombreFormulario);
-		});*/
 	</script>
 @endsection
