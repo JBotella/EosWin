@@ -7,10 +7,11 @@ class Proveedor extends Model
 {
     protected $connection= 'sqlsrv2';
     protected $table = 'PROVEEDORESTABLA';
+	
 	public function listadoCompletoProveedores($variables = NULL){
 		$filtroConsulta = '';
 		$proveedor = new Proveedor();
-		/* Variables de consulta */
+		/* Variables de filtro */
 		if(isset($variables)){
 			$variables = json_decode($variables);
 			if(isset($variables->busqueda)){

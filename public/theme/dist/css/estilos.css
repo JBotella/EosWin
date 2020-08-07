@@ -656,11 +656,8 @@ body {
 		transition:0.3s;
 	}
 	@media(max-width: 768px){
-		.cabeceraSeccion { padding:1rem 1rem; }
-		.seccion-responsive { padding:1rem 1rem; }
 	}
 	@media(max-width:992px){
-		
 	}
 
 /* -----|||||----- ************* -----|||||----- */
@@ -1009,7 +1006,7 @@ body {
 	position:relative;
 	opacity:1;
 	transition:0.3s;
-	margin:0rem -1rem;
+	margin:0rem -1.5rem;
 }
 	.contenedorFicha {
 		width:100%;
@@ -1109,7 +1106,7 @@ body {
 }
 	.contenedorFormularioInt {
 		width:100%;
-		padding:1rem 1rem;
+		padding:1rem 1.5rem;
 		background-color:var(--blanco);
 		/*background-color:var(--blanco);
 		box-shadow:-1px 1px 10px 0px var(--grisMasClaro), 1px 1px 10px 0px var(--grisMasClaro);*/
@@ -1140,7 +1137,7 @@ body {
 				box-shadow:none;
 				box-shadow:0px 4px 5px -4px var(--grisMasClaro);
 				box-shadow:none;
-				padding:0.2rem 0.5rem;
+				padding:0.2rem 0rem;
 				border-bottom:solid 1px var(--principalMasClaro);
 			}
 				.categoriaBloqueFormulario:first-letter {
@@ -1195,11 +1192,7 @@ body {
 	margin-top:1rem;
 	margin-bottom:0rem;
 }
-@media(max-width: 768px){
-	.barraOpcionesLista {
-		padding:0px 0rem;
-	}
-}
+
 /* Buscador */
 .lineaBuscador { width:100%; }
 	.lineaBuscador input {
@@ -1231,6 +1224,12 @@ body {
 			background-color:var(--principalRojoOpuesto);
 			color:var(--grisMasClaro);
 		}
+	.alertaBusqueda {
+		transition:0.3s;
+		font-size:0.80rem;
+		font-style:italic;
+		color:var(--principalRojoOpuesto);
+	}
 
 /* -----|||||----- ********** -----|||||----- */
 /* -----|||||----- * Tablas * -----|||||----- */
@@ -1248,6 +1247,7 @@ body {
 	font-weight:600;
 	padding:0.3rem 0.5rem;
 	box-shadow:0px -1px 0px var(--principalMasClaro), 0px 1px 0px var(--principalMasClaro);
+	box-shadow:1px 5px 5px -3px var(--principalMasClaro), 0px -1px 0px var(--principalMasClaro), 0px 1px 0px var(--principalMasClaro);
 }
 .table thead th[data-orden] {
 	cursor:pointer;
@@ -1427,7 +1427,7 @@ body {
 /* -----|||||----- ************ -----|||||----- */
 
 ::-webkit-scrollbar {
-	width:12px;
+	width:10px;
 	height:15px;
 }
 ::-webkit-scrollbar-track {
@@ -1441,6 +1441,7 @@ body {
 	background-color:var(--principalTrans);
 	border-radius:10px;
 	border:0.1rem solid rgba(0, 0, 0, 0);
+	border-right:0rem solid rgba(0, 0, 0, 0);
 	background-clip: padding-box;
 	box-shadow:inset 0px 0px 2px var(--principalTrans);
 }

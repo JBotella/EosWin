@@ -10,7 +10,7 @@ class Cliente extends Model
 	
 	public function listadoCompletoClientes($variables = NULL){
 		$filtroConsulta = '';
-		/* Variables de consulta */
+		/* Variables de filtro */
 		if(isset($variables)){
 			$variables = json_decode($variables);
 			if(isset($variables->busqueda)){

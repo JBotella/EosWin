@@ -60,6 +60,7 @@ return [
 	'volver' => 'Volver',
 	'atras' => 'Atrás',
 	'accion' => 'Acción',
+	'min_busqueda' => 'Introduzca :num o más caracteres para la búsqueda',
 /* -*****- Menú nav lateral -*****- */
 	'sidebar_nav' => [
 		'dashboard' => 'Dashboard',

@@ -191,7 +191,7 @@ function buscarLista(nLista){
 	if(busqueda.length>=3){
 		listar(nLista);
 	}else{
-		$('#alertaBusqueda_'+nLista).html('Introduzca 3 o más caracteres para la búsqueda');
+		$('#alertaBusqueda_'+nLista).html($('#alertaBusqueda_'+nLista).data('min-busqueda'));
 	}
 }
 

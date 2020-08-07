@@ -10,10 +10,7 @@
 		@component('components.seccionFormulario')
 					
 			<div class="accionesFicha">
-				<a class="btnAccionFicha btnAccion" href="{{route('clientes')}}">
-					<i class="fas fa-arrow-circle-left btnAtras mr-2" title="@lang('texto.volver')"></i>
-					<span>@lang('texto.volver')</span>
-				</a>
+				@include('includes.complementos.botonLinkVolver', ['ruta' => route('clientes')])
 			</div>
 			
 			<div class="contenidoFormulario">

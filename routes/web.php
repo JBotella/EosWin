@@ -19,6 +19,10 @@ Route::get('logout', 'Auth\LoginController@logout');
 /* ----- Filtrado por login auth ----- */
 Route::group(['middleware' => 'auth'], function(){
 	
+	/* -------------- */
+	/* LINKS SIDE BAR */
+	/* -------------- */
+	
 	/* Dashboard */
 	Route::get('/', 'DashboardController@dashboard')->name('dashboard');
 
@@ -40,8 +44,6 @@ Route::group(['middleware' => 'auth'], function(){
 		// Ver Proveedor (Asíncrona)
 		Route::get('verProveedor/{id}', 'ProveedoresController@verProveedor')->name('verProveedor');
 	
-	
-	
 	/* Libros Oficiales */
 	Route::get('libros-oficiales', 'LibrosOficialesController@librosOficiales')->name('librosOficiales');
 		Route::get('libros-oficiales/{id}', 'LibrosOficialesController@libroOficial')->name('libroOficial');
@@ -53,10 +55,18 @@ Route::group(['middleware' => 'auth'], function(){
 	/* Utilidades */
 	Route::get('utilidades', 'UtilidadesController@utilidades')->name('utilidades');
 	
+	/* ------------- */
+	/* LINKS NAV BAR */
+	/* ------------- */
 	
-	/* ----------------- */
+	/* Configuracion */
+	Route::get('configuracion', 'ConfiguracionController@configuracion')->name('configuracion');
+	
+	/* -------- */
+	/* EXTRABAR */
+	/* -------- */
+	
 	/* Buscador ExtraBar */
-	/* ----------------- */
 	Route::get('buscadorExtraBar', function(){
 		return view('includes.complementos.buscadorExtraBar');
 	})->name('buscadorExtraBar');
@@ -64,6 +74,7 @@ Route::group(['middleware' => 'auth'], function(){
 	/* ------- */
 	/* SIDEBAR */
 	/* ------- */
+	
 	Route::get('menu_plegado/{plegado}','GeneralController@menuPlegado')->name('menu_plegado');
 	
 });

@@ -9,7 +9,6 @@ class ProveedoresController extends Controller
 		return view('pages.proveedores');
 	}
 	public function listaProveedores($variables){
-		//$listado = Proveedor::get();
 		$proveedores = new Proveedor();
 		$listado = $proveedores->listadoCompletoProveedores($variables);
 		$rutaVer = route("verProveedor", [":id"]);
