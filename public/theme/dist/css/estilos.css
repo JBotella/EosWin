@@ -758,13 +758,13 @@ body {
 				border-radius:0.1rem;
 			}
 				.cuadroCheckSel {
-					background-color:var(--principalAzulAnalogo);
+					background-color:var(--principalAzulAnalogo)!important;
 				}
 				.chkSel {
-					background-color:var(--principalMasClaro);
+					background-color:var(--principalMasClaro)!important;
 				}
 				.chkIcoSel {
-					color:var(--principalOscuro);
+					color:var(--principalOscuro)!important;
 				}
 	/* Tarjetas Cifras */
 	.estilo-tarjeta-principal {
@@ -977,7 +977,7 @@ body {
 	color:var(--grisMedio);
 }
 	.tituloColumna span {
-		align-self: flex-end;
+		align-self:flex-end;
 	}
 			/* Para usos en tarjetas link de modelos de formulario */
 			.tarjeta-nombre {
@@ -1110,6 +1110,7 @@ body {
 	.contenedorFormularioInt {
 		width:100%;
 		padding:1rem 1rem;
+		background-color:var(--blanco);
 		/*background-color:var(--blanco);
 		box-shadow:-1px 1px 10px 0px var(--grisMasClaro), 1px 1px 10px 0px var(--grisMasClaro);*/
 	}
@@ -1132,6 +1133,15 @@ body {
 				height:28px;
 				margin-top:calc(0.2rem + 28px)!important;
 				margin-bottom:0.2rem!important;
+				
+				font-size:1rem;
+				border:0;
+				background-color:transparent;
+				box-shadow:none;
+				box-shadow:0px 4px 5px -4px var(--grisMasClaro);
+				box-shadow:none;
+				padding:0.2rem 0.5rem;
+				border-bottom:solid 1px var(--principalMasClaro);
 			}
 				.categoriaBloqueFormulario:first-letter {
 					font-size:0.95rem;
@@ -1141,11 +1151,12 @@ body {
 				margin-bottom:1.5rem;
 			}
 				.itemFormulario {
-					font-size:0.85rem;
+					font-size:0.80rem;
 					margin-bottom:0rem;
 				}
 					.nombreItemFormulario {
 						font-weight:bold;
+						font-weight:600;
 						margin-bottom:0.2rem;
 						height:28px;
 						display:flex;
@@ -1169,8 +1180,8 @@ body {
 							min-height:184px;
 						}
 						.valorItemFormulario input, select, textarea {
-							border:solid 1px var(--principalMasClaro)!important;
-							border-bottom:solid 1px var(--principalClaro)!important;
+							border:solid 1px var(--grisMasClaro)!important;
+							border-bottom:solid 1px var(--grisMasClaro)!important;
 						}
 
 /* -----|||||----- ********************* -----|||||----- */
@@ -1226,20 +1237,23 @@ body {
 /* -----|||||----- ********** -----|||||----- */
 
 .table thead th {
-    vertical-align:bottom;
+    vertical-align:middle;
 	border:solid 1px var(--principalMasClaro);
 	background:var(--blanco);
 	color:var(--grisOscuro);
 	font-size:0.85rem;
 	transition:.3s;
 	padding-right:1rem;
-	font-weight:normal;
 	font-weight:bold;
+	font-weight:600;
 	padding:0.3rem 0.5rem;
 	box-shadow:0px -1px 0px var(--principalMasClaro), 0px 1px 0px var(--principalMasClaro);
 }
 .table thead th[data-orden] {
 	cursor:pointer;
+}
+.table thead th .cuadroCheck, .table tbody td .cuadroCheck {
+	margin:auto;
 }
 	.thead-th-ocultos th {
 		color:rgba(255,255,255,0)!important;
@@ -1300,13 +1314,14 @@ body {
 	.tdBtnAcciones, .thBtnAcciones {
 		width:30px;
 		text-align:center;
+		cursor:pointer!important;
+		vertical-align:middle!important;
 	}
 		.tdBtnAccion {
 			display:inline-block;
 			font-size:1rem!important;
 			width:20px;
 			margin-left:5px;
-			cursor:pointer;
 		}
 		.tdConfirmaAccion {
 			text-align:right;
@@ -1319,6 +1334,7 @@ body {
 		float:right;
 		margin-left:0.5rem;
 		font-size:0.8rem;
+		margin-top: 0.25rem;
 	}
 	.thResaltado {
 		background-color:var(--principalMasClaro)!important;
@@ -1327,6 +1343,13 @@ body {
 	
 	.thead-th-ocultos .thResaltado {
 		background-color:rgba(255,255,255,0)!important;
+	}
+	.tdLink {
+		color:var(--principalAzulAnalogo)!important;
+		text-decoration:underline;
+	}
+	.tdLink:hover {
+		color:var(--principal)!important;
 	}
 	
 /* Redefinimos la table-responsive */

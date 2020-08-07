@@ -67,39 +67,58 @@ $('.radList').click(function(){
 	$('.'+prefijo+' input').prop('checked',false);
 	$(this).addClass('radSel');
 	$('#'+this.id+' input').prop('checked',true);
+	event.stopImmediatePropagation();
 });
 
 // Seleccionar checkbox list
 $('.chkList').click(function(){
-	var valor = $('#'+this.id+' input').val();
-	var prefijo = this.id.split('_',1)[0];
-	if(!$(this).hasClass('chkSel')){
-		$(this).addClass('chkSel');
-		$('#'+this.id+' input').prop('checked',true);
-		$('#'+this.id+' .cuadroCheck').html('<i class="fas fa-check chkIcoSel"></i>');
-	}else{
-		$(this).removeClass('chkSel');
-		$('#'+this.id+' input').prop('checked',false);
-		$('#'+this.id+' .cuadroCheck').html('');
-	}
+	var obj = this;
+	clickChkList(obj);
 });
+
+// Clicar chkList (Para cargas asíncronas)
+function clickChkList(obj){
+	// Comprobar si se trata de una tabla
+	if(obj.tagName == 'TD') {
+		var tr = obj.closest('TR');
+	}
+	var valor = $('#'+obj.id+' input').val();
+	var prefijo = obj.id.split('_',1)[0];
+	if(!$(obj).hasClass('chkSel')){
+		$(obj).addClass('chkSel');
+		if(tr){ $(tr).addClass('chkSel'); }
+		$('#'+obj.id+' input').prop('checked',true);
+		$('#'+obj.id+' .cuadroCheck').html('<i class="fas fa-check chkIcoSel"></i>');
+	}else{
+		$(obj).removeClass('chkSel');
+		if(tr){ $(tr).removeClass('chkSel'); }
+		$('#'+obj.id+' input').prop('checked',false);
+		$('#'+obj.id+' .cuadroCheck').html('');
+	}
+	event.stopImmediatePropagation();
+}
 
 // Seleccionar todo
 $('.cuadroCkeckSelTodos').click(function(){
+	// Comprobar si se trata de una tabla
+	if(this.closest('TH')) {
+		var tabla = this.closest('TABLE');
+	}
 	var id = $(this).children('.cuadroCheck').attr('id');
 	var checked = $("#"+id).data('checked');
-	
 	if(checked == 'checked'){ // Desmarcar (Lleno)
 		$("#"+id).data('checked','');
 		$("#"+id).html('');
 		$('.'+id).children('.cuadroCheck').html('');
 		$('.'+id).removeClass('chkSel');
+		if(tabla){ $(tabla).find("tr").removeClass('chkSel'); }
 		
 	}else{ // Marcar (Vacio)
 		$("#"+id).data('checked','checked');
 		$("#"+id).html('<i class="fas fa-check chkIcoSel"></i>');
 		$('.'+id).children('.cuadroCheck').html('<i class="fas fa-check chkIcoSel"></i>');
 		$('.'+id).addClass('chkSel');
+		if(tabla){ $(tabla).find("tr").addClass('chkSel'); }
 	}
 });
 
@@ -401,7 +420,7 @@ function cargaListadoAutomatico(){
 			/* N */$('#tablaReg').append('<input id="vDesde" type="hidden" value="'+vDesde+'">');
 		}
 		//
-		tm=setTimeout(function(){
+		tm = setTimeout(function(){
 			if($('#docuCont'+vDesde).is(':empty')) {
 				cargaListado(vDesde,vLimite);
 			}else{

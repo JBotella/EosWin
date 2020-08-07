@@ -16,6 +16,7 @@
 				
 					<div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-0" id="declaraciones_trimestrales">
 						<div class="tituloColumna">
+							<span><i class="fas fa-shopping-cart mr-2 principal"></i></span>
 							<span>@lang('texto.libros_oficiales.compras.compras')</span>
 						</div>
 						<div class="row m-0">
@@ -52,6 +53,7 @@
 						
 					<div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-0" id="declaraciones_informativas">
 						<div class="tituloColumna">
+							<span><i class="fas fa-chart-line mr-2 azulAnalogo"></i></span>
 							<span>@lang('texto.libros_oficiales.ventas.ventas')</span>
 						</div>
 						<div class="row m-0">
@@ -81,6 +83,7 @@
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-0" id="suministro_inmediato_informacion">
 						<div class="tituloColumna">
+							<span><i class="fas fa-ellipsis-h mr-2 moradoAnalogo"></i></span>
 							<span>@lang('texto.libros_oficiales.otros.otros')</span>
 						</div>
 						<div class="row m-0">

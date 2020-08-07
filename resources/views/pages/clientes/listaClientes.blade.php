@@ -1,11 +1,14 @@
 @foreach($listado as $item)
 	<tr class="trClicable fila" id="{{$item->CliCodigo}}" onclick="abrirLinea('{{$item->CliCodigo}}','{{$rutaAbrir}}')">
-		<td class="tdBtnAcciones"><input type="checkbox" /></td>
+		<td class="tdBtnAcciones chkList checkClientes" id="checkClientes_{{$item->CliCodigo}}" onclick="clickChkList(this)">
+			<div class="cuadroCheck"></div>
+			<input type="checkbox" class="d-none" value="{{$item->CliCodigo}}" />
+		</td>
 		<td>{{$item->CliCodigo}}</td>
 		<td>{{$item->CliNombre}}</td>
 		<td >{{$item->CliCif}}</td>
 		<td>{{$item->Telefono}}</td>
-		<td class="azulAnalogo" style="text-decoration:underline;">{{$item->CliEMail}}</td>
+		<td class="tdLink">{{$item->CliEMail}}</td>
 		{{--<td class="tdBtnAcciones">
 			<i class="fas fa-trash tdBtnAccion btnBorrar btnAccion tdBorrar" id="tdBorrar_{{$item->CliCodigo}}" onclick="preguntaBorrarLinea('{{$item->CliCodigo}}')" title="@lang('texto.borrar')"></i>
 			<div class="tdConfirmaAccion d-none" id="tdConfirmarBorrar_{{$item->CliCodigo}}">

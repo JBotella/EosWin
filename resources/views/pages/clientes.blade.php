@@ -24,7 +24,13 @@
 					<table class="table table-striped table-fixed" id="tabla">
 						<thead id="cabeceraLista_0" class="thead-th-ocultos" data-orden="CliCodigo" data-direccion="ASC" data-ruta="{{ route('listaClientes', ':variables') }}">
 							<tr>
-								<th scope="col" class="thBtnAcciones"><input type="checkbox" /></th>
+							
+								<th scope="col" class="thBtnAcciones">
+									<div class="cuadroCkeckSelTodos">
+										<div class="cuadroCheck" id="checkClientes" data-checked="" title="@lang('texto.dashboard.seleccionar_todas')"></div>
+									</div>
+								</th>
+								
 								<th scope="col" data-orden="CliCodigo">@lang('texto.tabla_clientes.codigo')</th>
 								<th scope="col" data-orden="CliNombre">@lang('texto.tabla_clientes.nombre')</th>
 								<th scope="col" data-orden="CliCif">@lang('texto.tabla_clientes.nif')</th>

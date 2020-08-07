@@ -16,6 +16,7 @@
 				
 					<div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-0" id="declaraciones_trimestrales">
 						<div class="tituloColumna">
+							<span><i class="fas fa-calendar-week mr-2 principal"></i></span>
 							<span>@lang('texto.impuestos.declaraciones_trimestrales')</span>
 						</div>
 						<div class="row m-0">
@@ -66,6 +67,7 @@
 						
 					<div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-0" id="declaraciones_informativas">
 						<div class="tituloColumna">
+							<span><i class="far fa-calendar mr-2 azulAnalogo"></i></span>
 							<span>@lang('texto.impuestos.declaraciones_informativas')</span>
 						</div>
 						<div class="row m-0">
@@ -116,6 +118,7 @@
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-0" id="suministro_inmediato_informacion">
 						<div class="tituloColumna">
+							<span><i class="fas fa-file-invoice-dollar mr-2 moradoAnalogo"></i></span>
 							<span>@lang('texto.impuestos.s_i_i') - @lang('texto.impuestos.suministro_inmediato_informacion')</span>
 						</div>
 						<div class="row m-0">
