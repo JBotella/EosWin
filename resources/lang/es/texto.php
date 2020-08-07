@@ -60,7 +60,12 @@ return [
 	'volver' => 'Volver',
 	'atras' => 'Atrás',
 	'accion' => 'Acción',
+	'buscar' => 'Buscar',
+	'limpiar_busqueda' => 'Limpiar búsqueda',
 	'min_busqueda' => 'Introduzca :num o más caracteres para la búsqueda',
+	'seleccionar' => 'Seleccionar',
+	'seleccionar_todas' => 'Seleccionar todas',
+	'seleccionar_todos' => 'Seleccionar todos',
 /* -*****- Menú nav lateral -*****- */
 	'sidebar_nav' => [
 		'dashboard' => 'Dashboard',
@@ -83,6 +88,7 @@ return [
 		'hoy' => 'Hoy',
 		'amortizaciones_pendientes' => 'Amortizaciones pendientes',
 		'seleccionar_todas' => 'Seleccionar todas',
+		'seleccionar_todos' => 'Seleccionar todos',
 		'contabilizar' => 'Contabilizar',
 		'ingresos' => 'Ingresos',
 		'gastos' => 'Gastos',

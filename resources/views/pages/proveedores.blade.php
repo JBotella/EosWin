@@ -27,7 +27,7 @@
 								
 								<th scope="col" class="thBtnAcciones">
 									<div class="cuadroCkeckSelTodos">
-										<div class="cuadroCheck" id="checkProveedores" data-checked="" title="@lang('texto.dashboard.seleccionar_todos')"></div>
+										<div class="cuadroCheck" id="checkProveedores" data-checked="" title="@lang('texto.seleccionar_todos')"></div>
 									</div>
 								</th>
 							

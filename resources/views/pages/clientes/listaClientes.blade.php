@@ -1,6 +1,7 @@
+<div class="d-none" data-listado-cant="{{count($listado)}}"></div>
 @foreach($listado as $item)
 	<tr class="trClicable fila" id="{{$item->CliCodigo}}" onclick="abrirLinea('{{$item->CliCodigo}}','{{$rutaAbrir}}')">
-		<td class="tdBtnAcciones chkList checkClientes" id="checkClientes_{{$item->CliCodigo}}" onclick="clickChkList(this)">
+		<td class="tdBtnAcciones chkList checkClientes" id="checkClientes_{{$item->CliCodigo}}" onclick="clickChkList(this)" title="@lang('texto.seleccionar')">
 			<div class="cuadroCheck"></div>
 			<input type="checkbox" class="d-none" value="{{$item->CliCodigo}}" />
 		</td>

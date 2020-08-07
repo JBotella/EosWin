@@ -16,6 +16,7 @@ class Proveedor extends Model
 			$variables = json_decode($variables);
 			if(isset($variables->busqueda)){
 				$busqueda = $variables->busqueda;
+				$proveedor = $proveedor->where('ProvCodigo','like','%'.$busqueda.'%')->orWhere('ProvNombre','like','%'.$busqueda.'%')->orWhere('ProvCif','like','%'.$busqueda.'%')->orWhere('ProvTelefono','like','%'.$busqueda.'%')->orWhere('ProvEMail','like','%'.$busqueda.'%');
 			}
 			if(isset($variables->orden) and isset($variables->direccion)){
 				$orden = $variables->orden;
