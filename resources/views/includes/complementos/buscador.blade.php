@@ -12,10 +12,3 @@
 	</div>
 </div>
 <div class="input-group md-form form-sm form-2 pl-0 pt-1 alertaBusqueda" id="alertaBusqueda_{{$nLista}}" data-min-busqueda="@lang('texto.min_busqueda',['num' => 3])"></div>
-<script>
-	function limpiarBusqueda(nLista){
-		$("#busqueda_"+nLista).val('');
-		listar(nLista);
-		$('#alertaBusqueda_'+nLista).empty();
-	}
-</script>

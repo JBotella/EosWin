@@ -163,6 +163,9 @@ $.fn.extend({
 		return nuevoHtml;
 	}
 });
+function resaltaBusquedaListado(busqueda,desde){
+	$(desde).resaltar(busqueda,"resaltarTexto");
+}
 function resaltaBusqueda(busqueda,desde,linea){
 	$(desde+' .resaltarTexto').contents().unwrap(); // Elimina el anterior resaltado
 	if(busqueda.length >= 2){
@@ -189,10 +192,16 @@ function buscarLista(nLista){
 	$('#alertaBusqueda_'+nLista).empty();
 	var busqueda = $('#busqueda_'+nLista).val().trim();
 	if(busqueda.length>=3){
-		listar(nLista);
+		cargarListar(nLista);
 	}else{
 		$('#alertaBusqueda_'+nLista).html($('#alertaBusqueda_'+nLista).data('min-busqueda'));
 	}
+}
+/* Limpiar búsqueda y recargar */
+function limpiarBusqueda(nLista){
+	$("#busqueda_"+nLista).val('');
+	cargarListar(nLista);
+	$('#alertaBusqueda_'+nLista).empty();
 }
 
 /* ----- ************************ ----- */
@@ -290,11 +299,8 @@ $('th').click(function (){
 		}
 		ocultarThCabecera(nLista);
 		var obj = this;
-			$(obj).append(flecha);
-		setTimeout(function(){
-			$(obj).addClass('thResaltado');
-			listar(nLista);
-		},300);
+		$(obj).append(flecha);
+		cargarListar(nLista);
 	}
 });
 function dirOrdenOpuesta(direccion){
@@ -397,6 +403,11 @@ function searchTable(tabla) {
 /* ----- **************** ----- */
 
 function cargaListado(idLista,variables,desde = null){
+	var busqueda = variables['busqueda'];
+	if(busqueda.length < 3){
+		busqueda = '';
+		variables['busqueda'] = '';
+	}
 	var variables = JSON.stringify(variables);
 	var ruta = $('#cabeceraLista_'+idLista).data('ruta');
 	ruta = ruta.replace(':variables', variables);
@@ -405,7 +416,20 @@ function cargaListado(idLista,variables,desde = null){
 	loaderGrafico(contenedorLista);
 	$(contenedorLista).load(ruta, function(){
 		mostrarThCabecera(idLista);
+		// Resalta búsqueda
+		resaltaBusquedaListado(busqueda,contenedorLista);
 	});
+}
+/* Recargar listar */
+function recargarListar(nLista){
+	cargarListar(nLista);
+}
+/* Cargar listar con timeout */
+function cargarListar(nLista){
+	ocultarThCabecera(nLista);
+	setTimeout(function(){
+		listar(nLista);
+	},300);
 }
 
 /* ----- *************** ----- */

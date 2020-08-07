@@ -24,12 +24,18 @@
 					<table class="table table-striped table-fixed" id="tabla">
 						<thead id="cabeceraLista_0" class="thead-th-ocultos" data-orden="ProvCodigo" data-direccion="ASC" data-ruta="{{ route('listaProveedores', ':variables') }}">
 							<tr>
+								
+								<th scope="col" class="thBtnAcciones">
+									<div class="cuadroCkeckSelTodos">
+										<div class="cuadroCheck" id="checkProveedores" data-checked="" title="@lang('texto.dashboard.seleccionar_todos')"></div>
+									</div>
+								</th>
+							
 								<th scope="col" data-orden="ProvCodigo">@lang('texto.tabla_proveedores.codigo')</th>
 								<th scope="col" data-orden="ProvNombre">@lang('texto.tabla_proveedores.nombre')</th>
 								<th scope="col" data-orden="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
 								<th scope="col" data-orden="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
 								<th scope="col" data-orden="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
-								<th scope="col" class="tdBtnAcciones">@lang('texto.accion')</th>
 							</tr>
 						</thead>
 						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>
@@ -40,7 +46,7 @@
 	</div>
 	<script>
 		function listar(idLista,desde){
-			var busqueda = $('#busqueda_'+idLista).val();
+			var busqueda = $('#busqueda_'+idLista).val().trim();
 			var orden = $('#cabeceraLista_'+idLista).data('orden');
 			var direccion = $('#cabeceraLista_'+idLista).data('direccion');
 			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda }; 

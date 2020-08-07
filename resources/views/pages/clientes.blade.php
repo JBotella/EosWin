@@ -47,7 +47,7 @@
 	</div>
 	<script>
 		function listar(idLista,desde){
-			var busqueda = $('#busqueda_'+idLista).val();
+			var busqueda = $('#busqueda_'+idLista).val().trim();
 			var orden = $('#cabeceraLista_'+idLista).data('orden');
 			var direccion = $('#cabeceraLista_'+idLista).data('direccion');
 			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda }; 
