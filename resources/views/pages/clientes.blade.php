@@ -23,8 +23,8 @@
 				
 				<div class="lineaSelectorColumna order-3 order-sm-3 col">
 					@php
-						$columnas = ['2'=>'CliCodigo', '3'=>'CliNombre', '4'=>'CliCif', '5'=>'Telefono', '6'=>'CliEMail'];
-						$visibles = [2,3];
+						$columnas = ['2'=>trans('texto.tabla_clientes.codigo'), '3'=>trans('texto.tabla_clientes.nombre'), '4'=>trans('texto.tabla_clientes.nif'), '5'=>trans('texto.tabla_clientes.telefono'), '6'=>trans('texto.tabla_clientes.email'), '7'=>trans('texto.domicilio_fiscal.domicilio.domicilio'), '8'=>trans('texto.domicilio_fiscal.codigo_postal'), '9'=>trans('texto.domicilio_fiscal.localidad'), '10'=>trans('texto.domicilio_fiscal.provincia')];
+						$visibles = [2,3,4,5,6]; // Provisional (El válido es desde la consulta de las preferencias del cliente)
 					@endphp
 					@include('includes.complementos.selectorColumnasListado',[$columnas,$visibles])
 				</div>
@@ -45,11 +45,15 @@
 										<div class="cuadroCheck" id="checkClientes" data-checked="" title="@lang('texto.seleccionar_todos')"></div>
 									</div>
 								</th>
-								<th scope="col" class="@if(!in_array(2,$visibles)) d-none @endif" data-orden="CliCodigo">@lang('texto.tabla_clientes.codigo')</th>
-								<th scope="col" class="@if(!in_array(3,$visibles)) d-none @endif" data-orden="CliNombre">@lang('texto.tabla_clientes.nombre')</th>
-								<th scope="col" class="@if(!in_array(4,$visibles)) d-none @endif" data-orden="CliCif">@lang('texto.tabla_clientes.nif')</th>
-								<th scope="col" class="@if(!in_array(5,$visibles)) d-none @endif" data-orden="Telefono">@lang('texto.tabla_clientes.telefono')</th>
-								<th scope="col" class="@if(!in_array(6,$visibles)) d-none @endif" data-orden="CliEMail">@lang('texto.tabla_clientes.email')</th>
+								<th class="d-none" scope="col"  data-orden="CliCodigo">@lang('texto.tabla_clientes.codigo')</th>
+								<th class="d-none" scope="col"  data-orden="CliNombre">@lang('texto.tabla_clientes.nombre')</th>
+								<th class="d-none" scope="col"  data-orden="CliCif">@lang('texto.tabla_clientes.nif')</th>
+								<th class="d-none" scope="col"  data-orden="Telefono">@lang('texto.tabla_clientes.telefono')</th>
+								<th class="d-none" scope="col" data-orden="CliEMail">@lang('texto.tabla_clientes.email')</th>
+								<th class="d-none" scope="col" data-orden="CliDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
+								<th class="d-none" scope="col"  data-orden="CliCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
+								<th class="d-none" scope="col"  data-orden="CliCodPostalLocali">@lang('texto.domicilio_fiscal.localidad')</th>
+								<th class="d-none" scope="col"  data-orden="CliCodPostalProvin">@lang('texto.domicilio_fiscal.provincia')</th>
 							</tr>
 						</thead>
 						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>
@@ -63,8 +67,7 @@
 			var busqueda = $('#busqueda_'+idLista).val().trim();
 			var orden = $('#cabeceraLista_'+idLista).data('orden');
 			var direccion = $('#cabeceraLista_'+idLista).data('direccion');
-			var visibles = $('#cabeceraLista_'+idLista).data('visibles');
-			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda, "visibles": visibles }; 
+			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda }; 
 			cargaListado(idLista,variables,desde);
 		}
 		$(document).ready(function(){

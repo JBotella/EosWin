@@ -405,13 +405,31 @@ function searchTable(tabla) {
 /* ----- ****************************************** ----- */
 
 function visibilidadColumna(col,acc){
+	console.log(col+'-'+acc);
 	if(acc == 0){
 		$('td:nth-child('+col+'),th:nth-child('+col+')').addClass('d-none');
 	}else if(acc == 1){
 		$('td:nth-child('+col+'),th:nth-child('+col+')').removeClass('d-none');
 	}
 }
-
+/* Visibilidad de columnas de listado */
+$('.itemColumna').click(function(e){
+	var idColumna = $(this).data('id-columna');
+	if ($('#checkColumna_'+idColumna).is(":checked")){
+		visibilidadColumna(idColumna,1);
+	}else{
+		visibilidadColumna(idColumna,0);
+	}
+	e.stopPropagation();
+});
+/* Carga de columnas visibles */
+function cargarColumnasVisibles(){
+	//$("input:checkbox[name=checkColumna]:checked").each(function(){
+	$(".itemColumna .checkColumna:checked").each(function(){
+		var id = $(this).parent().data('id-columna');
+		visibilidadColumna(id,1);
+	});
+}
 
 /* ----- **************** ----- */
 /* ----- * Carga Listas * ----- */
@@ -430,6 +448,8 @@ function cargaListado(idLista,variables,desde = null){
 	var contenedorLista = $('.contenedorLista[data-lista-id = "'+idLista+'"][data-lista-desde = "'+desde+'"]');
 	loaderGrafico(contenedorLista);
 	$(contenedorLista).load(ruta, function(){
+		// Mostrar columnas visibles
+		cargarColumnasVisibles();
 		// Cargar contador de resultados
 		cargaContadorCabecera(idLista);
 		// Mostrar cabecera de listado
