@@ -1277,9 +1277,12 @@ body {
 		}
 		.listaSelectorAcciones > .dropdown-item:hover, .listaSelectorColumnas > .dropdown-item:hover {
 			color:var(--blanco);
+			width:auto;
 		}
 		.listaSelectorAcciones > .dropdown-item label, .listaSelectorColumnas > .dropdown-item label {
 			margin:0;
+			cursor:pointer;
+			width:100%;
 		}
 		.listaSelectorAcciones > .dropdown-item, .listaSelectorColumnas > .dropdown-item {
 			font-size:inherit;

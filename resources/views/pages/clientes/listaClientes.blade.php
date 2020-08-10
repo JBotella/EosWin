@@ -5,11 +5,11 @@
 			<div class="cuadroCheck"></div>
 			<input type="checkbox" class="d-none" value="{{$item->CliCodigo}}" />
 		</td>
-		<td>{{$item->CliCodigo}}</td>
-		<td>{{$item->CliNombre}}</td>
-		<td>{{$item->CliCif}}</td>
-		<td>{{$item->Telefono}}</td>
-		<td class="tdLink">{{$item->CliEMail}}</td>
+		<td class="@if(!in_array(2,$variables->visibles)) d-none @endif">{{$item->CliCodigo}}</td>
+		<td class="@if(!in_array(3,$variables->visibles)) d-none @endif">{{$item->CliNombre}}</td>
+		<td class="@if(!in_array(4,$variables->visibles)) d-none @endif">{{$item->CliCif}}</td>
+		<td class="@if(!in_array(5,$variables->visibles)) d-none @endif">{{$item->Telefono}}</td>
+		<td class="tdLink @if(!in_array(6,$variables->visibles)) d-none @endif">{{$item->CliEMail}}</td>
 		{{--<td class="tdBtnAcciones">
 			<i class="fas fa-trash tdBtnAccion btnBorrar btnAccion tdBorrar" id="tdBorrar_{{$item->CliCodigo}}" onclick="preguntaBorrarLinea('{{$item->CliCodigo}}')" title="@lang('texto.borrar')"></i>
 			<div class="tdConfirmaAccion d-none" id="tdConfirmarBorrar_{{$item->CliCodigo}}">

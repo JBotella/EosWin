@@ -13,7 +13,8 @@ class ClientesController extends Controller
 		$listado = $clientes->listadoCompletoClientes($variables);
 		$rutaVer = route("verCliente", [":id"]);
 		$rutaAbrir = route("cliente", [":id"]);
-		return view('pages.clientes.listaClientes', ['listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir]);
+		$variables = json_decode($variables);
+		return view('pages.clientes.listaClientes', ['listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir, 'variables' => $variables]);
 	}
     public function listaClientesMin(){
 		$clientes = new Cliente();

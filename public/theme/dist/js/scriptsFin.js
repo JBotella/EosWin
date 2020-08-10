@@ -404,8 +404,12 @@ function searchTable(tabla) {
 /* ----- * Ocultar o mostrar columnas de la tabla * ----- */
 /* ----- ****************************************** ----- */
 
-function visibilidadColumna(col){
-	$('td:nth-child('+col+'),th:nth-child('+col+')').addClass('d-none');
+function visibilidadColumna(col,acc){
+	if(acc == 0){
+		$('td:nth-child('+col+'),th:nth-child('+col+')').addClass('d-none');
+	}else if(acc == 1){
+		$('td:nth-child('+col+'),th:nth-child('+col+')').removeClass('d-none');
+	}
 }
 
 
