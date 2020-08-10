@@ -60,12 +60,16 @@ return [
 	'volver' => 'Volver',
 	'atras' => 'Atrás',
 	'accion' => 'Acción',
+	'acciones' => 'Acciones',
+	'columna' => 'Columna',
+	'columnas' => 'Columnas',
 	'buscar' => 'Buscar',
 	'limpiar_busqueda' => 'Limpiar búsqueda',
 	'min_busqueda' => 'Introduzca :num o más caracteres para la búsqueda',
 	'seleccionar' => 'Seleccionar',
 	'seleccionar_todas' => 'Seleccionar todas',
 	'seleccionar_todos' => 'Seleccionar todos',
+	'seleccionar_todo' => 'Seleccionar todo',
 /* -*****- Menú nav lateral -*****- */
 	'sidebar_nav' => [
 		'dashboard' => 'Dashboard',

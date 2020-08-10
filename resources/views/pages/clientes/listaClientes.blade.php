@@ -1,4 +1,4 @@
-<div class="d-none" data-listado-cant="{{count($listado)}}"></div>
+<div class="d-none" id="listado_0" data-listado-cant="{{count($listado)}}"></div>
 @foreach($listado as $item)
 	<tr class="trClicable fila" id="{{$item->CliCodigo}}" onclick="abrirLinea('{{$item->CliCodigo}}','{{$rutaAbrir}}')">
 		<td class="tdBtnAcciones chkList checkClientes" id="checkClientes_{{$item->CliCodigo}}" onclick="clickChkList(this)" title="@lang('texto.seleccionar')">
@@ -7,7 +7,7 @@
 		</td>
 		<td>{{$item->CliCodigo}}</td>
 		<td>{{$item->CliNombre}}</td>
-		<td >{{$item->CliCif}}</td>
+		<td>{{$item->CliCif}}</td>
 		<td>{{$item->Telefono}}</td>
 		<td class="tdLink">{{$item->CliEMail}}</td>
 		{{--<td class="tdBtnAcciones">

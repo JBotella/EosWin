@@ -164,7 +164,9 @@ $.fn.extend({
 	}
 });
 function resaltaBusquedaListado(busqueda,desde){
-	$(desde).resaltar(busqueda,"resaltarTexto");
+	if(busqueda.length >= 3){
+		$(desde).resaltar(busqueda,"resaltarTexto");
+	}
 }
 function resaltaBusqueda(busqueda,desde,linea){
 	$(desde+' .resaltarTexto').contents().unwrap(); // Elimina el anterior resaltado
@@ -398,6 +400,15 @@ function searchTable(tabla) {
   }
 }
 
+/* ----- ****************************************** ----- */
+/* ----- * Ocultar o mostrar columnas de la tabla * ----- */
+/* ----- ****************************************** ----- */
+
+function visibilidadColumna(col){
+	$('td:nth-child('+col+'),th:nth-child('+col+')').addClass('d-none');
+}
+
+
 /* ----- **************** ----- */
 /* ----- * Carga Listas * ----- */
 /* ----- **************** ----- */
@@ -415,10 +426,18 @@ function cargaListado(idLista,variables,desde = null){
 	var contenedorLista = $('.contenedorLista[data-lista-id = "'+idLista+'"][data-lista-desde = "'+desde+'"]');
 	loaderGrafico(contenedorLista);
 	$(contenedorLista).load(ruta, function(){
+		// Cargar contador de resultados
+		cargaContadorCabecera(idLista);
+		// Mostrar cabecera de listado
 		mostrarThCabecera(idLista);
 		// Resalta búsqueda
 		resaltaBusquedaListado(busqueda,contenedorLista);
 	});
+}
+/* Carga contado de resultados en cabecera de sección */
+function cargaContadorCabecera(idLista){
+	var contListado = $('#listado_'+idLista).data('listado-cant');
+	$('#cabCantLista_'+idLista).html('('+contListado+')');
 }
 /* Recargar listar */
 function recargarListar(nLista){
@@ -436,7 +455,7 @@ function cargarListar(nLista){
 /* ----- * Auto Scroll * ----- */
 /* ----- *************** ----- */
 
-/* Listado Automático-Scroll */
+/* Listado Automático-Scroll (Pendiente de implantar) */
 function cargaListadoAutomatico(){
 	if($(window).scrollTop() + $(window).height() > $(document).height() - 50){
 		// Inicio Marcador de variable vDesde

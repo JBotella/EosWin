@@ -257,6 +257,7 @@ body {
 	opacity:0;
 	border:solid 1px var(--principal);
 	background-color:var(--grisOscuro);
+	border-radius:0px;
 }
 	.dropdown-item {
 		padding:0.2rem 0.6rem;
@@ -620,6 +621,12 @@ body {
 	}
 		.cabeceraSeccion span {
 			line-height:0.95rem;
+		}
+		/*.cabeceraSeccion span[id^="cabCantLista_"] {*/
+		.cabeceraSeccion .cabCantLista {
+			margin-left:0.5rem;
+			font-size:0.75rem;
+			color:var(--principalAzulAnalogo);
 		}
 		.cabeceraSeccion .icoCab { color:var(--principal); }
 		.cabeceraSeccion .guionEnCabecera {
@@ -1203,7 +1210,10 @@ body {
 }
 
 /* Buscador */
-.lineaBuscador { width:100%; }
+.lineaBuscador {
+	width:100%;
+	max-width:576px;
+}
 	.lineaBuscador input {
 		font-size:0.85rem;
 		border-left:none;
@@ -1239,6 +1249,69 @@ body {
 		font-style:italic;
 		color:var(--principalRojoOpuesto);
 	}
+	
+/* Selectores en tabla */
+.selectorAcciones, .selectorColumnas {
+	display:flex;
+	align-items:center;
+	float:left;
+	width:100%;
+	height:28px;
+	border:solid 1px var(--grisClaro)!important;
+	background-color:var(--grisMasClaro);
+	background-color:var(--principalMasClaro);
+	padding:0.2rem 0.5rem;
+	font-size:0.7rem;
+	margin-top:0.25rem;
+}
+.selectorAcciones.show, .selectorColumnas.show {
+	background-color:var(--principal);
+	color:var(--blanco);
+	border:solid 1px var(--principal)!important;
+}
+		.listaSelectorAcciones, .listaSelectorColumnas {
+			margin-top:5px;
+			transition:0s!important;
+			font-size:0.7rem!important;
+			background-color:var(--grisMasClaro);
+		}
+		.listaSelectorAcciones > .dropdown-item:hover, .listaSelectorColumnas > .dropdown-item:hover {
+			color:var(--blanco);
+		}
+		.listaSelectorAcciones > .dropdown-item label, .listaSelectorColumnas > .dropdown-item label {
+			margin:0;
+		}
+		.listaSelectorAcciones > .dropdown-item, .listaSelectorColumnas > .dropdown-item {
+			font-size:inherit;
+			cursor:pointer;
+			color:var(--grisOscuro);
+		}
+		.listaSelectorAcciones > .dropdown-item, .listaSelectorColumnas > .dropdown-item {
+			display:flex;
+			align-items:center;
+		}
+		.listaSelectorAcciones input, .listaSelectorColumnas input {
+			margin-right:0.5rem;
+		}
+/* Selector de acciones */
+.lineaSelectorAcciones {
+	max-width:110px!important;
+	min-width:110px!important;
+}
+	.selectorAcciones {}
+		.listaSelectorAcciones {
+			margin-left:-0.55rem;
+		}
+		
+/* Selector de columnas */
+.lineaSelectorColumna {
+	max-width:115px!important;
+	min-width:115px!important;
+}
+	.selectorColumnas {}
+		.listaSelectorColumnas {
+			margin-right:-0.5rem;
+		}
 
 /* -----|||||----- ********** -----|||||----- */
 /* -----|||||----- * Tablas * -----|||||----- */
@@ -1498,7 +1571,7 @@ html {
 	-ms-user-select:text; /* Internet Explorer/Edge */
 	user-select:text;
 }
-.noSelect, .sb-topnav, .sb-sidenav, .cabeceraSeccion, .contenedorEmergenteAjustes, #contenidoDashboard, #contenidoTarjetasLinks {
+.noSelect, .sb-topnav, .sb-sidenav, .cabeceraSeccion, .contenedorEmergenteAjustes, #contenidoDashboard, #contenidoTarjetasLinks, .barraOpcionesLista {
 	-webkit-touch-callout:none; /* iOS Safari */
 	-webkit-user-select:none; /* Safari */
 	-khtml-user-select:none; /* Konqueror HTML */

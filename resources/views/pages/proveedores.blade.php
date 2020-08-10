@@ -7,9 +7,6 @@
 		<div class="cabeceraSeccion" id="cabeceraSeccionTabla">
 			@include('includes.cabeceras.proveedores.cabeceraProveedores')
 		</div>
-		<div class="cabeceraSeccion ocultaContenedor colapsaContenedor" id="cabeceraSeccionVer">
-			@include('includes.cabeceras.proveedores.cabeceraVerProveedor')
-		</div>
 		<div class="barraOpcionesLista">
 			<div class="row justify-content-end">
 				<div class="lineaBuscador order-1 order-sm-1 order-md-2 order-lg-2 order-xl-2 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-5">
@@ -23,19 +20,17 @@
 				<div class="table-responsive" id="contenido_0">
 					<table class="table table-striped table-fixed" id="tabla">
 						<thead id="cabeceraLista_0" class="thead-th-ocultos" data-orden="ProvCodigo" data-direccion="ASC" data-ruta="{{ route('listaProveedores', ':variables') }}">
-							<tr>
-								
+							<tr>	
 								<th scope="col" class="thBtnAcciones">
 									<div class="cuadroCkeckSelTodos">
 										<div class="cuadroCheck" id="checkProveedores" data-checked="" title="@lang('texto.seleccionar_todos')"></div>
 									</div>
 								</th>
-							
-								<th scope="col" data-orden="ProvCodigo">@lang('texto.tabla_proveedores.codigo')</th>
-								<th scope="col" data-orden="ProvNombre">@lang('texto.tabla_proveedores.nombre')</th>
-								<th scope="col" data-orden="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
-								<th scope="col" data-orden="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
-								<th scope="col" data-orden="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
+								<th scope="col" data-columna="ProvCodigo" data-orden="ProvCodigo">@lang('texto.tabla_proveedores.codigo')</th>
+								<th scope="col" data-columna="ProvNombre" data-orden="ProvNombre">@lang('texto.tabla_proveedores.nombre')</th>
+								<th scope="col" data-columna="ProvCif" data-orden="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
+								<th scope="col" data-columna="ProvTelefono" data-orden="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
+								<th scope="col" data-columna="ProvEMail" data-orden="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
 							</tr>
 						</thead>
 						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>
