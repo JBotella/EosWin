@@ -22,12 +22,15 @@ function procesaValorSidebar(ruta,plegado){
 	$.get(ruta);
 }
 function compruebaSidebar(ruta){
+	if(!ruta){
+		var ruta = $('#sidebarToggle').data('href');
+	}
 	if($('#layoutSidenav_nav').hasClass('side-oculta')){
 		var content = $(".side-oculta").css("display");
 		if(content == 'none'){
 			$('#layoutSidenav_nav').removeClass('side-oculta');
 			$('body').removeClass('sb-sidenav-toggled');
-			procesaValorSidebar('no');
+			procesaValorSidebar(ruta,'no');
 		}
 	}
 }

@@ -329,7 +329,6 @@ function searchTable(tabla) {
 /* ----- ****************************************** ----- */
 
 function visibilidadColumna(col,acc){
-	console.log(col+'-'+acc);
 	if(acc == 0){
 		$('td:nth-child('+col+'),th:nth-child('+col+')').addClass('d-none');
 	}else if(acc == 1){
