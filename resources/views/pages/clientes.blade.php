@@ -23,8 +23,18 @@
 				
 				<div class="lineaSelectorColumna order-3 order-sm-3 col">
 					@php
-						$columnas = ['2'=>trans('texto.tabla_clientes.codigo'), '3'=>trans('texto.tabla_clientes.nombre'), '4'=>trans('texto.tabla_clientes.nif'), '5'=>trans('texto.tabla_clientes.telefono'), '6'=>trans('texto.tabla_clientes.email'), '7'=>trans('texto.domicilio_fiscal.domicilio.domicilio'), '8'=>trans('texto.domicilio_fiscal.codigo_postal'), '9'=>trans('texto.domicilio_fiscal.localidad'), '10'=>trans('texto.domicilio_fiscal.provincia')];
-						$visibles = [2,3,4,5,6]; // Provisional (El válido es desde la consulta de las preferencias del cliente)
+						// Declaración de identificadores de columna
+						$columnas = ['2'=>trans('texto.tabla_clientes.codigo'), 
+						'3'=>trans('texto.tabla_clientes.nombre'), 
+						'4'=>trans('texto.tabla_clientes.nif'), 
+						'5'=>trans('texto.tabla_clientes.telefono'), 
+						'6'=>trans('texto.tabla_clientes.email'), 
+						'7'=>trans('texto.domicilio_fiscal.domicilio.domicilio'), 
+						'8'=>trans('texto.domicilio_fiscal.codigo_postal'), 
+						'9'=>trans('texto.domicilio_fiscal.localidad'), 
+						'10'=>trans('texto.domicilio_fiscal.provincia')];
+						// Provisional (El válido es desde la consulta de las preferencias del cliente)
+						$visibles = [2,3,4,5,6];
 					@endphp
 					@include('includes.complementos.selectorColumnasListado',[$columnas,$visibles])
 				</div>
@@ -45,15 +55,15 @@
 										<div class="cuadroCheck" id="checkClientes" data-checked="" title="@lang('texto.seleccionar_todos')"></div>
 									</div>
 								</th>
-								<th class="d-none" scope="col"  data-orden="CliCodigo">@lang('texto.tabla_clientes.codigo')</th>
-								<th class="d-none" scope="col"  data-orden="CliNombre">@lang('texto.tabla_clientes.nombre')</th>
-								<th class="d-none" scope="col"  data-orden="CliCif">@lang('texto.tabla_clientes.nif')</th>
-								<th class="d-none" scope="col"  data-orden="Telefono">@lang('texto.tabla_clientes.telefono')</th>
+								<th class="d-none" scope="col" data-orden="CliCodigo">@lang('texto.tabla_clientes.codigo')</th>
+								<th class="d-none" scope="col" data-orden="CliNombre">@lang('texto.tabla_clientes.nombre')</th>
+								<th class="d-none" scope="col" data-orden="CliCif">@lang('texto.tabla_clientes.nif')</th>
+								<th class="d-none" scope="col" data-orden="Telefono">@lang('texto.tabla_clientes.telefono')</th>
 								<th class="d-none" scope="col" data-orden="CliEMail">@lang('texto.tabla_clientes.email')</th>
 								<th class="d-none" scope="col" data-orden="CliDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
-								<th class="d-none" scope="col"  data-orden="CliCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
-								<th class="d-none" scope="col"  data-orden="CliCodPostalLocali">@lang('texto.domicilio_fiscal.localidad')</th>
-								<th class="d-none" scope="col"  data-orden="CliCodPostalProvin">@lang('texto.domicilio_fiscal.provincia')</th>
+								<th class="d-none" scope="col" data-orden="CliCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
+								<th class="d-none" scope="col" data-orden="CliCodPostalLocali">@lang('texto.domicilio_fiscal.localidad')</th>
+								<th class="d-none" scope="col" data-orden="CliCodPostalProvin">@lang('texto.domicilio_fiscal.provincia')</th>
 							</tr>
 						</thead>
 						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>

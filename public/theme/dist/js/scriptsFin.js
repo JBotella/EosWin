@@ -59,6 +59,10 @@ $(document).on('click',function(e){
 /* ----- * Selectores * ----- */
 /* ----- ************** ----- */
 
+// Devuelve la clase del icono del selector
+function iconoSelector(){
+	return 'fas fa-check';
+}
 // Seleccionar radio list
 $('.radList').click(function(){
 	var valor = $('#'+this.id+' input').val();
@@ -69,13 +73,11 @@ $('.radList').click(function(){
 	$('#'+this.id+' input').prop('checked',true);
 	event.stopImmediatePropagation();
 });
-
 // Seleccionar checkbox list
 $('.chkList').click(function(){
 	var obj = this;
 	clickChkList(obj);
 });
-
 // Clicar chkList (Para cargas asíncronas)
 function clickChkList(obj){
 	// Comprobar si se trata de una tabla
@@ -84,11 +86,12 @@ function clickChkList(obj){
 	}
 	var valor = $('#'+obj.id+' input').val();
 	var prefijo = obj.id.split('_',1)[0];
+	var claseIcono = iconoSelector();
 	if(!$(obj).hasClass('chkSel')){
 		$(obj).addClass('chkSel');
 		if(tr){ $(tr).addClass('chkSel'); }
 		$('#'+obj.id+' input').prop('checked',true);
-		$('#'+obj.id+' .cuadroCheck').html('<i class="fas fa-check chkIcoSel"></i>');
+		$('#'+obj.id+' .cuadroCheck').html('<i class="'+claseIcono+' chkIcoSel"></i>');
 	}else{
 		$(obj).removeClass('chkSel');
 		if(tr){ $(tr).removeClass('chkSel'); }
@@ -97,7 +100,6 @@ function clickChkList(obj){
 	}
 	event.stopImmediatePropagation();
 }
-
 // Seleccionar todo
 $('.cuadroCkeckSelTodos').click(function(){
 	// Comprobar si se trata de una tabla
@@ -106,6 +108,7 @@ $('.cuadroCkeckSelTodos').click(function(){
 	}
 	var id = $(this).children('.cuadroCheck').attr('id');
 	var checked = $("#"+id).data('checked');
+	var claseIcono = iconoSelector();
 	if(checked == 'checked'){ // Desmarcar (Lleno)
 		$("#"+id).data('checked','');
 		$("#"+id).html('');
@@ -115,12 +118,17 @@ $('.cuadroCkeckSelTodos').click(function(){
 		
 	}else{ // Marcar (Vacio)
 		$("#"+id).data('checked','checked');
-		$("#"+id).html('<i class="fas fa-check chkIcoSel"></i>');
-		$('.'+id).children('.cuadroCheck').html('<i class="fas fa-check chkIcoSel"></i>');
+		$("#"+id).html('<i class="'+claseIcono+' chkIcoSel"></i>');
+		$('.'+id).children('.cuadroCheck').html('<i class="'+claseIcono+' chkIcoSel"></i>');
 		$('.'+id).addClass('chkSel');
 		if(tabla){ $(tabla).find("tr").addClass('chkSel'); }
 	}
 });
+// Imprimir el selector en el caso de requerirlo externamente
+function imprimeSelector(clase){
+	var claseIcono = iconoSelector();
+	$('.'+clase).addClass(claseIcono+' chkIcoSel');
+}
 
 /* ----- ************* ----- */
 /* ----- * Extra Bar * ----- */

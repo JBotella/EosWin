@@ -56,7 +56,6 @@
 										@endforeach
 									</ul>
 								</div>
-							
 							</div>
 							<div class="tarjeta-pie">
 								<div class="cuadroCkeckSelTodos">
