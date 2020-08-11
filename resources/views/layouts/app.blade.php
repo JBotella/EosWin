@@ -35,6 +35,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 		<script src="{{ asset('theme/dist/js/scripts.js') }}"></script>
 		<script src="{{ asset('theme/dist/js/scriptsFin.js') }}"></script>
+		<script src="{{ asset('theme/dist/js/scriptsListas.js') }}"></script>
 		<!-- Font Awesome -->
 		<script src="{{ asset('theme/fontawesome/js/all.min.js') }}" crossorigin="anonymous"></script>
 	@endif
