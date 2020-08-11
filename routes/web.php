@@ -72,10 +72,11 @@ Route::group(['middleware' => 'auth'], function(){
 	})->name('buscadorExtraBar');
 	
 	/* ------- */
-	/* SIDEBAR */
+	/* AJUSTES */
 	/* ------- */
 	
-	Route::get('menu_plegado/{plegado}','GeneralController@menuPlegado')->name('menu_plegado');
+	/* SideBar */
+	Route::get('menu_plegado/{plegado}','AjustesController@menuPlegado')->name('menu_plegado');
 	
 });
 

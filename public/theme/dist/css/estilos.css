@@ -788,6 +788,7 @@ body {
 				}
 				.chkIcoSel {
 					color:var(--principalOscuro)!important;
+					filter:drop-shadow(1px 1px 1px var(--grisMedio));
 				}
 	/* Tarjetas Cifras */
 	.estilo-tarjeta-principal {
@@ -911,6 +912,7 @@ body {
 						color:var(--blanco);
 						text-shadow:1px 1px 0px var(--principalOscuro),-1px -1px 0px var(--principalOscuro),1px -1px 0px var(--principalOscuro),-1px 1px 0px var(--principalOscuro);
 						text-indent:5px;
+						transition:0.3s;
 					}
 					.progress-bar span {
 						background-color:var(--grisMedio);

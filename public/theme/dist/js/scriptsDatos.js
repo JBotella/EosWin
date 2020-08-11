@@ -201,7 +201,7 @@ function preguntaBorrarLinea(id){
 /* ----- ********* ----- */
 
 /* Función para el Orden de Listado */
-$('th').click(function (){
+$('th').click(function(){
 	var thead = $(this).parent().parent();
 	var idLista = thead.attr('id');
 	var nLista = idLista.split('_')[1];
@@ -343,11 +343,15 @@ $('.itemColumna').click(function(e){
 	}else{
 		visibilidadColumna(idColumna,0);
 	}
+	/* Comprobar si hay 0 columnas mostradas y volver a marcar el último */
+	var cantChecked = $(".itemColumna .checkColumna:checked").length;
+	if(cantChecked == 0){
+		$('#itemColumna_'+idColumna).click();
+	}
 	e.stopPropagation();
 });
 /* Carga de columnas visibles */
 function cargarColumnasVisibles(){
-	//$("input:checkbox[name=checkColumna]:checked").each(function(){
 	$(".itemColumna .checkColumna:checked").each(function(){
 		var id = $(this).parent().data('id-columna');
 		visibilidadColumna(id,1);
