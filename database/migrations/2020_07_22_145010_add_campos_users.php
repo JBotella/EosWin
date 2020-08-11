@@ -15,6 +15,9 @@ class AddCamposUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('instanciaDB');
+			$table->string('puertoDB')->nullable();
+            $table->string('usuarioDB')->nullable();
+            $table->string('passwordDB')->nullable();
             $table->string('ultimaEmpresa')->nullable();
             $table->integer('ultimoEjercicio')->nullable();
         });

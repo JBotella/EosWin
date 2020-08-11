@@ -20,9 +20,9 @@ class ConectaUsuarioDB
 		if(Auth::guard($guard)->check()){
 			$idUsuario = Auth::user()->id;
 			$host = Auth::user()->instanciaDB;
-			$port = '1433';
-			$username = 'sa';
-			$password = 'AlexJimenez2007.*';
+			$port = Auth::user()->puertoDB;//'1433';
+			$username = Auth::user()->usuarioDB;//'sa';
+			$password = Auth::user()->passwordDB;//'AlexJimenez2007.*';
 			// Conexión Suite Net
 			config(['database.connections.sqlsrv1.driver' => 'sqlsrv']);
 			config(['database.connections.sqlsrv1.host' => $host]);
