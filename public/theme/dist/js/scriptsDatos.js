@@ -212,7 +212,6 @@ $('th').click(function (){
 		$('.flechaOrdenTh').remove();
 		console.log(obj);
 		$('th').removeClass('thResaltado');
-		
 		if(orden == ordenActual){
 			$('#'+idLista).data('orden', orden);
 			$('#'+idLista).data('direccion', dirOrdenOpuesta(direccionActual));
@@ -226,6 +225,7 @@ $('th').click(function (){
 		ocultarThCabecera(nLista);
 		var obj = this;
 		$(obj).append(flecha);
+		$(obj).addClass('thResaltado');
 		cargarListar(nLista);
 	}
 });
