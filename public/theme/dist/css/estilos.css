@@ -1302,6 +1302,9 @@ body {
 			color:var(--blanco);
 			width:auto;
 		}
+		.chkSel:hover {
+			color:var(--principal)!important;
+		}
 		.listaSelectorAcciones > .dropdown-item label, .listaSelectorColumnas > .dropdown-item label {
 			margin:0;
 			cursor:pointer;
@@ -1379,7 +1382,7 @@ body {
 	.table-fixed thead th {
 		position:sticky;
 		top:0px;
-		z-index:98;
+		z-index:60;
 		margin-bottom:5px;
 	}
 	.table-fixed tbody::before{
@@ -1426,7 +1429,12 @@ body {
 	box-shadow:inset 0px 0px 0.1rem var(--principalMedio)!important;
 }
 	.tdBtnAcciones, .thBtnAcciones {
-		width:30px;
+		position:sticky;
+		left:0px;
+		z-index:70!important;
+		background-color:var(--blanco);
+		width:30px!important;
+		max-width:30px!important;
 		text-align:center;
 		cursor:pointer!important;
 		vertical-align:middle!important;

@@ -73,7 +73,7 @@
 					<i class="fas fa-user-circle iconoUsuario"></i>
 				</div>
 				<div class="nombreUsuario">
-					Microarea Next
+					{{Session::get('datosEmpresa')->MENOMBRE}}
 				</div>
 			</div>
 		</div>

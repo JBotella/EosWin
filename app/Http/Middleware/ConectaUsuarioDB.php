@@ -4,6 +4,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Session;
 
 class ConectaUsuarioDB
 {
@@ -36,6 +37,9 @@ class ConectaUsuarioDB
 			if(!$empresa){
 				$empresa = DB::connection('sqlsrv1')->table('USUARIOSAPPEMPRESAS')->where('USUARIO', $idUsuario)->first()->EMPRESA;
 			}
+			/* Nombre empresa */
+			$datosEmpresa = DB::connection('sqlsrv1')->table('EMP')->where('MENUMEMPRESA', $empresa)->first();
+			Session::flash('datosEmpresa', $datosEmpresa);
 			/* Si no tienen valor, reemplazar ejercicio por año actual */
 			if(!$ejercicio){
 				$ejercicio = date('Y');

@@ -1,0 +1,24 @@
+@component('components.resumenTrimestreDashboard')
+	@slot('ejercicio',2019)
+	@slot('trimestre',1)
+	@slot('ingresos',6325.3)
+	@slot('gastos',3960.5)
+@endcomponent
+@component('components.resumenTrimestreDashboard')
+	@slot('ejercicio',2019)
+	@slot('trimestre',2)
+	@slot('ingresos',4213.65)
+	@slot('gastos',5921.35)
+@endcomponent
+@component('components.resumenTrimestreDashboard')
+	@slot('ejercicio',2019)
+	@slot('trimestre',3)
+	@slot('ingresos',3512.21)
+	@slot('gastos',2496.85)
+@endcomponent
+@component('components.resumenTrimestreDashboard')
+	@slot('ejercicio',2019)
+	@slot('trimestre',4)
+	@slot('ingresos',2955.12)
+	@slot('gastos',2630.67)
+@endcomponent

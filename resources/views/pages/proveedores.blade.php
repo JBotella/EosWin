@@ -9,9 +9,33 @@
 		</div>
 		<div class="barraOpcionesLista">
 			<div class="row justify-content-end">
-				<div class="lineaBuscador order-1 order-sm-1 order-md-2 order-lg-2 order-xl-2 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-5">
+				
+				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col">
+					@include('includes.complementos.selectorAccionesListado')
+				</div>
+				
+				<div class="lineaBuscador order-1 order-sm-2 col-12 col-sm-7 col-md-6 col-lg-6 col-xl-4">
 					@include('includes.complementos.buscador',['nLista'=>0])
 				</div>
+				
+				<div class="lineaSelectorColumna order-3 order-sm-3 col">
+					@php
+						// Declaración de identificadores de columna
+						$columnas = ['2'=>trans('texto.tabla_proveedores.codigo'), 
+						'3'=>trans('texto.tabla_proveedores.nombre'), 
+						'4'=>trans('texto.tabla_proveedores.nif'), 
+						'5'=>trans('texto.tabla_proveedores.telefono'), 
+						'6'=>trans('texto.tabla_proveedores.email'), 
+						'7'=>trans('texto.domicilio_fiscal.domicilio.domicilio'), 
+						'8'=>trans('texto.domicilio_fiscal.codigo_postal'), 
+						'9'=>trans('texto.domicilio_fiscal.localidad'), 
+						'10'=>trans('texto.domicilio_fiscal.provincia')];
+						// Provisional (El válido es desde la consulta de las preferencias del cliente)
+						$visibles = [2,3,4,5,6];
+					@endphp
+					@include('includes.complementos.selectorColumnasListado',[$columnas,$visibles])
+				</div>
+				
 			</div>
 		</div>
 		<div class="contenidoSeccion">
@@ -26,11 +50,15 @@
 										<div class="cuadroCheck" id="checkProveedores" data-checked="" title="@lang('texto.seleccionar_todos')"></div>
 									</div>
 								</th>
-								<th scope="col" data-columna="ProvCodigo" data-orden="ProvCodigo">@lang('texto.tabla_proveedores.codigo')</th>
-								<th scope="col" data-columna="ProvNombre" data-orden="ProvNombre">@lang('texto.tabla_proveedores.nombre')</th>
-								<th scope="col" data-columna="ProvCif" data-orden="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
-								<th scope="col" data-columna="ProvTelefono" data-orden="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
-								<th scope="col" data-columna="ProvEMail" data-orden="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
+								<th class="d-none" scope="col" data-columna="ProvCodigo" data-orden="ProvCodigo">@lang('texto.tabla_proveedores.codigo')</th>
+								<th class="d-none" scope="col" data-columna="ProvNombre" data-orden="ProvNombre">@lang('texto.tabla_proveedores.nombre')</th>
+								<th class="d-none" scope="col" data-columna="ProvCif" data-orden="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
+								<th class="d-none" scope="col" data-columna="ProvTelefono" data-orden="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
+								<th class="d-none" scope="col" data-columna="ProvEMail" data-orden="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
+								<th class="d-none" scope="col" data-orden="ProvDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
+								<th class="d-none" scope="col" data-orden="ProvCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
+								<th class="d-none" scope="col" data-orden="ProvLocalidad">@lang('texto.domicilio_fiscal.localidad')</th>
+								<th class="d-none" scope="col" data-orden="ProvProvincia">@lang('texto.domicilio_fiscal.provincia')</th>
 							</tr>
 						</thead>
 						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>
