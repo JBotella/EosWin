@@ -536,9 +536,15 @@ body {
 		box-shadow:0px 1px 10px var(--grisOscuroMasTrans);
 	}
 		.menuLateral_extraCabInt {
-			margin-left: auto;
+			margin-left:auto;
+			width:100%;
 			padding:0rem 0.5rem;
 		}
+			.menuLateral_extraCabInt .buscadorExtraBar {
+				width:100%!important;
+				height:24px;
+				font-size:0.8rem;
+			}
 	.menuLateral_extraInt {
 		display:block;
 		height:calc(100% - 56px);
@@ -548,8 +554,6 @@ body {
 		padding-bottom:1rem;
 		border-left:solid 1px var(--grisClaro);
 		overflow-y:auto;
-		/*transform:scale(.95);
-		transform-origin:50% 0;*/
 	}
 		.mLE_ListaMin {
 			width:100%;
@@ -574,7 +578,6 @@ body {
 			}
 				.mLE_ListaMinLinea > div {
 					box-sizing:border-box;
-					
 				}
 					.c1 { flex:0; margin-right:0.5rem; font-weight:bold; }
 					.c2 { flex:1; }
@@ -709,7 +712,6 @@ body {
 	.estilo-tarjeta-lista {
 		padding:0rem 0rem;
 		max-height:180px;
-		/*border-left:0.25rem solid var(--grisMedio)!important;*/
 	}
 		.estilo-tarjeta-lista .tarjeta-titulo {
 			padding:0.2rem 1rem;
@@ -1029,7 +1031,7 @@ body {
 		}
 			.accionesFicha {
 				width:100%;
-				/*position: sticky;
+				/*position:sticky;
 				top:-1rem;
 				z-index:10;*/
 			}
@@ -1038,7 +1040,7 @@ body {
 				}
 				.btnAccionFicha {
 					display:inline-flex;
-					align-items: center;
+					align-items:center;
 					cursor:pointer;
 					/*background-color:var(--blanco);
 					padding:0.25rem;
@@ -1260,17 +1262,21 @@ body {
 	border:solid 1px var(--grisClaro)!important;
 	background-color:var(--grisMasClaro);
 	background-color:var(--principalMasClaro);
-	padding:0.2rem 0.5rem;
 	font-size:0.7rem;
 	margin-top:0.25rem;
 }
+
+.selectorAcciones > .dropdown-toggle, .selectorColumnas > .dropdown-toggle {
+	padding:0.2rem 0.5rem;
+}
+
 .selectorAcciones.show, .selectorColumnas.show {
 	background-color:var(--principal);
 	color:var(--blanco);
 	border:solid 1px var(--principal)!important;
 }
 		.listaSelectorAcciones, .listaSelectorColumnas {
-			margin-top:5px;
+			margin-top:3px;
 			transition:0s!important;
 			font-size:0.7rem!important;
 			background-color:var(--grisMasClaro);
@@ -1303,7 +1309,8 @@ body {
 }
 	.selectorAcciones {}
 		.listaSelectorAcciones {
-			margin-left:-0.55rem;
+			/*margin-left:-0.55rem;*/
+			margin-left:-1px;
 		}
 		
 /* Selector de columnas */
@@ -1313,7 +1320,8 @@ body {
 }
 	.selectorColumnas {}
 		.listaSelectorColumnas {
-			margin-right:-0.5rem;
+			/*margin-right:-0.5rem;*/
+			margin-right:0px;
 		}
 
 /* -----|||||----- ********** -----|||||----- */

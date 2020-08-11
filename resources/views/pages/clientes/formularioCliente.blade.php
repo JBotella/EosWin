@@ -5,7 +5,11 @@
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion" id="cabeceraSeccionFormulario">
-			@include('includes.cabeceras.clientes.cabeceraFormularioCliente')
+			@php
+				$nombreCompleto = $datos->CliNombre.' '.$datos->CliApellido1.' '.$datos->CliApellido2;
+				$nombreCompleto = trim(preg_replace('/\s+/', ' ', $nombreCompleto));
+			@endphp
+			@include('includes.cabeceras.clientes.cabeceraFormularioCliente', [$nombreCompleto])
 		</div>
 		@component('components.seccionFormulario')
 					

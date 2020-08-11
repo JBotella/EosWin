@@ -1,1 +1,1 @@
-<input type="text" class="form-control form-control-sm" name="buscadorExtraBar" id="buscadorExtraBar" placeholder="Buscar...">
+<input type="text" class="form-control form-control-sm buscadorExtraBar" name="buscadorExtraBar" id="buscadorExtraBar" placeholder="Buscar...">
