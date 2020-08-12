@@ -33,10 +33,16 @@
 						'8'=>trans('texto.domicilio_fiscal.codigo_postal'), 
 						'9'=>trans('texto.domicilio_fiscal.localidad'), 
 						'10'=>trans('texto.domicilio_fiscal.provincia')];
-						// Provisional (El válido es desde la consulta de las preferencias del cliente)
-						$visibles = [2,3,4,5,6];
+						if(Session::has("columnasClientes")){
+							// Desde ajustes
+							$visibles = explode(',',session::get("columnasClientes"));
+						}else{
+							// Default
+							$visibles = [2,3,4,5,6];
+						}
+						$rutaColumnas = route('columnas_clientes',':columnas');
 					@endphp
-					@include('includes.complementos.selectorColumnasListado',[$columnas,$visibles])
+					@include('includes.complementos.selectorColumnasListado',[$columnas,$visibles,$rutaColumnas])
 				</div>
 				
 				

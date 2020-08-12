@@ -2,7 +2,7 @@
 namespace App\Http\Middleware;
 use App\Providers\RouteServiceProvider;
 use Closure;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use DB;
 use Session;
 use App\Tablas\UserAjuste;
@@ -25,8 +25,10 @@ class ConectaEmpresa
 			$username = Auth::user()->usuarioDB;
 			$password = Auth::user()->passwordDB;
 			
-			$empresa = '';
-			$ejercicio = '';
+			/* Consultar ajustes para el usuario */
+			$ajuste = UserAjuste::where('id_user',$idUsuario)->first();
+			$empresa = $ajuste->ultimaEmpresa;
+			$ejercicio = $ajuste->ultimoEjercicio;
 			
 			/* Si no tienen valor, reemplazar empresa por la última a la que tiene permiso */
 			if(!$empresa){

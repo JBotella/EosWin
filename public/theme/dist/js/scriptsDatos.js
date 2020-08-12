@@ -347,6 +347,14 @@ $('.itemColumna').click(function(e){
 	var cantChecked = $(".itemColumna .checkColumna:checked").length;
 	if(cantChecked == 0){
 		$('#itemColumna_'+idColumna).click();
+	}else{
+		// Comprobar cadena de numeros de columna
+		var columnas = [];
+		$(".itemColumna .checkColumna:checked").each(function(){
+			var id = $(this).parent().data('id-columna');
+			columnas.push(id)
+		});
+		guardaColumnasAjustes(this,columnas);
 	}
 	e.stopPropagation();
 });
@@ -356,6 +364,14 @@ function cargarColumnasVisibles(){
 		var id = $(this).parent().data('id-columna');
 		visibilidadColumna(id,1);
 	});
+}
+/* Guarda cadena de columnas en tabla de ajustes */ //PENDIENTE
+function guardaColumnasAjustes(obj,columnas){
+	var stringColumnas = columnas.join();
+	var columnasUrl = stringColumnas.replace(/,/g,'-');
+	var ruta = $(obj).parent().data('ruta-columnas');
+	ruta = ruta.replace(':columnas',columnasUrl);
+	$.get(ruta);
 }
 
 /* ----- **************** ----- */
