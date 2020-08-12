@@ -18,7 +18,7 @@ class CreateLibrosUsersTable extends Migration
             $table->timestamps();
 			$table->foreignId('id_libro');
 			$table->foreignId('id_user');
-			$table->string('columnasLibro');
+			$table->string('columnasLibro')->nullable();
         });
     }
 

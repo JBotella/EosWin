@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 			// Nuevas
 			\App\Http\Middleware\ConectaUsuarioDB::class,
+			\App\Http\Middleware\ConectaEmpresa::class,
 			\App\Http\Middleware\SetLang::class,
         ],
 

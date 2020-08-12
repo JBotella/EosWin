@@ -20,14 +20,14 @@ class CreateUsersAjustesTable extends Migration
 			$table->string('ultimaEmpresa')->nullable();
 			$table->integer('ultimoEjercicio')->nullable();
 			$table->char('idioma',5)->nullable();
-			$table->boolean('apuntePorCodigo');
-			$table->integer('ordenEmpresas');
-			$table->integer('ordenDiario');
-			$table->string('columnasClientes');
-			$table->string('columnasProveedores');
-			$table->string('columnasApuntes');
-			$table->string('columnasExtracto');
-			$table->string('columnasCobrosPagos');
+			$table->boolean('apuntePorCodigo')->default(0);
+			$table->integer('ordenEmpresas')->nullable();
+			$table->integer('ordenDiario')->nullable();
+			$table->string('columnasClientes')->nullable();
+			$table->string('columnasProveedores')->nullable();
+			$table->string('columnasApuntes')->nullable();
+			$table->string('columnasExtracto')->nullable();
+			$table->string('columnasCobrosPagos')->nullable();
         });
     }
 
