@@ -59,7 +59,7 @@
 			<div class="contenidoEmAjuste">
 				<ul class="text-center listaCuadrados">
 					@for($anyo = (date('Y')+5); $anyo > (date('Y')-16); $anyo--)
-						<li class="radList checkEjercicio @if($anyo == '2020') radSel @endif" id="checkEjercicio_{{$anyo}}">
+						<li class="radList checkEjercicio @if($anyo == Session::get('ultimoEjercicio')) radSel @endif" id="checkEjercicio_{{$anyo}}">
 							{{$anyo}}
 							<input type="radio" class="d-none" name="ejercicio" value="{{$anyo}}" />
 						</li>

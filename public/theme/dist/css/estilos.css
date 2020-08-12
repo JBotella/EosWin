@@ -780,6 +780,9 @@ body {
 				box-sizing: border-box!important;
 				border-radius:0.1rem;
 			}
+			.cuadroCheck:hover {
+				background-color:var(--principalMasClaro);
+			}
 				.cuadroCheckSel {
 					background-color:var(--principalAzulAnalogo)!important;
 				}
@@ -789,6 +792,9 @@ body {
 				.chkIcoSel {
 					color:var(--principalOscuro)!important;
 					filter:drop-shadow(1px 1px 1px var(--grisMedio));
+				}
+				.chkIcoSel:hover {
+					color:var(--principalRojoOpuesto)!important;
 				}
 	/* Tarjetas Cifras */
 	.estilo-tarjeta-principal {

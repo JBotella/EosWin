@@ -8,18 +8,32 @@ use App\Tablas\UserAjuste;
 
 class AjustesController extends Controller
 {
+	public function ajuste(){
+		$ajuste = UserAjuste::where('id_user',Auth::user()->id)->first();
+		return $ajuste;
+	}
 	/* Menú SideBar */
-	public static function menuPlegado($plegado){
-		session::put("menuPlegado", $plegado);
+	public function menuPlegado($plegado){
+		session::put("menuPlegado",$plegado);
+	}
+	/* Varios Ajustes de Usuario */
+	public function usuarioAjuste($desde,$valor){
+		// Filtrar columnas permitidas
+		$columnasPermitidas = ['ultimaEmpresa','ultimoEjercicio','idioma','apuntePorCodigo','ordenEmpresas','ordenDiario'];
+		if(in_array($desde,$columnasPermitidas)){
+			$ajuste = $this->ajuste();
+			$ajuste->$desde = $valor;
+			$ajuste->save();
+			session::put($desde,$valor);
+		}
 	}
 	/* Columnas de Tabla Clientes */
-	public static function columnasVisibles($desde,$columnas){
+	public function columnasVisibles($desde,$columnas){
 		$columnas = str_replace('-',',',$columnas);
 		// Update de tabla ajustes
-		$idUsuario = Auth::user()->id;
-		$ajuste = UserAjuste::where('id_user',$idUsuario)->first();
+		$ajuste = $this->ajuste();
 		$ajuste->$desde = $columnas;
 		$ajuste->save();
-		session::put($desde, $columnas);
+		session::put($desde,$columnas);
 	}
 }

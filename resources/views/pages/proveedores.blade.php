@@ -21,7 +21,7 @@
 				<div class="lineaSelectorColumna order-3 order-sm-3 col">
 					@php
 						// Declaración de identificadores de columna
-						$columnas = ['2'=>trans('texto.tabla_proveedores.codigo'), 
+						$columnas = array('2'=>trans('texto.tabla_proveedores.codigo'), 
 						'3'=>trans('texto.tabla_proveedores.nombre'), 
 						'4'=>trans('texto.tabla_proveedores.nif'), 
 						'5'=>trans('texto.tabla_proveedores.telefono'), 
@@ -29,13 +29,13 @@
 						'7'=>trans('texto.domicilio_fiscal.domicilio.domicilio'), 
 						'8'=>trans('texto.domicilio_fiscal.codigo_postal'), 
 						'9'=>trans('texto.domicilio_fiscal.localidad'), 
-						'10'=>trans('texto.domicilio_fiscal.provincia')];
+						'10'=>trans('texto.domicilio_fiscal.provincia'));
 						if(Session::has("columnasProveedores")){
 							// Desde ajustes
 							$visibles = explode(',',session::get("columnasProveedores"));
 						}else{
 							// Default
-							$visibles = [2,3,4,5,6];
+							$visibles = array(2,3,4,5,6);
 						}
 						$rutaColumnas = route('columnas_visibles',['columnasProveedores',':columnas']);
 					@endphp
