@@ -89,6 +89,26 @@ Notas Laravel 7 para el proyecto 'EosWin Cloud'
 		
 	- Up en add_campos_users:
 		$table->string('instanciaDB');
-		$table->string('ultimaEmpresa')->nullable();
-		$table->integer('ultimoEjercicio')->nullable();
+		$table->string('puertoDB')->nullable();
+		$table->string('usuarioDB')->nullable();
+		$table->string('passwordDB')->nullable();
 	
+	- Migración de nueva tabla para users_ajustes
+		php artisan make:migration create_users_ajustes_table
+		
+		$table->foreignId('id_user');
+		$table->string('ultimaEmpresa')->nullable();
+        $table->integer('ultimoEjercicio')->nullable();
+		...
+		
+	- Migración de nueva tabla para libros
+		php artisan make:migration create_libros_table
+		
+		...
+		
+	- Migración de nueva tabla para libros_users
+		php artisan make:migration create_libros_users_table
+		
+		...
+		
+		

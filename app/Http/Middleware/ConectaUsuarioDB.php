@@ -31,8 +31,12 @@ class ConectaUsuarioDB
 			config(['database.connections.sqlsrv1.username' => $username]);
 			config(['database.connections.sqlsrv1.password' => $password]);
 			//.
-			$empresa = Auth::user()->ultimaEmpresa;
-			$ejercicio = Auth::user()->ultimoEjercicio;
+			
+			//$empresa = Auth::user()->ultimaEmpresa;
+			//$ejercicio = Auth::user()->ultimoEjercicio;
+			$empresa = '';
+			$ejercicio = '';
+			
 			/* Si no tienen valor, reemplazar empresa por la última a la que tiene permiso */
 			if(!$empresa){
 				$empresa = DB::connection('sqlsrv1')->table('USUARIOSAPPEMPRESAS')->where('USUARIO', $idUsuario)->first()->EMPRESA;
