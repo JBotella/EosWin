@@ -61,15 +61,15 @@
 										<div class="cuadroCheck" id="checkClientes" data-checked="" title="@lang('texto.seleccionar_todos')"></div>
 									</div>
 								</th>
-								<th class="d-none" scope="col" data-orden="CliCodigo">@lang('texto.tabla_clientes.codigo')</th>
-								<th class="d-none" scope="col" data-orden="CliNombre">@lang('texto.tabla_clientes.nombre')</th>
-								<th class="d-none" scope="col" data-orden="CliCif">@lang('texto.tabla_clientes.nif')</th>
-								<th class="d-none" scope="col" data-orden="Telefono">@lang('texto.tabla_clientes.telefono')</th>
-								<th class="d-none" scope="col" data-orden="CliEMail">@lang('texto.tabla_clientes.email')</th>
-								<th class="d-none" scope="col" data-orden="CliDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
-								<th class="d-none" scope="col" data-orden="CliCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
-								<th class="d-none" scope="col" data-orden="CliCodPostalLocali">@lang('texto.domicilio_fiscal.localidad')</th>
-								<th class="d-none" scope="col" data-orden="CliCodPostalProvin">@lang('texto.domicilio_fiscal.provincia')</th>
+								<th scope="col" data-orden="CliCodigo">@lang('texto.tabla_clientes.codigo')</th>
+								<th scope="col" data-orden="CliNombre">@lang('texto.tabla_clientes.nombre')</th>
+								<th scope="col" data-orden="CliCif">@lang('texto.tabla_clientes.nif')</th>
+								<th scope="col" data-orden="Telefono">@lang('texto.tabla_clientes.telefono')</th>
+								<th scope="col" data-orden="CliEMail">@lang('texto.tabla_clientes.email')</th>
+								<th scope="col" data-orden="CliDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
+								<th scope="col" data-orden="CliCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
+								<th scope="col" data-orden="CliCodPostalLocali">@lang('texto.domicilio_fiscal.localidad')</th>
+								<th scope="col" data-orden="CliCodPostalProvin">@lang('texto.domicilio_fiscal.provincia')</th>
 							</tr>
 						</thead>
 						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>

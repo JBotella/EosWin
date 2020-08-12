@@ -360,8 +360,14 @@ $('.itemColumna').click(function(e){
 });
 /* Carga de columnas visibles */
 function cargarColumnasVisibles(){
+	$(".itemColumna .checkColumna").each(function(){
+		var id = $(this).parent().data('id-columna');
+		console.log(id);
+		visibilidadColumna(id,0);
+	});
 	$(".itemColumna .checkColumna:checked").each(function(){
 		var id = $(this).parent().data('id-columna');
+		console.log(id);
 		visibilidadColumna(id,1);
 	});
 }

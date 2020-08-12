@@ -22,15 +22,15 @@
 			<div class="cuadroCheck"></div>
 			<input type="checkbox" class="d-none" value="{{$item->CliCodigo}}" />
 		</td>
-		<td class="d-none">{{$item->CliCodigo}}</td>
-		<td class="d-none">{{$item->CliNombre}}</td>
-		<td class="d-none">{{$item->CliCif}}</td>
-		<td class="d-none">{{$item->Telefono}}</td>
-		<td class="tdLink d-none">{{$item->CliEMail}}</td>
-		<td class="d-none">{!!$direccionCompleta!!}</td>
-		<td class="d-none">{{$item->CliCodPostal}}</td>
-		<td class="d-none">{{$item->CliCodPostalLocali}}</td>
-		<td class="d-none">{{$item->CliCodPostalProvin}}</td>
+		<td>{{$item->CliCodigo}}</td>
+		<td>{{$item->CliNombre}}</td>
+		<td>{{$item->CliCif}}</td>
+		<td>{{$item->Telefono}}</td>
+		<td class="tdLink ">{{$item->CliEMail}}</td>
+		<td>{!!$direccionCompleta!!}</td>
+		<td>{{$item->CliCodPostal}}</td>
+		<td>{{$item->CliCodPostalLocali}}</td>
+		<td>{{$item->CliCodPostalProvin}}</td>
 		{{--<td class="tdBtnAcciones">
 			<i class="fas fa-trash tdBtnAccion btnBorrar btnAccion tdBorrar" id="tdBorrar_{{$item->CliCodigo}}" onclick="preguntaBorrarLinea('{{$item->CliCodigo}}')" title="@lang('texto.borrar')"></i>
 			<div class="tdConfirmaAccion d-none" id="tdConfirmarBorrar_{{$item->CliCodigo}}">

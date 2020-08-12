@@ -22,14 +22,14 @@
 			<div class="cuadroCheck"></div>
 			<input type="checkbox" class="d-none" value="{{$item->ProvCodigo}}" />
 		</td>
-		<td class="d-none">{{$item->ProvCodigo}}</td>
-		<td class="d-none">{{$item->ProvNombre}}</td>
-		<td class="d-none">{{$item->ProvCif}}</td>
-		<td class="d-none">{{$item->ProvTelefono}}</td>
-		<td class="tdLink d-none">{{$item->ProvEMail}}</td>
-		<td class="d-none">{!!$direccionCompleta!!}</td>
-		<td class="d-none">{{$item->ProvCodPostal}}</td>
-		<td class="d-none">{{$item->ProvLocalidad}}</td>
-		<td class="d-none">{{$item->ProvProvincia}}</td>
+		<td>{{$item->ProvCodigo}}</td>
+		<td>{{$item->ProvNombre}}</td>
+		<td>{{$item->ProvCif}}</td>
+		<td>{{$item->ProvTelefono}}</td>
+		<td class="tdLink">{{$item->ProvEMail}}</td>
+		<td>{!!$direccionCompleta!!}</td>
+		<td>{{$item->ProvCodPostal}}</td>
+		<td>{{$item->ProvLocalidad}}</td>
+		<td>{{$item->ProvProvincia}}</td>
 	</tr>
 @endforeach

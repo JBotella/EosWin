@@ -56,15 +56,15 @@
 										<div class="cuadroCheck" id="checkProveedores" data-checked="" title="@lang('texto.seleccionar_todos')"></div>
 									</div>
 								</th>
-								<th class="d-none" scope="col" data-columna="ProvCodigo" data-orden="ProvCodigo">@lang('texto.tabla_proveedores.codigo')</th>
-								<th class="d-none" scope="col" data-columna="ProvNombre" data-orden="ProvNombre">@lang('texto.tabla_proveedores.nombre')</th>
-								<th class="d-none" scope="col" data-columna="ProvCif" data-orden="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
-								<th class="d-none" scope="col" data-columna="ProvTelefono" data-orden="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
-								<th class="d-none" scope="col" data-columna="ProvEMail" data-orden="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
-								<th class="d-none" scope="col" data-orden="ProvDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
-								<th class="d-none" scope="col" data-orden="ProvCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
-								<th class="d-none" scope="col" data-orden="ProvLocalidad">@lang('texto.domicilio_fiscal.localidad')</th>
-								<th class="d-none" scope="col" data-orden="ProvProvincia">@lang('texto.domicilio_fiscal.provincia')</th>
+								<th scope="col" data-columna="ProvCodigo" data-orden="ProvCodigo">@lang('texto.tabla_proveedores.codigo')</th>
+								<th scope="col" data-columna="ProvNombre" data-orden="ProvNombre">@lang('texto.tabla_proveedores.nombre')</th>
+								<th scope="col" data-columna="ProvCif" data-orden="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
+								<th scope="col" data-columna="ProvTelefono" data-orden="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
+								<th scope="col" data-columna="ProvEMail" data-orden="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
+								<th scope="col" data-orden="ProvDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
+								<th scope="col" data-orden="ProvCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
+								<th scope="col" data-orden="ProvLocalidad">@lang('texto.domicilio_fiscal.localidad')</th>
+								<th scope="col" data-orden="ProvProvincia">@lang('texto.domicilio_fiscal.provincia')</th>
 							</tr>
 						</thead>
 						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>
