@@ -30,10 +30,16 @@
 						'8'=>trans('texto.domicilio_fiscal.codigo_postal'), 
 						'9'=>trans('texto.domicilio_fiscal.localidad'), 
 						'10'=>trans('texto.domicilio_fiscal.provincia')];
-						// Provisional (El válido es desde la consulta de las preferencias del cliente)
-						$visibles = [2,3,4,5,6];
+						if(Session::has("columnasProveedores")){
+							// Desde ajustes
+							$visibles = explode(',',session::get("columnasProveedores"));
+						}else{
+							// Default
+							$visibles = [2,3,4,5,6];
+						}
+						$rutaColumnas = route('columnas_visibles',['columnasProveedores',':columnas']);
 					@endphp
-					@include('includes.complementos.selectorColumnasListado',[$columnas,$visibles])
+					@include('includes.complementos.selectorColumnasListado',[$columnas,$visibles,$rutaColumnas])
 				</div>
 				
 			</div>
@@ -43,7 +49,7 @@
 				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
 				<div class="table-responsive" id="contenido_0">
 					<table class="table table-striped table-fixed" id="tabla">
-						<thead id="cabeceraLista_0" class="thead-th-ocultos" data-orden="ProvCodigo" data-direccion="ASC" data-ruta="{{ route('listaProveedores', ':variables') }}">
+						<thead id="cabeceraLista_0" class="thead-th-ocultos" data-orden="ProvCodigo" data-direccion="ASC" data-ruta="{{ route('listaProveedores', ':variables') }}" data-visibles="{{json_encode($visibles)}}">
 							<tr>	
 								<th scope="col" class="thBtnAcciones">
 									<div class="cuadroCkeckSelTodos">
