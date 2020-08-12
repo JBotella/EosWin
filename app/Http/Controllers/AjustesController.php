@@ -13,13 +13,13 @@ class AjustesController extends Controller
 		session::put("menuPlegado", $plegado);
 	}
 	/* Columnas de Tabla Clientes */
-	public static function columnasClientes($columnas){
+	public static function columnasVisibles($desde,$columnas){
 		$columnas = str_replace('-',',',$columnas);
 		// Update de tabla ajustes
 		$idUsuario = Auth::user()->id;
 		$ajuste = UserAjuste::where('id_user',$idUsuario)->first();
-		$ajuste->columnasClientes = $columnas;
+		$ajuste->$desde = $columnas;
 		$ajuste->save();
-		session::put("columnasClientes", $columnas);
+		session::put($desde, $columnas);
 	}
 }

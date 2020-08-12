@@ -40,7 +40,7 @@
 							// Default
 							$visibles = [2,3,4,5,6];
 						}
-						$rutaColumnas = route('columnas_clientes',':columnas');
+						$rutaColumnas = route('columnas_visibles',['columnasClientes',':columnas']);
 					@endphp
 					@include('includes.complementos.selectorColumnasListado',[$columnas,$visibles,$rutaColumnas])
 				</div>

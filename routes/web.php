@@ -79,7 +79,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('menu_plegado/{plegado}','AjustesController@menuPlegado')->name('menu_plegado');
 	
 	/* Columnas Clientes */
-	Route::get('columnas_clientes/{columnas}','AjustesController@columnasClientes')->name('columnas_clientes');
+	Route::get('columnas_visibles/{desde}/{columnas}','AjustesController@columnasVisibles')->name('columnas_visibles');
 	
 });
 
