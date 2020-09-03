@@ -16,11 +16,11 @@ class AjustesController extends Controller
 	public function menuPlegado($plegado){
 		session::put("menuPlegado",$plegado);
 	}
-	/* Varios Ajustes de Usuario */
+	/* Varios Ajustes de Usuario (Sin uso todavía) */
 	public function usuarioAjuste($desde,$valor){
-		// Filtrar columnas permitidas
-		$columnasPermitidas = ['ultimaEmpresa','ultimoEjercicio','idioma','apuntePorCodigo','ordenEmpresas','ordenDiario'];
-		if(in_array($desde,$columnasPermitidas)){
+		// Filtrar ajustes permitidos
+		$ajustesPermitidos = ['ultimaEmpresa','ultimoEjercicio','idioma','apuntePorCodigo','ordenEmpresas','ordenDiario'];
+		if(in_array($desde,$ajustesPermitidos)){
 			$ajuste = $this->ajuste();
 			$ajuste->$desde = $valor;
 			$ajuste->save();

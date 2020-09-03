@@ -78,7 +78,7 @@ Route::group(['middleware' => 'auth'], function(){
 	/* SideBar */
 	Route::get('menu_plegado/{plegado}','AjustesController@menuPlegado')->name('menu_plegado');
 	/* Ajustes de Usuario */
-	Route::get('usuario_ajuste/{desde}/{idioma}','AjustesController@usuarioAjuste')->name('usuario_ajuste');
+	Route::get('usuario_ajuste/{desde}/{valor}','AjustesController@usuarioAjuste')->name('usuario_ajuste');
 	/* Columnas Visibles */
 	Route::get('columnas_visibles/{desde}/{columnas}','AjustesController@columnasVisibles')->name('columnas_visibles');
 	

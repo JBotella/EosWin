@@ -56,6 +56,7 @@
 .bgBlanco { background-color:var(--blanco)!important; }
 .bgGrisMasClaro { background-color:var(--grisMasClaro)!important; }
 .principal { color:var(--principal)!important; }
+.principalClaro { color:var(--principalClaro)!important; }
 .bgPrincipal { background-color:var(--principal)!important; }
 .rojoOpuesto { color:var(--principalRojoOpuesto)!important; }
 .bgRojoOpuesto { background-color:var(--principalRojoOpuesto)!important; }
@@ -265,6 +266,9 @@ body {
 		color:var(--fuenteClara);
 		transition:0.3s!important;
 	}
+		.dropdown-item svg {
+			min-width:1rem;
+		}
 		.dropdown-item img {
 			height:1rem;
 			margin-right:0.2rem;
@@ -272,6 +276,9 @@ body {
 	.dropdown-item:hover {
 		color:var(--fuenteBlanca);
 		background-color:var(--principal);
+	}
+	.dropdown-item:hover svg {
+		color:var(--fuenteBlanca);
 	}
 	.dropdown-divider {
 		border-top:1px solid var(--grisMedio);

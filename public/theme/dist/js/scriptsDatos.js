@@ -200,7 +200,7 @@ function preguntaBorrarLinea(id){
 /* ----- * Orden * ----- */
 /* ----- ********* ----- */
 
-/* Función para el Orden de Listado */
+/* Función para el Orden de Listado en Tabla */
 $('th').click(function(){
 	var thead = $(this).parent().parent();
 	var idLista = thead.attr('id');
@@ -210,7 +210,6 @@ $('th').click(function(){
 		var ordenActual = $('#'+idLista).data('orden');
 		var direccionActual = $('#'+idLista).data('direccion');
 		$('.flechaOrdenTh').remove();
-		console.log(obj);
 		$('th').removeClass('thResaltado');
 		if(orden == ordenActual){
 			$('#'+idLista).data('orden', orden);
@@ -362,12 +361,10 @@ $('.itemColumna').click(function(e){
 function cargarColumnasVisibles(){
 	$(".itemColumna .checkColumna").each(function(){
 		var id = $(this).parent().data('id-columna');
-		console.log(id);
 		visibilidadColumna(id,0);
 	});
 	$(".itemColumna .checkColumna:checked").each(function(){
 		var id = $(this).parent().data('id-columna');
-		console.log(id);
 		visibilidadColumna(id,1);
 	});
 }

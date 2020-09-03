@@ -35,12 +35,12 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-			// Nuevas
+			// Conexión, ajustes e idioma
 			\App\Http\Middleware\ConectaUsuarioDB::class,
 			\App\Http\Middleware\ConectaEmpresa::class,
+			\App\Http\Middleware\CargaAjustes::class,
 			\App\Http\Middleware\SetLang::class,
         ],
-
         'api' => [
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
