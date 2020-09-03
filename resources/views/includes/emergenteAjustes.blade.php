@@ -5,7 +5,7 @@
 				<i class="fas fa-user-circle iconoUsuario"></i>
 			</div>
 			<div class="nombreUsuario">
-				Microarea Next
+				{{Session::get('datosEmpresa')->MENOMBRE}}
 			</div>
 			<i class="fas fa-cog btn-pq" title="@lang('texto.configuracion')"></i>
 			<i class="fas fa-plus-circle btn-pq ml-1" title="@lang('texto.nueva') @lang('texto.empresa')"></i>
@@ -26,27 +26,23 @@
 			<div class="contenidoEmAjuste alturaContEmAjusteConBuscador">
 				<ul class="ajustesListaEmpresas">
 					@php
-						//$emps = array(1,2,3,4,5,6,7,8,9)
+						$empsTest = array(1=>'b',2=>'f',3=>'h',4=>'g',5=>'d',6=>'e',7=>'d',8=>'c',9=>'a');
 						$emps = Session::get("listadoEmpresas");
 					@endphp
 					@foreach($emps as $emp)
-					<li class="radList checkEmpresa" id="checkEmpresa_{{$emp->EMPRESA}}" data-numeric="{{$emp->EMPRESA}}" data-alpha="{{$emp->MENOMBRE}}">
-						<b>{{$emp->EMPRESA}}</b> - <span>{{$emp->MENOMBRE}}</span>
-						<input type="radio" class="d-none" name="empresa" value="{{$emp->EMPRESA}}" />
-					</li>
+						<li class="radList checkEmpresa" id="checkEmpresa_{{$emp->EMPRESA}}" data-numeric="{{$emp->EMPRESA}}" data-alpha="{{(mb_strtolower($emp->MENOMBRE))}}">
+							<b>{{$emp->EMPRESA}}</b> - <span>{{$emp->MENOMBRE}}</span>
+							<input type="radio" class="d-none" name="empresa" value="{{$emp->EMPRESA}}" />
+						</li>
 					@endforeach
-					<li class="radList checkEmpresa" id="checkEmpresa_2" data-numeric="00002" data-alpha="A de prueba">
-						<b>00002</b> - <span>A de prueba</span>
-						<input type="radio" class="d-none" name="empresa" value="00002" />
-					</li>
-					<li class="radList checkEmpresa" id="checkEmpresa_3" data-numeric="00003" data-alpha="C de prueba">
-						<b>00003</b> - <span>C de prueba</span>
-						<input type="radio" class="d-none" name="empresa" value="00003" />
-					</li>
-					<li class="radList checkEmpresa" id="checkEmpresa_4" data-numeric="00004" data-alpha="B de prueba">
-						<b>00004</b> - <span>B de prueba</span>
-						<input type="radio" class="d-none" name="empresa" value="00004" />
-					</li>
+					{{-- Más ejemplos --}}
+					@foreach($empsTest as $emp => $name)
+						<li class="radList checkEmpresa" id="checkEmpresa_{{$emp}}" data-numeric="{{$emp}}" data-alpha="{{$name}}">
+							<b>{{$emp}}</b> - <span>{{$name}}</span>
+							<input type="radio" class="d-none" name="empresa" value="{{$emp}}" />
+						</li>
+					@endforeach
+					{{-- ... --}}
 				</ul>
 			</div>
 		</div>
@@ -95,27 +91,4 @@ $("#buscadorAjustesEmpresas").on("keyup", function () {
 	var busqueda = $("#buscadorAjustesEmpresas").val().trim();
 	resaltaBusqueda(busqueda,'.ajustesListaEmpresas','.checkEmpresa');
 });
-function ordenaUlLi(elemento,obj,tipo){
-	$('.ordenEmpresas').removeClass('principal');
-	var ordenClass = $(obj).attr('class');
-	$(obj).addClass('principal');
-	if(ordenClass.includes("up")){
-		var sentido = "up";
-		var opuesto = "down";
-	}else if(ordenClass.includes("down")){
-		var sentido = "down";
-		var opuesto = "up";
-	}
-	$(obj).removeClass(ordenClass);
-	var ordenClassOpuesta = ordenClass.replace(sentido,opuesto);
-	$(obj).addClass(ordenClassOpuesta);
-	$(elemento+" li").sort(ordenaLi).appendTo(elemento);
-	function ordenaLi(a, b){
-		if(opuesto == "up"){
-			return ($(b).data(tipo)) < ($(a).data(tipo)) ? 1 : -1;
-		}else if(opuesto == "down"){
-			return ($(b).data(tipo)) > ($(a).data(tipo)) ? 1 : -1;
-		}
-	}
-}
 </script>

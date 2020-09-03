@@ -245,6 +245,31 @@ function flechaDirOrden(direccion){
 	return flecha;
 }
 
+/* Ordenar listas UL con botones de orden alfabético o numérico */
+function ordenaUlLi(elemento,obj,tipo){
+	$('.ordenEmpresas').removeClass('principal');
+	var ordenClass = $(obj).attr('class');
+	$(obj).addClass('principal');
+	if(ordenClass.includes("up")){
+		var sentido = "up";
+		var opuesto = "down";
+	}else if(ordenClass.includes("down")){
+		var sentido = "down";
+		var opuesto = "up";
+	}
+	$(obj).removeClass(ordenClass);
+	var ordenClassOpuesta = ordenClass.replace(sentido,opuesto);
+	$(obj).addClass(ordenClassOpuesta);
+	$(elemento+" li").sort(ordenaLi).appendTo(elemento);
+	function ordenaLi(a, b){
+		if(opuesto == "up"){
+			return ($(b).data(tipo)) < ($(a).data(tipo)) ? 1 : -1;
+		}else if(opuesto == "down"){
+			return ($(b).data(tipo)) > ($(a).data(tipo)) ? 1 : -1;
+		}
+	}
+}
+
 /* Ordenar tabla (No funciona bien - Sin uso) */
 function sortTable(tabla,n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
