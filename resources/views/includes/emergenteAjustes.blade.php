@@ -57,9 +57,9 @@
 				<ul class="ajustesListaEmpresasRecientes">
 					@php $emps = array(1,2,3,4,5,6,7,8,9) @endphp
 					@foreach($emps as $emp)
-						<li class="radList checkEmpresaPrueba" id="checkEmpresaPrueba_{{$emp}}">
-								<b>0000{{$emp}}</b> - <span>Empresa de prueba 0000{{$emp}}</span>
-								<input type="radio" class="d-none" name="empresaPrueba" value="{{$emp}}" />
+						<li class="radList checkEmpresaReciente" id="checkEmpresaReciente_{{$emp}}">
+							<b>0000{{$emp}}</b> - <span>Empresa de prueba 0000{{$emp}}</span>
+							<input type="radio" class="d-none" name="empresaReciente" value="{{$emp}}" />
 						</li>
 					@endforeach
 				</ul>
