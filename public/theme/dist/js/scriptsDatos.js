@@ -250,22 +250,22 @@ function ordenaUlLi(elemento,obj,tipo){
 	$('.ordenEmpresas').removeClass('principal');
 	var ordenClass = $(obj).attr('class');
 	$(obj).addClass('principal');
-	if(ordenClass.includes("up")){
-		var sentido = "up";
+	if(ordenClass.includes("down-alt")){
+		var sentido = "down-alt";
 		var opuesto = "down";
-	}else if(ordenClass.includes("down")){
+	}else{
 		var sentido = "down";
-		var opuesto = "up";
+		var opuesto = "down-alt";
 	}
 	$(obj).removeClass(ordenClass);
 	var ordenClassOpuesta = ordenClass.replace(sentido,opuesto);
 	$(obj).addClass(ordenClassOpuesta);
 	$(elemento+" li").sort(ordenaLi).appendTo(elemento);
 	function ordenaLi(a, b){
-		if(opuesto == "up"){
-			return ($(b).data(tipo)) < ($(a).data(tipo)) ? 1 : -1;
-		}else if(opuesto == "down"){
+		if(opuesto.includes("down-alt")){
 			return ($(b).data(tipo)) > ($(a).data(tipo)) ? 1 : -1;
+		}else{
+			return ($(b).data(tipo)) < ($(a).data(tipo)) ? 1 : -1;
 		}
 	}
 }

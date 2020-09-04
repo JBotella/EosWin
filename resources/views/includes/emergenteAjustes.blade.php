@@ -16,8 +16,8 @@
 			<div class="cabeceraEmAjuste">
 				@lang('texto.empresas')
 				<div class="botonesCabeceraEmAjuste">
-					<i class="fas fa-sort-alpha-up btn-pq ordenEmpresas" title="@lang('texto.orden')" onclick="ordenaUlLi('.ajustesListaEmpresas',this,'alpha')"></i>
-					<i class="fas fa-sort-numeric-up btn-pq ml-1 ordenEmpresas" title="@lang('texto.orden')" onclick="ordenaUlLi('.ajustesListaEmpresas',this,'numeric')"></i>
+					<i class="fas fa-sort-alpha-down btn-pq ordenEmpresas" title="@lang('texto.orden')" onclick="ordenaUlLi('.ajustesListaEmpresas',this,'alpha')"></i>
+					<i class="fas fa-sort-numeric-down btn-pq ml-1 ordenEmpresas" title="@lang('texto.orden')" onclick="ordenaUlLi('.ajustesListaEmpresas',this,'numeric')"></i>
 				</div>
 			</div>
 			<div class="buscadorCabecera">
@@ -26,7 +26,7 @@
 			<div class="contenidoEmAjuste alturaContEmAjusteConBuscador">
 				<ul class="ajustesListaEmpresas">
 					@php
-						$empsTest = array(1=>'b',2=>'f',3=>'h',4=>'g',5=>'d',6=>'e',7=>'d',8=>'c',9=>'a');
+						$empsTest = array(1=>'b',2=>'f',3=>'h',4=>'g',5=>'d',6=>'e',7=>'d',8=>'c');
 						$emps = Session::get("listadoEmpresas");
 					@endphp
 					@foreach($emps as $emp)
