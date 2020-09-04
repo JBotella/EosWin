@@ -269,6 +269,9 @@ body {
 		.dropdown-item svg {
 			min-width:1rem;
 		}
+		.dropdown-item > .cuadroCheck svg {
+			min-width:auto;
+		}
 		.dropdown-item img {
 			height:1rem;
 			margin-right:0.2rem;
@@ -1236,6 +1239,15 @@ body {
 							border:solid 1px var(--grisMasClaro)!important;
 							border-bottom:solid 1px var(--grisMasClaro)!important;
 						}
+
+/* Mensajes de alerta en formularios */
+.mensaje-alerta-success {
+	background-color:var(--principalMasClaro);
+	color:var(--principalOscuro);
+	border:solid 1px var(--principalClaro);
+	border-left:solid 5px var(--principal);
+	border-right:solid 5px var(--principal);
+}
 
 /* -----|||||----- ********************* -----|||||----- */
 /* -----|||||----- * Barra de Opciones * -----|||||----- */

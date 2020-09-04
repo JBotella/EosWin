@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
-
+	@php
+		$extrabar = 'oculta';
+	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion">
 			<span><i class="fas fa-cog icoCab mr-2"></i></span>
@@ -8,10 +10,16 @@
 		</div>
 		@component('components.seccionFormulario')
 			<div class="contenidoFormulario">
-				<form class="form">
+				<form class="form" method="POST" action="{!!route('guardaEmpresa')!!}">
+					@csrf
+					@if(Session::has('success'))
+						@component('components.mensajeAlerta')
+							@slot('tipo', 'success')
+							@slot('mensaje', Session::get('success'))
+						@endcomponent
+					@endif
 					<div class="row">
 						<div class="col-12 col-md-6" id="columnaIzquierda">
-						
 							{{-- Datos generales --}}
 							<div class="categoriaBloqueFormulario">Datos generales</div>
 							<div class="bloqueFormulario">
@@ -34,7 +42,7 @@
 										@slot('class', 'col-4 col-md-4 col-lg-4 col-xl-3')
 										@slot('nombre', 'NIF/CIF')
 										@slot('valor')
-											<input type="text" class="form-control" name="nif" value="{{$datosEmpresa->MECIF}}" />
+											<input type="text" class="form-control" name="cif" value="{{$datosEmpresa->MECIF}}" />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
@@ -120,7 +128,7 @@
 							<div class="bloqueFormulario">
 								<div class="row">
 									@component('components.itemFormulario')
-										@slot('class', 'col-6 col-md-6 col-lg-6 col-xl-6')
+										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
 										@slot('nombre', 'E-Mail')
 										@slot('valor')
 											<input type="email" class="form-control" name="email" value="{{$datosEmpresa->MECORREOELECT}}" />
@@ -152,26 +160,41 @@
 										@slot('class', 'col-6 col-md-6 col-lg-6 col-xl-6')
 										@slot('nombre', 'CP Administración')
 										@slot('valor')
-											<input type="email" class="form-control" name="email" value="{{$datosEmpresa->MECODADM}}" />
+											<input type="text" class="form-control" name="cpAdministracion" value="{{$datosEmpresa->MECODADM}}" data-href="{{ route('listaDelegacionesMin') }}" onclick="listaExtra(this)" />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-6 col-md-6 col-lg-6 col-xl-6')
 										@slot('nombre', 'Delegación')
 										@slot('valor')
-											<input type="text" class="form-control" name="telefono" value="{{$datosEmpresa->MEDELEGACION}}" />
+											<input type="text" class="form-control" name="delegacion" value="{{$datosEmpresa->MEDELEGACION}}" data-href="{{ route('listaDelegacionesMin') }}" onclick="listaExtra(this)" />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-6 col-md-6 col-lg-6 col-xl-6')
 										@slot('nombre', 'Administración')
 										@slot('valor')
-											<input type="text" class="form-control" name="fax" value="{{$datosEmpresa->MEADMINISTRACION}}" />
+											<input type="text" class="form-control" name="administracion" value="{{$datosEmpresa->MEADMINISTRACION}}" data-href="{{ route('listaDelegacionesMin') }}" onclick="listaExtra(this)" />
 										@endslot
 									@endcomponent
 								</div>
 							</div>
 							
+						</div>
+						<div class="col-12 col-md-12 mt-3" id="columnaPie">
+							<div class="bloqueFormulario">
+								<div class="row">
+									@component('components.itemFormulario')
+										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12 text-center')
+										@slot('valor')
+											<button class="btn btn-form mt-1 btn-form" type="submit">
+												<i class="fas fa-save mr-1"></i>
+												Guardar
+											</button>
+										@endslot
+									@endcomponent
+								</div>
+							</div>
 						</div>
 					</div>
 				</form>

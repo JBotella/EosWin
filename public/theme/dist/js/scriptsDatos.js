@@ -196,6 +196,22 @@ function preguntaBorrarLinea(id){
 	event.stopImmediatePropagation();
 }
 
+/* ----- ************* ----- */
+/* ----- * Extra Bar * ----- */
+/* ----- ************* ----- */
+function cargaBuscador(){
+	$("#buscadorExtraBar").on("keyup", function () {
+		var busqueda = $("#buscadorExtraBar").val();
+		resaltaBusqueda(busqueda,'.mLE_ListaMin','.mLE_ListaMinLinea');
+	});
+}
+function iniciaBuscador(){
+	var rutaBuscadorExtraBar = $(".menuLateral_extraCabInt").data('ruta');
+	$(".menuLateral_extraCabInt").load(rutaBuscadorExtraBar,function(){
+		cargaBuscador();
+	});
+}
+
 /* ----- ********* ----- */
 /* ----- * Orden * ----- */
 /* ----- ********* ----- */

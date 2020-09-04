@@ -72,6 +72,9 @@ Route::group(['middleware' => 'auth'], function(){
 	
 	/* Configuracion de empresa */
 	Route::get('configuracion-empresa', 'ConfiguracionEmpresaController@configuracion')->name('configuracionEmpresa');
+		// Lista Delegaciones Mínima (Asíncrona)
+		Route::get('listaDelegacionesMin', 'ConfiguracionEmpresaController@listaDelegacionesMin')->name('listaDelegacionesMin');
+	Route::post('guarda-empresa', 'ConfiguracionEmpresaController@guardar')->name('guardaEmpresa');
 	/* Nueva empresa */
 	Route::get('nueva-empresa', 'ConfiguracionEmpresaController@nuevaEmpresa')->name('nuevaEmpresa');
 	
