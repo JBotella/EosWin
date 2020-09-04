@@ -7,8 +7,12 @@
 			<div class="nombreUsuario">
 				{{Session::get('datosEmpresa')->MENOMBRE}}
 			</div>
-			<i class="fas fa-cog btn-pq" title="@lang('texto.configuracion')"></i>
-			<i class="fas fa-plus-circle btn-pq ml-1" title="@lang('texto.nueva') @lang('texto.empresa')"></i>
+			<a class="h-auto" href="{!!route('configuracionEmpresa')!!}">
+				<i class="fas fa-cog btn-pq" title="@lang('configuraciones.configuracion_empresa.titulo_configuracion')"></i>
+			</a>
+			<a class="h-auto" href="{!!route('nuevaEmpresa')!!}">
+				<i class="fas fa-plus-circle btn-pq ml-1" title="@lang('configuraciones.configuracion_empresa.titulo_nueva')"></i>
+			</a>
 		</div>
 	</div>
 	<div class="intEmergenteAjustes" id="intEmergenteAjustes">
@@ -21,7 +25,7 @@
 				</div>
 			</div>
 			<div class="buscadorCabecera">
-				<input type="text" class="form-control form-control-sm" id="buscadorAjustesEmpresas" placeholder="Buscar..." />
+				<input type="text" class="form-control form-control-sm" id="buscadorAjustesEmpresas" placeholder="@lang('texto.buscar')..." />
 			</div>
 			<div class="contenidoEmAjuste alturaContEmAjusteConBuscador">
 				<ul class="ajustesListaEmpresas">

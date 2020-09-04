@@ -1147,6 +1147,12 @@ body {
 	border:solid 1px var(--principalMedio)!important;
 	box-shadow:0rem 0rem 0.2rem var(--principalMedio)!important;
 }
+
+.form-control:disabled, .form-control[readonly] {
+    background-color:var(--grisMasClaro)!important;
+    opacity: 1;
+}
+
 /* Contenedor Formulario */
 .contenedorFormulario {
 	width:100%;

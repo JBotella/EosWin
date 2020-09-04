@@ -66,6 +66,15 @@ Route::group(['middleware' => 'auth'], function(){
 	/* EXTRABAR */
 	/* -------- */
 	
+	/* ----------------------------------- */
+	/* CONFIGURACIÓN Y AJUSTES DE EMPRESAS */
+	/* ----------------------------------- */
+	
+	/* Configuracion de empresa */
+	Route::get('configuracion-empresa', 'ConfiguracionEmpresaController@configuracion')->name('configuracionEmpresa');
+	/* Nueva empresa */
+	Route::get('nueva-empresa', 'ConfiguracionEmpresaController@nuevaEmpresa')->name('nuevaEmpresa');
+	
 	/* Buscador ExtraBar */
 	Route::get('buscadorExtraBar', function(){
 		return view('includes.complementos.buscadorExtraBar');
