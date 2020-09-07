@@ -18,7 +18,8 @@
 			</div>
 			
 			<div class="contenidoFormulario">
-				<form class="form">
+				<form class="form" method="POST" action="{!!route('guardaCliente', $datos->CliCodigo)!!}">
+					@csrf
 					<div class="row">
 					
 						<div class="col-12 col-md-6" id="columnaIzquierda">
@@ -165,17 +166,27 @@
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
-										@slot('class', 'col-12 col-md-12')
-										@slot('nombre', '')
+										@slot('class', 'col-4 col-md-4')
+										@slot('nombre', trans('texto.domicilio_fiscal.domicilio.numero'))
 										@slot('valor')
-											<div class="row">
-												<div class="col-4">
-													<input type="text" class="form-control" name="direccion" value="{{$datos->CliDireccionPiso}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.piso')" />
-												</div>
-												<div class="col-4">
-													<input type="text" class="form-control" name="direccion" value="{{$datos->CliDireccionPuerta}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.puerta')" />
-												</div>
-											</div>
+											<input type="text" class="form-control" name="direccion" value="{{$datos->CliDireccionNumero}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.numero')" />
+												
+										@endslot
+									@endcomponent
+									@component('components.itemFormulario')
+										@slot('class', 'col-4 col-md-4')
+										@slot('nombre', trans('texto.domicilio_fiscal.domicilio.piso'))
+										@slot('valor')
+											<input type="text" class="form-control" name="piso" value="{{$datos->CliDireccionPiso}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.piso')" />
+												
+										@endslot
+									@endcomponent
+									@component('components.itemFormulario')
+										@slot('class', 'col-4 col-md-4')
+										@slot('nombre', trans('texto.domicilio_fiscal.domicilio.puerta'))
+										@slot('valor')
+											<input type="text" class="form-control" name="direccion" value="{{$datos->CliDireccionPuerta}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.puerta')" />
+												
 										@endslot
 									@endcomponent
 								</div>
@@ -313,6 +324,22 @@
 								</div>
 							</div>
 						
+						</div>
+						
+						<div class="col-12 col-md-12 mt-3" id="columnaPie">
+							<div class="bloqueFormulario">
+								<div class="row">
+									@component('components.itemFormulario')
+										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12 text-center')
+										@slot('valor')
+											<button class="btn btn-form mt-1 btn-form" type="submit">
+												<i class="fas fa-save mr-1"></i>
+												@lang('texto.guardar')
+											</button>
+										@endslot
+									@endcomponent
+								</div>
+							</div>
 						</div>
 						
 					</div>

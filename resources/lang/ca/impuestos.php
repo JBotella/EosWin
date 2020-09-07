@@ -10,7 +10,7 @@ return [
 	'modelos' => [
 		'modelo' => 'Model',
 		'resumen_111' => 'Retencions i ingressos a compte. Rendiments del treball, d\'activitats professionals, d\'activitats agrícoles i ramaderes i premis. Empreses. Document d\'ingrés.',
-		'resumen_115' => 'Retencions i ingressos a compte. Rendes o rendiments procedents de l'arrendament o subarrendament d'immobles urbans.',
+		'resumen_115' => 'Retencions i ingressos a compte. Rendes o rendiments procedents de l\'arrendament o subarrendament d\'immobles urbans.',
 		'resumen_123' => 'Retencions i ingressos a compte de l\'Impost sobre la Renda de les Persones Físiques, Impost de societats i de l\'Impost sobre la Renda de no Residents (establiments permanents). Determinats rendiments del capital mobiliari o determinades rendes.',
 		'resumen_130' => 'IRPF. Empresaris i professionals en Estimació Directa. Pagament fraccionat.',
 		'resumen_131' => 'IRPF. Empresaris i professionals en Estimació Objectiva. Pagament fraccionat.',

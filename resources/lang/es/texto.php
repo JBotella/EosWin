@@ -170,6 +170,7 @@ return [
 		'domicilio' => [
 			'direccion' => 'Dirección',
 			'domicilio' => 'Domicilio',
+			'numero' => 'Número',
 			'piso' => 'Piso',
 			'puerta' => 'Puerta',
 		],

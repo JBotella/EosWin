@@ -7,6 +7,8 @@ class Cliente extends Model
 {
 	protected $connection= 'sqlsrv2';
     protected $table = 'ClientesTabla';
+	//protected $primaryKey = 'CliCodigo';
+	public $timestamps = false;
 	
 	public function listadoCompletoClientes($variables = NULL){
 		$filtroConsulta = '';
@@ -34,5 +36,29 @@ class Cliente extends Model
 	public function telefonosCliente($CliCodigo){
 		$telefonos = DB::connection($this->connection)->table('TELEFON')->where('TELECODIGO',$CliCodigo)->get();
 		return $telefonos;
+	}
+	public function guardaCliente($id,$request){
+		/* Filtrar nulos y asignarles empty */
+		if(!$request->apellido1){ $request->apellido1 = ''; }
+		if(!$request->apellido2){ $request->apellido2 = ''; }
+		if(!$request->numero){ $request->numero = ''; }
+		
+		$this->where("CliCodigo",$id)->update([
+			'CliNombre' => $request->nombre,
+			'CliApellido1' => $request->apellido1,
+			'CliApellido2' => $request->apellido2,
+			
+			'CliCif' => $request->nif,
+			'CliEMail' => $request->email,
+			
+			'CliDireccion' => $request->direccion,
+			'CliDireccionNumero' => $request->numero,
+			'CliDireccionPiso' => $request->piso,
+			'CliDireccionPuerta' => $request->puerta,
+			'CliCodPostal' => $request->cp,
+			'CliCodPostalLocali' => $request->localidad,
+			'CliCodPostalProvin' => $request->provincia,
+			'CliCodPostalPais' => $request->pais,
+		]);
 	}
 }

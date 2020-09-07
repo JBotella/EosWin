@@ -28,6 +28,11 @@ class ClientesController extends Controller
 		$telefonos = $cliente->telefonosCliente($id);
 		return view('pages.clientes.formularioCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
 	}
+	public function guardar($id,Request $request){
+		$cliente = new Cliente;
+		$cliente->guardaCliente($id,$request);
+		return redirect(route("clientes"));
+	}
 	public function verCliente($id){
 		$cliente = new Cliente();
 		$datos = $cliente->datosCliente($id);

@@ -7,5 +7,5 @@
 @endforeach
 </div>
 <script>
-iniciaBuscador();
+	iniciaBuscador();
 </script>

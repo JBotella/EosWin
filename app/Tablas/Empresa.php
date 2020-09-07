@@ -21,6 +21,12 @@ class Empresa extends Model
 		$empresa->MENOMBRE = $request->nombre;
 		$empresa->save();*/
 		
+		if($request->criterioCaja){
+			$criterioCaja = -1;
+		}else{
+			$criterioCaja = 0;
+		}
+		
 		$this->where("MENUMEMPRESA",Session::get("ultimaEmpresa"))->update([
 			'MENOMBRE' => $request->nombre,
 			'MECIF' => $request->cif,
@@ -38,6 +44,8 @@ class Empresa extends Model
 			'MECORREOELECT' => $request->email,
 			'METELEFONO' => $request->telefono,
 			'MENUMEROFAX' => $request->fax,
+			
+			'CRITERIOCAJA' => $criterioCaja,
 		]);
 	}
 	/* Sin uso */

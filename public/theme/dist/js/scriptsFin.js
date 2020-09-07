@@ -77,11 +77,7 @@ function listaExtra(cont){
 	if(!$('.menuLateral_extra').hasClass('mLExtraVisible')){
 		extraBar();
 		loaderGrafico('.menuLateral_extraInt');
-		$('.menuLateral_extraInt').load(ruta, function(){
-			//extraBar();
-		});
-	}else{
-		extraBar();
+		$('.menuLateral_extraInt').load(ruta);
 	}
 }
 

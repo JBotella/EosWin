@@ -178,6 +178,20 @@
 										@endslot
 									@endcomponent
 								</div>
+								<div class="row">
+									@component('components.itemFormulario')
+										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
+										@slot('nombre', 'Criterio de caja')
+										@slot('valor')
+											<div class="itemCheckbox">
+												<input type="checkbox" class="form-control" id="criterioCaja" name="criterioCaja" @if($datosEmpresa->CRITERIOCAJA == -1) checked @endif />
+												<label for="criterioCaja">
+													Acogida del régimen especial de criterio de caja a partir del 2014.
+												</label>
+											</div>
+										@endslot
+									@endcomponent
+								</div>
 							</div>
 							
 						</div>
@@ -189,7 +203,7 @@
 										@slot('valor')
 											<button class="btn btn-form mt-1 btn-form" type="submit">
 												<i class="fas fa-save mr-1"></i>
-												Guardar
+												@lang('texto.guardar')
 											</button>
 										@endslot
 									@endcomponent
@@ -201,5 +215,12 @@
 			</div>
 		@endcomponent
 	</div>
-
+	<script>
+		function cargaDatosDelegacion(datosDelegacion){
+			$('input[name="cpAdministracion"]').val(datosDelegacion.cpAdministracion);
+			$('input[name="delegacion"]').val(datosDelegacion.delegacion);
+			$('input[name="administracion"]').val(datosDelegacion.administracion);
+			extraBar();
+		}
+	</script>
 @endsection

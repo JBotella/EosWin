@@ -608,6 +608,7 @@ body {
 				}
 					.c1 { flex:0; margin-right:0.5rem; font-weight:bold; }
 					.c2 { flex:1; }
+					.c3 { width:100%; margin-left:0; }
 
 /* -----|||||----- ************** -----|||||----- */
 /* -----|||||----- * Contenidos * -----|||||----- */
@@ -1239,6 +1240,27 @@ body {
 							border:solid 1px var(--grisMasClaro)!important;
 							border-bottom:solid 1px var(--grisMasClaro)!important;
 						}
+							.itemCheckbox {
+								display:flex;
+							}
+							.itemCheckbox input[type=checkbox]:focus {
+								box-shadow:none!important;
+							}
+							.itemCheckbox input[type=checkbox] {
+								width:1rem;
+								display:inline-flex;
+								align-items:center;
+								cursor:pointer;
+							}
+							.itemCheckbox label {
+								margin:0;
+								margin-left:0.5rem;
+								color:var(--grisOscuro);
+								font-weight:normal;
+								display:inline-flex;
+								align-items:center;
+								cursor:pointer;
+							}
 
 /* Mensajes de alerta en formularios */
 .mensaje-alerta-success {
@@ -1643,7 +1665,7 @@ html {
 	-ms-user-select:text; /* Internet Explorer/Edge */
 	user-select:text;
 }
-.noSelect, .sb-topnav, .sb-sidenav, .cabeceraSeccion, .contenedorEmergenteAjustes, #contenidoDashboard, #contenidoTarjetasLinks, .barraOpcionesLista, .categoriaBloqueFormulario, .nombreItemFormulario, .btnAccion, thead {
+.noSelect, .sb-topnav, .sb-sidenav, .cabeceraSeccion, .contenedorEmergenteAjustes, #contenidoDashboard, #contenidoTarjetasLinks, .barraOpcionesLista, .categoriaBloqueFormulario, .nombreItemFormulario, .itemCheckbox, .btnAccion, thead {
 	-webkit-touch-callout:none; /* iOS Safari */
 	-webkit-user-select:none; /* Safari */
 	-khtml-user-select:none; /* Konqueror HTML */

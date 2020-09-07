@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
 		// Lista Clientes Mínima (Asíncrona)
 		Route::get('listaClientesMin', 'ClientesController@listaClientesMin')->name('listaClientesMin');
 	Route::get('cliente/{id}', 'ClientesController@formularioCliente')->name('cliente');
+	Route::post('guarda-cliente/{id}', 'ClientesController@guardar')->name('guardaCliente');
 		// Ver Cliente (Asíncrona)
 		Route::get('verCliente/{id}', 'ClientesController@verCliente')->name('verCliente');
 	
@@ -71,12 +72,12 @@ Route::group(['middleware' => 'auth'], function(){
 	/* ----------------------------------- */
 	
 	/* Configuracion de empresa */
-	Route::get('configuracion-empresa', 'ConfiguracionEmpresaController@configuracion')->name('configuracionEmpresa');
+	Route::get('configuracion-empresa', 'EmpresasController@configuracion')->name('configuracionEmpresa');
 		// Lista Delegaciones Mínima (Asíncrona)
-		Route::get('listaDelegacionesMin', 'ConfiguracionEmpresaController@listaDelegacionesMin')->name('listaDelegacionesMin');
-	Route::post('guarda-empresa', 'ConfiguracionEmpresaController@guardar')->name('guardaEmpresa');
+		Route::get('listaDelegacionesMin', 'EmpresasController@listaDelegacionesMin')->name('listaDelegacionesMin');
+	Route::post('guarda-empresa', 'EmpresasController@guardar')->name('guardaEmpresa');
 	/* Nueva empresa */
-	Route::get('nueva-empresa', 'ConfiguracionEmpresaController@nuevaEmpresa')->name('nuevaEmpresa');
+	Route::get('nueva-empresa', 'EmpresasController@nuevaEmpresa')->name('nuevaEmpresa');
 	
 	/* Buscador ExtraBar */
 	Route::get('buscadorExtraBar', function(){
