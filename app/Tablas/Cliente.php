@@ -38,23 +38,17 @@ class Cliente extends Model
 		return $telefonos;
 	}
 	public function guardaCliente($id,$request){
-		/* Filtrar nulos y asignarles empty */
-		if(!$request->apellido1){ $request->apellido1 = ''; }
-		if(!$request->apellido2){ $request->apellido2 = ''; }
-		if(!$request->numero){ $request->numero = ''; }
-		
+		/* Asignarles valor = '' a los nulos */
 		$this->where("CliCodigo",$id)->update([
 			'CliNombre' => $request->nombre,
-			'CliApellido1' => $request->apellido1,
-			'CliApellido2' => $request->apellido2,
-			
+			'CliApellido1' => $request->apellido1 ?? '',
+			'CliApellido2' => $request->apellido2 ?? '',
 			'CliCif' => $request->nif,
 			'CliEMail' => $request->email,
-			
 			'CliDireccion' => $request->direccion,
-			'CliDireccionNumero' => $request->numero,
-			'CliDireccionPiso' => $request->piso,
-			'CliDireccionPuerta' => $request->puerta,
+			'CliDireccionNumero' => $request->numero ?? '',
+			'CliDireccionPiso' => $request->piso ?? '',
+			'CliDireccionPuerta' => $request->puerta ?? '',
 			'CliCodPostal' => $request->cp,
 			'CliCodPostalLocali' => $request->localidad,
 			'CliCodPostalProvin' => $request->provincia,

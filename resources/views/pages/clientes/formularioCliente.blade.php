@@ -32,7 +32,7 @@
 										@slot('class', 'col-6 col-md-12 col-lg-6 col-xl-6')
 										@slot('nombre', trans('texto.datos_identificativos.codigo'))
 										@slot('valor')
-											<input type="text" class="form-control" name="codigo" value="{{$datos->CliCodigo}}" />
+											<input type="text" class="form-control" name="codigo" value="{{$datos->CliCodigo}}" readonly />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
@@ -169,8 +169,7 @@
 										@slot('class', 'col-4 col-md-4')
 										@slot('nombre', trans('texto.domicilio_fiscal.domicilio.numero'))
 										@slot('valor')
-											<input type="text" class="form-control" name="direccion" value="{{$datos->CliDireccionNumero}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.numero')" />
-												
+											<input type="text" class="form-control" name="numero" value="{{$datos->CliDireccionNumero}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.numero')" />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
@@ -178,15 +177,13 @@
 										@slot('nombre', trans('texto.domicilio_fiscal.domicilio.piso'))
 										@slot('valor')
 											<input type="text" class="form-control" name="piso" value="{{$datos->CliDireccionPiso}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.piso')" />
-												
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-4 col-md-4')
 										@slot('nombre', trans('texto.domicilio_fiscal.domicilio.puerta'))
 										@slot('valor')
-											<input type="text" class="form-control" name="direccion" value="{{$datos->CliDireccionPuerta}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.puerta')" />
-												
+											<input type="text" class="form-control" name="puerta" value="{{$datos->CliDireccionPuerta}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.puerta')" />
 										@endslot
 									@endcomponent
 								</div>
