@@ -7,7 +7,7 @@ Notas Laravel 7 para el proyecto 'EosWin Cloud'
 	
 	- Crear proyecto (Alternativa al modo de crear con Composer)
 		laravel new eoswin
-			(Se ha instalado la v.7.20)
+			(Se ha instalado la v.7.27)
 
 ** Para el AUTH **
 
