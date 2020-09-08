@@ -62,7 +62,7 @@
 										@slot('class', 'col-12 col-md-12')
 										@slot('nombre', trans('texto.datos_identificativos.organizacion'))
 										@slot('valor')
-											<input type="text" class="form-control" name="organizacion" value="" />
+											<input type="text" class="form-control" name="organizacion" value="{{$datos->CliNomComercial}}" />
 										@endslot
 									@endcomponent
 								</div>

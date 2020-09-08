@@ -17,21 +17,15 @@ class Empresa extends Model
 		return $actividadesEmpresa;
 	}
 	public function guardaEmpresa($request){
-		/*$empresa = $this->where("MENUMEMPRESA",Session::get("ultimaEmpresa"))->first();
-		$empresa->MENOMBRE = $request->nombre;
-		$empresa->save();*/
-		
 		if($request->criterioCaja){
 			$criterioCaja = -1;
 		}else{
 			$criterioCaja = 0;
 		}
-		
 		$this->where("MENUMEMPRESA",Session::get("ultimaEmpresa"))->update([
 			'MENOMBRE' => $request->nombre,
 			'MECIF' => $request->cif,
 			'MECODCNAE' => $request->cnae,
-			
 			'MEDOMICILIO' => $request->domicilio,
 			'MENUM' => $request->numero,
 			'MEESC' => $request->escalera,
@@ -40,11 +34,9 @@ class Empresa extends Model
 			'MECP' => $request->cp,
 			'MELOCALIDAD' => $request->localidad,
 			'MEPROVINCIA' => $request->provincia,
-			
 			'MECORREOELECT' => $request->email,
 			'METELEFONO' => $request->telefono,
 			'MENUMEROFAX' => $request->fax,
-			
 			'CRITERIOCAJA' => $criterioCaja,
 		]);
 	}

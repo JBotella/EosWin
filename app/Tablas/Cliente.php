@@ -43,6 +43,7 @@ class Cliente extends Model
 			'CliNombre' => $request->nombre,
 			'CliApellido1' => $request->apellido1 ?? '',
 			'CliApellido2' => $request->apellido2 ?? '',
+			'CliNomComercial' => $request->organizacion ?? '',
 			'CliCif' => $request->nif,
 			'CliEMail' => $request->email,
 			'CliDireccion' => $request->direccion,
