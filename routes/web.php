@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('clientes', 'ClientesController@clientes')->name('clientes');
 		// Lista Clientes (Asíncrona)
 		Route::get('listaClientes/{variables}', 'ClientesController@listaClientes')->name('listaClientes');
+		Route::post('borra-clientes', 'ClientesController@borraClientes')->name('borraClientes');
 		// Lista Clientes Mínima (Asíncrona)
 		Route::get('listaClientesMin', 'ClientesController@listaClientesMin')->name('listaClientesMin');
 	Route::get('cliente/{id}', 'ClientesController@formularioCliente')->name('cliente');
@@ -67,6 +68,11 @@ Route::group(['middleware' => 'auth'], function(){
 	/* EXTRABAR */
 	/* -------- */
 	
+	/* Incluir el Buscador en la ExtraBar */
+	Route::get('buscadorExtraBar', function(){
+		return view('includes.complementos.buscadorExtraBar');
+	})->name('buscadorExtraBar');
+	
 	/* ----------------------------------- */
 	/* CONFIGURACIÓN Y AJUSTES DE EMPRESAS */
 	/* ----------------------------------- */
@@ -78,11 +84,6 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::post('guarda-empresa', 'EmpresasController@guardar')->name('guardaEmpresa');
 	/* Nueva empresa */
 	Route::get('nueva-empresa', 'EmpresasController@nuevaEmpresa')->name('nuevaEmpresa');
-	
-	/* Buscador ExtraBar */
-	Route::get('buscadorExtraBar', function(){
-		return view('includes.complementos.buscadorExtraBar');
-	})->name('buscadorExtraBar');
 	
 	/* ------- */
 	/* AJUSTES */
@@ -100,6 +101,7 @@ Route::group(['middleware' => 'auth'], function(){
 /* ------ */
 /* IDIOMA */
 /* ------ */
+
 Route::get('lang/{lang}', function($lang){
 	Session::put('lang', $lang);
 	return Redirect::back();

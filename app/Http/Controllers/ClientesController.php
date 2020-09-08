@@ -33,6 +33,9 @@ class ClientesController extends Controller
 		$cliente->guardaCliente($id,$request);
 		return redirect(route("clientes"));
 	}
+	public function borraClientes(Request $request){
+		dd($request);
+	}
 	public function verCliente($id){
 		$cliente = new Cliente();
 		$datos = $cliente->datosCliente($id);

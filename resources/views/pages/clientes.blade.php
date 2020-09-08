@@ -50,6 +50,23 @@
 			
 		</div>
 		<div class="contenidoSeccion">
+			@csrf
+			<div class="notificacionAccion notificacion-estilo-alerta" data-lista-id="0" data-accion="borrar" data-ruta="{{route('borraClientes')}}">
+				<div class="avisoAccion">¿Confirma borrar las lineas seleccionadas?</div>
+				<div class="opcionesAccion">
+					<div class="opcionAccion" onclick="notificacionAccion('borrar')">Cancelar</div>
+					<div class="opcionAccion" onclick="accionLineas('borrar','checkCliente')">Confirmar</div>
+				</div>
+			</div>
+			
+			<div class="notificacionAccion notificacion-estilo-alerta" data-accion="borrar2" data-ruta="rutaDeBorrado2">
+				<div class="avisoAccion">¿Confirma borrar las lineas seleccionadas 2?</div>
+				<div class="opcionesAccion">
+					<div class="opcionAccion" onclick="notificacionAccion('borrar2')">Cancelar</div>
+					<div class="opcionAccion" onclick="accionLineas('borrar2','checkCliente2')">Confirmar</div>
+				</div>
+			</div>
+		
 			<div class="seccion-responsive">
 				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
 				<div class="table-responsive" id="contenido_0">

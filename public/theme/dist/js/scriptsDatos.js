@@ -180,7 +180,7 @@ function ocultarThCabecera(cab){
 function mostrarThCabecera(cab){
 	$('#cabeceraLista_'+cab).removeClass('thead-th-ocultos');
 }
-/* Preguntar antes de borrar linea */
+/* Preguntar antes de borrar linea (Para lineas con botones de acción en la linea) */
 function preguntaBorrarLinea(id){
 	if($('#tdConfirmarBorrar_'+id).hasClass('d-none')){
 		$('.tdBorrar').removeClass('d-none');
@@ -196,19 +196,31 @@ function preguntaBorrarLinea(id){
 	event.stopImmediatePropagation();
 }
 
-/* ----- ************* ----- */
-/* ----- * Extra Bar * ----- */
-/* ----- ************* ----- */
-function cargaBuscador(){
-	$("#buscadorExtraBar").on("keyup", function () {
-		var busqueda = $("#buscadorExtraBar").val();
-		resaltaBusqueda(busqueda,'.mLE_ListaMin','.mLE_ListaMinLinea');
-	});
+/* Muestra el Notificador de Acciones de Sección */
+function notificacionAccion(accion){
+	$('.notificacionAccion[data-accion="'+accion+'"]').slideToggle(200);
 }
-function iniciaBuscador(){
-	var rutaBuscadorExtraBar = $(".menuLateral_extraCabInt").data('ruta');
-	$(".menuLateral_extraCabInt").load(rutaBuscadorExtraBar,function(){
-		cargaBuscador();
+/* Recoge todos los checkbox seleccionados en una tabla para aplicarles la acción */
+function accionLineas(accion,checkLinea){
+	var lineas = $('.'+checkLinea+':checkbox:checked').map(function() {
+		return this.value;
+	}).get();
+	ejecutaAccionLineas(accion,lineas);
+}
+function ejecutaAccionLineas(accion,lineas){
+	var nLista = $('.notificacionAccion[data-accion="'+accion+'"]').data('lista-id');
+	var ruta = $('.notificacionAccion[data-accion="'+accion+'"]').data('ruta');
+	console.log(ruta);
+	var _token = $("input[name=_token]").val();
+	var URLdomain = window.location.origin;
+	$.ajax({
+		type:'POST',
+		url:ruta,
+		data:{_token:_token, lineas:lineas},
+		headers:{'Access-Control-Allow-Origin':URLdomain},
+		success:function(data){
+			recargarListar(nLista);
+		}
 	});
 }
 
@@ -362,6 +374,42 @@ function searchTable(tabla) {
       }
     }
   }
+}
+
+/* ----- ************* ----- */
+/* ----- * Extra Bar * ----- */
+/* ----- ************* ----- */
+
+function extraBar(){
+	if(!$('.menuLateral_extra').hasClass('mLExtraVisible')){
+		$('.contenedorSeccion').addClass('cSeccExtraVisible');
+		$('.menuLateral_extra').addClass('mLExtraVisible');
+	}else{
+		$('.contenedorSeccion').removeClass('cSeccExtraVisible');
+		$('.menuLateral_extra').removeClass('mLExtraVisible');
+	}
+}
+/* Carga el contenido de una ruta en la extraBar */
+function listaExtra(cont){
+	var ruta = $(cont).data('href');
+	if(!$('.menuLateral_extra').hasClass('mLExtraVisible')){
+		extraBar();
+		loaderGrafico('.menuLateral_extraInt');
+		$('.menuLateral_extraInt').load(ruta);
+	}
+}
+/* Buscador en extraBar */
+function cargaBuscadorExtra(){
+	$("#buscadorExtraBar").on("keyup", function () {
+		var busqueda = $("#buscadorExtraBar").val();
+		resaltaBusqueda(busqueda,'.mLE_ListaMin','.mLE_ListaMinLinea');
+	});
+}
+function iniciaBuscadorExtra(){
+	var rutaBuscadorExtraBar = $(".menuLateral_extraCabInt").data('ruta');
+	$(".menuLateral_extraCabInt").load(rutaBuscadorExtraBar,function(){
+		cargaBuscadorExtra();
+	});
 }
 
 /* ----- ****************************************** ----- */

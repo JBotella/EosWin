@@ -8,7 +8,7 @@
 @endforeach
 </div>
 <script>
-	iniciaBuscador();
+	iniciaBuscadorExtra();
 	function copiaDatosDelegacion(obj){
 		var cpAdministracion = $(obj).find(".c1").data('val');
 		var delegacion = $(obj).find(".c2").data('val');

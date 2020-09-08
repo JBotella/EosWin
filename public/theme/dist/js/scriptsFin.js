@@ -58,29 +58,6 @@ $(document).on('click',function(e){
 	}
 });
 
-/* ----- ************* ----- */
-/* ----- * Extra Bar * ----- */
-/* ----- ************* ----- */
-
-function extraBar(){
-	if(!$('.menuLateral_extra').hasClass('mLExtraVisible')){
-		$('.contenedorSeccion').addClass('cSeccExtraVisible');
-		$('.menuLateral_extra').addClass('mLExtraVisible');
-	}else{
-		$('.contenedorSeccion').removeClass('cSeccExtraVisible');
-		$('.menuLateral_extra').removeClass('mLExtraVisible');
-	}
-}
-/* Carga el contenido de una ruta en la extraBar */
-function listaExtra(cont){
-	var ruta = $(cont).data('href');
-	if(!$('.menuLateral_extra').hasClass('mLExtraVisible')){
-		extraBar();
-		loaderGrafico('.menuLateral_extraInt');
-		$('.menuLateral_extraInt').load(ruta);
-	}
-}
-
 /* ----- ****************** ----- */
 /* ----- * Altura Sección * ----- */
 /* ----- ****************** ----- */

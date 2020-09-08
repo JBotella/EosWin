@@ -37,6 +37,7 @@
 	/**/
 	--principalComplementario:#AF628F;
 	--principalRojoOpuesto:#B05751;
+		--principalRojoOpuestoClaro: hsl(4, 100%, 90%);
 	--principalMoradoAnalogo:#8262AF;
 	--principalAzulAnalogo:#628FAF;
 	/* Dimensiones */
@@ -685,14 +686,57 @@ body {
 		margin:0rem -1rem;
 		padding:0rem 1rem;
 	}
-	.seccion-responsive {
-		overflow:none;
-		overflow-y:auto;
-		height:100%;
-		margin:0rem -1rem;
-		padding:1rem 1.5rem;
-		transition:0.3s;
-	}
+		/* Notificación de acción en sección */
+		.notificacionAccion {
+			position:relative;
+			display:none;
+			border-style:solid;
+			border-width:1px;
+			margin:0rem 0.5rem;
+			margin-top:1rem;
+			padding:0.75rem 1.25rem;
+			border-radius:0.25rem;
+			text-align:center;
+			font-size:0.85rem;
+			line-height:1rem;
+		}
+			.avisoAccion {
+				font-weight:bold;
+			}
+			.opcionesAccion {
+				display:block;
+				margin-top:0.5rem;
+			}
+				.opcionAccion {
+					display:inline-block;
+					margin:0rem 0.25rem;
+					cursor:pointer;
+					padding:0.25rem;
+					border-style:solid;
+					border-width:1px;
+					border-radius:0.25rem;
+					border-color:inherit;
+					color:inherit;
+					font-size:0.75rem;
+					font-weight:bold;
+				}
+		.notificacion-estilo-alerta {
+			color:var(--principalRojoOpuesto);
+			background-color:var(--principalRojoOpuestoClaro);
+		}
+			.notificacion-estilo-alerta .opcionAccion:hover {
+				color:var(--principalRojoOpuestoClaro);
+				background-color:var(--principalRojoOpuesto);
+			}
+		/* ----- */
+		.seccion-responsive {
+			overflow:none;
+			overflow-y:auto;
+			height:100%;
+			margin:0rem -1rem;
+			padding:1rem 1.5rem;
+			transition:0.3s;
+		}
 	@media(max-width: 768px){
 	}
 	@media(max-width:992px){
