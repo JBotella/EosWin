@@ -37,9 +37,10 @@
 	/**/
 	--principalComplementario:#AF628F;
 	--principalRojoOpuesto:#B05751;
-		--principalRojoOpuestoClaro: hsl(4, 100%, 90%);
+		--principalRojoOpuestoMasClaro:#F5EAE9;
 	--principalMoradoAnalogo:#8262AF;
 	--principalAzulAnalogo:#628FAF;
+		--principalAzulAnalogoMasClaro:#EBF1F5;
 	/* Dimensiones */
 	--anchoSideBar:225px;
 	--anchoExtraBar:225px;
@@ -691,13 +692,13 @@ body {
 			position:relative;
 			display:none;
 			border-style:solid;
-			border-width:1px;
+			border-width:1px 5px;
 			margin:0rem 0.5rem;
 			margin-top:1rem;
 			padding:0.75rem 1.25rem;
 			border-radius:0.25rem;
 			text-align:center;
-			font-size:0.85rem;
+			font-size:0.8rem;
 			line-height:1rem;
 		}
 			.avisoAccion {
@@ -720,13 +721,46 @@ body {
 					font-size:0.75rem;
 					font-weight:bold;
 				}
+				.opcionAccionIco {
+					display:inline-block;
+					margin:0rem 0.25rem;
+					cursor:pointer;
+					padding:0.25rem;
+					color:inherit;
+					font-size:1.5rem;
+					font-weight:bold;
+					text-align:center;
+					border-radius:0.25rem;
+				}
+					.opcionAccionIco svg {
+						text-align:center;
+					}
+					.opcionAccionIco span {
+						display:block;
+						font-size:0.75rem;
+						margin-top:2px;
+						text-align:center;
+						font-weight:normal;
+					}
 		.notificacion-estilo-alerta {
 			color:var(--principalRojoOpuesto);
-			background-color:var(--principalRojoOpuestoClaro);
+			background-color:var(--principalRojoOpuestoMasClaro)!important;
 		}
 			.notificacion-estilo-alerta .opcionAccion:hover {
-				color:var(--principalRojoOpuestoClaro);
-				background-color:var(--principalRojoOpuesto);
+				color:var(--principalRojoOpuestoMasClaro);
+				background-color:var(--principalRojoOpuesto)!important;
+			}
+		.notificacion-estilo-seleccion {
+			color:var(--principalAzulAnalogo);
+			background-color:var(--principalAzulAnalogoMasClaro)!important;
+		}
+			.notificacion-estilo-seleccion .opcionAccion:hover {
+				color:var(--principalAzulAnalogoMasClaro);
+				background-color:var(--principalAzulAnalogo)!important;
+			}
+			.notificacion-estilo-seleccion .opcionAccionIco:hover {
+				color:var(--principalAzulAnalogoMasClaro);
+				background-color:var(--principalAzulAnalogo)!important;
 			}
 		/* ----- */
 		.seccion-responsive {

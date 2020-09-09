@@ -58,6 +58,7 @@ $('.cuadroCkeckSelTodos').click(function(){
 		$('.'+id).children('.cuadroCheck').html('');
 		$('.'+id).removeClass('chkSel');
 		if(tabla){ $(tabla).find("tr").removeClass('chkSel'); }
+		$('.'+id+' input').prop('checked',false);
 		
 	}else{ // Marcar (Vacio)
 		$("#"+id).data('checked','checked');
@@ -65,6 +66,7 @@ $('.cuadroCkeckSelTodos').click(function(){
 		$('.'+id).children('.cuadroCheck').html('<i class="'+claseIcono+' chkIcoSel"></i>');
 		$('.'+id).addClass('chkSel');
 		if(tabla){ $(tabla).find("tr").addClass('chkSel'); }
+		$('.'+id+' input').prop('checked',true);
 	}
 });
 // Imprimir el selector en el caso de requerirlo externamente
@@ -191,27 +193,42 @@ function preguntaBorrarLinea(id){
 		$('.tdBorrar').removeClass('d-none');
 		$('.tdConfirmaAccion').addClass('d-none');
 	}
-	
 	// Detener la función de abrir linea
 	event.stopImmediatePropagation();
 }
 
 /* Muestra el Notificador de Acciones de Sección */
 function notificacionAccion(accion){
-	$('.notificacionAccion[data-accion="'+accion+'"]').slideToggle(200);
+	var checkLinea = $('.notificacionAccion[data-accion="'+accion+'"]').data('linea-check');
+	var checked = $('.'+checkLinea+':checkbox:checked').length;
+	$('.notificacionAccion').slideUp(200);
+	if($('.notificacionAccion[data-accion="'+accion+'"]').is(":visible")){
+		$('.notificacionAccion[data-accion="'+accion+'"]').slideUp(200);
+	}else{
+		if(checked > 0){
+			$('.notificacionAccion[data-accion="'+accion+'"]').slideDown(200);
+		}
+	}
 }
 /* Recoge todos los checkbox seleccionados en una tabla para aplicarles la acción */
-function accionLineas(accion,checkLinea){
-	var lineas = $('.'+checkLinea+':checkbox:checked').map(function() {
-		return this.value;
-	}).get();
-	ejecutaAccionLineas(accion,lineas);
+function accionLineas(obj,accion,checkLinea,tipo){
+	var checked = $('.'+checkLinea+':checkbox:checked').length;
+	if(checked > 0){
+		var lineas = $('.'+checkLinea+':checkbox:checked').map(function() {
+			return this.value;
+		}).get();
+		if(tipo == 'asinc'){
+			ejecutaAccionLineasAsinc(obj,accion,lineas);
+		}else if(tipo == 'form'){
+			ejecutaAccionLineasForm(obj,accion,lineas,checkLinea);
+		}
+	}
 }
-function ejecutaAccionLineas(accion,lineas){
+/* Ejecuta acción asíncrona para las lineas y recarga */
+function ejecutaAccionLineasAsinc(obj,accion,lineas){
 	var nLista = $('.notificacionAccion[data-accion="'+accion+'"]').data('lista-id');
-	var ruta = $('.notificacionAccion[data-accion="'+accion+'"]').data('ruta');
-	console.log(ruta);
-	var _token = $("input[name=_token]").val();
+	var ruta = $(obj).data('ruta');
+	var _token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 	var URLdomain = window.location.origin;
 	$.ajax({
 		type:'POST',
@@ -220,8 +237,16 @@ function ejecutaAccionLineas(accion,lineas){
 		headers:{'Access-Control-Allow-Origin':URLdomain},
 		success:function(data){
 			recargarListar(nLista);
+			notificacionAccion(accion);
 		}
 	});
+}
+/* Ejecuta acción para las lineas y redirecciona */
+function ejecutaAccionLineasForm(obj,accion,lineas,checkLinea){
+	var formCheck = 'form[name="'+checkLinea+'"]';
+	var ruta = $(obj).data('ruta');
+	$(formCheck).attr("action", ruta);
+	$(formCheck). submit();
 }
 
 /* ----- ********* ----- */

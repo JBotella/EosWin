@@ -28,13 +28,32 @@ class ClientesController extends Controller
 		$telefonos = $cliente->telefonosCliente($id);
 		return view('pages.clientes.formularioCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
 	}
-	public function guardar($id,Request $request){
+	public function guardar($id, Request $request){
 		$cliente = new Cliente;
-		$cliente->guardaCliente($id,$request);
+		$cliente->guardaCliente($id, $request);
 		return redirect(route("clientes"));
 	}
 	public function borraClientes(Request $request){
-		dd($request);
+		$lineas = $request->lineas;
+		foreach($lineas as $linea){
+			echo 'Borra: '.$linea;
+		}
+	}
+	public function extractoClientes(Request $request){
+		$lineas = $request->lineas;
+		foreach($lineas as $linea){
+			echo 'Extracto: '.$linea;
+		}
+	}
+	public function exportarClientes($formato, Request $request){ //AQUÍ
+		$lineas = $request->checkCliente;
+		$clientes = new Cliente();
+		$listado = collect($clientes->listadoCompletoClientes());
+		$lista = collect(array());
+		foreach($lineas as $linea){
+			$lista = $lista->concat($listado->where('CliCodigo',$linea));
+		}
+		print_r($lista);
 	}
 	public function verCliente($id){
 		$cliente = new Cliente();

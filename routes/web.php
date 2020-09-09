@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function(){
 		// Lista Clientes (Asíncrona)
 		Route::get('listaClientes/{variables}', 'ClientesController@listaClientes')->name('listaClientes');
 		Route::post('borra-clientes', 'ClientesController@borraClientes')->name('borraClientes');
+		Route::post('extracto-clientes', 'ClientesController@extractoClientes')->name('extractoClientes');
+		Route::post('exportar-clientes/{formato}', 'ClientesController@exportarClientes')->name('exportarClientes');
 		// Lista Clientes Mínima (Asíncrona)
 		Route::get('listaClientesMin', 'ClientesController@listaClientesMin')->name('listaClientesMin');
 	Route::get('cliente/{id}', 'ClientesController@formularioCliente')->name('cliente');

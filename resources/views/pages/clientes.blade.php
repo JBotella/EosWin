@@ -14,7 +14,7 @@
 			<div class="row justify-content-end">
 			
 				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col">
-					@include('includes.complementos.selectorAccionesListado')
+					@include('includes.complementos.selectorAccionesListado',[$prefijoRuta = 'Clientes', $checkLinea = 'checkCliente'])
 				</div>
 				
 				<div class="lineaBuscador order-1 order-sm-2 col-12 col-sm-7 col-md-6 col-lg-6 col-xl-4">
@@ -50,47 +50,63 @@
 			
 		</div>
 		<div class="contenidoSeccion">
-			@csrf
-			<div class="notificacionAccion notificacion-estilo-alerta" data-lista-id="0" data-accion="borrar" data-ruta="{{route('borraClientes')}}">
+			
+			<div class="notificacionAccion notificacion-estilo-alerta" data-lista-id="0" data-accion="borrar" data-linea-check="checkCliente">
 				<div class="avisoAccion">¿Confirma borrar las lineas seleccionadas?</div>
 				<div class="opcionesAccion">
 					<div class="opcionAccion" onclick="notificacionAccion('borrar')">Cancelar</div>
-					<div class="opcionAccion" onclick="accionLineas('borrar','checkCliente')">Confirmar</div>
+					<div class="opcionAccion" data-ruta="{{route('borraClientes')}}" onclick="accionLineas(this,'borrar','checkCliente','asinc')">Confirmar</div>
 				</div>
 			</div>
 			
-			<div class="notificacionAccion notificacion-estilo-alerta" data-accion="borrar2" data-ruta="rutaDeBorrado2">
-				<div class="avisoAccion">¿Confirma borrar las lineas seleccionadas 2?</div>
+			<div class="notificacionAccion notificacion-estilo-seleccion" data-lista-id="0" data-accion="exportar" data-linea-check="checkCliente">
+				<div class="avisoAccion">Seleccione el formato para exportar</div>
 				<div class="opcionesAccion">
-					<div class="opcionAccion" onclick="notificacionAccion('borrar2')">Cancelar</div>
-					<div class="opcionAccion" onclick="accionLineas('borrar2','checkCliente2')">Confirmar</div>
+					<div class="opcionAccionIco" data-ruta="{{route('exportarClientes','pdf')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
+						<i class="fas fa-file-pdf"></i>
+						<span>Pdf</span>
+					</div>
+					<div class="opcionAccionIco" data-ruta="{{route('exportarClientes','csv')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
+						<i class="fas fa-file-csv"></i>
+						<span>Csv</span>
+					</div>
+					<div class="opcionAccionIco" data-ruta="{{route('exportarClientes','excel')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
+						<i class="fas fa-file-excel"></i>
+						<span>Excel</span>
+					</div>
+				</div>
+				<div class="opcionesAccion">
+					<div class="opcionAccion" onclick="notificacionAccion('exportar')">Cancelar</div>
 				</div>
 			</div>
 		
 			<div class="seccion-responsive">
 				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
 				<div class="table-responsive" id="contenido_0">
-					<table class="table table-striped table-fixed" id="tabla">
-						<thead id="cabeceraLista_0" class="thead-th-ocultos" data-orden="CliCodigo" data-direccion="ASC" data-ruta="{{ route('listaClientes', ':variables') }}" data-visibles="{{json_encode($visibles)}}">
-							<tr>
-								<th scope="col" class="thBtnAcciones">
-									<div class="cuadroCkeckSelTodos">
-										<div class="cuadroCheck" id="checkClientes" data-checked="" title="@lang('texto.seleccionar_todos')"></div>
-									</div>
-								</th>
-								<th scope="col" data-orden="CliCodigo">@lang('texto.tabla_clientes.codigo')</th>
-								<th scope="col" data-orden="CliNombre">@lang('texto.tabla_clientes.nombre')</th>
-								<th scope="col" data-orden="CliCif">@lang('texto.tabla_clientes.nif')</th>
-								<th scope="col" data-orden="Telefono">@lang('texto.tabla_clientes.telefono')</th>
-								<th scope="col" data-orden="CliEMail">@lang('texto.tabla_clientes.email')</th>
-								<th scope="col" data-orden="CliDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
-								<th scope="col" data-orden="CliCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
-								<th scope="col" data-orden="CliCodPostalLocali">@lang('texto.domicilio_fiscal.localidad')</th>
-								<th scope="col" data-orden="CliCodPostalProvin">@lang('texto.domicilio_fiscal.provincia')</th>
-							</tr>
-						</thead>
-						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>
-					</table>
+					<form name="checkCliente" method="POST">
+						@csrf
+						<table class="table table-striped table-fixed" id="tabla">
+							<thead id="cabeceraLista_0" class="thead-th-ocultos" data-orden="CliCodigo" data-direccion="ASC" data-ruta="{{ route('listaClientes', ':variables') }}" data-visibles="{{json_encode($visibles)}}">
+								<tr>
+									<th scope="col" class="thBtnAcciones">
+										<div class="cuadroCkeckSelTodos">
+											<div class="cuadroCheck" id="checkClientes" data-checked="" title="@lang('texto.seleccionar_todos')"></div>
+										</div>
+									</th>
+									<th scope="col" data-orden="CliCodigo">@lang('texto.tabla_clientes.codigo')</th>
+									<th scope="col" data-orden="CliNombre">@lang('texto.tabla_clientes.nombre')</th>
+									<th scope="col" data-orden="CliCif">@lang('texto.tabla_clientes.nif')</th>
+									<th scope="col" data-orden="Telefono">@lang('texto.tabla_clientes.telefono')</th>
+									<th scope="col" data-orden="CliEMail">@lang('texto.tabla_clientes.email')</th>
+									<th scope="col" data-orden="CliDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
+									<th scope="col" data-orden="CliCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
+									<th scope="col" data-orden="CliCodPostalLocali">@lang('texto.domicilio_fiscal.localidad')</th>
+									<th scope="col" data-orden="CliCodPostalProvin">@lang('texto.domicilio_fiscal.provincia')</th>
+								</tr>
+							</thead>
+							<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>
+						</table>
+					</form>
 				</div>
 			</div>
 		</div>

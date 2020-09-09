@@ -20,7 +20,7 @@
 	<tr class="trClicable fila" id="{{$item->CliCodigo}}" onclick="abrirLinea('{{$item->CliCodigo}}','{{$rutaAbrir}}')">
 		<td class="tdBtnAcciones chkList checkClientes" id="checkClientes_{{$item->CliCodigo}}" onclick="clickChkList(this)" title="@lang('texto.seleccionar')">
 			<div class="cuadroCheck"></div>
-			<input type="checkbox" class="checkCliente d-none" value="{{$item->CliCodigo}}" />
+			<input type="checkbox" name="checkCliente[]" class="checkCliente d-none" value="{{$item->CliCodigo}}" />
 		</td>
 		<td>{{$item->CliCodigo}}</td>
 		<td>{{$item->CliNombre}}</td>
