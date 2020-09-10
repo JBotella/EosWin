@@ -12,11 +12,11 @@ class Empresa extends Model
 	//protected $primaryKey = 'MENUMEMPRESA';
 	public $timestamps = false;
 	
-	public function actividadesEmpresa(){
-		$actividadesEmpresa = DB::connection('sqlsrv1')->table('ACTIVIDADES_EOS')->where('CODIGOEMPRESA', Auth::user()->id)->get();
-		return $actividadesEmpresa;
+	public function actividades(){
+		$actividades = DB::connection('sqlsrv1')->table('ACTIVIDADES_EOS')->where('CODIGOEMPRESA', Auth::user()->id)->get();
+		return $actividades;
 	}
-	public function guardaEmpresa($request){
+	public function guarda($request){
 		if($request->criterioCaja){
 			$criterioCaja = -1;
 		}else{

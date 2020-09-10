@@ -1562,7 +1562,6 @@ body {
 	box-shadow:inset 0px 0px 0.1rem var(--principalMedio)!important;
 }
 	.tdBtnAcciones, .thBtnAcciones {
-		position:sticky;
 		left:0px;
 		z-index:70!important;
 		background-color:var(--blanco);

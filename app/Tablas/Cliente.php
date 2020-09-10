@@ -10,7 +10,7 @@ class Cliente extends Model
 	//protected $primaryKey = 'CliCodigo';
 	public $timestamps = false;
 	
-	public function listadoCompletoClientes($variables = NULL){
+	public function listadoCompleto($variables = NULL){
 		$filtroConsulta = '';
 		/* Variables de filtro */
 		if(isset($variables)){
@@ -26,18 +26,26 @@ class Cliente extends Model
 			}
 		}
 		/* ... */
-		$clienteCompleto = DB::connection($this->connection)->select("SELECT (SELECT TOP 1 TELETELEFONO FROM [TELEFON] WHERE TELECODIGO = ClientesTabla.CliCodigo) AS Telefono, * FROM ClientesTabla ".$filtroConsulta." ;");
+		$clienteCompleto = DB::connection($this->connection)->select("SELECT *, (SELECT TOP 1 TELETELEFONO FROM [TELEFON] WHERE TELECODIGO = ClientesTabla.CliCodigo) AS Telefono FROM ClientesTabla ".$filtroConsulta." ;");
 		return $clienteCompleto;
 	}
-	public function datosCliente($CliCodigo){
+	public function listadoReporte(){
+		/* Subconsulta para Teléfono en el caso de contener dicha columna */
+		$telefono = "(SELECT TOP 1 TELETELEFONO FROM [TELEFON] WHERE TELECODIGO = ClientesTabla.CliCodigo) AS 'Teléfono'";
+		/* Columnas activas para configurar el Select */
+		$columnasSelect = " *, ".$telefono;
+		$clienteReporte = DB::connection($this->connection)->select("SELECT ".$columnasSelect." FROM ClientesTabla ;");
+		return $clienteReporte;
+	}
+	public function datos($CliCodigo){
 		$cliente = Cliente::where('CliCodigo',$CliCodigo)->first();
 		return $cliente;
 	}
-	public function telefonosCliente($CliCodigo){
+	public function telefonos($CliCodigo){
 		$telefonos = DB::connection($this->connection)->table('TELEFON')->where('TELECODIGO',$CliCodigo)->get();
 		return $telefonos;
 	}
-	public function guardaCliente($id,$request){
+	public function guarda($id,$request){
 		/* Asignarles valor = '' a los nulos */
 		$this->where("CliCodigo",$id)->update([
 			'CliNombre' => $request->nombre,

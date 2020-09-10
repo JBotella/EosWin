@@ -11,16 +11,16 @@ class EmpresasController extends Controller
     public function configuracion(){
 		$datosEmpresa = Empresa::where('MENUMEMPRESA',Session::get("ultimaEmpresa"))->first();
 		$empresa = new Empresa;
-		$actividadesEmpresa = $empresa->actividadesEmpresa();
+		$actividadesEmpresa = $empresa->actividades();
 		return view('pages.empresas.configuracion',['datosEmpresa'=>$datosEmpresa,'actividadesEmpresa'=>$actividadesEmpresa]);
 	}
 	public function guardar(Request $request){
 		$empresa = new Empresa;
-		$empresa->guardaEmpresa($request);
+		$empresa->guarda($request);
 		//return redirect(route("configuracionEmpresa"));
 		return Redirect::back()->with('success', 'Guardado correctamente');
 	}
-	public function nuevaEmpresa(){
+	public function nueva(){
 		/* ... */
 	}
 	public function listaDelegacionesMin(){

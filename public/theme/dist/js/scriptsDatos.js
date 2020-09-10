@@ -246,7 +246,20 @@ function ejecutaAccionLineasForm(obj,accion,lineas,checkLinea){
 	var formCheck = 'form[name="'+checkLinea+'"]';
 	var ruta = $(obj).data('ruta');
 	$(formCheck).attr("action", ruta);
-	$(formCheck). submit();
+	var columnas = columnasActivas(formCheck);
+	$(formCheck+' input[name="columnasActivas[]"]').val(columnas);
+	$(formCheck).submit();
+}
+/* Columnas Activas */
+function columnasActivas(contCheck){
+	var dataColumna = $(contCheck).find('[data-columna]');
+	var columnas = [];
+	for(var i=0; i < dataColumna.length; i++) {
+		if(!$(dataColumna[i]).hasClass("d-none")){
+			columnas.push([dataColumna[i].dataset.columna]);
+		}
+	}
+	return columnas;
 }
 
 /* ----- ********* ----- */
@@ -258,18 +271,18 @@ $('th').click(function(){
 	var thead = $(this).parent().parent();
 	var idLista = thead.attr('id');
 	var nLista = idLista.split('_')[1];
-	var orden = $(this).data('orden');
+	var orden = $(this).data('columna');
 	if(orden){
-		var ordenActual = $('#'+idLista).data('orden');
+		var ordenActual = $('#'+idLista).data('columna');
 		var direccionActual = $('#'+idLista).data('direccion');
 		$('.flechaOrdenTh').remove();
 		$('th').removeClass('thResaltado');
 		if(orden == ordenActual){
-			$('#'+idLista).data('orden', orden);
+			$('#'+idLista).data('columna', orden);
 			$('#'+idLista).data('direccion', dirOrdenOpuesta(direccionActual));
 			var flecha = flechaDirOrden(dirOrdenOpuesta(direccionActual));
 		}else{
-			$('#'+idLista).data('orden', orden);
+			$('#'+idLista).data('columna', orden);
 			$('#'+idLista).data('direccion', 'ASC');
 			var flecha = flechaDirOrden('ASC');
 			
@@ -482,7 +495,7 @@ function cargarColumnasVisibles(){
 		visibilidadColumna(id,1);
 	});
 }
-/* Guarda cadena de columnas en tabla de ajustes */ //PENDIENTE
+/* Guarda cadena de columnas en tabla de ajustes */
 function guardaColumnasAjustes(obj,columnas){
 	var stringColumnas = columnas.join();
 	var columnasUrl = stringColumnas.replace(/,/g,'-');

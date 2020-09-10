@@ -86,15 +86,15 @@
 										<div class="cuadroCheck" id="checkProveedores" data-checked="" title="@lang('texto.seleccionar_todos')"></div>
 									</div>
 								</th>
-								<th scope="col" data-columna="ProvCodigo" data-orden="ProvCodigo">@lang('texto.tabla_proveedores.codigo')</th>
-								<th scope="col" data-columna="ProvNombre" data-orden="ProvNombre">@lang('texto.tabla_proveedores.nombre')</th>
-								<th scope="col" data-columna="ProvCif" data-orden="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
-								<th scope="col" data-columna="ProvTelefono" data-orden="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
-								<th scope="col" data-columna="ProvEMail" data-orden="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
-								<th scope="col" data-orden="ProvDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
-								<th scope="col" data-orden="ProvCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
-								<th scope="col" data-orden="ProvLocalidad">@lang('texto.domicilio_fiscal.localidad')</th>
-								<th scope="col" data-orden="ProvProvincia">@lang('texto.domicilio_fiscal.provincia')</th>
+								<th scope="col" data-columna="ProvCodigo">@lang('texto.tabla_proveedores.codigo')</th>
+								<th scope="col" data-columna="ProvNombre">@lang('texto.tabla_proveedores.nombre')</th>
+								<th scope="col" data-columna="ProvCif">@lang('texto.tabla_proveedores.nif')</th>
+								<th scope="col" data-columna="ProvTelefono">@lang('texto.tabla_proveedores.telefono')</th>
+								<th scope="col" data-columna="ProvEMail">@lang('texto.tabla_proveedores.email')</th>
+								<th scope="col" data-columna="ProvDireccion">@lang('texto.domicilio_fiscal.domicilio.domicilio')</th>
+								<th scope="col" data-columna="ProvCodPostal">@lang('texto.domicilio_fiscal.codigo_postal')</th>
+								<th scope="col" data-columna="ProvLocalidad">@lang('texto.domicilio_fiscal.localidad')</th>
+								<th scope="col" data-columna="ProvProvincia">@lang('texto.domicilio_fiscal.provincia')</th>
 							</tr>
 						</thead>
 						<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>

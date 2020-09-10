@@ -8,7 +8,7 @@ class Proveedor extends Model
     protected $connection= 'sqlsrv2';
     protected $table = 'PROVEEDORESTABLA';
 	
-	public function listadoCompletoProveedores($variables = NULL){
+	public function listadoCompleto($variables = NULL){
 		$filtroConsulta = '';
 		$proveedor = new Proveedor();
 		/* Variables de filtro */
