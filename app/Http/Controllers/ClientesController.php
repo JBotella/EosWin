@@ -36,16 +36,16 @@ class ClientesController extends Controller
 	public function borraClientes(Request $request){
 		$lineas = $request->lineas;
 		foreach($lineas as $linea){
-			echo 'Borra: '.$linea;
+			echo 'Borra: '.$linea; // Pendiente crear consulta
 		}
 	}
 	public function extractoClientes(Request $request){
 		$lineas = $request->lineas;
 		foreach($lineas as $linea){
-			echo 'Extracto: '.$linea;
+			echo 'Extracto: '.$linea; // Pendiente
 		}
 	}
-	public function exportarClientes($formato, Request $request){ //AQUÍ
+	public function exportaClientes($formato, Request $request){ //AQUÍ
 		$lineas = $request->checkCliente;
 		$clientes = new Cliente();
 		$listado = collect($clientes->listadoCompletoClientes());
@@ -53,7 +53,16 @@ class ClientesController extends Controller
 		foreach($lineas as $linea){
 			$lista = $lista->concat($listado->where('CliCodigo',$linea));
 		}
-		print_r($lista);
+		$reportes = new ReportesController();
+		switch($formato){
+			case 'pdf':
+				$reporte = $reportes->generaReportePdf($lista);
+			break;
+			case 'csv':
+			break;
+			case 'excel':
+			break;
+		}
 	}
 	public function verCliente($id){
 		$cliente = new Cliente();

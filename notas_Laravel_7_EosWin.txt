@@ -82,6 +82,44 @@ Notas Laravel 7 para el proyecto 'EosWin Cloud'
 		mix.js('resources/js/app.js', 'public/js')
 			.sass('resources/sass/app.scss', 'public/css').js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps();
 			
+** DOMPDF **
+
+	- Instalar
+		composer require barryvdh/laravel-dompdf
+		
+	- Modificar config/app.php
+		'providers' => [
+			....
+			Barryvdh\DomPDF\ServiceProvider::class,
+		],
+		'aliases' => [
+			....
+			'PDF' => Barryvdh\DomPDF\Facade::class,
+		]
+		
+	- Ruta
+		Route::get('generate-pdf','HomeController@generatePDF');
+		
+	- En controller:
+		use PDF;
+		public function generatePDF(){
+			$data = ['title' => 'Titulo Ejemplo'];
+			$pdf = PDF::loadView('myPDF', $data);
+
+			return $pdf->download('archivoEjemplo.pdf');
+		}
+		
+** Intervention Image **
+
+	- Instalar
+		composer require intervention/image
+		
+	- Notas:
+		En php.ini, ampliar:
+			- upload_max_filesize
+			- post_max_size
+			- memory_limit
+			
 ** Migraciones **
 
 	- Añadir campos a la tabla users:

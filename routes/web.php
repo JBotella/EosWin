@@ -30,9 +30,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('clientes', 'ClientesController@clientes')->name('clientes');
 		// Lista Clientes (Asíncrona)
 		Route::get('listaClientes/{variables}', 'ClientesController@listaClientes')->name('listaClientes');
+		// Acciones en Clientes
 		Route::post('borra-clientes', 'ClientesController@borraClientes')->name('borraClientes');
 		Route::post('extracto-clientes', 'ClientesController@extractoClientes')->name('extractoClientes');
-		Route::post('exportar-clientes/{formato}', 'ClientesController@exportarClientes')->name('exportarClientes');
+		Route::post('exporta-clientes/{formato}', 'ClientesController@exportaClientes')->name('exportaClientes');
 		// Lista Clientes Mínima (Asíncrona)
 		Route::get('listaClientesMin', 'ClientesController@listaClientesMin')->name('listaClientesMin');
 	Route::get('cliente/{id}', 'ClientesController@formularioCliente')->name('cliente');
@@ -44,6 +45,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('proveedores', 'ProveedoresController@proveedores')->name('proveedores');
 		// Lista Proveedores (Asíncrona)
 		Route::get('listaProveedores/{variables}', 'ProveedoresController@listaProveedores')->name('listaProveedores');
+		// Acciones en Proveedores
+		Route::post('borra-proveedores', 'ProveedoresController@borraProveedores')->name('borraProveedores');
+		Route::post('extracto-proveedores', 'ProveedoresController@extractoProveedores')->name('extractoProveedores');
+		Route::post('exporta-proveedores/{formato}', 'ProveedoresController@exportaProveedores')->name('exportaProveedores');
 	Route::get('proveedor/{id}', 'ProveedoresController@formularioCliente')->name('proveedor');
 		// Ver Proveedor (Asíncrona)
 		Route::get('verProveedor/{id}', 'ProveedoresController@verProveedor')->name('verProveedor');

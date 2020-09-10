@@ -62,15 +62,15 @@
 			<div class="notificacionAccion notificacion-estilo-seleccion" data-lista-id="0" data-accion="exportar" data-linea-check="checkCliente">
 				<div class="avisoAccion">Seleccione el formato para exportar</div>
 				<div class="opcionesAccion">
-					<div class="opcionAccionIco" data-ruta="{{route('exportarClientes','pdf')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
+					<div class="opcionAccionIco" data-ruta="{{route('exportaClientes','pdf')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
 						<i class="fas fa-file-pdf"></i>
 						<span>Pdf</span>
 					</div>
-					<div class="opcionAccionIco" data-ruta="{{route('exportarClientes','csv')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
+					<div class="opcionAccionIco" data-ruta="{{route('exportaClientes','csv')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
 						<i class="fas fa-file-csv"></i>
 						<span>Csv</span>
 					</div>
-					<div class="opcionAccionIco" data-ruta="{{route('exportarClientes','excel')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
+					<div class="opcionAccionIco" data-ruta="{{route('exportaClientes','excel')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
 						<i class="fas fa-file-excel"></i>
 						<span>Excel</span>
 					</div>

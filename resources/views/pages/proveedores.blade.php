@@ -11,7 +11,7 @@
 			<div class="row justify-content-end">
 				
 				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col">
-					@include('includes.complementos.selectorAccionesListado')
+					@include('includes.complementos.selectorAccionesListado',[$prefijoRuta = 'Proveedores', $checkLinea = 'checkProveedor'])
 				</div>
 				
 				<div class="lineaBuscador order-1 order-sm-2 col-12 col-sm-7 col-md-6 col-lg-6 col-xl-4">
@@ -45,6 +45,36 @@
 			</div>
 		</div>
 		<div class="contenidoSeccion">
+			
+			<div class="notificacionAccion notificacion-estilo-alerta" data-lista-id="0" data-accion="borrar" data-linea-check="checkProveedor">
+				<div class="avisoAccion">¿Confirma borrar las lineas seleccionadas?</div>
+				<div class="opcionesAccion">
+					<div class="opcionAccion" onclick="notificacionAccion('borrar')">Cancelar</div>
+					<div class="opcionAccion" data-ruta="{{route('borraClientes')}}" onclick="accionLineas(this,'borrar','checkProveedor','asinc')">Confirmar</div>
+				</div>
+			</div>
+			
+			<div class="notificacionAccion notificacion-estilo-seleccion" data-lista-id="0" data-accion="exportar" data-linea-check="checkProveedor">
+				<div class="avisoAccion">Seleccione el formato para exportar</div>
+				<div class="opcionesAccion">
+					<div class="opcionAccionIco" data-ruta="{{route('exportaProveedores','pdf')}}" onclick="accionLineas(this,'exportar','checkProveedor','form')">
+						<i class="fas fa-file-pdf"></i>
+						<span>Pdf</span>
+					</div>
+					<div class="opcionAccionIco" data-ruta="{{route('exportaProveedores','csv')}}" onclick="accionLineas(this,'exportar','checkProveedor','form')">
+						<i class="fas fa-file-csv"></i>
+						<span>Csv</span>
+					</div>
+					<div class="opcionAccionIco" data-ruta="{{route('exportaProveedores','excel')}}" onclick="accionLineas(this,'exportar','checkProveedor','form')">
+						<i class="fas fa-file-excel"></i>
+						<span>Excel</span>
+					</div>
+				</div>
+				<div class="opcionesAccion">
+					<div class="opcionAccion" onclick="notificacionAccion('exportar')">Cancelar</div>
+				</div>
+			</div>
+			
 			<div class="seccion-responsive">
 				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
 				<div class="table-responsive" id="contenido_0">
