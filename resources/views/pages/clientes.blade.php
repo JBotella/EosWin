@@ -45,9 +45,7 @@
 					@include('includes.complementos.selectorColumnasListado',[$columnas,$visibles,$rutaColumnas])
 				</div>
 				
-				
 			</div>
-			
 		</div>
 		<div class="contenidoSeccion">
 			
