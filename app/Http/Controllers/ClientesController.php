@@ -51,28 +51,7 @@ class ClientesController extends Controller
 		$clientes = new Cliente();
 		$listado = collect($clientes->listadoReporte());
 		$lista = collect(array());
-		$listaB = array();
-		foreach($lineas  as $index => $linea){
-			$lineaListado = $listado->where('CliCodigo',$linea);
-			$lista = $lista->concat($lineaListado);
-			
-			// Modo alternativo
-			/* Reconvertir en array desde un array de un string separado por comas */
-			$columnasActivas = explode(',', implode(",", $columnasActivas));
-			dd($columnasActivas);
-			$CliCodigo = $lineaListado[$index]->CliCodigo;
-			$CliNombre = $lineaListado[$index]->CliNombre;
-			$CliCif = $lineaListado[$index]->CliCif;
-			
-			array_push($listaB,['Codigo' => $CliCodigo, 'Nombre' => $CliNombre, 'Nif' => $CliCif]);
-		}
-		//$lista = $lista->pluck('CliCodigo','CliNombre');
-		//dd($listaB);
-		
-		/* Filtrado de Columnas Visibles (Reemplaza el sistema en el Modelo Cliente en listadoReporte) */
-		
-		/**/
-		
+		$arrayLista = self::creaListaFormateada($listado,$lista,$lineas,$columnasActivas);
 		/* Zona horaria por defecto */
 		date_default_timezone_set('Europe/Madrid');
 		/* Nombre de archivo con fecha y hora */
@@ -80,14 +59,40 @@ class ClientesController extends Controller
 		$reportes = new ReportesController();
 		switch($formato){
 			case 'pdf':
-				$reporte = $reportes->generaReportePdf($lista);
+				$reporte = $reportes->generaReportePdf($arrayLista,$nombreArchivo);
+				return $reporte;
 			break;
 			case 'csv':
-				$reporte = $reportes->generaReporteCsv($listaB,$nombreArchivo);
+				$reporte = $reportes->generaReporteCsv($arrayLista,$nombreArchivo);
+				return $reporte;
 			break;
 			case 'excel':
+				$reporte = $reportes->generaReporteExcel($arrayLista,$nombreArchivo);
+				return $reporte;
 			break;
 		}
+	}
+	static function creaListaFormateada($listado,$lista,$lineas,$columnasActivas){
+		$arrayLista = array();
+		foreach($lineas as $index => $linea){
+			$lineaListado = $listado->where('CliCodigo',$linea);
+			$lista = $lista->concat($lineaListado);
+			/* Reconvertir en array desde un array de un string separado por comas */
+			$columnasActivas = explode(',', implode(",", $columnasActivas));
+			$arrayLinea = [];
+			$nombreColumna = ['CliCodigo','CliNombre','CliCif','Telefono','CliEMail','CliDireccion','CliCodPostal','CliCodPostalLocali','CliCodPostalProvin'];
+			$nombreAlias = ['Código','Nombre','NIF','Teléfono','E-Mail','Dirección','Código Postal','Localidad','Provincia'];
+			foreach($columnasActivas as $num => $columna){
+				$arrayLinea[$columna] = $lista[$index]->$columna;
+				$idArr = array_search($columna, $nombreColumna, true);
+				if(false !== $idArr){
+					$arrayLinea[$nombreAlias[$idArr]] = $arrayLinea[$columna];
+					unset($arrayLinea[$columna]);
+				}
+			}
+			array_push($arrayLista, $arrayLinea);
+		}
+		return $arrayLista;
 	}
 	public function verCliente($id){
 		$cliente = new Cliente();

@@ -31,7 +31,7 @@ class Cliente extends Model
 	}
 	public function listadoReporte(){
 		/* Subconsulta para Teléfono en el caso de contener dicha columna */
-		$telefono = "(SELECT TOP 1 TELETELEFONO FROM [TELEFON] WHERE TELECODIGO = ClientesTabla.CliCodigo) AS 'Teléfono'";
+		$telefono = "(SELECT TOP 1 TELETELEFONO FROM [TELEFON] WHERE TELECODIGO = ClientesTabla.CliCodigo) AS 'Telefono'";
 		/* Columnas activas para configurar el Select */
 		$columnasSelect = " *, ".$telefono;
 		$clienteReporte = DB::connection($this->connection)->select("SELECT ".$columnasSelect." FROM ClientesTabla ;");

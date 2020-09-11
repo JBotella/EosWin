@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use PDF;
 
 class ReportesController extends Controller
 {
@@ -19,7 +20,6 @@ class ReportesController extends Controller
 			$filasB = array();
 			foreach($columnas as $columna){
 				$columna = utf8_encode($columna);
-				//$valorCodificado = utf8_decode($valor->$columna);
 				$valorCodificado = utf8_decode($valor[$columna]);
 				array_push($filasB,$valorCodificado);
 			}
@@ -27,8 +27,15 @@ class ReportesController extends Controller
 		}
 		return ['columnas'=>$columnas, 'filas'=>$filas];
 	}
-    public function generaReportePdf($datos){
-		$tabla = $this->generaEstructuraReporte($datos);
+    public function generaReportePdf($datos,$nombreArchivo){
+		$reporte = $this->generaEstructuraReporte($datos);
+		$tabla = self::generaTablaExtracto($reporte);
+		$data = $tabla;
+		$nombreArchivo .= '.pdf';
+		/* Generar PDF */
+        $pdf = PDF::loadView('reportes.reportePdf', ['data'=>$data, 'nombreArchivo'=>$nombreArchivo]);
+		$pdf->setPaper('A4', 'landscape');
+		return $pdf->stream($nombreArchivo);	
 	}
 	public function generaReporteCsv($datos,$nombreArchivo){
 		$tabla = $this->generaEstructuraReporte($datos);
@@ -53,7 +60,49 @@ class ReportesController extends Controller
 		return response()->stream($callback, 200, $headers)->send();
 		/* send() = descarga | sendContent() = abre en navegador */
 	}
-	public function generaReporteExcel($datos){
+	public function generaReporteExcel($datos,$nombreArchivo){
 		$tabla = $this->generaEstructuraReporte($datos);
+		$columnas = $tabla['columnas'];
+		$filas = $tabla['filas'];
+		$nombreArchivo .= '.csv';
+		$headers = [
+			"Content-type" => "text/csv",
+			"Content-Disposition" => "attachment; filename=".$nombreArchivo,
+			"Pragma" => "no-cache",
+			"Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+			"Expires" => "0"
+		];
+		$callback = function() use ($columnas, $filas) {
+			$archivo = fopen('php://output', 'w');
+			fputcsv($archivo, $columnas, ';');
+			foreach ($filas as $fila) {
+				fputcsv($archivo, $fila, ';');
+			}
+			fclose($archivo);
+		};
+		return response()->stream($callback, 200, $headers)->send();
+		/* send() = descarga | sendContent() = abre en navegador */
 	}
+	public static function generaTablaExtracto($datos){
+		$datosColumnas = $datos['columnas'];
+		$datosFilas = $datos['filas'];
+		$filasTabla = '';
+		$columnasCabecera = '';
+		// Genera filas
+		foreach($datosFilas as $ind => $val){
+			$columnasTabla = '';
+			// Genera columnas
+			$columnasCabecera = '';
+			foreach($val as $keyval => $v){
+				$columnasCabecera .= '<th class="celdaColumnaReporte">'.$datosColumnas[$keyval].'</th>';
+				$columnasTabla .= '<td class="celdaReporte">'.$v.'</td>';
+			}
+			$filasTabla .= '<tr>'.$columnasTabla.'</tr>';
+		}
+		$cuerpoTabla = '<tbody>'.$filasTabla.'</tbody>';
+		$cabeceraTabla = '<thead><tr>'.$columnasCabecera.'</tr></thead>';
+		$tabla = '<table class="tablaReporte">'.$cabeceraTabla.$cuerpoTabla.'</table>';
+		return $tabla;
+	}
+	
 }

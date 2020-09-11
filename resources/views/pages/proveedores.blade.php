@@ -79,7 +79,7 @@
 				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
 				<div class="table-responsive" id="contenido_0">
 					<table class="table table-striped table-fixed" id="tabla">
-						<thead id="cabeceraLista_0" class="thead-th-ocultos" data-orden="ProvCodigo" data-direccion="ASC" data-ruta="{{ route('listaProveedores', ':variables') }}" data-visibles="{{json_encode($visibles)}}">
+						<thead id="cabeceraLista_0" class="thead-th-ocultos" data-columna="ProvCodigo" data-direccion="ASC" data-ruta="{{ route('listaProveedores', ':variables') }}" data-visibles="{{json_encode($visibles)}}">
 							<tr>	
 								<th scope="col" class="thBtnAcciones">
 									<div class="cuadroCkeckSelTodos">
