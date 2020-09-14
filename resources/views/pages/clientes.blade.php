@@ -14,7 +14,7 @@
 			<div class="row justify-content-end">
 			
 				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col">
-					@include('includes.complementos.selectorAccionesListado',[$prefijoRuta = 'Clientes', $checkLinea = 'checkCliente'])
+					@include('includes.complementos.selectorAccionesListado',[$prefijoRuta = 'Clientes', $checkLinea = 'checkCliente', $acciones = ['extracto','exportar','borrar']])
 				</div>
 				
 				<div class="lineaBuscador order-1 order-sm-2 col-12 col-sm-7 col-md-6 col-lg-6 col-xl-4">

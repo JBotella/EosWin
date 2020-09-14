@@ -53,6 +53,11 @@ Route::group(['middleware' => 'auth'], function(){
 		// Ver Proveedor (Asíncrona)
 		Route::get('verProveedor/{id}', 'ProveedoresController@ver')->name('verProveedor');
 	
+	/* Apuntes Periódicos */
+	Route::get('apuntes-periodicos', 'ApuntesPeriodicosController@apuntesPeriodicos')->name('apuntesPeriodicos');
+		// Lista Apuntes Periódicos (Asíncrona)
+		Route::get('listaApuntesPeriodicos/{variables}', 'ApuntesPeriodicosController@lista')->name('listaApuntesPeriodicos');
+	
 	/* Libros Oficiales */
 	Route::get('libros-oficiales', 'LibrosOficialesController@librosOficiales')->name('librosOficiales');
 		Route::get('libros-oficiales/{id}', 'LibrosOficialesController@libroOficial')->name('libroOficial');

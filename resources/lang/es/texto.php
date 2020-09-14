@@ -132,6 +132,17 @@ return [
 		'telefono' => 'Teléfono',
 		'email' => 'Email',
 	],
+	/* --- Apuntes Periódicos --- */ //PENDIENTES DE TRADUCIR
+	'apunte_periodico' => 'Apunte Periódico',
+	'apuntes_periodicos' => 'Apuntes Periódicos',
+	'tabla_apuntes_periodicos' => [
+		'estado' => 'Estado',
+		'descripcion' => 'Descripción',
+		'cuenta' => 'Cuenta',
+		'tipo' => 'Tipo',
+		'ultima_ejecucion' => 'Ùltima ejecución',
+		'proxima_ejecucion' => 'Próxima ejecución',
+	],
 /* -*****- Campos Formularios -*****- */
 	/* --- Cliente --- */
 	'datos_identificativos' => [

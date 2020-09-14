@@ -24,7 +24,7 @@
 					<div class="sb-nav-link-icon"><i class="fas fa-pencil-alt"></i></div>
 					@lang('texto.sidebar_nav.apuntes')
 				</a>
-				<a class="nav-link" href="">
+				<a class="nav-link @if(in_array($vActual,['apuntesPeriodicos'])) nav-link-selected @endif" href="{!!route('apuntesPeriodicos')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-calendar-alt"></i></div>
 					@lang('texto.sidebar_nav.apuntes_periodicos')
 				</a>
