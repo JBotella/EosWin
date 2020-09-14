@@ -48,36 +48,12 @@
 			</div>
 		</div>
 		<div class="contenidoSeccion">
-			
-			<div class="notificacionAccion notificacion-estilo-alerta" data-lista-id="0" data-accion="borrar" data-linea-check="checkCliente">
-				<div class="avisoAccion">¿Confirma borrar las lineas seleccionadas?</div>
-				<div class="opcionesAccion">
-					<div class="opcionAccion" onclick="notificacionAccion('borrar')">Cancelar</div>
-					<div class="opcionAccion" data-ruta="{{route('borraClientes')}}" onclick="accionLineas(this,'borrar','checkCliente','asinc')">Confirmar</div>
-				</div>
-			</div>
-			
-			<div class="notificacionAccion notificacion-estilo-seleccion" data-lista-id="0" data-accion="exportar" data-linea-check="checkCliente">
-				<div class="avisoAccion">Seleccione el formato para exportar</div>
-				<div class="opcionesAccion">
-					<div class="opcionAccionIco" data-ruta="{{route('exportaClientes','pdf')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
-						<i class="fas fa-file-pdf"></i>
-						<span>Pdf</span>
-					</div>
-					<div class="opcionAccionIco" data-ruta="{{route('exportaClientes','csv')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
-						<i class="fas fa-file-csv"></i>
-						<span>Csv</span>
-					</div>
-					<div class="opcionAccionIco" data-ruta="{{route('exportaClientes','excel')}}" onclick="accionLineas(this,'exportar','checkCliente','form')">
-						<i class="fas fa-file-excel"></i>
-						<span>Excel</span>
-					</div>
-				</div>
-				<div class="opcionesAccion">
-					<div class="opcionAccion" onclick="notificacionAccion('exportar')">Cancelar</div>
-				</div>
-			</div>
-		
+			@component('components.accionesLista')
+				@slot('checkData', 'checkCliente')
+				@slot('rutaBorrar', 'borraClientes')
+				@slot('rutaExportar', 'exportaClientes')
+				@slot('formatosExportar', ['pdf','csv','excel'])
+			@endcomponent
 			<div class="seccion-responsive">
 				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
 				<div class="table-responsive" id="contenido_0">

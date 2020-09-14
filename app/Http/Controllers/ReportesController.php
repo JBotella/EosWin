@@ -6,6 +6,26 @@ use PDF;
 
 class ReportesController extends Controller
 {
+	public function creaListaFormateada($listado,$lista,$lineas,$columnasActivas,$identificador,$nombresColumnas,$nombresAlias){
+		$arrayLista = array();
+		foreach($lineas as $index => $linea){
+			$lineaListado = $listado->where($identificador,$linea);
+			$lista = $lista->concat($lineaListado);
+			/* Reconvertir en array desde un array de un string separado por comas */
+			$columnasActivas = explode(',', implode(",", $columnasActivas));
+			$arrayLinea = [];
+			foreach($columnasActivas as $num => $columna){
+				$arrayLinea[$columna] = $lista[$index]->$columna;
+				$idArr = array_search($columna, $nombresColumnas, true);
+				if(false !== $idArr){
+					$arrayLinea[$nombresAlias[$idArr]] = $arrayLinea[$columna];
+					unset($arrayLinea[$columna]);
+				}
+			}
+			array_push($arrayLista, $arrayLinea);
+		}
+		return $arrayLista;
+	}
 	public function generaEstructuraReporte($datos){
 		// Definimos los array para columnas y filas
 		$columnas = array();
@@ -26,6 +46,22 @@ class ReportesController extends Controller
 			array_push($filas,$filasB);
 		}
 		return ['columnas'=>$columnas, 'filas'=>$filas];
+	}
+    public function generaReporte($formato,$arrayLista,$nombreArchivo){
+		switch($formato){
+			case 'pdf':
+				$reporte = $this->generaReportePdf($arrayLista,$nombreArchivo);
+				return $reporte;
+			break;
+			case 'csv':
+				$reporte = $this->generaReporteCsv($arrayLista,$nombreArchivo);
+				return $reporte;
+			break;
+			case 'excel':
+				$reporte = $this->generaReporteExcel($arrayLista,$nombreArchivo);
+				return $reporte;
+			break;
+		}
 	}
     public function generaReportePdf($datos,$nombreArchivo){
 		$reporte = $this->generaEstructuraReporte($datos);

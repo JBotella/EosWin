@@ -8,21 +8,27 @@ class ClientesController extends Controller
     public function clientes(){
 		return view('pages.clientes');
 	}
-    public function listaClientes($variables){
+    public function lista($variables){
 		$clientes = new Cliente();
 		$listado = $clientes->listadoCompleto($variables);
 		$rutaVer = route("verCliente", [":id"]);
 		$rutaAbrir = route("cliente", [":id"]);
 		return view('pages.clientes.listaClientes', ['listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir]);
 	}
-    public function listaClientesMin(){
+    public function listaMin(){
 		$clientes = new Cliente();
 		$listado = $clientes->listadoCompleto();
 		$rutaVer = route("verCliente", [":id"]);
 		$rutaAbrir = route("cliente", [":id"]);
 		return view('pages.clientes.listaClientesMin', ['listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir]);
 	}
-	public function formularioCliente($id){
+	public function ver($id){
+		$cliente = new Cliente();
+		$datos = $cliente->datos($id);
+		$telefonos = $cliente->telefonos($id);
+		return view('pages.clientes.verCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
+	}
+	public function formulario($id){
 		$cliente = new Cliente();
 		$datos = $cliente->datos($id);
 		$telefonos = $cliente->telefonos($id);
@@ -33,71 +39,56 @@ class ClientesController extends Controller
 		$cliente->guarda($id, $request);
 		return redirect(route("clientes"));
 	}
-	public function borraClientes(Request $request){
+	public function borrar(Request $request){
 		$lineas = $request->lineas;
 		foreach($lineas as $linea){
 			echo 'Borra: '.$linea; // Pendiente crear consulta
 		}
 	}
-	public function extractoClientes(Request $request){
+	public function extracto(Request $request){
 		$lineas = $request->lineas;
 		foreach($lineas as $linea){
 			echo 'Extracto: '.$linea; // Pendiente
 		}
 	}
-	public function exportaClientes($formato, Request $request){
+	public function exporta($formato, Request $request){
 		$columnasActivas = $request->columnasActivas;
 		$lineas = $request->checkCliente;
 		$clientes = new Cliente();
 		$listado = collect($clientes->listadoReporte());
 		$lista = collect(array());
-		$arrayLista = self::creaListaFormateada($listado,$lista,$lineas,$columnasActivas);
 		/* Zona horaria por defecto */
 		date_default_timezone_set('Europe/Madrid');
 		/* Nombre de archivo con fecha y hora */
 		$nombreArchivo = 'clientes_'.date('Y-m-d_H-i');
 		$reportes = new ReportesController();
-		switch($formato){
-			case 'pdf':
-				$reporte = $reportes->generaReportePdf($arrayLista,$nombreArchivo);
-				return $reporte;
-			break;
-			case 'csv':
-				$reporte = $reportes->generaReporteCsv($arrayLista,$nombreArchivo);
-				return $reporte;
-			break;
-			case 'excel':
-				$reporte = $reportes->generaReporteExcel($arrayLista,$nombreArchivo);
-				return $reporte;
-			break;
-		}
-	}
-	static function creaListaFormateada($listado,$lista,$lineas,$columnasActivas){
-		$arrayLista = array();
-		foreach($lineas as $index => $linea){
-			$lineaListado = $listado->where('CliCodigo',$linea);
-			$lista = $lista->concat($lineaListado);
-			/* Reconvertir en array desde un array de un string separado por comas */
-			$columnasActivas = explode(',', implode(",", $columnasActivas));
-			$arrayLinea = [];
-			$nombreColumna = ['CliCodigo','CliNombre','CliCif','Telefono','CliEMail','CliDireccion','CliCodPostal','CliCodPostalLocali','CliCodPostalProvin'];
-			$nombreAlias = ['Código','Nombre','NIF','Teléfono','E-Mail','Dirección','Código Postal','Localidad','Provincia'];
-			foreach($columnasActivas as $num => $columna){
-				$arrayLinea[$columna] = $lista[$index]->$columna;
-				$idArr = array_search($columna, $nombreColumna, true);
-				if(false !== $idArr){
-					$arrayLinea[$nombreAlias[$idArr]] = $arrayLinea[$columna];
-					unset($arrayLinea[$columna]);
-				}
-			}
-			array_push($arrayLista, $arrayLinea);
-		}
-		return $arrayLista;
-	}
-	public function verCliente($id){
-		$cliente = new Cliente();
-		$datos = $cliente->datos($id);
-		$telefonos = $cliente->telefonos($id);
-		return view('pages.clientes.verCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
+		$identificador = 'CliCodigo';
+		/* Columnas */
+		$nombresColumnas = [
+			'CliCodigo',
+			'CliNombre',
+			'CliCif',
+			'Telefono',
+			'CliEMail',
+			'CliDireccion',
+			'CliCodPostal',
+			'CliCodPostalLocali',
+			'CliCodPostalProvin'
+		];
+		/* Alias para las columnas */
+		$nombresAlias = [
+			trans('texto.tabla_clientes.codigo'),
+			trans('texto.tabla_clientes.nombre'),
+			trans('texto.tabla_clientes.nif'),
+			trans('texto.tabla_clientes.telefono'),
+			trans('texto.tabla_clientes.email'),
+			trans('texto.domicilio_fiscal.domicilio.domicilio'),
+			trans('texto.domicilio_fiscal.codigo_postal'),
+			trans('texto.domicilio_fiscal.localidad'),
+			trans('texto.domicilio_fiscal.provincia')
+		];
+		$arrayLista = $reportes->creaListaFormateada($listado,$lista,$lineas,$columnasActivas,$identificador,$nombresColumnas,$nombresAlias);
+		$reporte = $reportes->generaReporte($formato,$arrayLista,$nombreArchivo);
+		return $reporte;
 	}
 }

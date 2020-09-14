@@ -7,6 +7,8 @@ class Proveedor extends Model
 {
     protected $connection= 'sqlsrv2';
     protected $table = 'PROVEEDORESTABLA';
+	//protected $primaryKey = 'ProvCodigo';
+	public $timestamps = false;
 	
 	public function listadoCompleto($variables = NULL){
 		$filtroConsulta = '';
@@ -27,5 +29,14 @@ class Proveedor extends Model
 		/* ... */
 		$proveedorCompleto = $proveedor->get();
 		return $proveedorCompleto;
+	}
+	public function listadoReporte(){
+		$proveedor = new Proveedor();
+		$proveedorReporte = $proveedor->get();
+		return $proveedorReporte;
+	}
+	public function datos($ProvCodigo){
+		$proveedor = Proveedor::where('ProvCodigo',$ProvCodigo)->first();
+		return $proveedor;
 	}
 }

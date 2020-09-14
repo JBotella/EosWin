@@ -29,29 +29,29 @@ Route::group(['middleware' => 'auth'], function(){
 	/* Clientes */
 	Route::get('clientes', 'ClientesController@clientes')->name('clientes');
 		// Lista Clientes (Asíncrona)
-		Route::get('listaClientes/{variables}', 'ClientesController@listaClientes')->name('listaClientes');
+		Route::get('listaClientes/{variables}', 'ClientesController@lista')->name('listaClientes');
 		// Acciones en Clientes
-		Route::post('borra-clientes', 'ClientesController@borraClientes')->name('borraClientes');
-		Route::post('extracto-clientes', 'ClientesController@extractoClientes')->name('extractoClientes');
-		Route::post('exporta-clientes/{formato}', 'ClientesController@exportaClientes')->name('exportaClientes');
+		Route::post('borra-clientes', 'ClientesController@borrar')->name('borraClientes');
+		Route::post('extracto-clientes', 'ClientesController@extracto')->name('extractoClientes');
+		Route::post('exporta-clientes/{formato}', 'ClientesController@exporta')->name('exportaClientes');
 		// Lista Clientes Mínima (Asíncrona)
-		Route::get('listaClientesMin', 'ClientesController@listaClientesMin')->name('listaClientesMin');
-	Route::get('cliente/{id}', 'ClientesController@formularioCliente')->name('cliente');
+		Route::get('listaClientesMin', 'ClientesController@listaMin')->name('listaClientesMin');
+	Route::get('cliente/{id}', 'ClientesController@formulario')->name('cliente');
 	Route::post('guarda-cliente/{id}', 'ClientesController@guardar')->name('guardaCliente');
 		// Ver Cliente (Asíncrona)
-		Route::get('verCliente/{id}', 'ClientesController@verCliente')->name('verCliente');
+		Route::get('verCliente/{id}', 'ClientesController@ver')->name('verCliente');
 	
 	/* Proveedores */
 	Route::get('proveedores', 'ProveedoresController@proveedores')->name('proveedores');
 		// Lista Proveedores (Asíncrona)
-		Route::get('listaProveedores/{variables}', 'ProveedoresController@listaProveedores')->name('listaProveedores');
+		Route::get('listaProveedores/{variables}', 'ProveedoresController@lista')->name('listaProveedores');
 		// Acciones en Proveedores
-		Route::post('borra-proveedores', 'ProveedoresController@borraProveedores')->name('borraProveedores');
-		Route::post('extracto-proveedores', 'ProveedoresController@extractoProveedores')->name('extractoProveedores');
-		Route::post('exporta-proveedores/{formato}', 'ProveedoresController@exportaProveedores')->name('exportaProveedores');
-	Route::get('proveedor/{id}', 'ProveedoresController@formularioCliente')->name('proveedor');
+		Route::post('borra-proveedores', 'ProveedoresController@borrar')->name('borraProveedores');
+		Route::post('extracto-proveedores', 'ProveedoresController@extracto')->name('extractoProveedores');
+		Route::post('exporta-proveedores/{formato}', 'ProveedoresController@exporta')->name('exportaProveedores');
+	Route::get('proveedor/{id}', 'ProveedoresController@formulario')->name('proveedor');
 		// Ver Proveedor (Asíncrona)
-		Route::get('verProveedor/{id}', 'ProveedoresController@verProveedor')->name('verProveedor');
+		Route::get('verProveedor/{id}', 'ProveedoresController@ver')->name('verProveedor');
 	
 	/* Libros Oficiales */
 	Route::get('libros-oficiales', 'LibrosOficialesController@librosOficiales')->name('librosOficiales');
