@@ -1312,7 +1312,10 @@ body {
 							padding:0px 5px!important;
 						}
 						.valorItemFormulario textarea {
-							min-height:184px;
+							min-height:0px;
+						}
+						.textareaDefecto {
+							min-height:184px!important;
 						}
 						.valorItemFormulario input, select, textarea {
 							border:solid 1px var(--grisMasClaro)!important;
@@ -1338,6 +1341,10 @@ body {
 								display:inline-flex;
 								align-items:center;
 								cursor:pointer;
+							}
+							/* Para los checkbox sin cabecera */
+							.itemCheckLabel {
+								font-weight:600!important;
 							}
 
 /* Mensajes de alerta en formularios */
@@ -1588,7 +1595,7 @@ body {
 		float:right;
 		margin-left:0.5rem;
 		font-size:0.8rem;
-		margin-top: 0.25rem;
+		margin-top:0.25rem;
 	}
 	.thResaltado {
 		background-color:var(--principalMasClaro)!important;
@@ -1605,21 +1612,63 @@ body {
 	.tdLink:hover {
 		color:var(--principal)!important;
 	}
-/* Switch */
 .columnaConSwitch {
 	text-align:center;
 	width:70px!important;
-	min-width:70px;
+	min-width:60px;
 	max-width:70px;
 }
+.columnaConFecha {
+	text-align:center;
+	width:130px!important;
+	min-width:100px;
+	max-width:130px;
+}
+	
+/* Redefinimos la table-responsive */
+.table-responsive {
+	overflow-x:auto!important;
+	overflow:none;
+	overflow-y:auto;
+	height:100%;
+	border-bottom:1px solid var(--grisMasClaro);
+	opacity:1;
+	transition:0.3s;
+}
+.table-responsive-w-auto {
+	overflow-x:auto!important;
+	overflow-y:auto;
+	height:auto;
+	resize:vertical;
+	border-bottom:1px solid var(--grisMasClaro);
+}
+	.altMinTabla {
+		min-height:100px!important;
+		resize:vertical;
+	}
+/* ... */
+
+/* -----|||||----- ********************** -----|||||----- */
+/* -----|||||----- * Switch de checkbox * -----|||||----- */
+/* -----|||||----- ********************** -----|||||----- */
+
 .custom-control-input:checked ~ .custom-control-label::before {
-    color:#fff;
+    color:var(--blanco);
     border-color:var(--principal);
     background-color:var(--principal);
 }
+.custom-control-input:focus ~ .custom-control-label::before {
+	/*box-shadow: 0 0 0 0.2rem rgba(98,175,130,0.6);*/
+	box-shadow: 0 0 0 0rem rgba(98,175,130,0);
+}
+.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+  color:var(--principalAzulAnalogo);
+  background-color:var(--principalClaro);
+  border-color:var(--principal);
+}
 .custom-switch .custom-control-label::before {
     left:-2.25rem;
-    width:2rem;/*1.75rem*/
+    width:2rem;
     pointer-events:all;
     border-radius:0.5rem;
 }
@@ -1652,33 +1701,9 @@ body {
     transition:transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 	
-/* Redefinimos la table-responsive */
-.table-responsive {
-	overflow-x:auto!important;
-	overflow:none;
-	overflow-y:auto;
-	height:100%;
-	border-bottom:1px solid var(--grisMasClaro);
-	opacity:1;
-	transition:0.3s;
-}
-.table-responsive-w-auto {
-	overflow-x:auto!important;
-	overflow-y:auto;
-	height:auto;
-	resize:vertical;
-	border-bottom:1px solid var(--grisMasClaro);
-}
-	.altMinTabla {
-		min-height:100px!important;
-		resize:vertical;
-	}
-
-/* ... */
-	
-/* -----|||||----- ********** -----|||||----- */
+/* -----|||||----- *************** -----|||||----- */
 /* -----|||||----- * Media Query * -----|||||----- */
-/* -----|||||----- ********** -----|||||----- */	
+/* -----|||||----- *************** -----|||||----- */	
 
 @media(max-width: 768px){
 	

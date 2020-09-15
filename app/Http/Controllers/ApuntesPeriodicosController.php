@@ -12,6 +12,10 @@ class ApuntesPeriodicosController extends Controller
 	public function lista($variables){
 		/* Falta definir el modelo para la consulta */
 		$listado = [1,2,3,4,5]; //Provisional
-		return view('pages.apuntesPeriodicos.listaApuntesPeriodicos', ['listado' => $listado]);
+		$rutaAbrir = route("apuntePeriodico", [":id"]);
+		return view('pages.apuntesPeriodicos.listaApuntesPeriodicos', ['listado' => $listado, 'rutaAbrir' => $rutaAbrir]);
+	}
+	public function formulario($id){
+		return view('pages.apuntesPeriodicos.formularioApuntePeriodico');
 	}
 }

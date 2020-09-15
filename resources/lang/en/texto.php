@@ -67,6 +67,7 @@ return [
 	'buscar' => 'Search',
 	'extracto' => 'Extract',
 	'exportar' => 'Export',
+	'ejecutar' => 'Execute',
 	'limpiar_busqueda' => 'Clear search',
 	'min_busqueda' => 'Enter :num or more characters for the search',
 	'seleccionar' => 'Select',
@@ -131,6 +132,17 @@ return [
 		'nif' => 'NIF',
 		'telefono' => 'Phone',
 		'email' => 'Email',
+	],
+	/* --- Apuntes Periódicos --- */ //PENDIENTES DE TRADUCIR
+	'apunte_periodico' => 'Periodic Note',
+	'apuntes_periodicos' => 'Periodic Notes',
+	'tabla_apuntes_periodicos' => [
+		'estado' => 'Status',
+		'descripcion' => 'Description',
+		'cuenta' => 'Account',
+		'tipo' => 'Type',
+		'ultima_ejecucion' => 'Last Execution',
+		'proxima_ejecucion' => 'Next Execution',
 	],
 /* -*****- Campos Formularios -*****- */
 	/* --- Cliente --- */

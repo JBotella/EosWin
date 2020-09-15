@@ -45,9 +45,9 @@
 									<th class="columnaConSwitch" scope="col" data-columna="estado">@lang('texto.tabla_apuntes_periodicos.estado')</th>
 									<th scope="col" data-columna="descripcion">@lang('texto.tabla_apuntes_periodicos.descripcion')</th>
 									<th scope="col" data-columna="cuenta">@lang('texto.tabla_apuntes_periodicos.cuenta')</th>
-									<th scope="col" data-columna="tipo">@lang('texto.tabla_apuntes_periodicos.tipo')</th>
-									<th scope="col" data-columna="ultima_ejecucion">@lang('texto.tabla_apuntes_periodicos.ultima_ejecucion')</th>
-									<th scope="col" data-columna="proxima_ejecucion">@lang('texto.tabla_apuntes_periodicos.proxima_ejecucion')</th>
+									<th class="text-center" scope="col" data-columna="tipo">@lang('texto.tabla_apuntes_periodicos.tipo')</th>
+									<th class="columnaConFecha" scope="col" data-columna="ultima_ejecucion">@lang('texto.tabla_apuntes_periodicos.ultima_ejecucion')</th>
+									<th class="columnaConFecha" scope="col" data-columna="proxima_ejecucion">@lang('texto.tabla_apuntes_periodicos.proxima_ejecucion')</th>
 								</tr>
 							</thead>
 							<tbody class="contenedorLista" data-lista-id="0" data-lista-desde="0"></tbody>

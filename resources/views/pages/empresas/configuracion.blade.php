@@ -4,7 +4,7 @@
 		$extrabar = 'oculta';
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
-		<div class="cabeceraSeccion">
+		<div class="cabeceraSeccion" id="cabeceraSeccionFormulario">
 			<span><i class="fas fa-cog icoCab mr-2"></i></span>
 			<span>@lang('configuraciones.configuracion_empresa.titulo_configuracion')</span>
 		</div>

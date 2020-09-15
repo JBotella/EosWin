@@ -315,7 +315,7 @@
 										@slot('class', 'col-12 col-md-12')
 										@slot('nombre', trans('texto.avisos_notas.notas'))
 										@slot('valor')
-											<textarea class="form-control" placeholder="..."></textarea>
+											<textarea class="form-control textareaDefecto" name="notas" placeholder="..."></textarea>
 										@endslot
 									@endcomponent
 								</div>

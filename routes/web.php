@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('apuntes-periodicos', 'ApuntesPeriodicosController@apuntesPeriodicos')->name('apuntesPeriodicos');
 		// Lista Apuntes Periódicos (Asíncrona)
 		Route::get('listaApuntesPeriodicos/{variables}', 'ApuntesPeriodicosController@lista')->name('listaApuntesPeriodicos');
+	Route::get('apunte-periodico/{id}', 'ApuntesPeriodicosController@formulario')->name('apuntePeriodico');
 	
 	/* Libros Oficiales */
 	Route::get('libros-oficiales', 'LibrosOficialesController@librosOficiales')->name('librosOficiales');
