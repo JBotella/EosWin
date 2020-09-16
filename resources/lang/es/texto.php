@@ -234,6 +234,7 @@ return [
 		'datos_genericos' => 'Datos genéricos',
 		'descripcion' => 'Descripción',
 		'tipo' => 'Tipo',
+		'seleccione_tipo' => 'Seleccione Tipo',
 		'ingreso' => 'Ingreso',
 		'gasto' => 'Gasto',
 		'operacion' => 'Operación',

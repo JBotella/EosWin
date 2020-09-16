@@ -89,10 +89,11 @@ function selectorChange(obj,ruta,cargaSelect){
 		$.ajax({
 			type:'POST',
 			url:ruta,
+			//contentType: "application/json",
 			data:{_token:_token, carga:carga, valor:valor},
 			headers:{'Access-Control-Allow-Origin':URLdomain},
-			success:function(data){
-				cargaOptionsSelector(carga,data);
+			success:function(listado){
+				cargaOptionsSelector(carga,listado);
 			}
 		});
 	});
@@ -101,10 +102,24 @@ function selectorChange(obj,ruta,cargaSelect){
 function cargaOptionsSelector(id,data){
 	var array = $.parseJSON(data);
 	var options = '';
-	array.forEach(function(index){
-		options += '<option value="'+index.id+'">'+index.nombre+'</option>';
-	});
-	resaltaElemento('#'+id);
+	var tipo = $('#'+id).data('tipo');
+	switch(tipo){
+		case 'select':
+			array.forEach(function(index){
+				options += '<option value="'+index.id+'">'+index.nombre+'</option>';
+			});
+			resaltaElemento('#'+id);
+		break;
+		case 'datalist':
+			$('#'+id+'Datalist').val('');
+			var placeholder = $('#'+id+'Datalist').data('placeholder');
+			$('#'+id+'Datalist').prop('placeholder',placeholder);
+			array.forEach(function(index){
+				options += '<option value="'+index.id+' - '+index.nombre+'"></option>';
+			});
+			resaltaElemento('#'+id+'Datalist')
+		break;
+	}
 	$('#'+id).html(options);
 }
 function resaltaElemento(id){

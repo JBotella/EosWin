@@ -34,8 +34,8 @@
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.form_apunte_periodico.tipo'))
 										@slot('valor')
-											<select class="form-control custom-select" name="tipo" id="selectorTipo" data-carga-select="selectorOperacion,selectorCuenta" data-ruta="{{route('apuntePeriodicoTipo')}}">
-												<option value="" disabled selected>- Seleccione tipo -</option>
+											<select class="form-control custom-select" name="tipo" id="selectorTipo" data-carga-select="selectorOperacion,selectorCuenta" data-ruta="{{route('apuntePeriodicoTipo')}}" required>
+												<option value="" disabled selected>- @lang('texto.form_apunte_periodico.seleccione_tipo') -</option>
 												<option value="I">@lang('texto.form_apunte_periodico.ingreso')</option>
 												<option value="G">@lang('texto.form_apunte_periodico.gasto')</option>
 											</select>
@@ -45,8 +45,8 @@
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.form_apunte_periodico.operacion'))
 										@slot('valor')
-											<select class="form-control custom-select" name="operacion" id="selectorOperacion">
-												<option value="">...</option>
+											<select class="form-control custom-select" name="operacion" id="selectorOperacion" data-tipo="select">
+												<option value="">- @lang('texto.form_apunte_periodico.seleccione_tipo') -</option>
 											</select>
 										@endslot
 									@endcomponent
@@ -54,9 +54,9 @@
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.form_apunte_periodico.cuenta'))
 										@slot('valor')
-											<select class="form-control custom-select" name="cuenta" id="selectorCuenta">
-												<option value="">...</option>
-											</select>
+											<input type="text" class="form-control" list="selectorCuenta" name="cuenta" id="selectorCuentaDatalist" placeholder="- @lang('texto.form_apunte_periodico.seleccione_tipo') -" data-placeholder="- @lang('texto.seleccionar') @lang('texto.form_apunte_periodico.cuenta') -" />
+											<datalist id="selectorCuenta" data-tipo="datalist">
+											</datalist>
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
