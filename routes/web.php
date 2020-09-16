@@ -58,6 +58,9 @@ Route::group(['middleware' => 'auth'], function(){
 		// Lista Apuntes Periódicos (Asíncrona)
 		Route::get('listaApuntesPeriodicos/{variables}', 'ApuntesPeriodicosController@lista')->name('listaApuntesPeriodicos');
 	Route::get('apunte-periodico/{id}', 'ApuntesPeriodicosController@formulario')->name('apuntePeriodico');
+	Route::post('guarda-apunte-periodico/{id}', 'ApuntesPeriodicosController@guardar')->name('guardaApuntePeriodico');
+		// Carga selector tipo
+		Route::post('apunte-periodico-tipo', 'ApuntesPeriodicosController@selectorTipo')->name('apuntePeriodicoTipo');
 	
 	/* Libros Oficiales */
 	Route::get('libros-oficiales', 'LibrosOficialesController@librosOficiales')->name('librosOficiales');

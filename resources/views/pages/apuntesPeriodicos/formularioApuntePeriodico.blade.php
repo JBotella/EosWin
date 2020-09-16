@@ -14,7 +14,7 @@
 			</div>
 			
 			<div class="contenidoFormulario">
-				<form class="form" method="POST" action="">
+				<form class="form" method="POST" action="{!!route('guardaApuntePeriodico', $id)!!}">
 					@csrf
 					<div class="row">
 					
@@ -34,8 +34,8 @@
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.form_apunte_periodico.tipo'))
 										@slot('valor')
-											<select class="form-control custom-select" name="tipo">
-												<option value="I" disabled selected>- Seleccione tipo -</option>
+											<select class="form-control custom-select" name="tipo" id="selectorTipo" data-carga-select="selectorOperacion,selectorCuenta" data-ruta="{{route('apuntePeriodicoTipo')}}">
+												<option value="" disabled selected>- Seleccione tipo -</option>
 												<option value="I">@lang('texto.form_apunte_periodico.ingreso')</option>
 												<option value="G">@lang('texto.form_apunte_periodico.gasto')</option>
 											</select>
@@ -45,7 +45,7 @@
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.form_apunte_periodico.operacion'))
 										@slot('valor')
-											<select class="form-control custom-select" name="operacion">
+											<select class="form-control custom-select" name="operacion" id="selectorOperacion">
 												<option value="">...</option>
 											</select>
 										@endslot
@@ -54,7 +54,7 @@
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.form_apunte_periodico.cuenta'))
 										@slot('valor')
-											<select class="form-control custom-select" name="cuenta">
+											<select class="form-control custom-select" name="cuenta" id="selectorCuenta">
 												<option value="">...</option>
 											</select>
 										@endslot
@@ -97,7 +97,7 @@
 										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
 										@slot('valor')
 											<div class="itemCheckbox">
-												<input type="checkbox" class="form-control" id="diario" name="diario" />
+												<input type="radio" class="form-control" id="diario" name="periodicidad" value="diario" />
 												<label class="itemCheckLabel" for="diario">@lang('texto.form_apunte_periodico.diario')</label>
 											</div>
 										@endslot
@@ -114,7 +114,7 @@
 										@slot('class', 'col-3 col-md-3 col-lg-3 col-xl-3')
 										@slot('valor')
 											<div class="itemCheckbox">
-												<input type="checkbox" class="form-control" id="semanal" name="semanal" />
+												<input type="radio" class="form-control" id="semanal" name="periodicidad" value="semanal" />
 												<label class="itemCheckLabel" for="semanal">@lang('texto.form_apunte_periodico.semanal')</label>
 											</div>
 										@endslot
@@ -145,7 +145,7 @@
 										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
 										@slot('valor')
 											<div class="itemCheckbox">
-												<input type="checkbox" class="form-control" id="mensual" name="mensual" />
+												<input type="radio" class="form-control" id="mensual" name="periodicidad" value="mensual" />
 												<label class="itemCheckLabel" for="mensual">@lang('texto.form_apunte_periodico.mensual')</label>
 											</div>
 										@endslot
@@ -162,8 +162,8 @@
 										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
 										@slot('valor')
 											<div class="itemCheckbox">
-												<input type="checkbox" class="form-control" id="biensual"" name="biensual" />
-												<label class="itemCheckLabel" for="biensual">@lang('texto.form_apunte_periodico.bimensual')</label>
+												<input type="radio" class="form-control" id="bimensual" name="periodicidad" value="bimensual" />
+												<label class="itemCheckLabel" for="bimensual">@lang('texto.form_apunte_periodico.bimensual')</label>
 											</div>
 										@endslot
 									@endcomponent
@@ -179,7 +179,7 @@
 										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
 										@slot('valor')
 											<div class="itemCheckbox">
-												<input type="checkbox" class="form-control" id="trimestral" name="trimestral" />
+												<input type="radio" class="form-control" id="trimestral" name="periodicidad" value="trimestral" />
 												<label class="itemCheckLabel" for="trimestral">@lang('texto.form_apunte_periodico.trimestral')</label>
 											</div>
 										@endslot
@@ -196,7 +196,7 @@
 										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
 										@slot('valor')
 											<div class="itemCheckbox">
-												<input type="checkbox" class="form-control" id="concreta" name="concreta" />
+												<input type="radio" class="form-control" id="concreta" name="periodicidad" value="concreta" />
 												<label class="itemCheckLabel" for="concreta">@lang('texto.form_apunte_periodico.fecha_concreta')</label>
 											</div>
 										@endslot
@@ -232,6 +232,13 @@
 			</div>
 		@endcomponent
 	</div>
-	<select>
-	</select>
+	<script>
+		// Selector tipo que carga en función de su valor los valores de los selectores de 'operación y cuenta'
+		$('#selectorTipo').change(function(){
+			var obj = this;
+			var ruta = $(obj).data('ruta');
+			var cargaSelect = $(obj).data('carga-select').split(',');
+			selectorChange(obj,ruta,cargaSelect)
+		});
+	</script>
 @endsection

@@ -75,6 +75,45 @@ function imprimeSelector(clase){
 	$('.'+clase).addClass(claseIcono+' chkIcoSel');
 }
 
+/* ----- ****************************** ----- */
+/* ----- * Acciones selects y options * ----- */
+/* ----- ****************************** ----- */
+
+// Al cambiar el selector, recibimos el objeto, la ruta y los id de los selectores afectados
+function selectorChange(obj,ruta,cargaSelect){
+	cargaSelect.forEach(function(index){
+		var carga = index;
+		var valor = $(obj).val();
+		var _token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+		var URLdomain = window.location.origin;
+		$.ajax({
+			type:'POST',
+			url:ruta,
+			data:{_token:_token, carga:carga, valor:valor},
+			headers:{'Access-Control-Allow-Origin':URLdomain},
+			success:function(data){
+				cargaOptionsSelector(carga,data);
+			}
+		});
+	});
+}
+// Tras la respuesta de la ruta, cargamos los datos en los options de los selectores afectados
+function cargaOptionsSelector(id,data){
+	var array = $.parseJSON(data);
+	var options = '';
+	array.forEach(function(index){
+		options += '<option value="'+index.id+'">'+index.nombre+'</option>';
+	});
+	resaltaElemento('#'+id);
+	$('#'+id).html(options);
+}
+function resaltaElemento(id){
+	$(id).addClass('resaltadoAnimado');
+	setTimeout(function(){
+		$(id).removeClass('resaltadoAnimado');
+	},500);
+}
+
 /* ----- ************* ----- */
 /* ----- * Búsquedas * ----- */
 /* ----- ************* ----- */

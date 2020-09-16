@@ -1324,10 +1324,10 @@ body {
 							.itemCheckbox {
 								display:flex;
 							}
-							.itemCheckbox input[type=checkbox]:focus {
+							.itemCheckbox input[type=checkbox]:focus, .itemCheckbox input[type=radio]:focus {
 								box-shadow:none!important;
 							}
-							.itemCheckbox input[type=checkbox] {
+							.itemCheckbox input[type=checkbox], .itemCheckbox input[type=radio] {
 								width:1rem;
 								display:inline-flex;
 								align-items:center;
@@ -1745,6 +1745,15 @@ body {
 	color:var(--principal)!important;
 	font-style:italic;
 	opacity:1;
+}
+/* Resaltado con animación */
+.resaltadoAnimado {
+	animation:0.5s linear 0s normal none 1 running animaResaltado;
+}
+@keyframes animaResaltado {
+	from { background-color:inherit; }
+	25% { background-color:var(--principalMasClaro); }
+	to { background-color:inherit; }
 }
 
 /* -----|||||----- ************ -----|||||----- */
