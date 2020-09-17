@@ -243,6 +243,7 @@ return [
 		'iva' => 'IVA',
 		'irpf' => 'IRPF',
 		'periodicidad' => 'Periodicidad',
+		'fecha_inicio' => 'Fecha de inicio',
 		'diario' => 'Diario',
 		'semanal' => 'Semanal',
 		'dia_semana' => 'Día de la semana',

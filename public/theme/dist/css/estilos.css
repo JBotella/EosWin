@@ -1347,6 +1347,17 @@ body {
 								font-weight:600!important;
 							}
 
+							/* Fila compuesta de inputs dependientes del input radio */
+							.rowRadio input[type=radio]:checked + label {
+								transition:0.3s;
+								opacity:1;
+								color:var(--principal)!important;
+							}
+							.rowRadioInactivo {
+								transition:0.3s;
+								opacity:0.65;
+							}
+
 /* Mensajes de alerta en formularios */
 .mensaje-alerta-success {
 	background-color:var(--principalMasClaro);

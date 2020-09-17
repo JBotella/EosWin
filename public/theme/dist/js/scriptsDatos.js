@@ -89,7 +89,6 @@ function selectorChange(obj,ruta,cargaSelect){
 		$.ajax({
 			type:'POST',
 			url:ruta,
-			//contentType: "application/json",
 			data:{_token:_token, carga:carga, valor:valor},
 			headers:{'Access-Control-Allow-Origin':URLdomain},
 			success:function(listado){
@@ -106,7 +105,7 @@ function cargaOptionsSelector(id,data){
 	switch(tipo){
 		case 'select':
 			array.forEach(function(index){
-				options += '<option value="'+index.id+'">'+index.nombre+'</option>';
+				options += '<option value="'+index.codigo+'">'+index.nombre+'</option>';
 			});
 			resaltaElemento('#'+id);
 		break;
@@ -115,7 +114,7 @@ function cargaOptionsSelector(id,data){
 			var placeholder = $('#'+id+'Datalist').data('placeholder');
 			$('#'+id+'Datalist').prop('placeholder',placeholder);
 			array.forEach(function(index){
-				options += '<option value="'+index.id+' - '+index.nombre+'"></option>';
+				options += '<option value="'+index.codigo+' - '+index.nombre+'" data-option-id="'+index.codigo+'"></option>';
 			});
 			resaltaElemento('#'+id+'Datalist')
 		break;
@@ -127,6 +126,40 @@ function resaltaElemento(id){
 	setTimeout(function(){
 		$(id).removeClass('resaltadoAnimado');
 	},500);
+}
+function opcionDatalist(obj){
+	if($('datalist').find('option[value="'+obj.value+'"]')){
+		var valOp = $('option[value="'+obj.value+'"]').data('option-id');
+		$('#'+obj.id+'Id').val(valOp);
+	}
+}
+
+/* ----- ************** ----- */
+/* ----- * Row Radios * ----- */
+/* ----- ************** ----- */
+
+function compruebaRowRadios(){
+	$('.rowRadio').addClass('rowRadioInactivo');
+	var id = $('.rowRadio input[type=radio]:checked').val();
+	$('.rowRadio[data-row = "'+id+'"]').removeClass('rowRadioInactivo');
+}
+$('.rowRadio input[type=radio]').change(function(){
+	compruebaRowRadios();
+});
+
+/* ----- ***************************** ----- */
+/* ----- * Estados con custom-switch * ----- */
+/* ----- ***************************** ----- */
+
+function cambiaEstadoLinea(obj){
+	var desde = event.target.nodeName;
+	if(desde == 'INPUT'){
+		var valor = $(obj).children().prop('checked');
+		var ruta = $(obj).data('ruta-estado');
+		ruta = ruta.replace(':valor',valor);
+		$.get(ruta);
+	}
+	event.stopImmediatePropagation();
 }
 
 /* ----- ************* ----- */

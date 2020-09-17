@@ -16,6 +16,13 @@ class ApuntesPeriodicosController extends Controller
 		$rutaAbrir = route("apuntePeriodico", [":id"]);
 		return view('pages.apuntesPeriodicos.listaApuntesPeriodicos', ['listado' => $listado, 'rutaAbrir' => $rutaAbrir]);
 	}
+	public function estado($id,$valor){
+		if($valor === 'true'){
+			echo $id.': si';
+		}else{
+			echo $id.': no';
+		} // Provisional
+	}
 	public function formulario($id){
 		return view('pages.apuntesPeriodicos.formularioApuntePeriodico', ['id' => $id]);
 	}
@@ -24,17 +31,17 @@ class ApuntesPeriodicosController extends Controller
 		$valor = $request->valor;
 		switch($carga){
 			case 'selectorOperacion':
-				$operacion = DB::connection('sqlsrv1')->table('OPERACIONES_EOS')->select('CODOPERACION as id','DESOPERACION as nombre')->where('INGRESOGASTO',$valor)->get();
+				$operacion = DB::connection('sqlsrv1')->table('OPERACIONES_EOS')->select('CODOPERACION as codigo','DESOPERACION as nombre')->where('INGRESOGASTO',$valor)->orderBy('DESOPERACION','ASC')->get();
 				$lista = $operacion;
 			break;
 			case 'selectorCuenta':
 				switch($valor){
 					case 'I':
-						$clientes = Cliente::select('CliCodigo as id','CliNombre as nombre')->get();
+						$clientes = Cliente::select('CliCodigo as codigo','CliNombre as nombre')->get();
 						$lista = $clientes;
 					break;
 					case 'G':
-						$proveedores = Proveedor::select('ProvCodigo as id','ProvNombre as nombre')->get();
+						$proveedores = Proveedor::select('ProvCodigo as codigo','ProvNombre as nombre')->get();
 						$lista = $proveedores;
 					break;
 				}

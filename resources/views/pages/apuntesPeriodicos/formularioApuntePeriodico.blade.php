@@ -54,9 +54,9 @@
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.form_apunte_periodico.cuenta'))
 										@slot('valor')
-											<input type="text" class="form-control" list="selectorCuenta" name="cuenta" id="selectorCuentaDatalist" placeholder="- @lang('texto.form_apunte_periodico.seleccione_tipo') -" data-placeholder="- @lang('texto.seleccionar') @lang('texto.form_apunte_periodico.cuenta') -" />
-											<datalist id="selectorCuenta" data-tipo="datalist">
-											</datalist>
+											<input type="text" class="form-control" list="selectorCuenta" name="cuenta" id="selectorCuentaDatalist" placeholder="- @lang('texto.form_apunte_periodico.seleccione_tipo') -" data-placeholder="- @lang('texto.seleccionar') @lang('texto.form_apunte_periodico.cuenta') -" onchange="opcionDatalist(this)" />
+											<datalist id="selectorCuenta" data-tipo="datalist"></datalist>
+											<input type="hidden" name="cuentaId" id="selectorCuentaDatalistId" />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
@@ -91,38 +91,48 @@
 						<div class="col-12 col-md-6" id="columnaDerecha">
 							{{-- Periodicidad --}}
 							<div class="categoriaBloqueFormulario">@lang('texto.form_apunte_periodico.periodicidad')</div>
-							<div class="bloqueFormulario mt-3">
-								<div class="row mt-1">
+							<div class="bloqueFormulario mt-0">
+								<div class="row mt-0">
+									@component('components.itemFormulario')
+										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
+										@slot('nombre', trans('texto.form_apunte_periodico.periodicidad'))
+									@endcomponent
+									@component('components.itemFormulario')
+										@slot('class', 'col-5 col-md-5 col-lg-5 col-xl-5 ml-auto')
+										@slot('nombre', trans('texto.form_apunte_periodico.fecha_inicio'))
+									@endcomponent
+								</div>
+								<div class="row mt-1 rowRadio" data-row="diario">
 									@component('components.itemFormulario')
 										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
 										@slot('valor')
-											<div class="itemCheckbox">
-												<input type="radio" class="form-control" id="diario" name="periodicidad" value="diario" />
-												<label class="itemCheckLabel" for="diario">@lang('texto.form_apunte_periodico.diario')</label>
+											<div class="itemCheckbox custom-control custom-radio p-0 pl-3">
+												<input type="radio" class="form-control custom-control-input" id="diario" name="periodicidad" value="diario" />
+												<label class="itemCheckLabel custom-control-label custom-control-label" for="diario">@lang('texto.form_apunte_periodico.diario')</label>
 											</div>
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-5 col-md-5 col-lg-5 col-xl-5 ml-auto')
 										@slot('valor')
-											<input type="date" class="form-control" name="fechaDiario" value="" />
+											<input type="date" class="form-control" name="fechaDiario" data-id="diario" value="" />
 										@endslot
 									@endcomponent
 								</div>
-								<div class="row mt-1">
+								<div class="row mt-1 rowRadio" data-row="semanal">
 									@component('components.itemFormulario')
 										@slot('class', 'col-3 col-md-3 col-lg-3 col-xl-3')
 										@slot('valor')
-											<div class="itemCheckbox">
-												<input type="radio" class="form-control" id="semanal" name="periodicidad" value="semanal" />
-												<label class="itemCheckLabel" for="semanal">@lang('texto.form_apunte_periodico.semanal')</label>
+											<div class="itemCheckbox custom-control custom-radio p-0 pl-3">
+												<input type="radio" class="form-control custom-control-input" id="semanal" name="periodicidad" value="semanal" />
+												<label class="itemCheckLabel custom-control-label" for="semanal">@lang('texto.form_apunte_periodico.semanal')</label>
 											</div>
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-4 col-md-4 col-lg-4 col-xl-4')
 										@slot('valor')
-											<select class="form-control custom-select" name="diaSemana">
+											<select class="form-control custom-select" name="diaSemana" data-id="semanal">
 												<option value="lunes">@lang('texto.dia.lunes')</option>
 												<option value="martes">@lang('texto.dia.martes')</option>
 												<option value="miercoles">@lang('texto.dia.miercoles')</option>
@@ -136,75 +146,75 @@
 									@component('components.itemFormulario')
 										@slot('class', 'col-5 col-md-5 col-lg-5 col-xl-5')
 										@slot('valor')
-											<input type="date" class="form-control" name="fechaSemanal" value="" />
+											<input type="date" class="form-control" name="fechaSemanal" data-id="semanal" value="" />
 										@endslot
 									@endcomponent
 								</div>
-								<div class="row mt-1">
+								<div class="row mt-1 rowRadio" data-row="mensual">
 									@component('components.itemFormulario')
 										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
 										@slot('valor')
-											<div class="itemCheckbox">
-												<input type="radio" class="form-control" id="mensual" name="periodicidad" value="mensual" />
-												<label class="itemCheckLabel" for="mensual">@lang('texto.form_apunte_periodico.mensual')</label>
+											<div class="itemCheckbox custom-control custom-radio p-0 pl-3">
+												<input type="radio" class="form-control custom-control-input" id="mensual" name="periodicidad" value="mensual" />
+												<label class="itemCheckLabel custom-control-label" for="mensual">@lang('texto.form_apunte_periodico.mensual')</label>
 											</div>
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-5 col-md-5 col-lg-5 col-xl-5 ml-auto')
 										@slot('valor')
-											<input type="date" class="form-control" name="fechaMensual" value="" />
+											<input type="date" class="form-control" name="fechaMensual" data-id="mensual" value="" />
 										@endslot
 									@endcomponent
 								</div>
-								<div class="row mt-1">
+								<div class="row mt-1 rowRadio" data-row="bimensual">
 									@component('components.itemFormulario')
 										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
 										@slot('valor')
-											<div class="itemCheckbox">
-												<input type="radio" class="form-control" id="bimensual" name="periodicidad" value="bimensual" />
-												<label class="itemCheckLabel" for="bimensual">@lang('texto.form_apunte_periodico.bimensual')</label>
+											<div class="itemCheckbox custom-control custom-radio p-0 pl-3">
+												<input type="radio" class="form-control custom-control-input" id="bimensual" name="periodicidad" value="bimensual" />
+												<label class="itemCheckLabel custom-control-label" for="bimensual">@lang('texto.form_apunte_periodico.bimensual')</label>
 											</div>
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-5 col-md-5 col-lg-5 col-xl-5 ml-auto')
 										@slot('valor')
-											<input type="date" class="form-control" name="fechaBiensual" value="" />
+											<input type="date" class="form-control" name="fechaBiensual" data-id="bimensual" value="" />
 										@endslot
 									@endcomponent
 								</div>
-								<div class="row mt-1">
+								<div class="row mt-1 rowRadio" data-row="trimestral">
 									@component('components.itemFormulario')
 										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
 										@slot('valor')
-											<div class="itemCheckbox">
-												<input type="radio" class="form-control" id="trimestral" name="periodicidad" value="trimestral" />
-												<label class="itemCheckLabel" for="trimestral">@lang('texto.form_apunte_periodico.trimestral')</label>
+											<div class="itemCheckbox custom-control custom-radio p-0 pl-3">
+												<input type="radio" class="form-control custom-control-input" id="trimestral" name="periodicidad" value="trimestral" />
+												<label class="itemCheckLabel custom-control-label" for="trimestral">@lang('texto.form_apunte_periodico.trimestral')</label>
 											</div>
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-5 col-md-5 col-lg-5 col-xl-5 ml-auto')
 										@slot('valor')
-											<input type="date" class="form-control" name="fechaTrimestral" value="" />
+											<input type="date" class="form-control" name="fechaTrimestral" data-id="trimestral" value="" />
 										@endslot
 									@endcomponent
 								</div>
-								<div class="row mt-1">
+								<div class="row mt-1 rowRadio" data-row="concreta">
 									@component('components.itemFormulario')
 										@slot('class', 'col-7 col-md-7 col-lg-7 col-xl-7')
 										@slot('valor')
-											<div class="itemCheckbox">
-												<input type="radio" class="form-control" id="concreta" name="periodicidad" value="concreta" />
-												<label class="itemCheckLabel" for="concreta">@lang('texto.form_apunte_periodico.fecha_concreta')</label>
+											<div class="itemCheckbox custom-control custom-radio p-0 pl-3">
+												<input type="radio" class="form-control custom-control-input" id="concreta" name="periodicidad" value="concreta" />
+												<label class="itemCheckLabel custom-control-label" for="concreta">@lang('texto.form_apunte_periodico.fecha_concreta')</label>
 											</div>
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-5 col-md-5 col-lg-5 col-xl-5 ml-auto')
 										@slot('valor')
-											<input type="date" class="form-control" name="fechaConcreta" value="" />
+											<input type="date" class="form-control" name="fechaConcreta" data-id="concreta" value="" />
 										@endslot
 									@endcomponent
 								</div>
@@ -239,6 +249,9 @@
 			var ruta = $(obj).data('ruta');
 			var cargaSelect = $(obj).data('carga-select').split(',');
 			selectorChange(obj,ruta,cargaSelect)
+		});
+		$(document).ready(function(){
+			compruebaRowRadios();
 		});
 	</script>
 @endsection

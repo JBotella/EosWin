@@ -243,6 +243,7 @@ return [
 		'iva' => 'VAT',
 		'irpf' => 'Personal Income Tax',
 		'periodicidad' => 'Periodicity',
+		'fecha_inicio' => 'Start date',
 		'diario' => 'Daily',
 		'semanal' => 'Weekly',
 		'dia_semana' => 'Day of the week',

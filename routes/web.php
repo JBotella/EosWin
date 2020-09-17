@@ -19,9 +19,9 @@ Route::get('logout', 'Auth\LoginController@logout');
 /* ----- Filtrado por login auth ----- */
 Route::group(['middleware' => 'auth'], function(){
 	
-	/* -------------- */
-	/* LINKS SIDE BAR */
-	/* -------------- */
+	/* ------------- */
+	/* LINKS SIDEBAR */
+	/* ------------- */
 	
 	/* Dashboard */
 	Route::get('/', 'DashboardController@dashboard')->name('dashboard');
@@ -57,6 +57,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('apuntes-periodicos', 'ApuntesPeriodicosController@apuntesPeriodicos')->name('apuntesPeriodicos');
 		// Lista Apuntes Periódicos (Asíncrona)
 		Route::get('listaApuntesPeriodicos/{variables}', 'ApuntesPeriodicosController@lista')->name('listaApuntesPeriodicos');
+		// Cambio de estado de Apunte Periódico (Asíncrono)
+		Route::get('estadoApuntePeriodico/{id}/{valor}', 'ApuntesPeriodicosController@estado')->name('estadoApuntePeriodico');
 	Route::get('apunte-periodico/{id}', 'ApuntesPeriodicosController@formulario')->name('apuntePeriodico');
 	Route::post('guarda-apunte-periodico/{id}', 'ApuntesPeriodicosController@guardar')->name('guardaApuntePeriodico');
 		// Carga selector tipo
@@ -73,9 +75,9 @@ Route::group(['middleware' => 'auth'], function(){
 	/* Utilidades */
 	Route::get('utilidades', 'UtilidadesController@utilidades')->name('utilidades');
 	
-	/* ------------- */
-	/* LINKS NAV BAR */
-	/* ------------- */
+	/* ------------ */
+	/* LINKS NAVBAR */
+	/* ------------ */
 	
 	/* Configuracion */
 	Route::get('configuracion', 'ConfiguracionController@configuracion')->name('configuracion');

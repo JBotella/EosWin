@@ -183,9 +183,9 @@
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
 										@slot('nombre', trans('texto.form_empresa.criterio_caja'))
 										@slot('valor')
-											<div class="itemCheckbox">
-												<input type="checkbox" class="form-control" id="criterioCaja" name="criterioCaja" @if($datosEmpresa->CRITERIOCAJA == -1) checked @endif />
-												<label for="criterioCaja">
+											<div class="itemCheckbox custom-control custom-checkbox pl-3">
+												<input type="checkbox" class="form-control custom-control-input" id="criterioCaja" name="criterioCaja" @if($datosEmpresa->CRITERIOCAJA == -1) checked @endif />
+												<label class="custom-control-label" for="criterioCaja">
 													@lang('texto.form_empresa.criterio_caja_label')
 												</label>
 											</div>
