@@ -28,22 +28,25 @@ class ClientesController extends Controller
 		$telefonos = $cliente->telefonos($id);
 		return view('pages.clientes.verCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
 	}
-	public function formulario($id){
-		$cliente = new Cliente();
-		$datos = $cliente->datos($id);
-		$telefonos = $cliente->telefonos($id);
-		return view('pages.clientes.formularioCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
+	public function formulario($id = null){
+		if(isset($id)){
+			$cliente = new Cliente();
+			$datos = $cliente->datos($id);
+			$telefonos = $cliente->telefonos($id);
+			return view('pages.clientes.formularioCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
+		}else{
+			return view('pages.clientes.formularioCliente');
+		}
+		
 	}
-	public function guardar($id, Request $request){
+	public function guardar($id = null, Request $request){
 		$cliente = new Cliente;
 		$cliente->guarda($id, $request);
 		return redirect(route("clientes"));
 	}
 	public function borrar(Request $request){
-		$lineas = $request->lineas;
-		foreach($lineas as $linea){
-			echo 'Borra: '.$linea; // Pendiente crear consulta
-		}
+		$cliente = new Cliente;
+		$cliente->borra($request->lineas);
 	}
 	public function extracto(Request $request){
 		$lineas = $request->lineas;

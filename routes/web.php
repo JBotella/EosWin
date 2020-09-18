@@ -36,8 +36,8 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('exporta-clientes/{formato}', 'ClientesController@exporta')->name('exportaClientes');
 		// Lista Clientes Mínima (Asíncrona)
 		Route::get('listaClientesMin', 'ClientesController@listaMin')->name('listaClientesMin');
-	Route::get('cliente/{id}', 'ClientesController@formulario')->name('cliente');
-	Route::post('guarda-cliente/{id}', 'ClientesController@guardar')->name('guardaCliente');
+	Route::get('cliente/{id?}', 'ClientesController@formulario')->name('cliente');
+	Route::post('guarda-cliente/{id?}', 'ClientesController@guardar')->name('guardaCliente');
 		// Ver Cliente (Asíncrona)
 		Route::get('verCliente/{id}', 'ClientesController@ver')->name('verCliente');
 	

@@ -6,8 +6,12 @@
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion" id="cabeceraSeccionFormulario">
 			@php
-				$nombreCompleto = $datos->CliNombre.' '.$datos->CliApellido1.' '.$datos->CliApellido2;
-				$nombreCompleto = trim(preg_replace('/\s+/', ' ', $nombreCompleto));
+				if(isset($datos)){
+					$nombreCompleto = $datos->CliNombre.' '.$datos->CliApellido1.' '.$datos->CliApellido2;
+					$nombreCompleto = trim(preg_replace('/\s+/', ' ', $nombreCompleto));
+				}else{
+					$nombreCompleto = '';
+				}
 			@endphp
 			@include('includes.cabeceras.clientes.cabeceraFormularioCliente', [$nombreCompleto])
 		</div>
@@ -18,7 +22,7 @@
 			</div>
 			
 			<div class="contenidoFormulario">
-				<form class="form" method="POST" action="{!!route('guardaCliente', $datos->CliCodigo)!!}">
+				<form class="form" method="POST" @if(isset($datos)) action="{!!route('guardaCliente', $datos->CliCodigo)!!}" @else action="{!!route('guardaCliente')!!}" @endif>
 					@csrf
 					<div class="row">
 					
@@ -28,32 +32,34 @@
 							<div class="categoriaBloqueFormulario">@lang('texto.datos_identificativos.datos_identificativos')</div>
 							<div class="bloqueFormulario">
 								<div class="row">
-									@component('components.itemFormulario')
-										@slot('class', 'col-6 col-md-12 col-lg-6 col-xl-6')
-										@slot('nombre', trans('texto.datos_identificativos.codigo'))
-										@slot('valor')
-											<input type="text" class="form-control" name="codigo" value="{{$datos->CliCodigo}}" readonly />
-										@endslot
-									@endcomponent
+									@if(isset($datos))
+										@component('components.itemFormulario')
+											@slot('class', 'col-6 col-md-12 col-lg-6 col-xl-6')
+											@slot('nombre', trans('texto.datos_identificativos.codigo'))
+											@slot('valor')
+												<input type="text" class="form-control" name="codigo" value="{{$datos->CliCodigo}}" readonly />
+											@endslot
+										@endcomponent
+									@endif
 									@component('components.itemFormulario')
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
 										@slot('nombre', trans('texto.datos_identificativos.nombre'))
 										@slot('valor')
-											<input type="text" class="form-control" name="nombre" value="{{$datos->CliNombre}}" />
+											<input type="text" class="form-control" name="nombre" @if(isset($datos)) value="{{$datos->CliNombre}}" @endif />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.datos_identificativos.apellido_1'))
 										@slot('valor')
-											<input type="text" class="form-control" name="apellido1" value="{{$datos->CliApellido1}}" />
+											<input type="text" class="form-control" name="apellido1" @if(isset($datos)) value="{{$datos->CliApellido1}}" @endif />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-6')
 										@slot('nombre', trans('texto.datos_identificativos.apellido_2'))
 										@slot('valor')
-											<input type="text" class="form-control" name="apellido2" value="{{$datos->CliApellido2}}" />
+											<input type="text" class="form-control" name="apellido2" @if(isset($datos)) value="{{$datos->CliApellido2}}" @endif />
 										@endslot
 									@endcomponent
 								</div>
@@ -62,7 +68,7 @@
 										@slot('class', 'col-12 col-md-12')
 										@slot('nombre', trans('texto.datos_identificativos.organizacion'))
 										@slot('valor')
-											<input type="text" class="form-control" name="organizacion" value="{{$datos->CliNomComercial}}" />
+											<input type="text" class="form-control" name="organizacion" @if(isset($datos)) value="{{$datos->CliNomComercial}}" @endif />
 										@endslot
 									@endcomponent
 								</div>
@@ -82,7 +88,7 @@
 										@slot('class', 'col-6 col-md-12 col-lg-6 col-xl-6')
 										@slot('nombre', trans('texto.datos_identificativos.nif'))
 										@slot('valor')
-											<input type="text" class="form-control" name="nif" value="{{$datos->CliCif}}" />
+											<input type="text" class="form-control" name="nif" @if(isset($datos)) value="{{$datos->CliCif}}" @endif />
 										@endslot
 									@endcomponent
 								</div>
@@ -96,7 +102,7 @@
 										@slot('class', 'col-12 col-md-12')
 										@slot('nombre', trans('texto.contacto.correo_electronico'))
 										@slot('valor')
-											<input type="text" class="form-control" name="email" value="{{$datos->CliEMail}}" />
+											<input type="text" class="form-control" name="email" @if(isset($datos)) value="{{$datos->CliEMail}}" @endif />
 										@endslot
 									@endcomponent
 								</div>
@@ -107,24 +113,26 @@
 									@endcomponent
 								</div>
 								<div class="row">
-									@foreach($telefonos as $telefono)
-										@component('components.itemFormulario')
-											@slot('class', 'col-12')
-											@slot('nombre','')
-											@slot('valor')
-												<div class="row">
-													<div class="col-4">
-														<select class="form-control custom-select" name="tipoTelefono_">
-													<option value="0">Móvil</option>
-												</select>
+									@if(isset($telefonos))
+										@foreach($telefonos as $telefono)
+											@component('components.itemFormulario')
+												@slot('class', 'col-12')
+												@slot('nombre','')
+												@slot('valor')
+													<div class="row">
+														<div class="col-4">
+															<select class="form-control custom-select" name="tipoTelefono_">
+														<option value="0">Móvil</option>
+													</select>
+														</div>
+														<div class="col-8">
+															<input type="text" class="form-control" name="telefono_" value="{{$telefono->TELETELEFONO}}" />
+														</div>
 													</div>
-													<div class="col-8">
-														<input type="text" class="form-control" name="telefono_" value="{{$telefono->TELETELEFONO}}" />
-													</div>
-												</div>
-											@endslot
-										@endcomponent
-									@endforeach
+												@endslot
+											@endcomponent
+										@endforeach
+									@endif
 								</div>
 							</div>
 						
@@ -132,23 +140,25 @@
 							<div class="categoriaBloqueFormulario">@lang('texto.domicilio_fiscal.domicilio_fiscal')</div>
 							<div class="bloqueFormulario">
 								<div class="row">
-									@php
-										$direccionCompleta = $datos->CliDireccion;
-										if($direccionCompleta){
-											if($datos->CliTipoVia){
-												$direccionCompleta = '<span>'.$datos->CliTipoVia.'/</span> '.$direccionCompleta;
+									@if(isset($datos))
+										@php
+											$direccionCompleta = $datos->CliDireccion;
+											if($direccionCompleta){
+												if($datos->CliTipoVia){
+													$direccionCompleta = '<span>'.$datos->CliTipoVia.'/</span> '.$direccionCompleta;
+												}
+												if($datos->CliDireccionNumero){
+													$direccionCompleta .= ', '.$datos->CliDireccionNumero;
+												}
+												if($datos->CliDireccionPiso){
+													$direccionCompleta .= ' - <span>'.trans('texto.domicilio_fiscal.domicilio.piso').'</span> '.$datos->CliDireccionPiso;
+												}
+												if($datos->CliDireccionPuerta){
+													$direccionCompleta .= ' - <span>'.trans('texto.domicilio_fiscal.domicilio.puerta').'</span> '.$datos->CliDireccionPuerta;
+												}
 											}
-											if($datos->CliDireccionNumero){
-												$direccionCompleta .= ', '.$datos->CliDireccionNumero;
-											}
-											if($datos->CliDireccionPiso){
-												$direccionCompleta .= ' - <span>'.trans('texto.domicilio_fiscal.domicilio.piso').'</span> '.$datos->CliDireccionPiso;
-											}
-											if($datos->CliDireccionPuerta){
-												$direccionCompleta .= ' - <span>'.trans('texto.domicilio_fiscal.domicilio.puerta').'</span> '.$datos->CliDireccionPuerta;
-											}
-										}
-									@endphp
+										@endphp
+									@endif
 									@component('components.itemFormulario')
 										@slot('class', 'col-12 col-md-12')
 										@slot('nombre', trans('texto.domicilio_fiscal.domicilio.domicilio'))
@@ -160,7 +170,7 @@
 													</select>
 												</div>
 												<div class="col-8">
-													<input type="text" class="form-control" name="direccion" value="{{$datos->CliDireccion}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.direccion')" />
+													<input type="text" class="form-control" name="direccion" @if(isset($datos)) value="{{$datos->CliDireccion}}" @endif placeholder="@lang('texto.domicilio_fiscal.domicilio.direccion')" />
 												</div>
 											</div>
 										@endslot
@@ -169,21 +179,21 @@
 										@slot('class', 'col-4 col-md-4')
 										@slot('nombre', trans('texto.domicilio_fiscal.domicilio.numero'))
 										@slot('valor')
-											<input type="text" class="form-control" name="numero" value="{{$datos->CliDireccionNumero}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.numero')" />
+											<input type="text" class="form-control" name="numero" @if(isset($datos)) value="{{$datos->CliDireccionNumero}}" @endif placeholder="@lang('texto.domicilio_fiscal.domicilio.numero')" />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-4 col-md-4')
 										@slot('nombre', trans('texto.domicilio_fiscal.domicilio.piso'))
 										@slot('valor')
-											<input type="text" class="form-control" name="piso" value="{{$datos->CliDireccionPiso}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.piso')" />
+											<input type="text" class="form-control" name="piso" @if(isset($datos)) value="{{$datos->CliDireccionPiso}}" @endif placeholder="@lang('texto.domicilio_fiscal.domicilio.piso')" />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-4 col-md-4')
 										@slot('nombre', trans('texto.domicilio_fiscal.domicilio.puerta'))
 										@slot('valor')
-											<input type="text" class="form-control" name="puerta" value="{{$datos->CliDireccionPuerta}}" placeholder="@lang('texto.domicilio_fiscal.domicilio.puerta')" />
+											<input type="text" class="form-control" name="puerta" @if(isset($datos)) value="{{$datos->CliDireccionPuerta}}" @endif placeholder="@lang('texto.domicilio_fiscal.domicilio.puerta')" />
 										@endslot
 									@endcomponent
 								</div>
@@ -192,14 +202,14 @@
 										@slot('class', 'col-6 col-md-6')
 										@slot('nombre', trans('texto.domicilio_fiscal.codigo_postal'))
 										@slot('valor')
-											<input type="text" class="form-control" name="cp" value="{{$datos->CliCodPostal}}" />
+											<input type="text" class="form-control" name="cp" @if(isset($datos)) value="{{$datos->CliCodPostal}}" @endif />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-6 col-md-6')
 										@slot('nombre', trans('texto.domicilio_fiscal.localidad'))
 										@slot('valor')
-											<input type="text" class="form-control" name="localidad" value="{{$datos->CliCodPostalLocali}}" />
+											<input type="text" class="form-control" name="localidad" @if(isset($datos)) value="{{$datos->CliCodPostalLocali}}" @endif />
 										@endslot
 									@endcomponent
 								</div>
@@ -208,14 +218,14 @@
 										@slot('class', 'col-6 col-md-6')
 										@slot('nombre', trans('texto.domicilio_fiscal.provincia'))
 										@slot('valor')
-											<input type="text" class="form-control" name="provincia" value="{{$datos->CliCodPostalProvin}}" />
+											<input type="text" class="form-control" name="provincia" @if(isset($datos)) value="{{$datos->CliCodPostalProvin}}" @endif />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-6 col-md-6')
 										@slot('nombre', trans('texto.domicilio_fiscal.pais'))
 										@slot('valor')
-											<input type="text" class="form-control" name="pais" value="{{$datos->CliCodPostalPais}}" />
+											<input type="text" class="form-control" name="pais" @if(isset($datos)) value="{{$datos->CliCodPostalPais}}" @endif />
 										@endslot
 									@endcomponent
 								</div>

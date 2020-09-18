@@ -7,8 +7,10 @@ class UtilidadesController extends Controller
     public function utilidades(){
 		return view('pages.utilidades');
 	}
-	public function utilidadesFormulario($id){
-		//return view('pages.utilidades.formulario', ['id' => $id]);
+	public function lista(){
+		return view('pages.utilidades.lista');
+	}
+	public function formulario($id){
+		return view('pages.utilidades.formulario', ['id' => $id]);
 	}
 }
-

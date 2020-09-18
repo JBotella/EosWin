@@ -10,6 +10,12 @@ class Cliente extends Model
 	//protected $primaryKey = 'CliCodigo';
 	public $timestamps = false;
 	
+	/*protected $fillable = [
+        'CliCodigo', 'CliNombre', 
+    ];*/
+	/* Permitir la creación masiva sin especificar los campos en $fillable */
+	protected $guarded = [];
+	
 	public function listadoCompleto($variables = NULL){
 		$filtroConsulta = '';
 		/* Variables de filtro */
@@ -45,9 +51,9 @@ class Cliente extends Model
 		$telefonos = DB::connection($this->connection)->table('TELEFON')->where('TELECODIGO',$CliCodigo)->get();
 		return $telefonos;
 	}
-	public function guarda($id,$request){
+	public function guarda($id = null,$request){
 		/* Asignarles valor = '' a los nulos */
-		$this->where("CliCodigo",$id)->update([
+		$camposRequestComunes = [
 			'CliNombre' => $request->nombre,
 			'CliApellido1' => $request->apellido1 ?? '',
 			'CliApellido2' => $request->apellido2 ?? '',
@@ -62,6 +68,20 @@ class Cliente extends Model
 			'CliCodPostalLocali' => $request->localidad,
 			'CliCodPostalProvin' => $request->provincia,
 			'CliCodPostalPais' => $request->pais,
-		]);
+		];
+		if(isset($id)){
+			// Update
+			$this->where("CliCodigo",$id)->update($camposRequestComunes);
+		}else{
+			// Calcular el último CliCodigo para sumarle 1
+			$lastId = $this->orderBy('CliCodigo', 'desc')->first()->CliCodigo;
+			$nextId = str_pad(intval($lastId)+1, 10, '0', STR_PAD_LEFT);
+			// Insert
+			$camposRequestComunes += ['CliCodigo' => $nextId];
+			$this->create($camposRequestComunes);
+		}
+	}
+	public function borra($lineas){
+		$this->whereIn('CliCodigo', $lineas)->delete();
 	}
 }
