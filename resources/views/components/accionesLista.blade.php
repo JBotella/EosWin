@@ -2,7 +2,7 @@
 	<div class="avisoAccion">@lang('texto.confirma_borrar_lineas')</div>
 	<div class="opcionesAccion">
 		<div class="opcionAccion" onclick="notificacionAccion('borrar')">@lang('texto.cancelar')</div>
-		<div class="opcionAccion" data-ruta="{{route($rutaBorrar)}}" onclick="accionLineas(this,'borrar','{{$checkData}}','asinc')">@lang('texto.confirmar')</div>
+		<div class="opcionAccion" @if(isset($rutaBorrar)) data-ruta="{{route($rutaBorrar)}}" onclick="accionLineas(this,'borrar','{{$checkData}}','asinc')" @endif>@lang('texto.confirmar')</div>
 	</div>
 </div>
 <div class="notificacionAccion notificacion-estilo-seleccion" data-lista-id="0" data-accion="exportar" data-linea-check="{{$checkData}}">
@@ -29,7 +29,7 @@
 					@endphp
 				@break
 			@endswitch
-			<div class="opcionAccionIco" data-ruta="{{route($rutaExportar,$formato)}}" onclick="accionLineas(this,'exportar','{{$checkData}}','form')">
+			<div class="opcionAccionIco" @if(isset($rutaExportar)) data-ruta="{{route($rutaExportar,$formato)}}" onclick="accionLineas(this,'exportar','{{$checkData}}','form')" @endif>
 				<i class="{{$icoFormato}}"></i>
 				<span>{{$nombreFormato}}</span>
 			</div>

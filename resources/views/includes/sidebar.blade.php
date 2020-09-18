@@ -61,7 +61,7 @@
 				<div class="sb-sidenav-menu-heading">
 					<div class="lineaBloqueMenu"></div>
 				</div>
-				<a class="nav-link @if(in_array($vActual,['utilidades'])) nav-link-selected @endif" href="{!!route('utilidades')!!}">
+				<a class="nav-link @if(in_array($vActual,['utilidades','utilidadesLista','utilidadFormulario'])) nav-link-selected @endif" href="{!!route('utilidades')!!}">
 					<div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
 					@lang('texto.sidebar_nav.utilidades')
 				</a>

@@ -223,7 +223,7 @@ function limpiarBusqueda(nLista){
 /* ----- * Fichas y Formularios * ----- */
 /* ----- ************************ ----- */
 
-/* Abre o cierra la ficha asociada a la fila de una tabla */
+/* Abre o cierra la ficha asociada a la fila de una tabla. También aplicable a formularios asíncronos */
 function verLinea(id,ruta){
 	ruta = ruta.replace(':id',id);
 	$('#visorFicha_0').load(ruta, function(){

@@ -70,10 +70,15 @@ Route::group(['middleware' => 'auth'], function(){
 	
 	/* Impuestos */
 	Route::get('impuestos', 'ImpuestosController@impuestos')->name('impuestos');
-		Route::get('impuestos/{id}', 'ImpuestosController@impuestosFormulario')->name('impuestosFormulario');
+		Route::get('impuestos/{id}', 'ImpuestosController@formulario')->name('impuestosFormulario');
 	
 	/* Utilidades */
 	Route::get('utilidades', 'UtilidadesController@utilidades')->name('utilidades');
+		Route::get('utilidades/{id}', 'UtilidadesController@utilidad')->name('utilidad');
+		// Lista Utilidades (Asíncrona)
+		Route::get('listaUtilidades/{id}/{variables}', 'UtilidadesController@lista')->name('listaUtilidades');
+		// Formulario Utilidad (Asíncrono)
+		Route::get('utilidad/{id}/{item}', 'UtilidadesController@formulario')->name('utilidadFormulario');
 	
 	/* ------------ */
 	/* LINKS NAVBAR */

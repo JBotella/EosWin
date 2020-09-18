@@ -28,6 +28,13 @@ return [
 		'operaciones_contables' => [
 			'nombre' => 'Operaciones Contables',
 			'resumen' => 'Definición de operaciones contables para la distribución de gastos e ingresos. Permite añadir, modificar y eliminar tipos de ingresos y gastos y asociarlos a las distintas columnas de los libros registros.',
+			/* Campos para tabla y formulario */
+			'campos' => [
+				'codigo' => 'Código',
+				'descripcion' => 'Descripción',
+				'ingreso-gasto' => 'Ingreso o Gasto',
+				'columna-libro-registro' => 'Columna en el libro de registro',
+			],
 		],
 		'conceptos_contables' => [
 			'nombre' => 'Conceptos Contables',
