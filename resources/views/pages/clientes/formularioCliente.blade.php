@@ -339,10 +339,10 @@
 									@component('components.itemFormulario')
 										@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12 text-center')
 										@slot('valor')
-											<button class="btn btn-form mt-1 btn-form" type="submit">
-												<i class="fas fa-save mr-1"></i>
-												@lang('texto.guardar')
-											</button>
+											@component('components.botonesPieFormulario')
+												@slot('rutaCancelar', 'clientes')
+												@slot('rutaBorrar', '')
+											@endcomponent
 										@endslot
 									@endcomponent
 								</div>

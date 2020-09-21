@@ -74,9 +74,9 @@ Route::group(['middleware' => 'auth'], function(){
 	
 	/* Utilidades */
 	Route::get('utilidades', 'UtilidadesController@utilidades')->name('utilidades');
-		Route::get('utilidades/{id}', 'UtilidadesController@utilidad')->name('utilidad');
+		Route::get('utilidades/{id}', 'UtilidadesController@utilidad')->name('utilidadListado');
 		// Lista Utilidades (Asíncrona)
-		Route::get('listaUtilidades/{id}/{variables}', 'UtilidadesController@lista')->name('listaUtilidades');
+		Route::get('listaUtilidad/{id}/{variables}', 'UtilidadesController@lista')->name('listaUtilidad');
 		// Formulario Utilidad (Asíncrono)
 		Route::get('utilidad/{id}/{item}', 'UtilidadesController@formulario')->name('utilidadFormulario');
 	

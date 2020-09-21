@@ -2,7 +2,7 @@
 @section('content')
 	@php
 		$extrabar = 'oculta';
-		$rutaLinkList = 'utilidadesLista';
+		$rutaLinkList = 'utilidadListado';
 		$rutaLinkForm = 'utilidadFormulario';
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
@@ -31,15 +31,13 @@
 								@slot('nombre',trans('utilidades.sistema.actividades_empresariales.nombre'))
 								@slot('resumen',trans('utilidades.sistema.actividades_empresariales.resumen'))
 								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => ''])--}}
-								@slot('link','vacio')
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.sistema.modulos_tributacion.nombre'))
 								@slot('resumen',trans('utilidades.sistema.modulos_tributacion.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => ''])--}}
-								@slot('link','vacio')
+								@slot('link',['ruta' => $rutaLinkList, 'id' => 'modulos-tributacion'])
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-principal')
@@ -47,21 +45,20 @@
 								@slot('nombre',trans('utilidades.sistema.indices_porcentajes_calculo.nombre'))
 								@slot('resumen',trans('utilidades.sistema.indices_porcentajes_calculo.resumen'))
 								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => ''])--}}
-								@slot('link','vacio')
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.sistema.tipos_iva_igic.nombre'))
 								@slot('resumen',trans('utilidades.sistema.tipos_iva_igic.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => ''])--}}
+								@slot('link',['ruta' => $rutaLinkList, 'id' => 'tipos-iva-igic'])
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.sistema.tipos_irpf.nombre'))
 								@slot('resumen',trans('utilidades.sistema.tipos_irpf.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => ''])--}}
+								@slot('link',['ruta' => $rutaLinkList, 'id' => 'tipos-irpf'])
 							@endcomponent
 							
 							</div>
@@ -80,16 +77,15 @@
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.sistema.conceptos_contables.nombre'))
 								@slot('resumen',trans('utilidades.sistema.conceptos_contables.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => ''])--}}
+								@slot('link',['ruta' => $rutaLinkList, 'id' => 'conceptos-contables'])
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-principal')
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.sistema.formas_pago_cobro.nombre'))
 								@slot('resumen',trans('utilidades.sistema.formas_pago_cobro.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => ''])--}}
+								@slot('link',['ruta' => $rutaLinkList, 'id' => 'formas-pago-cobro'])
 							@endcomponent
-						
 							</div>
 						</div>
 						
@@ -108,7 +104,6 @@
 								@slot('nombre',trans('utilidades.herramientas.remuneracion_asientos.nombre'))
 								@slot('resumen',trans('utilidades.herramientas.remuneracion_asientos.resumen'))
 								{{--@slot('link',['ruta' => $rutaLinkForm, 'id' => ''])--}}
-								@slot('link','vacio')
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-azulAnalogo')
@@ -116,7 +111,6 @@
 								@slot('nombre',trans('utilidades.herramientas.importacion_asientos_excel.nombre'))
 								@slot('resumen',trans('utilidades.herramientas.importacion_asientos_excel.resumen'))
 								{{--@slot('link',['ruta' => $rutaLinkForm, 'id' => ''])--}}
-								@slot('link','vacio')
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-azulAnalogo')
@@ -137,7 +131,7 @@
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.herramientas.seguimiento_lopd.nombre'))
 								@slot('resumen',trans('utilidades.herramientas.seguimiento_lopd.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => ''])--}}
+								@slot('link',['ruta' => $rutaLinkList, 'id' => 'seguimiento-lopd'])
 							@endcomponent
 						</div>
 					</div>

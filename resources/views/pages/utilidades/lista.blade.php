@@ -7,7 +7,13 @@
 		<div class="cabeceraSeccion">
 			@include('includes.cabeceras.utilidades.cabeceraUtilidades')
 		</div>
+		
 		<div class="barraOpcionesLista">
+		
+			<div class="accionesLista">
+				@include('includes.complementos.botonLinkVolver', ['ruta' => route('utilidades')])
+			</div>
+		
 			<div class="row justify-content-end">
 			
 				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col">
@@ -32,7 +38,7 @@
 						@csrf
 						<input type="hidden" name="columnasActivas[]" value="" />
 						<table class="table table-striped table-fixed" id="tabla">
-							<thead id="cabeceraLista_0" class="thead-th-ocultos" data-columna="{{$parametros->orden}}" data-direccion="ASC" data-ruta="{{ route('listaUtilidades', [$id, ':variables']) }}">
+							<thead id="cabeceraLista_0" class="thead-th-ocultos" data-columna="{{$parametros->orden}}" data-direccion="{{$parametros->direccionOrden}}" data-ruta="{{ route('listaUtilidad', [$id, ':variables']) }}">
 								<tr>
 									<th scope="col" class="thBtnAcciones">
 										<div class="cuadroCkeckSelTodos">

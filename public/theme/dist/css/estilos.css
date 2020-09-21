@@ -129,6 +129,11 @@ body {
 .btn-form:active {
 	box-shadow:1px 1px 1px var(--principalMedio);
 }
+	/* Estilo de botones al pié del formulario */
+	.btnFormGuardar { background-color:var(--principal); }
+	.btnFormCancelar { background-color:var(--principalAzulAnalogo); }
+	.btnFormBorrar { background-color:var(--principalRojoOpuesto); }
+	
 .btnAccion { font-size:1.2rem; opacity:1; transition:0.3s; cursor:pointer; }
 .btnAccion:hover { opacity:0.75; transition:0.3s; }
 	.btnActualizar { color:var(--principalAzulAnalogo); }
@@ -1143,7 +1148,7 @@ body {
 			background-color:var(--blanco);
 			box-shadow:-1px 1px 10px 0px var(--grisMasClaro), 1px 1px 10px 0px var(--grisMasClaro);
 		}
-			.accionesFicha {
+			.accionesFicha, .accionesLista {
 				width:100%;
 				/* Opción de fijar las acciones */
 				position:sticky;
@@ -1151,10 +1156,14 @@ body {
 				z-index:10;
 				/* ... */
 			}
-				.accionesFicha a {
+			.accionesLista {
+				position:relative;
+				top:-0.5rem;
+			}
+				.accionesFicha a, .accionesLista a {
 					text-decoration:none;
 				}
-				.btnAccionFicha {
+				.accionesFicha .btnAccionFicha {
 					display:inline-flex;
 					align-items:center;
 					cursor:pointer;
@@ -1167,7 +1176,18 @@ body {
 					box-shadow:0px 5px 5px -2px var(--blanco);
 					/* ... */
 				}
-				.btnAccionFicha span {
+				.accionesLista .btnAccionFicha {
+					display:inline-flex;
+					align-items:center;
+					cursor:pointer;
+					/* Opción de fijar las acciones */
+					padding:0.25rem;
+					padding-bottom:0rem;
+					padding-left:0rem;
+					padding-right:0.25rem;
+					/* ... */
+				}
+				.accionesFicha .btnAccionFicha span, .accionesLista .btnAccionFicha span {
 					font-weight:bold;
 					font-size:0.9rem;
 					color:var(--principalAzulAnalogo);

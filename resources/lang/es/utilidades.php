@@ -12,6 +12,12 @@ return [
 		'modulos_tributacion' => [
 			'nombre' => 'Módulos de Tributación',
 			'resumen' => 'Consulta de los módulos de tributación por ejercicio para IVA. e IRPF Nos permite el acceso a la consulta y modificación de los parámetros legales.',
+			/* Campos para tabla y formulario */
+			'campos' => [
+				'codigo' => 'Código',
+				'nombre' => 'Nombre',
+				'periodo' => 'Periodo',
+			],
 		],
 		'indices_porcentajes_calculo' => [
 			'nombre' => 'Índices y porcentajes de cálculo',
@@ -20,10 +26,25 @@ return [
 		'tipos_iva_igic' => [
 			'nombre' => 'Tipos de IVA/IGIC',
 			'resumen' => 'Permite añadir tipos de I.V.A. así como la modificación de los existentes.',
+			/* Campos para tabla y formulario */
+			'campos' => [
+				'codigo' => 'Tipo',
+				'nombre' => 'Descripción',
+				'porcentajeIva' => '% IVA',
+				'porcentajeRe' => '% RE',
+				'adonIva' => 'A',
+			],
 		],
 		'tipos_irpf' => [
 			'nombre' => 'Tipos de IRPF',
 			'resumen' => 'Permite añadir tipos de I.R.P.F. así como la modificación de los existentes.',
+			/* Campos para tabla y formulario */
+			'campos' => [
+				'codigo' => 'Tipo',
+				'nombre' => 'Descripción',
+				'porcentajeIrpf' => '% IRPF',
+				'adonIva' => 'A',
+			],
 		],
 		'operaciones_contables' => [
 			'nombre' => 'Operaciones Contables',
@@ -39,10 +60,20 @@ return [
 		'conceptos_contables' => [
 			'nombre' => 'Conceptos Contables',
 			'resumen' => 'Definición de conceptos para identificar los ingresos y gastos de una forma más sencilla.',
+			/* Campos para tabla y formulario */
+			'campos' => [
+				'codigo' => 'Código',
+				'descripcion' => 'Descripción',
+			],
 		],
 		'formas_pago_cobro' => [
 			'nombre' => 'Formas de pago/cobro',
 			'resumen' => 'Permite la parametrización de las distintas formas de pago y cobro (transferencias, giros bancarios, cheque, etc...).',
+			/* Campos para tabla y formulario */
+			'campos' => [
+				'codigo' => 'Código',
+				'descripcion' => 'Descripción',
+			],
 		],
 	],
 	'herramientas'  => [
@@ -66,6 +97,16 @@ return [
 		'seguimiento_lopd' => [
 			'nombre' => 'Seguimiento LOPD',
 			'resumen' => 'Seguimiento de las acciones derivadas de la GDPR impuesta por la Unión Europea.',
+			/* Campos para tabla y formulario */
+			'campos' => [
+				'id' => 'Id',
+				'fecha' => 'Fecha',
+				'usuario' => 'Usuario',
+				'servidor' => 'Servidor',
+				'ordenador' => 'Ordenador',
+				'proceso' => 'Proceso',
+				'mensaje' => 'Mensaje',
+			],
 		],
 	],
 ];
