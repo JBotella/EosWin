@@ -36,4 +36,14 @@ class Utilidad extends Model
 		$listado = $listado->get();
 		return $listado;
 	}
+	public function formulario($parametros,$item = NULL){
+		$db = $parametros->db;
+		$tabla = $parametros->tabla;
+		$datos = DB::connection($db)->table($tabla);
+		if($item){
+			$datos = $datos->where($item,$parametros->ident);
+		}
+		$datos = $datos->first();
+		return $datos;
+	}
 }

@@ -12,7 +12,7 @@ return [
 		'modulos_tributacion' => [
 			'nombre' => 'Módulos de Tributación',
 			'resumen' => 'Consulta de los módulos de tributación por ejercicio para IVA. e IRPF Nos permite el acceso a la consulta y modificación de los parámetros legales.',
-			/* Campos para tabla y formulario */
+			/* Campos */
 			'campos' => [
 				'codigo' => 'Código',
 				'nombre' => 'Nombre',
@@ -22,11 +22,51 @@ return [
 		'indices_porcentajes_calculo' => [
 			'nombre' => 'Índices y porcentajes de cálculo',
 			'resumen' => 'Consulta y parametrización de índices correctos de I.VA., constantes y porcentajes e índices de estimación objetiva.',
+			/* Campos y Categorías */
+			'categorias' => [
+				'constantes_porcentajes' => 'Constantes y Porcentajes',
+				'est_objetiva_modulos' => 'Estimación Objetiva Módulos',
+				'est_directa_simplificada' => 'Estimación Directa Simplificada',
+				'est_directa_est_directa_simplificada' => 'Est Directa y Est Directa Simplificada',
+				'indices_estimacion_objetiva' => 'Índices Estimación Objetiva',
+				'declaracion_anual_modelo_347' => 'Declaración anual modelo 347',
+				'indices_correctores_iva' => 'Índices Correctores IVA',
+				'poblacion_mas_100000' => 'Población con más de 100.000 habitantes',
+				'poblacion_entre_10000_100000' => 'Población entre 10.000 y 100.000 habitantes',
+				'poblacion_menos_10000' => 'Población con menos de 10.000 habitantes',
+			],
+			'campos' => [
+				'indice1' => 'Porcentaje sobre datos base año',
+				'indice2' => 'Porcentaje sobre ventas trimestre',
+				'indice3' => '% Gastos Fabric. Min. Constr',
+				'indice4' => '% Gastos Comerc. Serv Agrar',
+				'indice5' => '% Gastos Activ Profesionales',
+				'indice6' => '% Ingresos-Gastos deducibles',
+				'indice7' => 'Agricultores % s/Ventas trimestre',
+				'indice8' => '% Gastos dif justif. ED Profesionales',
+				'indice9' => 'Actividades incluidas grupos A y B',
+				'indice10' => 'Activ exclusivamente en grupo A',
+				'indice11' => 'Activ exclusivamente en grupo B',
+				'indice12' => 'Auto-taxis poblac < 10.000 hbts',
+				'indice13' => 'Auto-taxis poblac 10 - 10.000 hbts',
+				'indice14' => 'Actividades hasta 2 meses tempor',
+				'indice15' => 'Actividades hasta 4 meses tempor',
+				'indice16' => 'Actividades hasta 6 meses tempor',
+				'indice17' => 'Índice corrector exceso cantidades',
+				'indice18' => 'A partir de Euros',
+				'indice19' => 'Calles 1ª y 2ª categoría',
+				'indice20' => 'Calles 3ª y 4ª categoría',
+				'indice21' => 'Resto calles',
+				'indice22' => 'Calles 1ª y 2ª categoría',
+				'indice23' => 'Resto calles',
+				'indice24' => 'Calles 1ª y 2ª categoría',
+				'indice25' => 'Resto calles',
+			],
 		],
 		'tipos_iva_igic' => [
 			'nombre' => 'Tipos de IVA/IGIC',
 			'resumen' => 'Permite añadir tipos de I.V.A. así como la modificación de los existentes.',
-			/* Campos para tabla y formulario */
+			/* Campos */
 			'campos' => [
 				'codigo' => 'Tipo',
 				'nombre' => 'Descripción',
@@ -38,7 +78,7 @@ return [
 		'tipos_irpf' => [
 			'nombre' => 'Tipos de IRPF',
 			'resumen' => 'Permite añadir tipos de I.R.P.F. así como la modificación de los existentes.',
-			/* Campos para tabla y formulario */
+			/* Campos */
 			'campos' => [
 				'codigo' => 'Tipo',
 				'nombre' => 'Descripción',
@@ -49,7 +89,7 @@ return [
 		'operaciones_contables' => [
 			'nombre' => 'Operaciones Contables',
 			'resumen' => 'Definición de operaciones contables para la distribución de gastos e ingresos. Permite añadir, modificar y eliminar tipos de ingresos y gastos y asociarlos a las distintas columnas de los libros registros.',
-			/* Campos para tabla y formulario */
+			/* Campos */
 			'campos' => [
 				'codigo' => 'Código',
 				'descripcion' => 'Descripción',
@@ -60,7 +100,7 @@ return [
 		'conceptos_contables' => [
 			'nombre' => 'Conceptos Contables',
 			'resumen' => 'Definición de conceptos para identificar los ingresos y gastos de una forma más sencilla.',
-			/* Campos para tabla y formulario */
+			/* Campos */
 			'campos' => [
 				'codigo' => 'Código',
 				'descripcion' => 'Descripción',
@@ -69,7 +109,7 @@ return [
 		'formas_pago_cobro' => [
 			'nombre' => 'Formas de pago/cobro',
 			'resumen' => 'Permite la parametrización de las distintas formas de pago y cobro (transferencias, giros bancarios, cheque, etc...).',
-			/* Campos para tabla y formulario */
+			/* Campos */
 			'campos' => [
 				'codigo' => 'Código',
 				'descripcion' => 'Descripción',
@@ -97,7 +137,7 @@ return [
 		'seguimiento_lopd' => [
 			'nombre' => 'Seguimiento LOPD',
 			'resumen' => 'Seguimiento de las acciones derivadas de la GDPR impuesta por la Unión Europea.',
-			/* Campos para tabla y formulario */
+			/* Campos */
 			'campos' => [
 				'id' => 'Id',
 				'fecha' => 'Fecha',

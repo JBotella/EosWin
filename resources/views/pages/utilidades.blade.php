@@ -4,6 +4,7 @@
 		$extrabar = 'oculta';
 		$rutaLinkList = 'utilidadListado';
 		$rutaLinkForm = 'utilidadFormulario';
+		$rutaLinkFormAsinc = 'utilidadFormAsinc';
 	@endphp
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion">
@@ -13,7 +14,9 @@
 		<div class="contenidoSeccion">
 			<div class="seccion-responsive">
 				
-				<div class="row" id="contenidoTarjetasLinks">
+				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
+				
+				<div class="row contenidoTarjetasLinks" id="contenido_0">
 				
 					<div class="col-12 col-md-6 col-lg-8 col-xl-8 mt-0" id="declaraciones_trimestrales">
 						<div class="tituloColumna">
@@ -30,7 +33,7 @@
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.sistema.actividades_empresariales.nombre'))
 								@slot('resumen',trans('utilidades.sistema.actividades_empresariales.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => ''])--}}
+								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => 'actividades-empresariales'])--}}
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-principal')
@@ -44,7 +47,7 @@
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.sistema.indices_porcentajes_calculo.nombre'))
 								@slot('resumen',trans('utilidades.sistema.indices_porcentajes_calculo.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => ''])--}}
+								@slot('link',['ruta' => $rutaLinkForm, 'id' => 'indices-porcentajes-calculo'])
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-principal')
@@ -103,28 +106,28 @@
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.herramientas.remuneracion_asientos.nombre'))
 								@slot('resumen',trans('utilidades.herramientas.remuneracion_asientos.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkForm, 'id' => ''])--}}
+								{{--@slot('link',['ruta' => $rutaLinkForm, 'id' => 'remuneracion-asientos'])--}}
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-azulAnalogo')
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.herramientas.importacion_asientos_excel.nombre'))
 								@slot('resumen',trans('utilidades.herramientas.importacion_asientos_excel.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkForm, 'id' => ''])--}}
+								{{--@slot('link',['ruta' => $rutaLinkForm, 'id' => 'importacion-asientos-excel'])--}}
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-azulAnalogo')
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.herramientas.asistente_copia_seguridad.nombre'))
 								@slot('resumen',trans('utilidades.herramientas.asistente_copia_seguridad.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkForm, 'id' => ''])--}}
+								{{--@slot('link',['ruta' => $rutaLinkForm, 'id' => 'asistente-copia-seguridad'])--}}
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-azulAnalogo')
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.herramientas.comprobacion_nif_terceros.nombre'))
 								@slot('resumen',trans('utilidades.herramientas.comprobacion_nif_terceros.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkForm, 'id' => ''])--}}
+								{{--@slot('link',['ruta' => $rutaLinkForm, 'id' => 'comprobacion-nif-terceros'])--}}
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-azulAnalogo')

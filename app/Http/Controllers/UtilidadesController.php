@@ -12,6 +12,9 @@ class UtilidadesController extends Controller
 		/* Variables para la carga de listas */
 		switch($id){
 			/* Sistema */
+			case 'actividades-empresariales':
+				// PENDIENTE...
+			break;
 			case 'modulos-tributacion':
 				$parametros = [
 					'textos' => 'utilidades.sistema.modulos_tributacion',
@@ -26,6 +29,20 @@ class UtilidadesController extends Controller
 						'codigo' => 'CODIGO',
 						'nombre' => 'NOMBRE',
 						'periodo' => 'PERIODO',
+					],
+				];
+			break;
+			case 'indices-porcentajes-calculo':
+				// PENDIENTE...
+				$parametros = [
+					'textos' => 'utilidades.sistema.indices_porcentajes_calculo',
+					'db' => 'sqlsrv1',
+					'tabla' => 'INDICES',
+					'funcion' => 'formulario',
+					'columnas' => [
+						'indice1' => 'INDICE1',
+						'indice2' => 'INDICE2',
+						'indice3' => 'INDICE3',
 					],
 				];
 			break;
@@ -127,6 +144,18 @@ class UtilidadesController extends Controller
 				];
 			break;
 			/* Herramientas */
+			case 'remuneracion-asientos':
+				// PENDIENTE...
+			break;
+			case 'importacion-asientos-excel':
+				// PENDIENTE...
+			break;
+			case 'asistente-copia-seguridad':
+				// PENDIENTE...
+			break;
+			case 'comprobacion-nif-terceros':
+				// PENDIENTE...
+			break;
 			case 'seguimiento-lopd':
 				$parametros = [
 					'textos' => 'utilidades.herramientas.seguimiento_lopd',
@@ -163,9 +192,23 @@ class UtilidadesController extends Controller
 		$listado = $utilidad->$funcion($parametros,$variables);
 		$rutaVer = '';
 		$rutaAbrir = '';
-		return view('pages.utilidades.listas.lista-generada', ['listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir, 'parametros' => $parametros]);
+		return view('pages.utilidades.listas.lista-generada', ['id' => $id, 'listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir, 'parametros' => $parametros]);
 	}
-	public function formulario($id,$item){
-		return view('pages.utilidades.formulario', ['id' => $id,'item' => $item]);
+	public function formulario($id,$item = NULL){
+		return $this->cargaFormularioVista('formulario',$id,$item = NULL);
+	}
+	public function formularioAsinc($id,$item = NULL){
+		return $this->cargaFormularioVista('formularioAsinc',$id,$item = NULL);
+	}
+	public function cargaFormularioVista($form,$id,$item = NULL){
+		$parametros = $this->parametrosUtilidad($id);
+		$funcion = $parametros->funcion;
+		$utilidad = new Utilidad;
+		$datos = $utilidad->$funcion($parametros,$item = NULL);
+		return view('pages.utilidades.'.$form.'', ['id' => $id, 'datos' => $datos, 'parametros' => $parametros]);
+	}
+	
+	public function guardar(){
+		
 	}
 }

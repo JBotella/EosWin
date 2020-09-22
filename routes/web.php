@@ -77,8 +77,10 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('utilidades/{id}', 'UtilidadesController@utilidad')->name('utilidadListado');
 		// Lista Utilidades (Asíncrona)
 		Route::get('listaUtilidad/{id}/{variables}', 'UtilidadesController@lista')->name('listaUtilidad');
+		// Formulario Utilidad (Redirigido)
+		Route::get('utilidad/{id}/{item?}', 'UtilidadesController@formulario')->name('utilidadFormulario');
 		// Formulario Utilidad (Asíncrono)
-		Route::get('utilidad/{id}/{item}', 'UtilidadesController@formulario')->name('utilidadFormulario');
+		Route::get('utilidadFormAsinc/{id}/{item?}', 'UtilidadesController@formularioAsinc')->name('utilidadFormAsinc');
 	
 	/* ------------ */
 	/* LINKS NAVBAR */

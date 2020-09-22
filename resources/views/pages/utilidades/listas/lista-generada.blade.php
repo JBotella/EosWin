@@ -3,7 +3,8 @@
 	$ident = $parametros->ident;
 @endphp
 @foreach($listado as $item)
-	<tr class="trClicable fila" id="{{$item->$ident}}" onclick="abrirLinea('{{$item->$ident}}','{{$rutaAbrir}}')">
+{{-- abreForm('{{route("utilidadFormAsinc","operaciones-contables",$item->$ident)}}'); --}}
+	<tr class="trClicable fila" id="{{$item->$ident}}" onclick="abreForm('{{route("utilidadFormAsinc",["operaciones-contables",$item->$ident])}}')">
 		<td class="tdBtnAcciones chkList checkUtilidades" id="checkUtilidades_{{$item->$ident}}" onclick="clickChkList(this)" title="@lang('texto.seleccionar')">
 			<div class="cuadroCheck"></div>
 			<input type="checkbox" name="checkUtilidad[]" class="checkUtilidad d-none" value="{{$item->$ident}}" />
