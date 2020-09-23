@@ -26,13 +26,15 @@
 				
 			</div>
 		</div>
+		
+		<div class="visorFormAsinc ocultaContenedor d-none" id="visorFormAsinc_0"></div>
+		
 		<div class="contenidoSeccion">
 			@component('components.accionesLista')
 				@slot('checkData', 'checkUtilidad')
 				@slot('formatosExportar', ['pdf','csv','excel'])
 			@endcomponent
 			<div class="seccion-responsive">
-				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
 				<div class="table-responsive" id="contenido_0">
 					<form name="checkUtilidad" method="POST" target="_blank">
 						@csrf
@@ -67,6 +69,7 @@
 		}
 		$(document).ready(function(){
 			listar(0,0);
+			contDraggable("#visorFormAsinc_0");
 		});
 	</script>
 @endsection

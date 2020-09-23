@@ -6,6 +6,7 @@
 		$rutaLinkForm = 'utilidadFormulario';
 		$rutaLinkFormAsinc = 'utilidadFormAsinc';
 	@endphp
+	
 	<div class="contenedorSeccion @if(isset($extrabar) and $extrabar == 'visible') cSeccExtraVisible @endif">
 		<div class="cabeceraSeccion">
 			<span><i class="fas fa-cogs icoCab mr-2"></i></span>
@@ -14,7 +15,7 @@
 		<div class="contenidoSeccion">
 			<div class="seccion-responsive">
 				
-				<div class="visorFicha ocultaContenedor d-none" id="visorFicha_0"></div>
+				<div class="visorFormAsinc ocultaContenedor d-none" id="visorFormAsinc_0"></div>
 				
 				<div class="row contenidoTarjetasLinks" id="contenido_0">
 				

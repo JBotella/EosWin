@@ -41,7 +41,7 @@ class Utilidad extends Model
 		$tabla = $parametros->tabla;
 		$datos = DB::connection($db)->table($tabla);
 		if($item){
-			$datos = $datos->where($item,$parametros->ident);
+			$datos = $datos->where($parametros->ident,$item);
 		}
 		$datos = $datos->first();
 		return $datos;

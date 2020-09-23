@@ -232,8 +232,8 @@ function verLinea(id,ruta){
 }
 /* Abre o cierra un formularios asíncrono. */
 function abreForm(ruta){
-	$('#visorFicha_0').load(ruta, function(){
-		visorFicha(0);
+	$('#visorFormAsinc_0').load(ruta, function(){
+		visorForm(0);
 	});
 }
 /* Abre la ruta de una linea */
@@ -267,6 +267,34 @@ function visorFicha(n){
 			contenidoSeccionHeight();
 		},300);
 	}
+}
+/* Abre o cierra el visor de un formulario asociado a la fila de una tabla o al elemento de una sección (oculta o muestra la tabla en función del estado de la ficha) */
+function visorForm(n){
+	/*if($('#visorFormAsinc_'+n).hasClass('ocultaContenedor')){*/
+		//$('.contenidoSeccion').addClass('seccionSegundoPlano');
+		$('.seccion-responsive').addClass('seccionSegundoPlano');
+		$('#visorFormAsinc_'+n).removeClass('d-none')
+		setTimeout(function(){
+			$('#visorFormAsinc_'+n).removeClass('ocultaContenedor');
+			contenidoSeccionHeight();
+		},300);
+	/*}else{
+		$('.contenidoSeccion').removeClass('seccionSegundoPlano');
+		$('#visorFormAsinc_'+n).addClass('ocultaContenedor');
+		setTimeout(function(){
+			$('#visorFormAsinc_'+n).addClass('d-none');
+			contenidoSeccionHeight();
+		},300);
+	}*/
+}
+function visorFormCerrar(n){
+	//$('.contenidoSeccion').removeClass('seccionSegundoPlano');
+	$('.seccion-responsive').removeClass('seccionSegundoPlano');
+	$('#visorFormAsinc_'+n).addClass('ocultaContenedor');
+	setTimeout(function(){
+		$('#visorFormAsinc_'+n).addClass('d-none');
+		contenidoSeccionHeight();
+	},300);
 }
 /* Muestra la cabecera de una tabla tras la carga de sus filas */
 function ocultarThCabecera(cab){
@@ -639,6 +667,51 @@ function cargarListar(nLista){
 	setTimeout(function(){
 		listar(nLista);
 	},300);
+}
+
+/* ----- ************* ----- */
+/* ----- * Draggable * ----- */
+/* ----- ************* ----- */
+
+function contDraggable(cont){
+	var __dx;
+	var __dy;
+	var __recoupLeft, __recoupTop;
+	$(cont).draggable({
+		//revert: true,
+		zIndex: 100,
+		drag: function (event, ui) {
+			__dx = ui.position.left - ui.originalPosition.left;
+			__dy = ui.position.top - ui.originalPosition.top;
+			ui.position.left = ui.originalPosition.left + (__dx);
+			ui.position.top = ui.originalPosition.top + (__dy);
+			//
+			ui.position.left += __recoupLeft;
+			ui.position.top += __recoupTop;
+		},
+		start: function (event, ui) {
+			$(this).css('cursor', 'move');
+			//resize bug fix ui drag
+			var left = parseInt($(this).css('left'), 10);
+			left = isNaN(left) ? 0 : left;
+			var top = parseInt($(this).css('top'), 10);
+			top = isNaN(top) ? 0 : top;
+			__recoupLeft = left - ui.position.left;
+			__recoupTop = top - ui.position.top;
+		},
+		stop: function (event, ui) {
+			$(this).css('cursor', 'default');
+			// Alternativa a 'revert'
+			/*$(this).animate({
+				left: $(this).attr('oriLeft'),
+				top: $(this).attr('oriTop')
+			}, 1000)*/
+		},
+		create: function (event, ui) {
+			$(this).attr('oriLeft', $(this).css('left'));
+			$(this).attr('oriTop', $(this).css('top'));
+		}
+	});
 }
 
 /* ----- *************** ----- */

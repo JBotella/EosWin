@@ -143,6 +143,7 @@ body {
 	.btnAtras { color:var(--principal); }
 	.btnPlegar { color:var(--principalAzulAnalogo); }
 	.btnCancelar { color:var(--grisMedio); }
+	.btnCerrar { color:var(--principalRojoOpuesto); }
 
 /* -----|||||----- ********* -----|||||----- */
 /* -----|||||----- * Login * -----|||||----- */
@@ -1136,6 +1137,68 @@ body {
 	transition:0.3s;
 	margin:0rem -1.5rem;
 }
+
+/* -----|||||----- *********************************** -----|||||----- */
+/* -----|||||----- * Visor de Formularios asíncronos * -----|||||----- */
+/* -----|||||----- *********************************** -----|||||----- */
+
+.seccionSegundoPlano {
+	opacity:0.5!important;
+	transition:0.3s;	
+}
+
+.visorFormAsinc {
+	opacity:1;
+	transition:0.3s;
+	position:absolute;
+	margin:0rem 0.5rem;
+	z-index:100;
+	width:calc(100% - 3rem);
+	max-width:500px;
+	top:1rem;
+	padding:1rem 0rem;
+	max-height:calc(100% - 2rem);
+	overflow:auto;
+	box-shadow:-1px 1px 10px 0px var(--grisClaro), 1px 1px 10px 0px var(--grisClaro);
+	background-color:var(--blanco);
+	cursor:default;
+	/* Centrar */
+	left:calc(50% - 0.5rem);
+	top:calc(25% - 0.5rem);
+	transform:translate(-50%, -25%);
+	border:solid 1px var(--grisClaro);
+}
+.visorFormAsinc:active {
+	opacity:0.8;
+	border:solid 1px var(--principal);
+}
+	.cabeceraVisorFormAsinc {
+		position:sticky;
+		top:-1rem;
+		z-index:10;
+	}
+		.tituloVisorFormAsinc {
+			background-color:var(--grisMedio);
+			color:var(--grisMasMasClaro);
+			width:calc(100% + 3rem);
+			padding:0.5rem 1.5rem;
+			margin:0rem -1.5rem;
+			margin-top:-1rem;
+			display:flex;
+		}
+			.tituloVisorFormAsinc .accionFormAsic {
+				margin-left: auto;
+			}
+				.accionFormAsic svg {
+					margin-left:-0.5rem!important;
+					margin-right:0rem!important;
+					background-color:var(--blanco);
+					border:solid 1px var(--blanco);
+					border-radius:1rem;
+				}
+
+/* ... */
+
 	.contenedorFicha {
 		width:100%;
 		margin:auto;

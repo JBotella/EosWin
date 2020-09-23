@@ -107,7 +107,6 @@ class UtilidadesController extends Controller
 						'codigo' => 'CODOPERACION',
 						'descripcion' => 'DESOPERACION',
 						'ingreso-gasto' => 'INGRESOGASTO',
-						'columna-libro-registro' => 'COLUMNAREGISTRO',
 					],
 				];
 			break;
@@ -195,17 +194,17 @@ class UtilidadesController extends Controller
 		return view('pages.utilidades.listas.lista-generada', ['id' => $id, 'listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir, 'parametros' => $parametros]);
 	}
 	public function formulario($id,$item = NULL){
-		return $this->cargaFormularioVista('formulario',$id,$item = NULL);
+		return $this->cargaFormularioVista('formulario',$id,$item);
 	}
 	public function formularioAsinc($id,$item = NULL){
-		return $this->cargaFormularioVista('formularioAsinc',$id,$item = NULL);
+		return $this->cargaFormularioVista('formularioAsinc',$id,$item);
 	}
 	public function cargaFormularioVista($form,$id,$item = NULL){
 		$parametros = $this->parametrosUtilidad($id);
-		$funcion = $parametros->funcion;
 		$utilidad = new Utilidad;
-		$datos = $utilidad->$funcion($parametros,$item = NULL);
-		return view('pages.utilidades.'.$form.'', ['id' => $id, 'datos' => $datos, 'parametros' => $parametros]);
+		$datos = $utilidad->formulario($parametros,$item);
+		$constantes = new ConstantesController;
+		return view('pages.utilidades.'.$form.'', ['id' => $id, 'datos' => $datos, 'parametros' => $parametros, 'constantes' => $constantes]);
 	}
 	
 	public function guardar(){
