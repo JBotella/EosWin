@@ -8,7 +8,7 @@ class UtilidadesController extends Controller
     public function utilidades(){
 		return view('pages.utilidades');
 	}
-	public function parametrosUtilidad($id){
+	public function parametrosUtilidad($id){ // Parámetros para cada utilidad
 		/* Variables para la carga de listas */
 		switch($id){
 			/* Sistema */
@@ -21,6 +21,7 @@ class UtilidadesController extends Controller
 					'db' => 'sqlsrv1',
 					'tabla' => 'MODULOS',
 					'funcion' => 'listado',
+					'clicListado' => 'abreForm',
 					'ident' => 'CODIGO',
 					'orden' => 'CODIGO',
 					'direccionOrden' => 'ASC',
@@ -30,6 +31,13 @@ class UtilidadesController extends Controller
 						'nombre' => 'NOMBRE',
 						'periodo' => 'PERIODO',
 					],
+					'filtroSelector' => [ // Pendiente crear el componente de selector
+						'columnaRelacionada' => 'PERIODO',
+						'db' => 'sqlsrv1',
+						'tabla' => 'MODULOSPERIODOS',
+						'ident' => 'CODIGO',
+						'nombre' => 'DESCRIPCION',
+					]
 				];
 			break;
 			case 'indices-porcentajes-calculo':
@@ -51,12 +59,8 @@ class UtilidadesController extends Controller
 					'textos' => 'utilidades.sistema.tipos_iva_igic',
 					'db' => 'sqlsrv1',
 					'tabla' => 'IVATAB',
-					'condicion' => [
-						'prefijo' => 'whereIn',
-						'columna' => 'CodiIVA',
-						'valores' => [1,2,3,4,5,6,7,8,9,10],
-					],
 					'funcion' => 'listado',
+					'clicListado' => 'abreForm',
 					'ident' => 'CodiIVA',
 					'orden' => 'CodiIVA',
 					'direccionOrden' => 'ASC',
@@ -68,6 +72,11 @@ class UtilidadesController extends Controller
 						'porcentajeRe' => 'RecaIVA',
 						'adonIva' => 'AdonIVA',
 					],
+					'condicion' => [
+						'prefijo' => 'whereIn',
+						'columna' => 'CodiIVA',
+						'valores' => [1,2,3,4,5,6,7,8,9,10],
+					],
 				];
 			break;
 			case 'tipos-irpf':
@@ -75,12 +84,8 @@ class UtilidadesController extends Controller
 					'textos' => 'utilidades.sistema.tipos_irpf',
 					'db' => 'sqlsrv1',
 					'tabla' => 'IVATAB',
-					'condicion' => [
-						'prefijo' => 'whereIn',
-						'columna' => 'CodiIVA',
-						'valores' => [11,12,13,14,15,16,17,18,19,20],
-					],
 					'funcion' => 'listado',
+					'clicListado' => 'abreForm',
 					'ident' => 'CodiIVA',
 					'orden' => 'CodiIVA',
 					'direccionOrden' => 'ASC',
@@ -91,6 +96,11 @@ class UtilidadesController extends Controller
 						'porcentajeIrpf' => 'TipoIVA2010',
 						'adonIva' => 'AdonIVA',
 					],
+					'condicion' => [
+						'prefijo' => 'whereIn',
+						'columna' => 'CodiIVA',
+						'valores' => [11,12,13,14,15,16,17,18,19,20],
+					],
 				];
 			break;
 			case 'operaciones-contables':
@@ -99,6 +109,7 @@ class UtilidadesController extends Controller
 					'db' => 'sqlsrv1',
 					'tabla' => 'OPERACIONES_EOS',
 					'funcion' => 'listado',
+					'clicListado' => 'abreForm',
 					'ident' => 'CODOPERACION',
 					'orden' => 'CODOPERACION',
 					'direccionOrden' => 'ASC',
@@ -116,6 +127,7 @@ class UtilidadesController extends Controller
 					'db' => 'sqlsrv2',
 					'tabla' => 'DESCRIP',
 					'funcion' => 'listado',
+					'clicListado' => 'abreForm',
 					'ident' => 'DESCCODIG',
 					'orden' => 'DESCCODIG',
 					'direccionOrden' => 'ASC',
@@ -132,6 +144,7 @@ class UtilidadesController extends Controller
 					'db' => 'sqlsrv2',
 					'tabla' => 'FORMASPAGO',
 					'funcion' => 'listado',
+					'clicListado' => 'abreForm',
 					'ident' => 'FORMCODIGO',
 					'orden' => 'FORMCODIGO',
 					'direccionOrden' => 'ASC',
@@ -161,6 +174,7 @@ class UtilidadesController extends Controller
 					'db' => 'sqlsrv2',
 					'tabla' => 'LPDLOG',
 					'funcion' => 'listado',
+					'clicListado' => 'no',
 					'ident' => 'ID',
 					'orden' => 'FECHA',
 					'direccionOrden' => 'DESC',
@@ -182,21 +196,26 @@ class UtilidadesController extends Controller
 	}
 	public function utilidad($id){
 		$parametros = $this->parametrosUtilidad($id);
-		return view('pages.utilidades.lista', ['id' => $id, 'parametros' => $parametros]);
+		$utilidad = new Utilidad;
+		$filtroSelector = NULL;
+		if(isset($parametros->filtroSelector)){ // Comprueba si hay que consultar alguna tabla con el filtro selector
+			$filtroSelector = $utilidad->filtroSelector($parametros);
+		}
+		return view('pages.utilidades.lista', ['id' => $id, 'parametros' => $parametros, 'filtroSelector' => $filtroSelector]);
 	}
 	public function lista($id,$variables){
 		$parametros = $this->parametrosUtilidad($id);
 		$funcion = $parametros->funcion;
 		$utilidad = new Utilidad;
 		$listado = $utilidad->$funcion($parametros,$variables);
-		$rutaVer = '';
-		$rutaAbrir = '';
+		$rutaVer = ''; // No se usa por el momento
+		$rutaAbrir = ''; // No se usa por el momento
 		return view('pages.utilidades.listas.lista-generada', ['id' => $id, 'listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir, 'parametros' => $parametros]);
 	}
-	public function formulario($id,$item = NULL){
+	public function formulario($id,$item = NULL){ // Para formulario con redirección
 		return $this->cargaFormularioVista('formulario',$id,$item);
 	}
-	public function formularioAsinc($id,$item = NULL){
+	public function formularioAsinc($id,$item = NULL){ // Para formulario asíncrono
 		return $this->cargaFormularioVista('formularioAsinc',$id,$item);
 	}
 	public function cargaFormularioVista($form,$id,$item = NULL){

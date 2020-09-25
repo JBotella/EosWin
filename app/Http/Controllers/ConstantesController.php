@@ -8,13 +8,13 @@ class ConstantesController extends Controller
 		switch($id){
 			case 'ingreso-gasto':
 				$valores = [
-					'I' => trans('constantes.'.$id.'.I'), 
+					'I' => trans('constantes.'.$id.'.I'),
 					'G' => trans('constantes.'.$id.'.G'),
 				];
 			break;
 			case 'columna-libro-registro':
 				$valores = [
-					'00' => trans('constantes.'.$id.'.00'), 
+					'00' => trans('constantes.'.$id.'.00'),
 					'01' => trans('constantes.'.$id.'.01'),
 					'02' => trans('constantes.'.$id.'.02'),
 					'03' => trans('constantes.'.$id.'.03'),

@@ -226,14 +226,18 @@ function limpiarBusqueda(nLista){
 /* Abre o cierra la ficha asociada a la fila de una tabla. */
 function verLinea(id,ruta){
 	ruta = ruta.replace(':id',id);
-	$('#visorFicha_0').load(ruta, function(){
-		visorFicha(0);
+	$('#visorFicha_0').load(ruta, function(respuesta,estado){
+		if(estado == 'success'){
+			visorFicha(0);
+		}
 	});
 }
 /* Abre o cierra un formularios asíncrono. */
 function abreForm(ruta){
-	$('#visorFormAsinc_0').load(ruta, function(){
-		visorForm(0);
+	$('#visorFormAsinc_0').load(ruta, function(respuesta,estado){
+		if(estado == 'success'){
+			visorForm(0);
+		}
 	});
 }
 /* Abre la ruta de una linea */

@@ -5,14 +5,14 @@
 				@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
 				@slot('nombre', 'Código')
 				@slot('valor')
-					<input type="text" class="form-control" name="CODOPERACION" value="{{$datos->CODOPERACION}}" readonly />
+					<input type="text" class="form-control" name="CODOPERACION" value="@if($datos){{$datos->CODOPERACION}} readonly @endif"  />
 				@endslot
 			@endcomponent
 			@component('components.itemFormulario')
 				@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
 				@slot('nombre', 'Descripción')
 				@slot('valor')
-					<input type="text" class="form-control" name="DESOPERACION" value="{{$datos->DESOPERACION}}" />
+					<input type="text" class="form-control" name="DESOPERACION" value="@if($datos){{$datos->DESOPERACION}}@endif" />
 				@endslot
 			@endcomponent
 			@component('components.itemFormulario')
@@ -21,7 +21,7 @@
 				@slot('valor')
 					<select class="form-control custom-select" name="INGRESOGASTO">
 						@foreach($constantes->selector('ingreso-gasto') as $valor => $nombre)
-							<option value="{{$valor}}" @if($datos->INGRESOGASTO == $valor) selected @endif>{{$nombre}}</option>
+							<option value="{{$valor}}" @if($datos) @if($datos->INGRESOGASTO == $valor) selected @endif @endif>{{$nombre}}</option>
 						@endforeach
 					</select>
 				@endslot
@@ -32,7 +32,7 @@
 				@slot('valor')
 					<select class="form-control custom-select" name="COLUMNAREGISTRO">
 						@foreach($constantes->selector('columna-libro-registro') as $valor => $nombre)
-							<option value="{{$valor}}" @if($datos->COLUMNAREGISTRO == $valor) selected @endif>{{$valor.' - '.$nombre}}</option>
+							<option value="{{$valor}}" @if($datos) @if($datos->COLUMNAREGISTRO == $valor) selected @endif @endif>{{$valor.' - '.$nombre}}</option>
 						@endforeach
 					</select>
 				@endslot

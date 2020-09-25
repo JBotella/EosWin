@@ -16,8 +16,14 @@
 		
 			<div class="row justify-content-end">
 			
-				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col">
+				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col d-flex">
+					
 					@include('includes.complementos.selectorAccionesListado',[$prefijoRuta = 'Utilidades', $checkLinea = 'checkUtilidad', $acciones = ['ejecutar','borrar']])
+					
+					@if(isset($parametros->filtroSelector))
+						@include('includes.complementos.filtroSelector')
+					@endif
+					
 				</div>
 				
 				<div class="lineaBuscador order-1 order-sm-2 col-12 col-sm-7 col-md-6 col-lg-6 col-xl-4">

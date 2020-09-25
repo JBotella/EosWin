@@ -12,14 +12,14 @@ class Utilidad extends Model
 		$listado = DB::connection($db)->table($tabla);
 		if(isset($variables)){
 			$variables = json_decode($variables);
-			if(isset($parametros->condicion)){
+			if(isset($parametros->condicion)){ // Condicion extra
 				$condicion = (object)$parametros->condicion;
 				$prefijo = $condicion->prefijo;
 				$columna = $condicion->columna;
 				$valores = $condicion->valores;
 				$listado = $listado->$prefijo($columna,$valores);
 			}
-			if(isset($variables->busqueda)){
+			if(isset($variables->busqueda)){ // Filtro de búsqueda
 				$busqueda = $variables->busqueda;
 				$listado->where(function($listado) use ($columnasBusqueda,$busqueda){
 					foreach($columnasBusqueda as $columnaB){
@@ -27,7 +27,7 @@ class Utilidad extends Model
 					}
 				});
 			}
-			if(isset($variables->orden) and isset($variables->direccion)){
+			if(isset($variables->orden) and isset($variables->direccion)){ // Filtro de orden
 				$orden = $variables->orden;
 				$direccion = $variables->direccion;
 				$listado = $listado->orderBy($orden,$direccion);
@@ -36,14 +36,32 @@ class Utilidad extends Model
 		$listado = $listado->get();
 		return $listado;
 	}
+	public function filtroSelector($parametros){
+		$filtroSelector = (object)$parametros->filtroSelector;
+		// Habría que filtrar si hay conexión a la base de datos para consultar un listado
+		$db = $filtroSelector->db;
+		$tabla = $filtroSelector->tabla;
+		$columnaRelacionada = $filtroSelector->columnaRelacionada;
+		$ident = $filtroSelector->ident;
+		$nombre = $filtroSelector->nombre;
+		$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre");
+		$listado = $listado->get();
+		return $listado;
+	}
 	public function formulario($parametros,$item = NULL){
 		$db = $parametros->db;
 		$tabla = $parametros->tabla;
 		$datos = DB::connection($db)->table($tabla);
-		if($item){
-			$datos = $datos->where($parametros->ident,$item);
+		if($parametros->funcion == 'listado'){ // Para elementos de listado
+			if($item){ // Editar item de listado
+				$datos = $datos->where($parametros->ident,$item);
+				$datos = $datos->first();
+			}else{ // Nuevo item de listado
+				$datos = NULL;
+			}
+		}elseif($parametros->funcion == 'formulario'){ // Para formularios sin listado y de elemento único
+			$datos = $datos->first();
 		}
-		$datos = $datos->first();
 		return $datos;
 	}
 }
