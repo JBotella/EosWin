@@ -1186,6 +1186,9 @@ body {
 			margin-top:-1rem;
 			display:flex;
 		}
+			.tituloVisorFormAsinc:hover {
+				cursor:move;
+			}
 			.tituloVisorFormAsinc .accionFormAsic {
 				margin-left: auto;
 			}

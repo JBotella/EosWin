@@ -677,13 +677,14 @@ function cargarListar(nLista){
 /* ----- * Draggable * ----- */
 /* ----- ************* ----- */
 
-function contDraggable(cont){
+function contDraggable(cont,desde){
 	var __dx;
 	var __dy;
 	var __recoupLeft, __recoupTop;
 	$(cont).draggable({
 		//revert: true,
 		zIndex: 100,
+		handle: desde,
 		drag: function (event, ui) {
 			__dx = ui.position.left - ui.originalPosition.left;
 			__dy = ui.position.top - ui.originalPosition.top;

@@ -27,6 +27,18 @@ class Utilidad extends Model
 					}
 				});
 			}
+			if(isset($parametros->filtroChecks)){
+				if(isset($variables->filtroChecks) and $variables->filtroChecks != NULL){ // Filtro de checks
+					$filtroChecks = $variables->filtroChecks;
+					$columnaRelacionada = $parametros->filtroChecks['columnaRelacionada'];
+					$filtroChecksArray = explode(',',$filtroChecks);
+					$listado->where(function($listado) use ($filtroChecksArray,$columnaRelacionada){
+						foreach($filtroChecksArray as $check){
+							$listado->orWhere($columnaRelacionada,$check);
+						}
+					});
+				}
+			}
 			if(isset($variables->orden) and isset($variables->direccion)){ // Filtro de orden
 				$orden = $variables->orden;
 				$direccion = $variables->direccion;
@@ -36,15 +48,15 @@ class Utilidad extends Model
 		$listado = $listado->get();
 		return $listado;
 	}
-	public function filtroSelector($parametros){
-		$filtroSelector = (object)$parametros->filtroSelector;
+	public function filtroChecks($parametros){
+		$filtroChecks = (object)$parametros->filtroChecks;
 		// Habría que filtrar si hay conexión a la base de datos para consultar un listado
-		$db = $filtroSelector->db;
-		$tabla = $filtroSelector->tabla;
-		$columnaRelacionada = $filtroSelector->columnaRelacionada;
-		$ident = $filtroSelector->ident;
-		$nombre = $filtroSelector->nombre;
-		$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre");
+		$db = $filtroChecks->db;
+		$tabla = $filtroChecks->tabla;
+		$columnaRelacionada = $filtroChecks->columnaRelacionada;
+		$ident = $filtroChecks->ident;
+		$nombre = $filtroChecks->nombre;
+		$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre")->orderBy($ident,'desc');
 		$listado = $listado->get();
 		return $listado;
 	}

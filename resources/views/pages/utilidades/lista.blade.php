@@ -17,13 +17,10 @@
 			<div class="row justify-content-end">
 			
 				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col d-flex">
-					
 					@include('includes.complementos.selectorAccionesListado',[$prefijoRuta = 'Utilidades', $checkLinea = 'checkUtilidad', $acciones = ['ejecutar','borrar']])
-					
-					@if(isset($parametros->filtroSelector))
-						@include('includes.complementos.filtroSelector')
+					@if(isset($parametros->filtroChecks))
+						@include('includes.complementos.filtroChecks',['nombreChecks'=>$parametros->filtroChecks['check']])
 					@endif
-					
 				</div>
 				
 				<div class="lineaBuscador order-1 order-sm-2 col-12 col-sm-7 col-md-6 col-lg-6 col-xl-4">
@@ -66,16 +63,26 @@
 		</div>
 	</div>
 	<script>
+		@if(isset($parametros->filtroChecks))
+			var checks = "{{$parametros->filtroChecks['check']}}";
+		@else
+			var checks = '';
+		@endif
 		function listar(idLista,desde){
 			var busqueda = $('#busqueda_'+idLista).val().trim();
 			var orden = $('#cabeceraLista_'+idLista).data('columna');
 			var direccion = $('#cabeceraLista_'+idLista).data('direccion');
-			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda }; 
+			if(checks){
+				var filtroChecks = $('#valores'+checks).val().trim();
+			}else{
+				var filtroChecks = '';
+			}
+			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda, "filtroChecks": filtroChecks }; 
 			cargaListado(idLista,variables,desde);
 		}
 		$(document).ready(function(){
 			listar(0,0);
-			contDraggable("#visorFormAsinc_0");
+			contDraggable("#visorFormAsinc_0",'.tituloVisorFormAsinc');
 		});
 	</script>
 @endsection

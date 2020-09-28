@@ -31,13 +31,15 @@ class UtilidadesController extends Controller
 						'nombre' => 'NOMBRE',
 						'periodo' => 'PERIODO',
 					],
-					'filtroSelector' => [ // Pendiente crear el componente de selector
+					'filtroChecks' => [
+						'check' => 'Periodo',
+						'titulo' => trans('utilidades.sistema.modulos_tributacion.campos.periodo'),
 						'columnaRelacionada' => 'PERIODO',
 						'db' => 'sqlsrv1',
 						'tabla' => 'MODULOSPERIODOS',
 						'ident' => 'CODIGO',
 						'nombre' => 'DESCRIPCION',
-					]
+					],
 				];
 			break;
 			case 'indices-porcentajes-calculo':
@@ -197,11 +199,11 @@ class UtilidadesController extends Controller
 	public function utilidad($id){
 		$parametros = $this->parametrosUtilidad($id);
 		$utilidad = new Utilidad;
-		$filtroSelector = NULL;
-		if(isset($parametros->filtroSelector)){ // Comprueba si hay que consultar alguna tabla con el filtro selector
-			$filtroSelector = $utilidad->filtroSelector($parametros);
+		$filtroChecks = NULL;
+		if(isset($parametros->filtroChecks)){ // Comprueba si hay que consultar alguna tabla con el filtro selector
+			$filtroChecks = $utilidad->filtroChecks($parametros);
 		}
-		return view('pages.utilidades.lista', ['id' => $id, 'parametros' => $parametros, 'filtroSelector' => $filtroSelector]);
+		return view('pages.utilidades.lista', ['id' => $id, 'parametros' => $parametros, 'filtroChecks' => $filtroChecks]);
 	}
 	public function lista($id,$variables){
 		$parametros = $this->parametrosUtilidad($id);
@@ -229,4 +231,5 @@ class UtilidadesController extends Controller
 	public function guardar(){
 		
 	}
+	
 }

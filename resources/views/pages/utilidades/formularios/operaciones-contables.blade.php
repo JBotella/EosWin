@@ -5,7 +5,7 @@
 				@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
 				@slot('nombre', 'Código')
 				@slot('valor')
-					<input type="text" class="form-control" name="CODOPERACION" value="@if($datos){{$datos->CODOPERACION}} readonly @endif"  />
+					<input type="text" class="form-control" name="CODOPERACION" @if($datos) value="{{$datos->CODOPERACION}}" readonly @endif />
 				@endslot
 			@endcomponent
 			@component('components.itemFormulario')
