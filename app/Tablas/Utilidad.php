@@ -5,11 +5,24 @@ use DB;
 
 class Utilidad extends Model
 {
-    public function listado($parametros,$variables = NULL){
+	public function consulta($parametros){
 		$db = $parametros->db;
 		$tabla = $parametros->tabla;
-		$columnasBusqueda = $parametros->columnasBusqueda;
-		$listado = DB::connection($db)->table($tabla);
+		$consulta = DB::connection($db)->table($tabla);
+		if(isset($parametros->tipoIdent) and $parametros->tipoIdent == 'compuesto'){
+			$cadenaIds = implode(',',$parametros->identCompuesto);
+			$cadenaIdsAlias = str_replace(',','',$cadenaIds);
+			$consulta->select(DB::raw("".$parametros->identConcat." AS ".$cadenaIdsAlias.",*"));
+		}
+		return $consulta;
+	}
+    public function listado($parametros,$variables = NULL){
+		$listado = $this->consulta($parametros);
+		/*if(isset($parametros->tipoIdent) and $parametros->tipoIdent == 'compuesto'){
+			$cadenaIds = implode(',',$parametros->identCompuesto);
+			$cadenaIdsAlias = str_replace(',','',$cadenaIds);
+			$listado->select(DB::raw("CONCAT(".$cadenaIds.") AS ".$cadenaIdsAlias.",*"));
+		}*/
 		if(isset($variables)){
 			$variables = json_decode($variables);
 			if(isset($parametros->condicion)){ // Condicion extra
@@ -21,6 +34,7 @@ class Utilidad extends Model
 			}
 			if(isset($variables->busqueda)){ // Filtro de búsqueda
 				$busqueda = $variables->busqueda;
+				$columnasBusqueda = $parametros->columnasBusqueda;
 				$listado->where(function($listado) use ($columnasBusqueda,$busqueda){
 					foreach($columnasBusqueda as $columnaB){
 						$listado->orWhere($columnaB,'like','%'.$busqueda.'%');
@@ -61,12 +75,14 @@ class Utilidad extends Model
 		return $listado;
 	}
 	public function formulario($parametros,$item = NULL){
-		$db = $parametros->db;
-		$tabla = $parametros->tabla;
-		$datos = DB::connection($db)->table($tabla);
+		$datos = $this->consulta($parametros);
 		if($parametros->funcion == 'listado'){ // Para elementos de listado
 			if($item){ // Editar item de listado
-				$datos = $datos->where($parametros->ident,$item);
+				if(isset($parametros->tipoIdent) and $parametros->tipoIdent == 'compuesto'){
+					$datos = $datos->where(DB::raw($parametros->identConcat),$item);
+				}else{
+					$datos = $datos->where($parametros->ident,$item);
+				}
 				$datos = $datos->first();
 			}else{ // Nuevo item de listado
 				$datos = NULL;
