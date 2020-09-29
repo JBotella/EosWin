@@ -26,9 +26,9 @@ class UtilidadesController extends Controller
 					'clicListado' => 'abreForm',
 					'cssForm' => 'visorFormAsincAncho',
 					'tipoIdent' => 'compuesto',
-					//'ident' => 'CODIGO',
 					'identCompuesto' => ['PERIODO','CODIGO'],
 					'identConcat' => 'CONCAT(PERIODO,CODIGO)',
+					'addSelect' => '(select MODULOSPERIODOS.DESCRIPCION FROM MODULOSPERIODOS WHERE CODIGO LIKE PERIODO ) as nPeriodo',
 					'ident' => 'PERIODOCODIGO',
 					'orden' => 'CODIGO',
 					'direccionOrden' => 'ASC',
@@ -36,7 +36,7 @@ class UtilidadesController extends Controller
 					'columnas' => [
 						'codigo' => 'CODIGO',
 						'nombre' => 'NOMBRE',
-						'periodo' => 'PERIODO',
+						'periodo' => 'nPeriodo',
 					],
 					'filtroChecks' => [
 						'check' => 'Periodo',
@@ -48,7 +48,7 @@ class UtilidadesController extends Controller
 						'nombre' => 'DESCRIPCION',
 					],
 					'ExtraUtilidad' => [
-						'periodo' => $extraUtilidad->periodo()->orderBy('CODIGO','desc')
+						'periodo' => $extraUtilidad->periodo()->orderBy('CODIGO','desc'),
 					]
 				];
 			break;

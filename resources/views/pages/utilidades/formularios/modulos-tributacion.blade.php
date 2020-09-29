@@ -28,7 +28,7 @@
 				@slot('class', 'col-12 col-md-6 col-lg-6 col-xl-6')
 				@slot('nombre', 'Periodo')
 				@slot('valor')
-					<input type="text" class="form-control" name="PERIODO" @if($datos) value="{{$datos->PERIODO}}" @endif />
+					<input type="hidden" class="form-control" name="PERIODO" @if($datos) value="{{$datos->PERIODO}}" @endif />
 					<select class="form-control custom-select" name="PERIODO">
 						@foreach($parametros->ExtraUtilidad['periodo']->get() as $parametro)
 							<option value="{{$parametro->CODIGO}}" @if($datos) @if($datos->PERIODO == $parametro->CODIGO) selected @endif @endif>{{$parametro->CODIGO.' - '.$parametro->DESCRIPCION}}</option>

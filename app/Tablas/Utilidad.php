@@ -12,25 +12,21 @@ class Utilidad extends Model
 		if(isset($parametros->tipoIdent) and $parametros->tipoIdent == 'compuesto'){
 			$cadenaIds = implode(',',$parametros->identCompuesto);
 			$cadenaIdsAlias = str_replace(',','',$cadenaIds);
-			$consulta->select(DB::raw("".$parametros->identConcat." AS ".$cadenaIdsAlias.",*"));
+			$consulta->addSelect(DB::raw("".$parametros->identConcat." AS ".$cadenaIdsAlias.",*"));
+		}
+		if(isset($parametros->addSelect)){
+			$consulta->addSelect(DB::raw($parametros->addSelect));
 		}
 		return $consulta;
 	}
     public function listado($parametros,$variables = NULL){
 		$listado = $this->consulta($parametros);
-		/*if(isset($parametros->tipoIdent) and $parametros->tipoIdent == 'compuesto'){
-			$cadenaIds = implode(',',$parametros->identCompuesto);
-			$cadenaIdsAlias = str_replace(',','',$cadenaIds);
-			$listado->select(DB::raw("CONCAT(".$cadenaIds.") AS ".$cadenaIdsAlias.",*"));
-		}*/
 		if(isset($variables)){
 			$variables = json_decode($variables);
 			if(isset($parametros->condicion)){ // Condicion extra
 				$condicion = (object)$parametros->condicion;
 				$prefijo = $condicion->prefijo;
-				$columna = $condicion->columna;
-				$valores = $condicion->valores;
-				$listado = $listado->$prefijo($columna,$valores);
+				$listado = $listado->$prefijo($condicion->columna,$condicion->valores);
 			}
 			if(isset($variables->busqueda)){ // Filtro de búsqueda
 				$busqueda = $variables->busqueda;
@@ -67,7 +63,7 @@ class Utilidad extends Model
 		// Habría que filtrar si hay conexión a la base de datos para consultar un listado
 		$db = $filtroChecks->db;
 		$tabla = $filtroChecks->tabla;
-		$columnaRelacionada = $filtroChecks->columnaRelacionada;
+		//$columnaRelacionada = $filtroChecks->columnaRelacionada;
 		$ident = $filtroChecks->ident;
 		$nombre = $filtroChecks->nombre;
 		$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre")->orderBy($ident,'desc');
@@ -78,7 +74,7 @@ class Utilidad extends Model
 		$datos = $this->consulta($parametros);
 		if($parametros->funcion == 'listado'){ // Para elementos de listado
 			if($item){ // Editar item de listado
-				if(isset($parametros->tipoIdent) and $parametros->tipoIdent == 'compuesto'){
+				if(isset($parametros->identConcat)){
 					$datos = $datos->where(DB::raw($parametros->identConcat),$item);
 				}else{
 					$datos = $datos->where($parametros->ident,$item);
