@@ -1172,6 +1172,10 @@ body {
 	opacity:0.8;
 	border:solid 1px var(--principal);
 }
+.visorFormAsincAncho {
+	width:calc(100% - 3rem)!important;
+	max-width:800px!important;
+}
 	.cabeceraVisorFormAsinc {
 		position:sticky;
 		top:-1rem;

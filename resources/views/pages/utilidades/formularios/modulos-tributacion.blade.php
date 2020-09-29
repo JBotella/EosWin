@@ -1,7 +1,5 @@
-<div class="col-12 mt-3">
-	
+<div class="col-12 mt-3" id="columnaCabecera">
 	<div class="bloqueFormulario">
-	
 		<div class="row">
 			@component('components.itemFormulario')
 				@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
@@ -10,29 +8,40 @@
 					<input type="text" class="form-control" name="NOMBRE" @if($datos) value="{{$datos->NOMBRE}}" @endif />
 				@endslot
 			@endcomponent
+		</div>
+		<div class="row">
 			@component('components.itemFormulario')
-				@slot('class', 'col-6 col-md-6 col-lg-6 col-xl-6')
+				@slot('class', 'col-6 col-md-6 col-lg-3 col-xl-3')
 				@slot('nombre', 'Clave')
 				@slot('valor')
 					<input type="text" class="form-control" name="CLAVE" @if($datos) value="{{$datos->CLAVE}}" @endif />
 				@endslot
 			@endcomponent
 			@component('components.itemFormulario')
-				@slot('class', 'col-6 col-md-6 col-lg-6 col-xl-6')
+				@slot('class', 'col-6 col-md-6 col-lg-3 col-xl-3')
 				@slot('nombre', 'Epígrafe')
 				@slot('valor')
 					<input type="text" class="form-control" name="EPIGRAFE" @if($datos) value="{{$datos->EPIGRAFE}}" @endif />
 				@endslot
 			@endcomponent
 			@component('components.itemFormulario')
-				@slot('class', 'col-6 col-md-6 col-lg-6 col-xl-6')
+				@slot('class', 'col-12 col-md-6 col-lg-6 col-xl-6')
 				@slot('nombre', 'Periodo')
 				@slot('valor')
 					<input type="text" class="form-control" name="PERIODO" @if($datos) value="{{$datos->PERIODO}}" @endif />
+					<select class="form-control custom-select" name="PERIODO">
+						@foreach($parametros->ExtraUtilidad['periodo']->get() as $parametro)
+							<option value="{{$parametro->CODIGO}}" @if($datos) @if($datos->PERIODO == $parametro->CODIGO) selected @endif @endif>{{$parametro->CODIGO.' - '.$parametro->DESCRIPCION}}</option>
+						@endforeach
+					</select>
 				@endslot
 			@endcomponent
 		</div>
-		
+	</div>
+</div>
+
+<div class="col-12 col-md-6" id="columnaIzquierda">
+	<div class="bloqueFormulario">
 		<div class="subcategoriaBloqueFormulario">Módulos IVA</div>
 		<table class="table w-100 tablaFormEditable">
 			<tbody>
@@ -64,7 +73,9 @@
 			</tbody>
 		</table>
 	</div>
-	
+</div>
+
+<div class="col-12 col-md-6" id="columnaDerecha">
 	<div class="bloqueFormulario">
 		<div class="subcategoriaBloqueFormulario">Módulos Renta</div>
 		<table class="table w-100 tablaFormEditable">
@@ -97,7 +108,6 @@
 			</tbody>
 		</table>
 	</div>
-	
 </div>
 
 <div class="col-12 col-md-12 mt-3" id="columnaPie">

@@ -19,7 +19,7 @@
 				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col d-flex">
 					@include('includes.complementos.selectorAccionesListado',[$prefijoRuta = 'Utilidades', $checkLinea = 'checkUtilidad', $acciones = ['ejecutar','borrar']])
 					@if(isset($parametros->filtroChecks))
-						@include('includes.complementos.filtroChecks',['nombreChecks'=>$parametros->filtroChecks['check']])
+						@include('includes.complementos.filtroChecks',['nombreChecks' => $parametros->filtroChecks['check']])
 					@endif
 				</div>
 				
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 		
-		<div class="visorFormAsinc ocultaContenedor d-none" id="visorFormAsinc_0"></div>
+		<div class="visorFormAsinc ocultaContenedor d-none @if(isset($parametros->cssForm)) {{$parametros->cssForm}} @endif" id="visorFormAsinc_0"></div>
 		
 		<div class="contenidoSeccion">
 			@component('components.accionesLista')

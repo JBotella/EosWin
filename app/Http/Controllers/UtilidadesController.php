@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tablas\Utilidad;
+use App\Tablas\ExtraUtilidad;
 
 class UtilidadesController extends Controller
 {
@@ -9,6 +10,7 @@ class UtilidadesController extends Controller
 		return view('pages.utilidades');
 	}
 	public function parametrosUtilidad($id){ // Parámetros para cada utilidad
+		$extraUtilidad = new ExtraUtilidad;
 		/* Variables para la carga de listas */
 		switch($id){
 			/* Sistema */
@@ -22,6 +24,7 @@ class UtilidadesController extends Controller
 					'tabla' => 'MODULOS',
 					'funcion' => 'listado',
 					'clicListado' => 'abreForm',
+					'cssForm' => 'visorFormAsincAncho',
 					'ident' => 'CODIGO',
 					'orden' => 'CODIGO',
 					'direccionOrden' => 'ASC',
@@ -40,6 +43,9 @@ class UtilidadesController extends Controller
 						'ident' => 'CODIGO',
 						'nombre' => 'DESCRIPCION',
 					],
+					'ExtraUtilidad' => [
+						'periodo' => $extraUtilidad->periodo()->orderBy('CODIGO','desc')
+					]
 				];
 			break;
 			case 'indices-porcentajes-calculo':
