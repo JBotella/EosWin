@@ -47,6 +47,26 @@ class UtilidadesController extends Controller
 						'ident' => 'CODIGO',
 						'nombre' => 'DESCRIPCION',
 					],
+					'filtroSelect' => [
+						[
+							'select' => 'Periodo',
+							'titulo' => trans('utilidades.sistema.modulos_tributacion.campos.periodo'),
+							'columnaRelacionada' => 'PERIODO',
+							'db' => 'sqlsrv1',
+							'tabla' => 'MODULOSPERIODOS',
+							'ident' => 'CODIGO',
+							'nombre' => 'DESCRIPCION',
+						],
+						[
+							'select' => 'Prueba',
+							'titulo' => 'Prueba',
+							'columnaRelacionada' => 'PERIODO',
+							'db' => 'sqlsrv1',
+							'tabla' => 'MODULOSPERIODOS',
+							'ident' => 'CODIGO',
+							'nombre' => 'DESCRIPCION',
+						],
+					],
 					'ExtraUtilidad' => [
 						'periodo' => $extraUtilidad->periodo()->orderBy('CODIGO','desc'),
 					]
@@ -210,10 +230,20 @@ class UtilidadesController extends Controller
 		$parametros = $this->parametrosUtilidad($id);
 		$utilidad = new Utilidad;
 		$filtroChecks = NULL;
-		if(isset($parametros->filtroChecks)){ // Comprueba si hay que consultar alguna tabla con el filtro selector
+		$filtroSelect = NULL;
+		if(isset($parametros->filtroChecks)){ // Comprueba si hay que consultar alguna tabla con el filtroChecks
 			$filtroChecks = $utilidad->filtroChecks($parametros);
 		}
-		return view('pages.utilidades.lista', ['id' => $id, 'parametros' => $parametros, 'filtroChecks' => $filtroChecks]);
+		/* PENDIENTE */
+		if(isset($parametros->filtroSelect)){ // Comprueba si hay que consultar alguna tabla con el filtroSelect
+			$filtrosSelect = (object)$parametros->filtroSelect;
+			foreach($filtrosSelect as $idSelect){
+				//dd($idSelect);
+				$filtroSelect = $utilidad->filtroSelect($idSelect);
+			}
+		}
+		/* ... */
+		return view('pages.utilidades.lista', ['id' => $id, 'parametros' => $parametros, 'filtroChecks' => $filtroChecks, 'filtroSelect' => $filtroSelect]);
 	}
 	public function lista($id,$variables){
 		$parametros = $this->parametrosUtilidad($id);

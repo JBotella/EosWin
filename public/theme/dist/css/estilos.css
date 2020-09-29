@@ -1173,8 +1173,8 @@ body {
 	border:solid 1px var(--principal);
 }
 .visorFormAsincAncho {
-	width:calc(100% - 3rem)!important;
 	max-width:800px!important;
+	width:calc(100% - 3rem)!important;
 }
 	.cabeceraVisorFormAsinc {
 		position:sticky;
@@ -1587,12 +1587,15 @@ body {
 .lineaSelectorAcciones {
 	max-width:110px!important;
 	min-width:110px!important;
+	width:auto;
 }
-	.selectorAcciones {}
 		.listaSelectorAcciones {
 			/*margin-left:-0.55rem;*/
 			margin-left:-1px;
 		}
+.selectorAcciones select {
+	min-width:100px;	
+}
 		
 /* Selector de columnas */
 .lineaSelectorColumna {

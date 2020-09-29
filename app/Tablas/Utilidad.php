@@ -60,12 +60,20 @@ class Utilidad extends Model
 	}
 	public function filtroChecks($parametros){
 		$filtroChecks = (object)$parametros->filtroChecks;
-		// Habría que filtrar si hay conexión a la base de datos para consultar un listado
 		$db = $filtroChecks->db;
 		$tabla = $filtroChecks->tabla;
-		//$columnaRelacionada = $filtroChecks->columnaRelacionada;
 		$ident = $filtroChecks->ident;
 		$nombre = $filtroChecks->nombre;
+		$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre")->orderBy($ident,'desc');
+		$listado = $listado->get();
+		return $listado;
+	}
+	public function filtroSelect($select){
+		$filtroSelect = (object)$select;
+		$db = $filtroSelect->db;
+		$tabla = $filtroSelect->tabla;
+		$ident = $filtroSelect->ident;
+		$nombre = $filtroSelect->nombre;
 		$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre")->orderBy($ident,'desc');
 		$listado = $listado->get();
 		return $listado;
