@@ -9,6 +9,7 @@ class Utilidad extends Model
 		$db = $parametros->db;
 		$tabla = $parametros->tabla;
 		$consulta = DB::connection($db)->table($tabla);
+		// Filtra si la consulta es compuesta
 		if(isset($parametros->tipoIdent) and $parametros->tipoIdent == 'compuesto'){
 			$cadenaIds = implode(',',$parametros->identCompuesto);
 			$cadenaIdsAlias = str_replace(',','',$cadenaIds);
@@ -23,12 +24,14 @@ class Utilidad extends Model
 		$listado = $this->consulta($parametros);
 		if(isset($variables)){
 			$variables = json_decode($variables);
-			if(isset($parametros->condicion)){ // Condicion extra
+			// Condicion extra
+			if(isset($parametros->condicion)){
 				$condicion = (object)$parametros->condicion;
 				$prefijo = $condicion->prefijo;
 				$listado = $listado->$prefijo($condicion->columna,$condicion->valores);
 			}
-			if(isset($variables->busqueda)){ // Filtro de búsqueda
+			// Filtro de búsqueda
+			if(isset($variables->busqueda)){
 				$busqueda = $variables->busqueda;
 				$columnasBusqueda = $parametros->columnasBusqueda;
 				$listado->where(function($listado) use ($columnasBusqueda,$busqueda){
@@ -37,8 +40,9 @@ class Utilidad extends Model
 					}
 				});
 			}
+			// Recuperar Filtro Checks
 			if(isset($parametros->filtroChecks)){
-				if(isset($variables->filtroChecks) and $variables->filtroChecks != NULL){ // Filtro de checks
+				if(isset($variables->filtroChecks) and $variables->filtroChecks != NULL){
 					$filtroChecks = $variables->filtroChecks;
 					$columnaRelacionada = $parametros->filtroChecks['columnaRelacionada'];
 					$filtroChecksArray = explode(',',$filtroChecks);
@@ -49,7 +53,22 @@ class Utilidad extends Model
 					});
 				}
 			}
-			if(isset($variables->orden) and isset($variables->direccion)){ // Filtro de orden
+			// Recuperar Filtros Select
+			if(isset($parametros->filtroSelect)){
+				if(isset($variables->filtroSelect) and $variables->filtroSelect != NULL){
+					$filtroSelect = $variables->filtroSelect;
+					$selectores = (object)$variables->filtroSelect;
+					foreach($selectores as $idSelector => $itemSelector){
+						$columnaRelacionada = $parametros->filtroSelect[$idSelector]['columnaRelacionada'];
+						$valor = $itemSelector->valor;
+						if($valor != NULL){
+							$listado->where($columnaRelacionada,$valor);
+						}
+					}
+				}
+			}
+			// Recuperar Filtro Orden
+			if(isset($variables->orden) and isset($variables->direccion)){
 				$orden = $variables->orden;
 				$direccion = $variables->direccion;
 				$listado = $listado->orderBy($orden,$direccion);
@@ -58,6 +77,7 @@ class Utilidad extends Model
 		$listado = $listado->get();
 		return $listado;
 	}
+	// Recuperar Filtro de Checks
 	public function filtroChecks($parametros){
 		$filtroChecks = (object)$parametros->filtroChecks;
 		$db = $filtroChecks->db;
@@ -68,6 +88,7 @@ class Utilidad extends Model
 		$listado = $listado->get();
 		return $listado;
 	}
+	// Recuperar Filtro de Selectores
 	public function filtroSelect($select){
 		$filtroSelect = (object)$select;
 		$db = $filtroSelect->db;
@@ -78,20 +99,25 @@ class Utilidad extends Model
 		$listado = $listado->get();
 		return $listado;
 	}
+	// Carga datos en el formulario
 	public function formulario($parametros,$item = NULL){
 		$datos = $this->consulta($parametros);
-		if($parametros->funcion == 'listado'){ // Para elementos de listado
-			if($item){ // Editar item de listado
+		// Para elementos de listado
+		if($parametros->funcion == 'listado'){
+			// Editar item de listado
+			if($item){
 				if(isset($parametros->identConcat)){
 					$datos = $datos->where(DB::raw($parametros->identConcat),$item);
 				}else{
 					$datos = $datos->where($parametros->ident,$item);
 				}
 				$datos = $datos->first();
-			}else{ // Nuevo item de listado
+			// Nuevo item de listado
+			}else{
 				$datos = NULL;
 			}
-		}elseif($parametros->funcion == 'formulario'){ // Para formularios sin listado y de elemento único
+		// Para formularios sin listado y de elemento único
+		}elseif($parametros->funcion == 'formulario'){
 			$datos = $datos->first();
 		}
 		return $datos;

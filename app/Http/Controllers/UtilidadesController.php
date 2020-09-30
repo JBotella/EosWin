@@ -57,15 +57,6 @@ class UtilidadesController extends Controller
 							'ident' => 'CODIGO',
 							'nombre' => 'DESCRIPCION',
 						],
-						[
-							'select' => 'Prueba',
-							'titulo' => 'Prueba',
-							'columnaRelacionada' => 'PERIODO',
-							'db' => 'sqlsrv1',
-							'tabla' => 'MODULOSPERIODOS',
-							'ident' => 'CODIGO',
-							'nombre' => 'DESCRIPCION',
-						],
 					],
 					'ExtraUtilidad' => [
 						'periodo' => $extraUtilidad->periodo()->orderBy('CODIGO','desc'),
@@ -231,18 +222,17 @@ class UtilidadesController extends Controller
 		$utilidad = new Utilidad;
 		$filtroChecks = NULL;
 		$filtroSelect = NULL;
-		if(isset($parametros->filtroChecks)){ // Comprueba si hay que consultar alguna tabla con el filtroChecks
+		// Comprueba si hay que consultar alguna tabla con el filtroChecks
+		if(isset($parametros->filtroChecks)){
 			$filtroChecks = $utilidad->filtroChecks($parametros);
 		}
-		/* PENDIENTE */
-		if(isset($parametros->filtroSelect)){ // Comprueba si hay que consultar alguna tabla con el filtroSelect
+		// Comprueba si hay que consultar alguna tabla con el filtroSelect
+		if(isset($parametros->filtroSelect)){
 			$filtrosSelect = (object)$parametros->filtroSelect;
 			foreach($filtrosSelect as $idSelect){
-				//dd($idSelect);
 				$filtroSelect = $utilidad->filtroSelect($idSelect);
 			}
 		}
-		/* ... */
 		return view('pages.utilidades.lista', ['id' => $id, 'parametros' => $parametros, 'filtroChecks' => $filtroChecks, 'filtroSelect' => $filtroSelect]);
 	}
 	public function lista($id,$variables){
@@ -254,10 +244,12 @@ class UtilidadesController extends Controller
 		$rutaAbrir = ''; // No se usa por el momento
 		return view('pages.utilidades.listas.lista-generada', ['id' => $id, 'listado' => $listado, 'rutaVer' => $rutaVer, 'rutaAbrir' => $rutaAbrir, 'parametros' => $parametros]);
 	}
-	public function formulario($id,$item = NULL){ // Para formulario con redirección
+	// Para formulario con redirección
+	public function formulario($id,$item = NULL){
 		return $this->cargaFormularioVista('formulario',$id,$item);
 	}
-	public function formularioAsinc($id,$item = NULL){ // Para formulario asíncrono
+	// Para formulario asíncrono
+	public function formularioAsinc($id,$item = NULL){
 		return $this->cargaFormularioVista('formularioAsinc',$id,$item);
 	}
 	public function cargaFormularioVista($form,$id,$item = NULL){
