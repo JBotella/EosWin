@@ -28,7 +28,7 @@
 					--}}
 					
 					@if(isset($parametros->filtroSelect))
-						@foreach($parametros->filtroSelect as $idFiltroSelect)
+						@foreach($parametros->filtroSelect as $idItemFiltroSelect => $idFiltroSelect)
 							@include('includes.complementos.filtroSelect',['nombreSelect' => $idFiltroSelect['select']])
 						@endforeach
 					@endif

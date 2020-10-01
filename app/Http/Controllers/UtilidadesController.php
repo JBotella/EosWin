@@ -243,8 +243,9 @@ class UtilidadesController extends Controller
 		// Comprueba si hay que consultar alguna tabla con el filtroSelect
 		if(isset($parametros->filtroSelect)){
 			$filtrosSelect = (object)$parametros->filtroSelect;
+			$filtroSelect = [];
 			foreach($filtrosSelect as $idSelect){
-				$filtroSelect = $utilidad->filtroSelect($idSelect);
+				array_push($filtroSelect,$utilidad->filtroSelect($idSelect));
 			}
 		}
 		return view('pages.utilidades.lista', ['id' => $id, 'parametros' => $parametros, 'filtroChecks' => $filtroChecks, 'filtroSelect' => $filtroSelect]);
