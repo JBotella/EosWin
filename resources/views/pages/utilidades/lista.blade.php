@@ -9,36 +9,24 @@
 		</div>
 		
 		<div class="barraOpcionesLista">
-		
 			<div class="accionesLista">
 				@include('includes.complementos.botonLinkVolver', ['ruta' => route('utilidades')])
 			</div>
-		
 			<div class="row justify-content-end">
-			
-				{{--<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col d-flex">--}}
 				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col">
-				
 					@include('includes.complementos.selectorAccionesListado',[$prefijoRuta = 'Utilidades', $checkLinea = 'checkUtilidad', $acciones = ['ejecutar','borrar']])
-					
-					{{--
-					@if(isset($parametros->filtroChecks))
+					{{-- @if(isset($parametros->filtroChecks))
 						@include('includes.complementos.filtroChecks',['nombreChecks' => $parametros->filtroChecks['check']])
-					@endif
-					--}}
-					
+					@endif --}}
 					@if(isset($parametros->filtroSelect))
 						@foreach($parametros->filtroSelect as $idItemFiltroSelect => $idFiltroSelect)
 							@include('includes.complementos.filtroSelect',['nombreSelect' => $idFiltroSelect['select']])
 						@endforeach
 					@endif
-					
 				</div>
-				
 				<div class="lineaBuscador order-1 order-sm-2 col-12 col-sm-7 col-md-6 col-lg-6 col-xl-4">
 					@include('includes.complementos.buscador',['nLista'=>0])
 				</div>
-				
 			</div>
 		</div>
 		

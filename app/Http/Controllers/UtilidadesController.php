@@ -64,17 +64,11 @@ class UtilidadesController extends Controller
 				];
 			break;
 			case 'indices-porcentajes-calculo':
-				// PENDIENTE...
 				$parametros = [
 					'textos' => 'utilidades.sistema.indices_porcentajes_calculo',
 					'db' => 'sqlsrv1',
 					'tabla' => 'INDICES',
 					'funcion' => 'formulario',
-					'columnas' => [
-						'indice1' => 'INDICE1',
-						'indice2' => 'INDICE2',
-						'indice3' => 'INDICE3',
-					],
 				];
 			break;
 			case 'tipos-iva-igic':

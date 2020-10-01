@@ -18,4 +18,22 @@ return [
 		'09' => 'Otros Gastos',
 		'10' => 'Bienes de Inversión',
 	],
+	'accion-seguimiento-lopd' => [
+		'todos' => 'Todos',
+		'1' => 'Alta',
+		'2' => 'Eliminacion',
+		'3' => 'Modificacion',
+		'4' => 'Login',
+		'5' => 'LogOut',
+		'6' => 'Error',
+		'7' => 'Acceso',
+		'8' => 'Copia',
+		'9' => 'Restauración',
+	],
+	'procesos-seguimiento-lopd' => [
+		'todos' => 'Todos',
+		'Empresas' => 'Empresas',
+		'Proveedores' => 'Proveedores',
+		'Otros' => 'Otros',
+	],
 ];

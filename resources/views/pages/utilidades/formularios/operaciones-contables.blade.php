@@ -12,7 +12,7 @@
 				@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
 				@slot('nombre', 'Descripción')
 				@slot('valor')
-					<input type="text" class="form-control" name="DESOPERACION" value="@if($datos){{$datos->DESOPERACION}}@endif" />
+					<input type="text" class="form-control" name="DESOPERACION" @if($datos) value="{{$datos->DESOPERACION}}" @endif />
 				@endslot
 			@endcomponent
 			@component('components.itemFormulario')

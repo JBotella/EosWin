@@ -29,23 +29,24 @@ class ConstantesController extends Controller
 			break;
 			case 'accion-seguimiento-lopd':
 				$valores = [
-					null => 'Todos',
-					'1' => 'Alta',
-					'2' => 'Eliminacion',
-					'3' => 'Modificacion',
-					'4' => 'Login',
-					'5' => 'LogOut',
-					'6' => 'Error',
-					'7' => 'Acceso',
-					'8' => 'Copia',
-					'9' => 'Restauración',
+					null => trans('constantes.'.$id.'.todos'),
+					'1' => trans('constantes.'.$id.'.1'),
+					'2' => trans('constantes.'.$id.'.2'),
+					'3' => trans('constantes.'.$id.'.3'),
+					'4' => trans('constantes.'.$id.'.4'),
+					'5' => trans('constantes.'.$id.'.5'),
+					'6' => trans('constantes.'.$id.'.6'),
+					'7' => trans('constantes.'.$id.'.7'),
+					'8' => trans('constantes.'.$id.'.8'),
+					'9' => trans('constantes.'.$id.'.9'),
 				];
 			break;
 			case 'procesos-seguimiento-lopd':
 				$valores = [
-					'Empresas' => 'Empresas',
-					'Proveedores' => 'Proveedores',
-					'Otros' => 'Otros',
+					null => trans('constantes.'.$id.'.todos'),
+					'Empresas' => trans('constantes.'.$id.'.Empresas'),
+					'Proveedores' => trans('constantes.'.$id.'.Proveedores'),
+					'Otros' => trans('constantes.'.$id.'.Otros'),
 				];
 			break;
 		}
