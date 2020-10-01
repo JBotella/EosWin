@@ -27,6 +27,27 @@ class ConstantesController extends Controller
 					'10' => trans('constantes.'.$id.'.10'),
 				];
 			break;
+			case 'accion-seguimiento-lopd':
+				$valores = [
+					null => 'Todos',
+					'1' => 'Alta',
+					'2' => 'Eliminacion',
+					'3' => 'Modificacion',
+					'4' => 'Login',
+					'5' => 'LogOut',
+					'6' => 'Error',
+					'7' => 'Acceso',
+					'8' => 'Copia',
+					'9' => 'Restauración',
+				];
+			break;
+			case 'procesos-seguimiento-lopd':
+				$valores = [
+					'Empresas' => 'Empresas',
+					'Proveedores' => 'Proveedores',
+					'Otros' => 'Otros',
+				];
+			break;
 		}
 		return $valores;
 	}

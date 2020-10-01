@@ -2,6 +2,7 @@
 namespace App\Tablas;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use App\Http\Controllers\ConstantesController;
 
 class Utilidad extends Model
 {
@@ -91,12 +92,17 @@ class Utilidad extends Model
 	// Recuperar Filtro de Selectores
 	public function filtroSelect($select){
 		$filtroSelect = (object)$select;
-		$db = $filtroSelect->db;
-		$tabla = $filtroSelect->tabla;
-		$ident = $filtroSelect->ident;
-		$nombre = $filtroSelect->nombre;
-		$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre")->orderBy($ident,'desc');
-		$listado = $listado->get();
+		if(isset($filtroSelect->db) and isset($filtroSelect->tabla)){
+			$db = $filtroSelect->db;
+			$tabla = $filtroSelect->tabla;
+			$ident = $filtroSelect->ident;
+			$nombre = $filtroSelect->nombre;
+			$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre")->orderBy($ident,'desc');
+			$listado = $listado->get();
+		}elseif(isset($filtroSelect->constante)){
+			$constante = new ConstantesController;
+			$listado = $constante->selector($filtroSelect->constante);
+		}
 		return $listado;
 	}
 	// Carga datos en el formulario

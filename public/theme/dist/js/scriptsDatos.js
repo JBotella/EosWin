@@ -133,6 +133,12 @@ function opcionDatalist(obj){
 		$('#'+obj.id+'Id').val(valOp);
 	}
 }
+// Filtro selector en listado
+function cambiaFiltroSelect(obj){
+	var val = $('#fSelect_'+obj.id).val();
+	event.stopImmediatePropagation();
+	recargarListar(0);
+}
 
 /* ----- ************** ----- */
 /* ----- * Row Radios * ----- */

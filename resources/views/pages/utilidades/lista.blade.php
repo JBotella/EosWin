@@ -17,7 +17,7 @@
 			<div class="row justify-content-end">
 			
 				{{--<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col d-flex">--}}
-				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col d-flex">
+				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col">
 				
 					@include('includes.complementos.selectorAccionesListado',[$prefijoRuta = 'Utilidades', $checkLinea = 'checkUtilidad', $acciones = ['ejecutar','borrar']])
 					
@@ -87,11 +87,11 @@
 			var busqueda = $('#busqueda_'+idLista).val().trim();
 			var orden = $('#cabeceraLista_'+idLista).data('columna');
 			var direccion = $('#cabeceraLista_'+idLista).data('direccion');
-			if(checks){
+			/*if(checks){
 				var filtroChecks = $('#valores'+checks).val().trim();
 			}else{
 				var filtroChecks = '';
-			}
+			}*/
 			
 			/* 00 - Recuperar Filtros Select */
 			var prefijoSelectores = 'fSelect_';
@@ -109,7 +109,7 @@
 			//var str = JSON.stringify(filtroSelect);
 			/* 00 - ... */
 			
-			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda, "filtroChecks": filtroChecks, "filtroSelect": filtroSelect }; 
+			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda, /*"filtroChecks": filtroChecks,*/ "filtroSelect": filtroSelect }; 
 			cargaListado(idLista,variables,desde);
 		}
 		$(document).ready(function(){

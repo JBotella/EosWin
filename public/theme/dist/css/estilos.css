@@ -1584,23 +1584,57 @@ body {
 			margin-right:0.5rem;
 		}
 /* Selector de acciones */
+
 .lineaSelectorAcciones {
-	max-width:110px!important;
-	min-width:110px!important;
-	width:auto;
+	position:relative;
+	display:inline-block!important;
+	max-width:auto!important;
+	min-width:auto!important;
+	width:100%;
 }
+	.selectorAcciones {
+		
+		/*display:flex;*/
+		align-items:center;
+		float:left;
+		height:28px;
+		border:solid 1px var(--grisClaro)!important;
+		background-color:var(--principalMasClaro);
+		font-size:0.7rem;
+		margin-top:0.25rem;
+		
+		width:auto!important;
+	}
+		.selectorAcciones select {
+			width:auto!important;	
+			min-width:150px!important;	
+			border-radius:0;
+			background-color:var(--principalMasClaro);
+			cursor:pointer;
+		}
+		.selectorAcciones select option {
+			color:var(--grisOscuro);
+			background-color:var(--grisMasClaro);
+		}
+		.selectorAcciones select:focus {
+			color:var(--blanco);
+			background-color:var(--principal);
+		}
+		.selectorAcciones select option:hover {
+			background-color:var(--principalClaro);
+			cursor:pointer;
+		}
+
 		.listaSelectorAcciones {
-			/*margin-left:-0.55rem;*/
 			margin-left:-1px;
 		}
-.selectorAcciones select {
-	min-width:100px;	
-}
+		
 		
 /* Selector de columnas */
 .lineaSelectorColumna {
 	max-width:115px!important;
 	min-width:115px!important;
+	margin-left:-1rem;
 }
 	.selectorColumnas {}
 		.listaSelectorColumnas {

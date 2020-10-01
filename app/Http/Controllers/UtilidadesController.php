@@ -211,6 +211,20 @@ class UtilidadesController extends Controller
 						'proceso' => 'PROCESO',
 						'mensaje' => 'TEXTO',
 					],
+					'filtroSelect' => [
+						[
+							'select' => 'Accion',
+							'titulo' => trans('utilidades.sistema.seguimiento_lopd.campos.accion'),
+							'columnaRelacionada' => 'TIPO',
+							'constante' => 'accion-seguimiento-lopd',
+						],
+						[
+							'select' => 'Procesos',
+							'titulo' => trans('utilidades.sistema.seguimiento_lopd.campos.proceso'),
+							'columnaRelacionada' => 'PROCESO',
+							'constante' => 'procesos-seguimiento-lopd',
+						],
+					],
 				];
 			break;
 		}
