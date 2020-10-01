@@ -93,8 +93,12 @@ return [
 			'campos' => [
 				'codigo' => 'Código',
 				'descripcion' => 'Descripción',
-				'ingreso-gasto' => 'Ingreso o Gasto',
-				'columna-libro-registro' => 'Columna en el libro de registro',
+				'ingresoGasto' => 'Ingreso o Gasto',
+				'columnaLibroRegistro' => 'Columna en el libro de registro',
+				'opcionesCalculoImpuestos' => 'Columna en el libro de registro',
+				'opcionesCalculoImpuestos' => 'Columna en el libro de registro',
+				'incluirEnModelo340' => 'Incluir en modelo 340',
+				'incluirEnModelo347' => 'Incluir en modelo 347',
 			],
 		],
 		'conceptos_contables' => [
@@ -104,6 +108,7 @@ return [
 			'campos' => [
 				'codigo' => 'Código',
 				'descripcion' => 'Descripción',
+				'variables' => 'Variables',
 			],
 		],
 		'formas_pago_cobro' => [

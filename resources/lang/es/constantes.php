@@ -14,7 +14,7 @@ return [
 		'05' => 'Suministros',
 		'06' => 'Alquileres, Primas, Seguros',
 		'07' => 'Tributos no estatales',
-		'08' => 'Intereses y Gtos. Financieros',
+		'08' => 'Intereses y Gastos Financieros',
 		'09' => 'Otros Gastos',
 		'10' => 'Bienes de Inversión',
 	],
@@ -35,5 +35,12 @@ return [
 		'Empresas' => 'Empresas',
 		'Proveedores' => 'Proveedores',
 		'Otros' => 'Otros',
+	],
+	'variables-conceptos-contables' => [
+		'+DOC' => '+ Doc (Nº. de Factura)',
+		'+FEC' => '+ Fec (Fecha)',
+		'+MES' => '+ Mes (Mes)',
+		'+CTA' => '+ Cta (Cuenta)',
+		'+CDE' => '+ Cde (Título de Cuenta)',
 	],
 ];

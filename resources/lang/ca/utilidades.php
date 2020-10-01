@@ -59,6 +59,16 @@ return [
 		'seguimiento_lopd' => [
 			'nombre' => 'Seguiment LOPD',
 			'resumen' => 'Seguiment de les accions derivades de la GDPR imposada per la Unió Europea.',
+			/* Campos */
+			'campos' => [
+				'id' => 'Id',
+				'fecha' => 'Data',
+				'usuario' => 'Usuari',
+				'servidor' => 'Servidor',
+				'ordenador' => 'Ordinador',
+				'proceso' => 'Procés',
+				'mensaje' => 'Missatge',
+			],
 		],
 	],
 ];

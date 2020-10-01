@@ -101,7 +101,7 @@ class Utilidad extends Model
 			$listado = $listado->get();
 		}elseif(isset($filtroSelect->constante)){
 			$constante = new ConstantesController;
-			$listado = $constante->selector($filtroSelect->constante);
+			$listado = $constante->listaConstantes($filtroSelect->constante);
 		}
 		return $listado;
 	}

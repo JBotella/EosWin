@@ -108,7 +108,7 @@
 										@slot('valor')
 											<div class="itemCheckbox custom-control custom-radio p-0 pl-3">
 												<input type="radio" class="form-control custom-control-input" id="diario" name="periodicidad" value="diario" />
-												<label class="itemCheckLabel custom-control-label custom-control-label" for="diario">@lang('texto.form_apunte_periodico.diario')</label>
+												<label class="itemCheckLabel custom-control-label" for="diario">@lang('texto.form_apunte_periodico.diario')</label>
 											</div>
 										@endslot
 									@endcomponent

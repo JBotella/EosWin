@@ -59,6 +59,16 @@ return [
 		'seguimiento_lopd' => [
 			'nombre' => 'LOPD monitoring',
 			'resumen' => 'Monitoring of actions derived from the GDPR imposed by the European Union.',
+			/* Campos */
+			'campos' => [
+				'id' => 'Id',
+				'fecha' => 'Date',
+				'usuario' => 'User',
+				'servidor' => 'Server',
+				'ordenador' => 'Computer',
+				'proceso' => 'Process',
+				'mensaje' => 'Message',
+			],
 		],
 	],
 ];

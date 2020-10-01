@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 
 class ConstantesController extends Controller
 {
-    public function selector($id){
+    public function listaConstantes($id){
 		switch($id){
 			case 'ingreso-gasto':
 				$valores = [
@@ -47,6 +47,15 @@ class ConstantesController extends Controller
 					'Empresas' => trans('constantes.'.$id.'.Empresas'),
 					'Proveedores' => trans('constantes.'.$id.'.Proveedores'),
 					'Otros' => trans('constantes.'.$id.'.Otros'),
+				];
+			break;
+			case 'variables-conceptos-contables':
+				$valores = [
+					'+DOC' => trans('constantes.'.$id.'.+DOC'),
+					'+FEC' => trans('constantes.'.$id.'.+FEC'),
+					'+MES' => trans('constantes.'.$id.'.+MES'),
+					'+CTA' => trans('constantes.'.$id.'.+CTA'),
+					'+CDE' => trans('constantes.'.$id.'.+CDE'),
 				];
 			break;
 		}

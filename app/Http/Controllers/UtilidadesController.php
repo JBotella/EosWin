@@ -134,7 +134,7 @@ class UtilidadesController extends Controller
 					'columnas' => [
 						'codigo' => 'CODOPERACION',
 						'descripcion' => 'DESOPERACION',
-						'ingreso-gasto' => 'INGRESOGASTO',
+						'ingresoGasto' => 'INGRESOGASTO',
 					],
 				];
 			break;
