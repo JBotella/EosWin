@@ -22,7 +22,7 @@ return [
 		'todos' => 'Todos',
 		'1' => 'Alta',
 		'2' => 'Eliminacion',
-		'3' => 'Modificacion',
+		'3' => 'Modificación',
 		'4' => 'Login',
 		'5' => 'LogOut',
 		'6' => 'Error',

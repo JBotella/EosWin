@@ -10,16 +10,26 @@ class Utilidad extends Model
 		$db = $parametros->db;
 		$tabla = $parametros->tabla;
 		$consulta = DB::connection($db)->table($tabla);
+		$compuesta = 0;
 		// Filtra si la consulta es compuesta
 		if(isset($parametros->tipoIdent) and $parametros->tipoIdent == 'compuesto'){
 			$cadenaIds = implode(',',$parametros->identCompuesto);
 			$cadenaIdsAlias = str_replace(',','',$cadenaIds);
 			$consulta->addSelect(DB::raw("".$parametros->identConcat." AS ".$cadenaIdsAlias.",*"));
+			$compuesta = 1;
+		}else{
+			$compuesta = 0;
 		}
 		if(isset($parametros->addSelect)){
-			$consulta->addSelect(DB::raw($parametros->addSelect));
+			if($compuesta == 0){
+				$consulta->addSelect(DB::raw("".$parametros->addSelect.",*"));
+			}elseif($compuesta == 1){
+				$consulta->addSelect(DB::raw("".$parametros->addSelect.""));
+			}
 		}
+		//dd($consulta->toSql()); //Debug SQL
 		return $consulta;
+		
 	}
     public function listado($parametros,$variables = NULL){
 		$listado = $this->consulta($parametros);
@@ -68,6 +78,26 @@ class Utilidad extends Model
 					}
 				}
 			}
+			// Recuperar Filtros Fecha
+			if(isset($parametros->filtroFecha)){
+				if(isset($variables->filtroFechas) and $variables->filtroFechas != NULL){
+					$filtroFecha = $variables->filtroFechas;
+					$selectores = (object)$variables->filtroFechas;
+					foreach($selectores as $idSelector => $itemSelector){
+						$columnaRelacionada = $parametros->filtroFecha['columnaRelacionada'];
+						$tipo = $itemSelector->selector;
+						$valor = $itemSelector->valor;
+						if($valor != NULL){
+							if($tipo == 'Desde'){
+								$prefijo = '>=';
+							}elseif($tipo == 'Hasta'){
+								$prefijo = '<=';
+							}
+							$listado->whereDate($columnaRelacionada,$prefijo,$valor);
+						}
+					}
+				}
+			}
 			// Recuperar Filtro Orden
 			if(isset($variables->orden) and isset($variables->direccion)){
 				$orden = $variables->orden;
@@ -100,10 +130,20 @@ class Utilidad extends Model
 			$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre")->orderBy($ident,'desc');
 			$listado = $listado->get();
 		}elseif(isset($filtroSelect->constante)){
-			$constante = new ConstantesController;
-			$listado = $constante->listaConstantes($filtroSelect->constante);
+			$listado = ConstantesController::listaConstantes($filtroSelect->constante);
 		}
 		return $listado;
+	}
+	// Recuperar Filtro de Fechas
+	public function filtroFecha($fecha){
+		$filtroFecha = (object)$fecha->filtroFecha;
+		$tipo = $filtroFecha->tipo;
+		if(!strpos($tipo, 'desde')){
+			
+		}
+		if(!strpos($tipo, 'hasta')){
+			
+		}
 	}
 	// Carga datos en el formulario
 	public function formulario($parametros,$item = NULL){

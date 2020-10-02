@@ -1615,8 +1615,10 @@ body {
 	min-width:auto!important;
 	width:100%;
 }
+	.bloqueSelectorAcciones {
+		display:inline-block!important;
+	}
 	.selectorAcciones {
-		
 		/*display:flex;*/
 		align-items:center;
 		float:left;
@@ -1625,9 +1627,9 @@ body {
 		background-color:var(--principalMasClaro);
 		font-size:0.7rem;
 		margin-top:0.25rem;
-		
 		width:auto!important;
 	}
+		/* Selector */
 		.selectorAcciones select {
 			width:auto!important;	
 			min-width:150px!important;	
@@ -1654,6 +1656,14 @@ body {
 
 		.listaSelectorAcciones {
 			margin-left:-1px;
+		}
+		/* Input Fecha */
+		.selectorAcciones input[type=date] {
+			width:auto!important;	
+			border-radius:0;
+			background-color:var(--principalMasClaro);
+			cursor:pointer;
+			border:solid 1px var(--grisMasClaro)!important;
 		}
 		
 		

@@ -149,6 +149,7 @@ return [
 				'usuario' => 'Usuario',
 				'servidor' => 'Servidor',
 				'ordenador' => 'Ordenador',
+				'accion' => 'Acción',
 				'proceso' => 'Proceso',
 				'mensaje' => 'Mensaje',
 			],

@@ -9,7 +9,8 @@ class UtilidadesController extends Controller
     public function utilidades(){
 		return view('pages.utilidades');
 	}
-	public function parametrosUtilidad($id){ // Parámetros para cada utilidad
+	// Parámetros para cada utilidad
+	public function parametrosUtilidad($id){
 		$extraUtilidad = new ExtraUtilidad;
 		/* Variables para la carga de listas */
 		switch($id){
@@ -127,6 +128,9 @@ class UtilidadesController extends Controller
 					'tabla' => 'OPERACIONES_EOS',
 					'funcion' => 'listado',
 					'clicListado' => 'abreForm',
+					'addSelect' => 'ingrGast = CASE 
+						'.FuncionesController::generaCases('INGRESOGASTO',ConstantesController::listaConstantes('ingreso-gasto')).'
+					END',
 					'ident' => 'CODOPERACION',
 					'orden' => 'CODOPERACION',
 					'direccionOrden' => 'ASC',
@@ -134,7 +138,7 @@ class UtilidadesController extends Controller
 					'columnas' => [
 						'codigo' => 'CODOPERACION',
 						'descripcion' => 'DESOPERACION',
-						'ingresoGasto' => 'INGRESOGASTO',
+						'ingresoGasto' => 'ingrGast',
 					],
 				];
 			break;
@@ -185,6 +189,7 @@ class UtilidadesController extends Controller
 			case 'comprobacion-nif-terceros':
 				// PENDIENTE...
 			break;
+			/* $constantesController->listaConstantes('accion-seguimiento-lopd') */
 			case 'seguimiento-lopd':
 				$parametros = [
 					'textos' => 'utilidades.herramientas.seguimiento_lopd',
@@ -192,6 +197,9 @@ class UtilidadesController extends Controller
 					'tabla' => 'LPDLOG',
 					'funcion' => 'listado',
 					'clicListado' => 'no',
+					'addSelect' => 'nTipo = CASE 
+						'.FuncionesController::generaCases('TIPO',ConstantesController::listaConstantes('accion-seguimiento-lopd')).'
+					END',
 					'ident' => 'ID',
 					'orden' => 'FECHA',
 					'direccionOrden' => 'DESC',
@@ -202,6 +210,7 @@ class UtilidadesController extends Controller
 						'usuario' => 'USUARIO',
 						'servidor' => 'SERVIDOR',
 						'ordenador' => 'ORDENADOR',
+						'accion' => 'nTipo',
 						'proceso' => 'PROCESO',
 						'mensaje' => 'TEXTO',
 					],
@@ -219,6 +228,10 @@ class UtilidadesController extends Controller
 							'constante' => 'procesos-seguimiento-lopd',
 						],
 					],
+					'filtroFecha' => [
+						'tipo' => 'fecha-desde-hasta',
+						'columnaRelacionada' => 'FECHA',
+					],
 				];
 			break;
 		}
@@ -230,6 +243,7 @@ class UtilidadesController extends Controller
 		$utilidad = new Utilidad;
 		$filtroChecks = NULL;
 		$filtroSelect = NULL;
+		$filtroFecha = NULL;
 		// Comprueba si hay que consultar alguna tabla con el filtroChecks
 		if(isset($parametros->filtroChecks)){
 			$filtroChecks = $utilidad->filtroChecks($parametros);
@@ -242,7 +256,11 @@ class UtilidadesController extends Controller
 				array_push($filtroSelect,$utilidad->filtroSelect($idSelect));
 			}
 		}
-		return view('pages.utilidades.lista', ['id' => $id, 'parametros' => $parametros, 'filtroChecks' => $filtroChecks, 'filtroSelect' => $filtroSelect]);
+		// Comprueba si hay que consultar alguna tabla con el filtroFecha
+		if(isset($parametros->filtroFecha)){
+			$filtroFecha = $utilidad->filtroFecha($parametros);
+		}
+		return view('pages.utilidades.lista', ['id' => $id, 'parametros' => $parametros, 'filtroChecks' => $filtroChecks, 'filtroSelect' => $filtroSelect, 'filtroFecha' => $filtroFecha]);
 	}
 	public function lista($id,$variables){
 		$parametros = $this->parametrosUtilidad($id);

@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 
 class ConstantesController extends Controller
 {
-    public function listaConstantes($id){
+	// Listados de constantes con su valor y traducción en algunos casos
+    public static function listaConstantes($id){
 		switch($id){
 			case 'ingreso-gasto':
 				$valores = [

@@ -23,6 +23,9 @@
 							@include('includes.complementos.filtroSelect',['nombreSelect' => $idFiltroSelect['select']])
 						@endforeach
 					@endif
+					@if(isset($parametros->filtroFecha))
+						@include('includes.complementos.filtroFecha')
+					@endif
 				</div>
 				<div class="lineaBuscador order-1 order-sm-2 col-12 col-sm-7 col-md-6 col-lg-6 col-xl-4">
 					@include('includes.complementos.buscador',['nLista'=>0])
@@ -83,9 +86,9 @@
 			
 			/* 00 - Recuperar Filtros Select */
 			var prefijoSelectores = 'fSelect_';
-			var filtrosSelectores = $("[id*='"+prefijoSelectores+"']");
+			var selectores = $("[id*='"+prefijoSelectores+"']");
 			var filtroSelect = [];
-			filtrosSelectores.each(function(index,value){
+			selectores.each(function(index,value){
 				var select = value.name.split('_')[1];
 				var idSelect = value.id;
 				var valor = $('#'+value.id).val();
@@ -94,10 +97,23 @@
 					valor:valor
 				});
 			});
-			//var str = JSON.stringify(filtroSelect);
 			/* 00 - ... */
+			/* 01 - Recuperar Filtros Fecha */
+			var prefijoFechas = 'fFecha_';
+			var fechas = $("[id*='"+prefijoFechas+"']");
+			var filtroFechas = [];
+			fechas.each(function(index,value){
+				var fecha = value.name.split('_')[1];
+				var idFecha = value.id;
+				var valor = $('#'+value.id).val();
+				filtroFechas.push({
+					selector:fecha, 
+					valor:valor
+				});
+			});
+			/* 01 - ... */
 			
-			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda, /*"filtroChecks": filtroChecks,*/ "filtroSelect": filtroSelect }; 
+			var variables = { "orden": orden, "direccion": direccion, "busqueda": busqueda, /*"filtroChecks": filtroChecks,*/ "filtroSelect": filtroSelect, "filtroFechas": filtroFechas }; 
 			cargaListado(idLista,variables,desde);
 		}
 		$(document).ready(function(){
