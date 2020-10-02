@@ -61,7 +61,7 @@ class UtilidadesController extends Controller
 					],
 					'ExtraUtilidad' => [
 						'periodo' => $extraUtilidad->periodo()->orderBy('CODIGO','desc'),
-					]
+					],
 				];
 			break;
 			case 'indices-porcentajes-calculo':
@@ -139,6 +139,9 @@ class UtilidadesController extends Controller
 						'codigo' => 'CODOPERACION',
 						'descripcion' => 'DESOPERACION',
 						'ingresoGasto' => 'ingrGast',
+					],
+					'ExtraUtilidad' => [
+						'columnasLibroRegistro' => $extraUtilidad->columnasLibroRegistro()->orderBy('CODIGO','asc'),
 					],
 				];
 			break;

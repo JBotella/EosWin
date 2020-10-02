@@ -31,15 +31,15 @@
 				@slot('nombre', trans($parametros->textos.'.campos.columnaLibroRegistro'))
 				@slot('valor')
 					<select class="form-control custom-select" name="COLUMNAREGISTRO">
-						@foreach($constantes->listaConstantes('columna-libro-registro') as $valor => $nombre)
-							<option value="{{$valor}}" @if($datos) @if($datos->COLUMNAREGISTRO == $valor) selected @endif @endif>{{$valor.' - '.$nombre}}</option>
+						@foreach($parametros->ExtraUtilidad['columnasLibroRegistro']->get() as $parametro)
+							<option value="{{$parametro->CODIGO}}" @if($datos) @if($datos->COLUMNAREGISTRO == $parametro->CODIGO) selected @endif @endif>{{$parametro->CODIGO.' - '.$parametro->DESCRIPCION}}</option>
 						@endforeach
 					</select>
 				@endslot
 			@endcomponent
 			@component('components.itemFormulario')
 				@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
-				@slot('nombre', trans($parametros->textos.'.campos.columnaLibroRegistro'))
+				@slot('nombre', trans($parametros->textos.'.campos.opcionesCalculoImpuestos'))
 				@slot('valor')
 					<div class="lineaElementosClicables">
 						<div class="itemCheckbox custom-control custom-checkbox p-0 pl-3 col-6">

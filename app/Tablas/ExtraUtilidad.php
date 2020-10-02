@@ -11,4 +11,9 @@ class ExtraUtilidad extends Model
 		$listado = DB::connection($this->conexion1)->table('MODULOSPERIODOS');
 		return $listado;
 	}
+	// Columnas en el Libro de Registro
+	public function columnasLibroRegistro(){
+		$listado = DB::connection($this->conexion1)->table('COLUMNASLIBROREGISTRO');
+		return $listado;
+	}
 }
