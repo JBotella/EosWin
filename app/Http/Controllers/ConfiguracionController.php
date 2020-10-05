@@ -5,6 +5,6 @@ use Illuminate\Http\Request;
 class ConfiguracionController extends Controller
 {
     public function configuracion(){
-		//return view('pages.configuracion');
+		return view('pages.configuracion.configuracion');
 	}
 }

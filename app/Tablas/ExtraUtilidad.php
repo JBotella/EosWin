@@ -6,6 +6,11 @@ use DB;
 class ExtraUtilidad extends Model
 {
 	protected $conexion1= 'sqlsrv1';
+	// Tipo de Actividad Empresarial
+	public function tipoActividad(){
+		$listado = DB::connection($this->conexion1)->table('TIPOSACTIVIDAD');
+		return $listado;
+	}
     // Periodo
 	public function periodo(){
 		$listado = DB::connection($this->conexion1)->table('MODULOSPERIODOS');

@@ -569,7 +569,8 @@ function listaExtra(cont){
 }
 /* Buscador en extraBar */
 function cargaBuscadorExtra(){
-	$("#buscadorExtraBar").on("keyup", function () {
+	//$("#buscadorExtraBar").on("keyup", function () {
+	$("#buscadorExtraBar").on("change", function () {
 		var busqueda = $("#buscadorExtraBar").val();
 		resaltaBusqueda(busqueda,'.mLE_ListaMin','.mLE_ListaMinLinea');
 	});

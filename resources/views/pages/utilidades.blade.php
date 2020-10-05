@@ -34,7 +34,7 @@
 								@slot('icono','')
 								@slot('nombre',trans('utilidades.sistema.actividades_empresariales.nombre'))
 								@slot('resumen',trans('utilidades.sistema.actividades_empresariales.resumen'))
-								{{--@slot('link',['ruta' => $rutaLinkList, 'id' => 'actividades-empresariales'])--}}
+								@slot('link',['ruta' => $rutaLinkList, 'id' => 'actividades-empresariales'])
 							@endcomponent
 							@component('components.tarjetaUtilidades')
 								@slot('class','estilo-tarjeta-principal')

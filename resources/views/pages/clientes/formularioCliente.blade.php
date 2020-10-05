@@ -137,7 +137,10 @@
 							</div>
 						
 							{{-- Domicilio Fiscal --}}
-							<div class="categoriaBloqueFormulario">@lang('texto.domicilio_fiscal.domicilio_fiscal')</div>
+							<div class="categoriaBloqueFormulario">
+								@lang('texto.domicilio_fiscal.domicilio_fiscal')
+								<i type="button" class="btnAccionFicha btnAccion fas fa-map-marker-alt float-right azulAnalogo" onclick="linkDireccionMaps()"></i>
+							</div>
 							<div class="bloqueFormulario">
 								<div class="row">
 									@if(isset($datos))
@@ -166,7 +169,10 @@
 											<div class="row">
 												<div class="col-4">
 													<select class="form-control custom-select" name="tipoVia">
-														<option value="0">Calle</option>
+														<option disabled>Tipo de Vía</option>
+														@foreach($tiposVia as $via)
+															<option value="{{$via->Codigo}}" @if($datos->CliTipoVia == $via->Codigo) selected @endif>{{$via->Descripcion}}</option>
+														@endforeach
 													</select>
 												</div>
 												<div class="col-8">
@@ -202,14 +208,14 @@
 										@slot('class', 'col-6 col-md-6')
 										@slot('nombre', trans('texto.domicilio_fiscal.codigo_postal'))
 										@slot('valor')
-											<input type="text" class="form-control" name="cp" @if(isset($datos)) value="{{$datos->CliCodPostal}}" @endif />
+											<input type="text" class="form-control" name="cp" @if(isset($datos)) value="{{$datos->CliCodPostal}}" @endif data-href="{{ route('listaLocalidadesMin') }}" onclick="listaExtra(this)" />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
 										@slot('class', 'col-6 col-md-6')
 										@slot('nombre', trans('texto.domicilio_fiscal.localidad'))
 										@slot('valor')
-											<input type="text" class="form-control" name="localidad" @if(isset($datos)) value="{{$datos->CliCodPostalLocali}}" @endif />
+											<input type="text" class="form-control" name="localidad" @if(isset($datos)) value="{{$datos->CliCodPostalLocali}}" @endif data-href="{{ route('listaLocalidadesMin') }}" onclick="listaExtra(this)" />
 										@endslot
 									@endcomponent
 								</div>
@@ -218,7 +224,7 @@
 										@slot('class', 'col-6 col-md-6')
 										@slot('nombre', trans('texto.domicilio_fiscal.provincia'))
 										@slot('valor')
-											<input type="text" class="form-control" name="provincia" @if(isset($datos)) value="{{$datos->CliCodPostalProvin}}" @endif />
+											<input type="text" class="form-control" name="provincia" @if(isset($datos)) value="{{$datos->CliCodPostalProvin}}" @endif data-href="{{ route('listaLocalidadesMin') }}" onclick="listaExtra(this)" />
 										@endslot
 									@endcomponent
 									@component('components.itemFormulario')
@@ -355,4 +361,20 @@
 				
 		@endcomponent
 	</div>
+	<script>
+		function cargaDatosLocalidad(datosLocalidad){
+			$('input[name="cp"]').val(datosLocalidad.cp);
+			$('input[name="localidad"]').val(datosLocalidad.localidad);
+			$('input[name="provincia"]').val(datosLocalidad.provincia);
+			extraBar();
+		}
+		function linkDireccionMaps(){
+			var direccion = $('input[name="direccion"]').val();
+			var numero = $('input[name="numero"]').val();
+			var localidad = $('input[name="localidad"]').val();
+			var datos = encodeURI(direccion+' '+numero+' '+localidad);
+			var rutaMaps = 'https://www.google.com/maps/place/'+datos;
+			window.open(rutaMaps,"_blank");
+		}
+	</script>
 @endsection

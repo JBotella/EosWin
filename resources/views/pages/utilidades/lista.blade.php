@@ -13,21 +13,21 @@
 				@include('includes.complementos.botonLinkVolver', ['ruta' => route('utilidades')])
 			</div>
 			<div class="row justify-content-end">
-				<div class="lineaSelectorAcciones mr-auto order-2 order-sm-1 col">
+				<div class="lineaSelectorAcciones mr-auto order-2 order-md-1 col">
 					@include('includes.complementos.selectorAccionesListado',[$prefijoRuta = 'Utilidades', $checkLinea = 'checkUtilidad', $acciones = ['ejecutar','borrar']])
 					{{-- @if(isset($parametros->filtroChecks))
 						@include('includes.complementos.filtroChecks',['nombreChecks' => $parametros->filtroChecks['check']])
 					@endif --}}
 					@if(isset($parametros->filtroSelect))
 						@foreach($parametros->filtroSelect as $idItemFiltroSelect => $idFiltroSelect)
-							@include('includes.complementos.filtroSelect',['nombreSelect' => $idFiltroSelect['select']])
+							@include('includes.complementos.filtroSelect',['nombreSelect' => $idFiltroSelect['select'], 'tituloSelect' => $idFiltroSelect['titulo']])
 						@endforeach
 					@endif
 					@if(isset($parametros->filtroFecha))
 						@include('includes.complementos.filtroFecha')
 					@endif
 				</div>
-				<div class="lineaBuscador order-1 order-sm-2 col-12 col-sm-7 col-md-6 col-lg-6 col-xl-4">
+				<div class="lineaBuscador order-1 order-md-2 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
 					@include('includes.complementos.buscador',['nLista'=>0])
 				</div>
 			</div>

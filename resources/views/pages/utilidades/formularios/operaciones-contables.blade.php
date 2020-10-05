@@ -19,7 +19,7 @@
 				@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
 				@slot('nombre', trans($parametros->textos.'.campos.ingresoGasto'))
 				@slot('valor')
-					<select class="form-control custom-select" name="INGRESOGASTO">
+					<select class="form-control custom-select" name="INGRESOGASTO" id="INGRESOGASTO" onchange="columnasIngresoGasto()">
 						@foreach($constantes->listaConstantes('ingreso-gasto') as $valor => $nombre)
 							<option value="{{$valor}}" @if($datos) @if($datos->INGRESOGASTO == $valor) selected @endif @endif>{{$nombre}}</option>
 						@endforeach
@@ -30,9 +30,9 @@
 				@slot('class', 'col-12 col-md-12 col-lg-12 col-xl-12')
 				@slot('nombre', trans($parametros->textos.'.campos.columnaLibroRegistro'))
 				@slot('valor')
-					<select class="form-control custom-select" name="COLUMNAREGISTRO">
+					<select class="form-control custom-select" name="COLUMNAREGISTRO" id="COLUMNAREGISTRO">
 						@foreach($parametros->ExtraUtilidad['columnasLibroRegistro']->get() as $parametro)
-							<option value="{{$parametro->CODIGO}}" @if($datos) @if($datos->COLUMNAREGISTRO == $parametro->CODIGO) selected @endif @endif>{{$parametro->CODIGO.' - '.$parametro->DESCRIPCION}}</option>
+							<option value="{{$parametro->CODIGO}}" @if($datos) @if($datos->COLUMNAREGISTRO == $parametro->CODIGO) selected @endif @endif data-ingreso-gasto="{{$parametro->TIPO}}">{{$parametro->CODIGO.' - '.$parametro->DESCRIPCION}}</option>
 						@endforeach
 					</select>
 				@endslot
@@ -73,3 +73,13 @@
 		</div>
 	</div>
 </div>
+<script>
+function columnasIngresoGasto(){
+	var val = $('#INGRESOGASTO').val();
+	$('#COLUMNAREGISTRO option').addClass('d-none');
+	$('#COLUMNAREGISTRO option[data-ingreso-gasto="'+val+'"]').removeClass('d-none');
+	// El tipo T siempre visible
+	$('#COLUMNAREGISTRO option[data-ingreso-gasto="T"]').removeClass('d-none');
+}
+columnasIngresoGasto();
+</script>

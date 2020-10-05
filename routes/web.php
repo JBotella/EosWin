@@ -98,17 +98,27 @@ Route::group(['middleware' => 'auth'], function(){
 		return view('includes.complementos.buscadorExtraBar');
 	})->name('buscadorExtraBar');
 	
-	/* ----------------------------------- */
-	/* CONFIGURACIÓN Y AJUSTES DE EMPRESAS */
-	/* ----------------------------------- */
+	/* ------------------------- */
+	/* CONFIGURACIÓN DE EMPRESAS */
+	/* ------------------------- */
 	
-	/* Configuracion de empresa */
+	/* Configuración de empresa */
 	Route::get('configuracion-empresa', 'EmpresasController@configuracion')->name('configuracionEmpresa');
 		// Lista Delegaciones Mínima (Asíncrona)
 		Route::get('listaDelegacionesMin', 'EmpresasController@listaDelegacionesMin')->name('listaDelegacionesMin');
+		// Lista Localidades Mínima (Asíncrona)
+		Route::get('listaLocalidadesMin', 'LocalizacionesController@listaLocalidadesMin')->name('listaLocalidadesMin');
 	Route::post('guarda-empresa', 'EmpresasController@guardar')->name('guardaEmpresa');
 	/* Nueva empresa */
 	Route::get('nueva-empresa', 'EmpresasController@nuevaEmpresa')->name('nuevaEmpresa');
+	
+	/* --------------------- */
+	/* CONFIGURACIÓN GENERAL */
+	/* --------------------- */
+	
+	/* Configuración */
+	Route::get('configuracion', 'ConfiguracionController@configuracion')->name('configuracion');
+	
 	
 	/* ------- */
 	/* AJUSTES */

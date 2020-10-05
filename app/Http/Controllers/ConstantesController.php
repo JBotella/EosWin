@@ -30,7 +30,7 @@ class ConstantesController extends Controller
 			break;
 			case 'accion-seguimiento-lopd':
 				$valores = [
-					null => trans('constantes.'.$id.'.todos'),
+					null => trans('constantes.'.$id.'.todas'),
 					'1' => trans('constantes.'.$id.'.1'),
 					'2' => trans('constantes.'.$id.'.2'),
 					'3' => trans('constantes.'.$id.'.3'),

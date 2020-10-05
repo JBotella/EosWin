@@ -12,6 +12,10 @@ return [
 	'recientes' => 'Recents',
 	'ejercicio' => 'Exercici',
 	'ejercicios' => 'Exercicis',
+	'todo' => 'Tot',
+	'toda' => 'Tota',
+	'todos' => 'Tots',
+	'todas' => 'Totes',
 /* -*****- Dias -*****- */
 	'dia' => [
 		'dia' => 'Dia',
@@ -201,34 +205,7 @@ return [
 		'notas' => 'Notes',
 	],
 	/* --- Proveedor --- */
-	/* --- Empresa --- */
-	'form_empresa' => [
-		'datos_generales' => 'Dades generals',
-		'codigo' => 'Codi',
-		'nombre' => 'Nom',
-		'nif_cif' => 'NIF/CIF',
-		'cnae' => 'CNAE',
-		'actividad' => 'Activitat',
-		'domicilio' => 'Domicili',
-		'direccion' => 'Adreça',
-		'numero' => 'Número',
-		'escalera' => 'Escala',
-		'piso' => 'Pis',
-		'puerta' => 'Porta',
-		'codigo_postal' => 'Codi Postal',
-		'localidad' => 'Localitad',
-		'provincia' => 'Província',
-		'contacto' => 'Contacte',
-		'email' => 'E-Mail',
-		'telefono' => 'Telèfon',
-		'fax' => 'Fax',
-		'aeat' => 'AEAT',
-		'cp_administracion' => 'CP Administració',
-		'administracion' => 'Administració',
-		'delegacion' => 'Delegació',
-		'criterio_caja' => 'Criteri de caixa',
-		'criterio_caja_label' => 'Acolliment del règim especial de criteri de caixa a partir del 2014.',
-	],
+	
 	/* --- Apunte Periódico --- */
 	'form_apunte_periodico' => [
 		'datos_genericos' => 'Dades genèriques',

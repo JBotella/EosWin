@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tablas\Cliente;
+use App\Tablas\Localizaciones;
 
 class ClientesController extends Controller
 {
@@ -33,7 +34,9 @@ class ClientesController extends Controller
 			$cliente = new Cliente();
 			$datos = $cliente->datos($id);
 			$telefonos = $cliente->telefonos($id);
-			return view('pages.clientes.formularioCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
+			$localizacion = new Localizaciones();
+			$tiposVia = $localizacion->tiposVia();
+			return view('pages.clientes.formularioCliente', ['datos' => $datos, 'telefonos' => $telefonos, 'tiposVia' => $tiposVia]);
 		}else{
 			return view('pages.clientes.formularioCliente');
 		}

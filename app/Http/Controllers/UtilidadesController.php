@@ -16,7 +16,40 @@ class UtilidadesController extends Controller
 		switch($id){
 			/* Sistema */
 			case 'actividades-empresariales':
-				// PENDIENTE...
+				$parametros = [
+					'textos' => 'utilidades.sistema.actividades_empresariales',
+					'db' => 'sqlsrv1',
+					'tabla' => 'IAES',
+					'funcion' => 'listado',
+					'clicListado' => 'abreForm',
+					'addSelect' => '(select TIPOSACTIVIDAD.DESCRIPCION FROM TIPOSACTIVIDAD WHERE TIPOSACTIVIDAD.CLAVE LIKE IAES.CLAVE) as nTipoActividad',
+					'ident' => 'ID',
+					'orden' => 'CLAVE',
+					'direccionOrden' => 'ASC',
+					'columnasBusqueda' => ['CLAVE','EPIGRAFE','DESCRIPCION'],
+					'columnas' => [
+						'descripcion' => 'DESCRIPCION',
+						'epigrafe' => 'EPIGRAFE',
+						'tipoActividad' => 'nTipoActividad',
+					],
+					'filtroSelect' => [
+						[
+							'select' => 'TipoActividad',
+							'titulo' => trans('utilidades.sistema.actividades_empresariales.campos.tipoActividad').' - ('.trans('texto.todos').')',
+							'columnaRelacionada' => 'CLAVE',
+							'db' => 'sqlsrv1',
+							'tabla' => 'TIPOSACTIVIDAD',
+							'ident' => 'CLAVE',
+							'nombre' => 'DESCRIPCION',
+							'orden' => 'CLAVE',
+							'direccionOrden' => 'ASC',
+							'selected' => 'todos',
+						],
+					],
+					'ExtraUtilidad' => [
+						'tipoActividad' => $extraUtilidad->tipoActividad()->orderBy('CLAVE','asc'),
+					],
+				];
 			break;
 			case 'modulos-tributacion':
 				$parametros = [
@@ -29,7 +62,7 @@ class UtilidadesController extends Controller
 					'tipoIdent' => 'compuesto',
 					'identCompuesto' => ['PERIODO','CODIGO'],
 					'identConcat' => 'CONCAT(PERIODO,CODIGO)',
-					'addSelect' => '(select MODULOSPERIODOS.DESCRIPCION FROM MODULOSPERIODOS WHERE CODIGO LIKE PERIODO ) as nPeriodo',
+					'addSelect' => '(select MODULOSPERIODOS.DESCRIPCION FROM MODULOSPERIODOS WHERE CODIGO LIKE PERIODO) as nPeriodo',
 					'ident' => 'PERIODOCODIGO',
 					'orden' => 'CODIGO',
 					'direccionOrden' => 'ASC',
@@ -57,6 +90,8 @@ class UtilidadesController extends Controller
 							'tabla' => 'MODULOSPERIODOS',
 							'ident' => 'CODIGO',
 							'nombre' => 'DESCRIPCION',
+							'orden' => 'CODIGO',
+							'direccionOrden' => 'DESC',
 						],
 					],
 					'ExtraUtilidad' => [
@@ -220,13 +255,13 @@ class UtilidadesController extends Controller
 					'filtroSelect' => [
 						[
 							'select' => 'Accion',
-							'titulo' => trans('utilidades.sistema.seguimiento_lopd.campos.accion'),
+							'titulo' => trans('utilidades.herramientas.seguimiento_lopd.campos.accion'),
 							'columnaRelacionada' => 'TIPO',
 							'constante' => 'accion-seguimiento-lopd',
 						],
 						[
 							'select' => 'Procesos',
-							'titulo' => trans('utilidades.sistema.seguimiento_lopd.campos.proceso'),
+							'titulo' => trans('utilidades.herramientas.seguimiento_lopd.campos.proceso'),
 							'columnaRelacionada' => 'PROCESO',
 							'constante' => 'procesos-seguimiento-lopd',
 						],

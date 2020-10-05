@@ -19,7 +19,7 @@ return [
 		'10' => 'Investment Goods',
 	],
 	'accion-seguimiento-lopd' => [
-		'todos' => 'All',
+		'todas' => 'All: (Actions)',
 		'1' => 'Register',
 		'2' => 'Elimination',
 		'3' => 'Modification',
@@ -31,7 +31,7 @@ return [
 		'9' => 'Restore',
 	],
 	'procesos-seguimiento-lopd' => [
-		'todos' => 'All',
+		'todos' => 'All: (Processes)',
 		'Empresas' => 'Companies',
 		'Proveedores' => 'Suppliers',
 		'Otros' => 'Others',

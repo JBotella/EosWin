@@ -12,6 +12,10 @@ return [
 	'recientes' => 'Recent',
 	'ejercicio' => 'Exercise',
 	'ejercicios' => 'Exercises',
+	'todo' => 'All',
+	'toda' => 'All',
+	'todos' => 'All',
+	'todas' => 'All',
 /* -*****- Dias -*****- */
 	'dia' => [
 		'dia' => 'Day',
@@ -201,34 +205,7 @@ return [
 		'notas' => 'Notes',
 	],
 	/* --- Proveedor --- */
-	/* --- Empresa --- */
-	'form_empresa' => [
-		'datos_generales' => 'General data',
-		'codigo' => 'Code',
-		'nombre' => 'Name',
-		'nif_cif' => 'NIF/CIF',
-		'cnae' => 'CNAE',
-		'actividad' => 'Activity',
-		'domicilio' => 'Address',
-		'direccion' => 'Address',
-		'numero' => 'Number',
-		'escalera' => 'Ladder',
-		'piso' => 'Floor',
-		'puerta' => 'Door',
-		'codigo_postal' => 'Postal Code',
-		'localidad' => 'Locality',
-		'provincia' => 'Province',
-		'contacto' => 'Contact',
-		'email' => 'E-Mail',
-		'telefono' => 'Phone',
-		'fax' => 'Fax',
-		'aeat' => 'AEAT',
-		'cp_administracion' => 'Administration Postal Code',
-		'administracion' => 'Administration',
-		'delegacion' => 'Delegation',
-		'criterio_caja' => 'Box criteria',
-		'criterio_caja_label' => 'Receipt of the special regime of cash criterion from 2014.',
-	],
+	
 	/* --- Apunte Periódico --- */
 	'form_apunte_periodico' => [
 		'datos_genericos' => 'Generic data',

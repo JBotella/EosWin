@@ -127,7 +127,9 @@ class Utilidad extends Model
 			$tabla = $filtroSelect->tabla;
 			$ident = $filtroSelect->ident;
 			$nombre = $filtroSelect->nombre;
-			$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre")->orderBy($ident,'desc');
+			$orden = $filtroSelect->orden;
+			$direccionOrden = $filtroSelect->direccionOrden;
+			$listado = DB::connection($db)->table($tabla)->select("".$ident." as id", "".$nombre." as nombre")->orderBy($orden,$direccionOrden);
 			$listado = $listado->get();
 		}elseif(isset($filtroSelect->constante)){
 			$listado = ConstantesController::listaConstantes($filtroSelect->constante);

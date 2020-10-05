@@ -19,7 +19,7 @@ return [
 		'10' => 'Bienes de Inversión',
 	],
 	'accion-seguimiento-lopd' => [
-		'todos' => 'Todos',
+		'todas' => 'Todas: (Acciones)',
 		'1' => 'Alta',
 		'2' => 'Eliminacion',
 		'3' => 'Modificación',
@@ -31,7 +31,7 @@ return [
 		'9' => 'Restauración',
 	],
 	'procesos-seguimiento-lopd' => [
-		'todos' => 'Todos',
+		'todos' => 'Todos: (Procesos)',
 		'Empresas' => 'Empresas',
 		'Proveedores' => 'Proveedores',
 		'Otros' => 'Otros',

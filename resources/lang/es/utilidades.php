@@ -8,6 +8,14 @@ return [
 		'actividades_empresariales' => [
 			'nombre' => 'Actividades empresariales',
 			'resumen' => 'Permite la definición de las distintas actividades empresariales en estimación directa, directa simplificada y estimación objetiva.',
+			/* Campos */
+			'campos' => [
+				'id' => 'Id',
+				'clave' => 'Clave',
+				'tipoActividad' => 'Tipo de Actividad',
+				'epigrafe' => 'Epígrafe',
+				'descripcion' => 'Descripción',
+			],
 		],
 		'modulos_tributacion' => [
 			'nombre' => 'Módulos de Tributación',
@@ -42,7 +50,7 @@ return [
 				'indice4' => '% Gastos Comerc. Serv Agrar',
 				'indice5' => '% Gastos Activ Profesionales',
 				'indice6' => '% Ingresos-Gastos deducibles',
-				'indice7' => 'Agricultores % s/Ventas trimestre',
+				'indice7' => 'Agricultores % Ventas trimestre',
 				'indice8' => '% Gastos dif justif. ED Profesionales',
 				'indice9' => 'Actividades incluidas grupos A y B',
 				'indice10' => 'Activ exclusivamente en grupo A',
@@ -56,11 +64,11 @@ return [
 				'indice18' => 'A partir de Euros',
 				'indice19' => 'Calles 1ª y 2ª categoría',
 				'indice20' => 'Calles 3ª y 4ª categoría',
-				'indice21' => 'Resto calles',
+				'indice21' => 'Resto de calles',
 				'indice22' => 'Calles 1ª y 2ª categoría',
-				'indice23' => 'Resto calles',
+				'indice23' => 'Resto de calles',
 				'indice24' => 'Calles 1ª y 2ª categoría',
-				'indice25' => 'Resto calles',
+				'indice25' => 'Resto de calles',
 			],
 		],
 		'tipos_iva_igic' => [

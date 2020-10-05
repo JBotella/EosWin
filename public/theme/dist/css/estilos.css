@@ -134,7 +134,7 @@ body {
 	.btnFormCancelar { background-color:var(--principalAzulAnalogo); }
 	.btnFormBorrar { background-color:var(--principalRojoOpuesto); }
 	
-.btnAccion { font-size:1.2rem; opacity:1; transition:0.3s; cursor:pointer; }
+.btnAccion { color:var(--principal); font-size:1.2rem; opacity:1; transition:0.3s; cursor:pointer; }
 .btnAccion:hover { opacity:0.75; transition:0.3s; }
 	.btnActualizar { color:var(--principalAzulAnalogo); }
 	.btnCrear { color:var(--principal); }
@@ -574,11 +574,25 @@ body {
 			margin-left:auto;
 			width:100%;
 			padding:0rem 0.5rem;
+			display:flex;
 		}
 			.menuLateral_extraCabInt .buscadorExtraBar {
 				width:100%!important;
 				height:24px;
 				font-size:0.8rem;
+			}
+			.menuLateral_extraCabInt button {
+				border:none;
+				outline:none;
+				padding:0;
+				margin-left:0.5rem;
+				background:none;
+				color:var(--principalAzulAnalogo);
+			}
+			.menuLateral_extraCabInt button:hover, .menuLateral_extraCabInt button:focus, .menuLateral_extraCabInt button:active {
+				border:none;
+				outline:none;
+				color:var(--principal);
 			}
 	.menuLateral_extraInt {
 		display:block;
@@ -1633,6 +1647,7 @@ body {
 		.selectorAcciones select {
 			width:auto!important;	
 			min-width:150px!important;	
+			max-width:300px!important;	
 			border-radius:0;
 			background-color:var(--principalMasClaro);
 			cursor:pointer;
@@ -2019,7 +2034,7 @@ html {
 	-ms-user-select:text; /* Internet Explorer/Edge */
 	user-select:text;
 }
-.noSelect, .sb-topnav, .sb-sidenav, .cabeceraSeccion, .contenedorEmergenteAjustes, #contenidoDashboard, .contenidoTarjetasLinks, .barraOpcionesLista, .categoriaBloqueFormulario, .nombreItemFormulario, .itemCheckbox, .btnAccion, thead {
+.noSelect, .sb-topnav, .sb-sidenav, .cabeceraSeccion, .contenedorEmergenteAjustes, #contenidoDashboard, .contenidoTarjetasLinks, .barraOpcionesLista, .categoriaBloqueFormulario, .nombreItemFormulario, .itemCheckbox, .btnAccion, thead, .menuLateral_extraInt {
 	-webkit-touch-callout:none; /* iOS Safari */
 	-webkit-user-select:none; /* Safari */
 	-khtml-user-select:none; /* Konqueror HTML */
