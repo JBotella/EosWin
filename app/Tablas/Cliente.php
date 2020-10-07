@@ -47,12 +47,17 @@ class Cliente extends Model
 		$cliente = Cliente::where('CliCodigo',$CliCodigo)->first();
 		return $cliente;
 	}
-	public function telefonos($CliCodigo){
-		$telefonos = DB::connection($this->connection)->table('TELEFON')->where('TELECODIGO',$CliCodigo)->get();
+	public function telefonos(){
+		$telefonos = DB::connection($this->connection)->table('TELEFON');
+		return $telefonos;
+	}
+	public function telefonosCliente($CliCodigo){
+		$telefonos = $this->telefonos()->where('TELECODIGO',$CliCodigo);
 		return $telefonos;
 	}
 	public function guarda($id = null,$request){
 		/* Asignarles valor = '' a los nulos */
+		dd($request);
 		$camposRequestComunes = [
 			'CliNombre' => $request->nombre,
 			'CliApellido1' => $request->apellido1 ?? '',
@@ -60,6 +65,7 @@ class Cliente extends Model
 			'CliNomComercial' => $request->organizacion ?? '',
 			'CliCif' => $request->nif,
 			'CliEMail' => $request->email,
+			'CliTipoVia' => $request->tipoVia,
 			'CliDireccion' => $request->direccion,
 			'CliDireccionNumero' => $request->numero ?? '',
 			'CliDireccionPiso' => $request->piso ?? '',

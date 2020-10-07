@@ -1,6 +1,13 @@
 <?php
 /* -----|||||----- * Textos Catalán * -----|||||----- */
 return [
+	'tipo-telefono' => [
+		'01' => 'Veu',
+		'02' => 'Dades',
+		'03' => 'Fax',
+		'04' => 'Mòbil',
+		'05' => 'Telèfon-Fax',
+	],
 	'ingreso-gasto' => [
 		'I' => 'Ingreso',
 		'G' => 'Gasto',
@@ -32,8 +39,24 @@ return [
 	],
 	'procesos-seguimiento-lopd' => [
 		'todos' => 'Tots: (Processos)',
+		'Sesion' => 'Inici/Fi sessió',
+		'Usuarios' => 'Gestió d\'usuaris',
 		'Empresas' => 'Empreses',
+		'Clientes' => 'Clients',
+		'Abogados' => 'Advocats',
+		'Asuntos' => 'Assumptes',
+		'Personal' => 'Altres intervinents',
 		'Proveedores' => 'Proveïdors',
+		'Procuradores' => 'Procuradors',
+		'Representantes' => 'Representants',
+		'Operarios' => 'Operaris',
+		'Cuentas' => 'Comptes comptables',
+		'Bancos' => 'Bancs',
+		'Impuesto' => 'Impostos',
+		'Remesas' => 'Fitxer de remeses',
+		'Transferencias' => 'Fitxer de Transferències',
+		'Recibos' => 'Rebuts',
+		'Copias' => 'Còpia de seguretat',
 		'Otros' => 'Altres',
 	],
 	'variables-conceptos-contables' => [

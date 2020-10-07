@@ -79,6 +79,7 @@ return [
 	'seleccionar_todos' => 'Select all',
 	'seleccionar_todo' => 'Select all',
 	'confirma_borrar_lineas' => 'Do you confirm to delete the selected lines?',
+	'confirma_borrar' => 'Do you confirm to delete?',
 	'confirmar' => 'Confirm',
 	'cancelar' => 'Cancel',
 	'seleccion_formato_exportar' => 'Select the format to export',

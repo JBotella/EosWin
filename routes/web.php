@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::post('guarda-cliente/{id?}', 'ClientesController@guardar')->name('guardaCliente');
 		// Ver Cliente (Asíncrona)
 		Route::get('verCliente/{id}', 'ClientesController@ver')->name('verCliente');
+		// Accion Teléfono Cliente
+		Route::post('telefono-cliente', 'ClientesController@telefonoCliente')->name('telefonoCliente');
 	
 	/* Proveedores */
 	Route::get('proveedores', 'ProveedoresController@proveedores')->name('proveedores');

@@ -7,6 +7,15 @@ class ConstantesController extends Controller
 	// Listados de constantes con su valor y traducción en algunos casos
     public static function listaConstantes($id){
 		switch($id){
+			case 'tipo-telefono':
+				$valores = [
+					'01' => trans('constantes.'.$id.'.01'),
+					'02' => trans('constantes.'.$id.'.02'),
+					'03' => trans('constantes.'.$id.'.03'),
+					'04' => trans('constantes.'.$id.'.04'),
+					'05' => trans('constantes.'.$id.'.05'),
+				];
+			break;
 			case 'ingreso-gasto':
 				$valores = [
 					'I' => trans('constantes.'.$id.'.I'),
@@ -45,8 +54,24 @@ class ConstantesController extends Controller
 			case 'procesos-seguimiento-lopd':
 				$valores = [
 					null => trans('constantes.'.$id.'.todos'),
+					'Sesion' => trans('constantes.'.$id.'.Sesion'),
+					'Usuarios' => trans('constantes.'.$id.'.Usuarios'),
 					'Empresas' => trans('constantes.'.$id.'.Empresas'),
+					'Clientes' => trans('constantes.'.$id.'.Clientes'),
+					'Abogados' => trans('constantes.'.$id.'.Abogados'),
+					'Asuntos' => trans('constantes.'.$id.'.Asuntos'),
+					'Personal' => trans('constantes.'.$id.'.Personal'),
 					'Proveedores' => trans('constantes.'.$id.'.Proveedores'),
+					'Procuradores' => trans('constantes.'.$id.'.Procuradores'),
+					'Representantes' => trans('constantes.'.$id.'.Representantes'),
+					'Operarios' => trans('constantes.'.$id.'.Operarios'),
+					'Cuentas' => trans('constantes.'.$id.'.Cuentas'),
+					'Bancos' => trans('constantes.'.$id.'.Bancos'),
+					'Impuesto' => trans('constantes.'.$id.'.Impuesto'),
+					'Remesas' => trans('constantes.'.$id.'.Remesas'),
+					'Transferencias' => trans('constantes.'.$id.'.Transferencias'),
+					'Recibos' => trans('constantes.'.$id.'.Recibos'),
+					'Copias' => trans('constantes.'.$id.'.Copias'),
 					'Otros' => trans('constantes.'.$id.'.Otros'),
 				];
 			break;

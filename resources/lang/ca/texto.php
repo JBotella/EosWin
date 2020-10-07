@@ -79,6 +79,7 @@ return [
 	'seleccionar_todos' => 'Seleccionar tots',
 	'seleccionar_todo' => 'Seleccionar tot',
 	'confirma_borrar_lineas' => 'Confirma esborrar les línies seleccionades?',
+	'confirma_borrar' => 'Confirma esborrar?',
 	'confirmar' => 'Confirmar',
 	'cancelar' => 'Cancel·lar',
 	'seleccion_formato_exportar' => 'Seleccioni el format per a exportar',

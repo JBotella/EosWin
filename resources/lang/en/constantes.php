@@ -1,6 +1,13 @@
 <?php
 /* -----|||||----- * Textos Inglés * -----|||||----- */
 return [
+	'tipo-telefono' => [
+		'01' => 'Voice',
+		'02' => 'Data',
+		'03' => 'Fax',
+		'04' => 'Mobile',
+		'05' => 'Telephone-Fax',
+	],
 	'ingreso-gasto' => [
 		'I' => 'Income',
 		'G' => 'Expense',
@@ -32,8 +39,24 @@ return [
 	],
 	'procesos-seguimiento-lopd' => [
 		'todos' => 'All: (Processes)',
+		'Sesion' => 'Start / End session',
+		'Usuarios' => 'User management',
 		'Empresas' => 'Companies',
+		'Clientes' => 'Clients',
+		'Abogados' => 'Lawyers',
+		'Asuntos' => 'Subjects',
+		'Personal' => 'Other participants',
 		'Proveedores' => 'Suppliers',
+		'Procuradores' => 'Attorneys',
+		'Representantes' => 'Representatives',
+		'Operarios' => 'Operators',
+		'Cuentas' => 'Accounting accounts',
+		'Bancos' => 'Banks',
+		'Impuesto' => 'Tax',
+		'Remesas' => 'Remittance file',
+		'Transferencias' => 'File of Transfers',
+		'Recibos' => 'Receipts',
+		'Copias' => 'Backup',
 		'Otros' => 'Others',
 	],
 	'variables-conceptos-contables' => [

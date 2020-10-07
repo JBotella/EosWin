@@ -26,21 +26,21 @@ class ClientesController extends Controller
 	public function ver($id){
 		$cliente = new Cliente();
 		$datos = $cliente->datos($id);
-		$telefonos = $cliente->telefonos($id);
+		$telefonos = $cliente->telefonosCliente($id)->get();
 		return view('pages.clientes.verCliente', ['datos' => $datos, 'telefonos' => $telefonos]);
 	}
 	public function formulario($id = null){
 		if(isset($id)){
 			$cliente = new Cliente();
 			$datos = $cliente->datos($id);
-			$telefonos = $cliente->telefonos($id);
+			$telefonos = $cliente->telefonosCliente($id)->get();
 			$localizacion = new Localizaciones();
 			$tiposVia = $localizacion->tiposVia();
-			return view('pages.clientes.formularioCliente', ['datos' => $datos, 'telefonos' => $telefonos, 'tiposVia' => $tiposVia]);
+			$constantes = new ConstantesController();
+			return view('pages.clientes.formularioCliente', ['datos' => $datos, 'telefonos' => $telefonos, 'tiposVia' => $tiposVia, 'constantes' => $constantes]);
 		}else{
 			return view('pages.clientes.formularioCliente');
 		}
-		
 	}
 	public function guardar($id = null, Request $request){
 		$cliente = new Cliente;
@@ -50,6 +50,17 @@ class ClientesController extends Controller
 	public function borrar(Request $request){
 		$cliente = new Cliente;
 		$cliente->borra($request->lineas);
+	}
+	// Acción sobre los Teléfonos de cliente
+	public function telefonoCliente(Request $request){
+		$idCliente = $request->id;
+		$idTelefono = $request->idTelefono;
+		$accion = $request->accion;
+		$cliente = new Cliente();
+		if($accion == 'borrar'){
+			//Desactivado
+			//$telefono = $cliente->telefonosCliente($idCliente)->where('ID',$idTelefono)->delete();
+		}
 	}
 	public function extracto(Request $request){
 		$lineas = $request->lineas;

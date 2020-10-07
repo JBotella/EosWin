@@ -116,30 +116,34 @@
 									@if(isset($telefonos))
 										@foreach($telefonos as $telefono)
 											@component('components.itemFormulario')
-												@slot('class', 'col-12')
-												@slot('nombre','')
+												@slot('class', 'col-12 lineaTelefonoClonable')
+												{{--@slot('nombre','')--}}
 												@slot('valor')
-													<div class="row">
-														<div class="col-4">
-															<select class="form-control custom-select" name="tipoTelefono_">
-														<option value="0">Móvil</option>
-													</select>
-														</div>
-														<div class="col-8">
-															<input type="text" class="form-control" name="telefono_" value="{{$telefono->TELETELEFONO}}" />
-														</div>
-													</div>
+													@include('pages.clientes.telefonoCliente', ['id' => $datos->CliCodigo, 'idTelefono' => $telefono->ID, 'telefono' => $telefono->TELETELEFONO, 'tipoTelefono' => $telefono->TELEFAX, 'tiposTelefono' => $constantes->listaConstantes('tipo-telefono'), 'rutaAccionTelefono' => route('telefonoCliente') ])
 												@endslot
 											@endcomponent
 										@endforeach
 									@endif
+									<div class="w-100" id="nuevosTelefonos">
+										@include('pages.clientes.lineaVaciaTelefonoCliente',['tiposTelefono' => $constantes->listaConstantes('tipo-telefono')])
+									</div>
+									<div class="col-12 mt-1">
+										<div class="nuevoItemFormulario" id="nuevo">
+											<span class="principal">@lang('texto.nuevo')</span>
+											{{--
+											'{{$id}}','{{$rutaAccionTelefono}}','borrar','{{$idTelefono}}'
+											--}}
+											<i class="fas fa-plus-circle ml-2 botonItemFormulario btnCrear" onclick="accionTelefono('','','nuevo','')" title="@lang('texto.nuevo')"></i>
+										</div>
+									</div>
+									
 								</div>
 							</div>
 						
 							{{-- Domicilio Fiscal --}}
 							<div class="categoriaBloqueFormulario">
 								@lang('texto.domicilio_fiscal.domicilio_fiscal')
-								<i type="button" class="btnAccionFicha btnAccion fas fa-map-marker-alt float-right azulAnalogo" onclick="linkDireccionMaps()"></i>
+								<i type="button" class="btnAccion fas fa-map-marker-alt float-right azulAnalogo" onclick="linkDireccionMaps()"></i>
 							</div>
 							<div class="bloqueFormulario">
 								<div class="row">
@@ -169,7 +173,7 @@
 											<div class="row">
 												<div class="col-4">
 													<select class="form-control custom-select" name="tipoVia">
-														<option disabled>Tipo de Vía</option>
+														<option selected disabled>Tipo de Vía</option>
 														@foreach($tiposVia as $via)
 															<option value="{{$via->Codigo}}" @if($datos->CliTipoVia == $via->Codigo) selected @endif>{{$via->Descripcion}}</option>
 														@endforeach
@@ -375,6 +379,45 @@
 			var datos = encodeURI(direccion+' '+numero+' '+localidad);
 			var rutaMaps = 'https://www.google.com/maps/place/'+datos;
 			window.open(rutaMaps,"_blank");
+		}
+		function preguntaAccionItemForm(accion,idTelefono){
+			if($('#'+accion+'_'+idTelefono).hasClass('d-none')){
+				$('.accionItemForm').addClass('d-none');
+				$('#'+accion+'_'+idTelefono).removeClass('d-none');
+				$(".valorItemFormulario").find('input').removeClass('itemFormMarcado');
+				$('#'+idTelefono).parent(".valorItemFormulario").find('input').addClass('itemFormMarcado');
+			}else{
+				$('.accionItemForm').addClass('d-none');
+				$(".valorItemFormulario").find('input').removeClass('itemFormMarcado');
+			}
+		}
+		function accionTelefono(id,rutaAccion,accion,idTelefono){
+			if(accion == 'borrar'){
+				var _token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+				var URLdomain = window.location.origin;
+				$.ajax({
+					type:'POST',
+					url:rutaAccion,
+					data:{_token:_token, id:id, accion:accion, idTelefono:idTelefono},
+					headers:{'Access-Control-Allow-Origin':URLdomain},
+					success:function(datos){
+						$('#'+idTelefono).parent(".valorItemFormulario").addClass('d-none');
+					}
+				});
+			}
+			if(accion == 'nuevo'){
+				if($("#nuevosTelefonos").hasClass('d-none')){
+					//$("#nuevosTelefonos").removeClass('d-none');
+				}else{
+					//$(".lineaVaciaTelefono:last").clone().appendTo("#nuevosTelefonos");
+					//var $div = $('div[id^="klon"]:last');
+					
+				}
+				//$(".lineaVaciaTelefono:last").clone().appendTo("#nuevosTelefonos");
+				//$(".lineaVaciaTelefono:last").removeClass('d-none');
+				// Nuevo Planteamiento
+				$(".lineaTelefonoClonable:last").clone().appendTo("#nuevosTelefonos");
+			}
 		}
 	</script>
 @endsection
