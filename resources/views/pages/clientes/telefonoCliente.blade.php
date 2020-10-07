@@ -1,7 +1,7 @@
 <div class="row" id="{{$idTelefono}}">
 	<div class="col-4">
 		<select class="form-control custom-select" name="tipoTelefono[{{$idTelefono}}]">
-			<option selected disabled>...</option>
+			<option value="00" selected disabled>...</option>
 			@foreach($tiposTelefono as $idTipo => $tipo)
 				<option value="{{$idTipo}}" @if(strpos($tipoTelefono,$idTipo) !== false) selected @endif>{{$tipo}}</option>
 			@endforeach

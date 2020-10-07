@@ -57,7 +57,6 @@ class Cliente extends Model
 	}
 	public function guarda($id = null,$request){
 		/* Asignarles valor = '' a los nulos */
-		dd($request);
 		$camposRequestComunes = [
 			'CliNombre' => $request->nombre,
 			'CliApellido1' => $request->apellido1 ?? '',
@@ -78,6 +77,9 @@ class Cliente extends Model
 		if(isset($id)){
 			// Update
 			$this->where("CliCodigo",$id)->update($camposRequestComunes);
+			$cliente = $id;
+			/* Modificar Telefonos */
+			$this->grabaTelefonos('update',$cliente,$request->telefono,$request->tipoTelefono);
 		}else{
 			// Calcular el último CliCodigo para sumarle 1
 			$lastId = $this->orderBy('CliCodigo', 'desc')->first()->CliCodigo;
@@ -85,6 +87,38 @@ class Cliente extends Model
 			// Insert
 			$camposRequestComunes += ['CliCodigo' => $nextId];
 			$this->create($camposRequestComunes);
+			$cliente = $nextId;
+		}
+		/* Crear Telefonos */
+		if($request->nuevoTelefono){
+			$this->grabaTelefonos('insert',$cliente,$request->nuevoTelefono,$request->nuevoTipoTelefono);
+		}
+	}
+	public function grabaTelefonos($accion,$cliente,$numerosTelefono,$tiposTelefono){
+		$arrayCreaTelefonos = [];
+		foreach($numerosTelefono as $item => $telefono){
+			if(array_key_exists($item,$tiposTelefono)){
+				$tipoTelefono = $tiposTelefono[$item];
+			}else{
+				$tipoTelefono = '';
+			}
+			array_push($arrayCreaTelefonos,[
+				'TELECODIGO' => $cliente,
+				'TELEFAX' => $tipoTelefono,
+				'TELETELEFONO' => $telefono,
+			]);
+			if($accion == 'update'){
+				$telefonos = $this->telefonos();
+				$arrayModificaTelefono = [
+					'TELEFAX' => $tipoTelefono,
+					'TELETELEFONO' => $telefono,
+				];
+				$telefonos->where("ID",$item)->update($arrayModificaTelefono);
+			}
+		}
+		if($accion == 'insert'){
+			$telefonos = $this->telefonos();
+			$telefonos->insert($arrayCreaTelefonos);
 		}
 	}
 	public function borra($lineas){

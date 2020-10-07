@@ -58,8 +58,7 @@ class ClientesController extends Controller
 		$accion = $request->accion;
 		$cliente = new Cliente();
 		if($accion == 'borrar'){
-			//Desactivado
-			//$telefono = $cliente->telefonosCliente($idCliente)->where('ID',$idTelefono)->delete();
+			$telefono = $cliente->telefonosCliente($idCliente)->where('ID',$idTelefono)->delete();
 		}
 	}
 	public function extracto(Request $request){

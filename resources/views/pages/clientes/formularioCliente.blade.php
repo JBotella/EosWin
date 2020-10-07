@@ -116,7 +116,7 @@
 									@if(isset($telefonos))
 										@foreach($telefonos as $telefono)
 											@component('components.itemFormulario')
-												@slot('class', 'col-12 lineaTelefonoClonable')
+												@slot('class', 'col-12')
 												{{--@slot('nombre','')--}}
 												@slot('valor')
 													@include('pages.clientes.telefonoCliente', ['id' => $datos->CliCodigo, 'idTelefono' => $telefono->ID, 'telefono' => $telefono->TELETELEFONO, 'tipoTelefono' => $telefono->TELEFAX, 'tiposTelefono' => $constantes->listaConstantes('tipo-telefono'), 'rutaAccionTelefono' => route('telefonoCliente') ])
@@ -391,6 +391,7 @@
 				$(".valorItemFormulario").find('input').removeClass('itemFormMarcado');
 			}
 		}
+		/* Funciones para gestionar Teléfonos */
 		function accionTelefono(id,rutaAccion,accion,idTelefono){
 			if(accion == 'borrar'){
 				var _token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -406,18 +407,20 @@
 				});
 			}
 			if(accion == 'nuevo'){
-				if($("#nuevosTelefonos").hasClass('d-none')){
-					//$("#nuevosTelefonos").removeClass('d-none');
-				}else{
-					//$(".lineaVaciaTelefono:last").clone().appendTo("#nuevosTelefonos");
-					//var $div = $('div[id^="klon"]:last');
-					
+				if ($("#nuevosTelefonos").find(".lineaNuevoTelefono").length > 0){
+					var ultimaId = $(".lineaNuevoTelefono:last").attr('id');
+					ultimaId++;
+					$(".lineaNuevoTelefono:last").clone().removeClass('d-none').appendTo("#nuevosTelefonos");
+					var nuevaId = ultimaId;
+					$(".lineaNuevoTelefono:last, .rowNuevoTelefono:last, .borraNuevoTelefono:last").attr('id',nuevaId);
+					$(".selectNuevoTelefono:last").attr('name','nuevoTipoTelefono['+nuevaId+']');
+					$(".inputNuevoTelefono:last").attr('name','nuevoTelefono['+nuevaId+']').val('');
 				}
-				//$(".lineaVaciaTelefono:last").clone().appendTo("#nuevosTelefonos");
-				//$(".lineaVaciaTelefono:last").removeClass('d-none');
-				// Nuevo Planteamiento
-				$(".lineaTelefonoClonable:last").clone().appendTo("#nuevosTelefonos");
 			}
+		}
+		function borraNuevoTelefono(obj){
+			var id = $(obj).attr('id');
+			$('.lineaNuevoTelefono#'+id).remove();
 		}
 	</script>
 @endsection
