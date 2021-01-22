@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Closure;
+use Auth;
 use Session;
 use App;
+use App\Tablas\UserAjuste;
 
 class SetLang
 {
@@ -15,10 +15,19 @@ class SetLang
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
 	{
-		if(Session::has("lang")){
-			$lang = Session::get("lang");
+		if(Auth::guard($guard)->check()){
+			$idUsuario = Auth::user()->id;
+			$usuarioAjuste = UserAjuste::where('id',$idUsuario)->first();
+			if(!Session::has("lang")){
+				$lang = $usuarioAjuste->idioma;
+				Session::put('lang', $lang);
+			}else{
+				$lang = Session::get("lang");
+				$usuarioAjuste->idioma = $lang;
+				$usuarioAjuste->save();
+			}
 		}else{
 			$lang = substr($request->server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
 			if($lang != 'es' && $lang != 'en'){

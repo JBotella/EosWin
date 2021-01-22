@@ -43,6 +43,7 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+		/* Conexión a MySql Server Login */
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
@@ -61,6 +62,29 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
+        ],
+		
+		/* Conexión a SQL Server Suite Net */
+        'sqlsrv1' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_SUITE', 'localhost'),
+            'port' => env('DB_PORT_SUITE', '1433'),
+            'database' => env('DB_DATABASE_SUITE', 'forge'),
+            'username' => env('DB_USERNAME_SUITE', 'forge'),
+            'password' => env('DB_PASSWORD_SUITE', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+        ],
+		/* Conexión a SQL Server Main */
+		'sqlsrv2' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_MAIN', 'localhost'),
+            'port' => env('DB_PORT_MAIN', '1433'),
+            'database' => env('DB_DATABASE_MAIN', 'forge'),
+            'username' => env('DB_USERNAME_MAIN', 'forge'),
+            'password' => env('DB_PASSWORD_MAIN', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
         ],
 
         'pgsql' => [

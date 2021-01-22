@@ -1,0 +1,179 @@
+
+COMANDOS GIT
+
+	(Fuente: https://www.hostinger.es/tutoriales/comandos-de-git)
+	
+* Config: Establecer una configuración específica de usuario:
+
+	- git config --global user.email sam@google.com
+		# El siguiente comando se usa para establecer un email.
+		
+* Init: Crear un nuevo repositorio GIT (Situándonos en el directorio del proyecto):
+	
+	- git init
+
+* Add: Agregar archivos al índice:
+	
+	- git add .
+		# Mira el árbol de trabajo y agrega todas esas rutas a los cambios por etapas si se cambian o son nuevos y no se ignoran.
+		
+	- git add -u
+		# Mira todos los archivos ya rastreados y organiza los cambios en esos archivos si son diferentes o si se han eliminado. No agrega ningún archivo nuevo, solo realiza cambios en los archivos ya rastreados.
+		
+	- git add ejemplo.txt
+		# El siguiente comando agrega un nombre de archivo ejemplo.txt en el directorio local del índice.
+		
+* Clone: Crea una copia local del repositorio. Hacer checkout al repositorio:
+	
+	- git clone /ruta/del/repositorio
+		# Crear una copia local funcional del repositorio.
+		
+	- git clone username@host:/ruta/del/repositorio
+		# Si utilizas un servidor remoto.
+		
+* Remote: Mostrar y conectar a repositorios remotos:
+	
+	- git remote -v
+		# muestra los repositorios remotos que están configurados actualmente.
+		
+	- git remote add origin https://github.com:...
+		# Añade el origen remoto donde el proyecto va a ser enviado.
+		
+* Commits:
+
+	- git commit -m "Mensaje Commit"
+		# Cambia una cabecera para definir un cambio comprometido.
+		
+* Status:
+
+	- git status
+		# Este comando muestra la lista de los archivos que se han cambiado junto con los archivos que están por ser añadidos o comprometidos.
+		
+* Push: Enviar estos cambios a tu repositorio remoto:
+
+	- git push origin master
+		# Reemplaza master por la rama a la que quieres enviar tus cambios.
+		
+* Checkout: Crear ramas o cambiar entre ellas:
+	
+	- git checkout -b <nombre-rama>
+		# Crea una nueva rama y se cambia a ella.
+		
+	- git checkout <nombre-rama>
+		# Cambiar de una rama a otra.
+		
+* Branch: Ramas:
+
+	- git branch
+		# Listar todas las ramas.
+		
+	- git branch -d <branch-name>
+		# Borrar una rama.
+		
+* Pull: Aplicar todas las modificaciones realizadas en tu repositorio local:
+
+	- git pull
+		# Fusionar todos los cambios que se han hecho en el repositorio local.
+		
+* Merge: Fusionar ramas:
+
+	- git merge <branch-name>
+		# Fusiona una rama con otra rama activa
+		
+* Diff: Lista de conflictos:
+
+	- git diff --base <file-name>
+		# Para poder ver conflictos con el archivo base.
+		
+	- git diff <source-branch> <target-branch>
+		# Para ver los conflictos que hay entre ramas que están por ser fusionadas para poder fusionarlas sin problemas.
+		
+	- git diff
+		# Para solo ver una lista de todos los conflictos presentes.
+		
+* Tag: Etiquetar:
+
+	- git tag 1.1.0 <instert-commitID-here>
+		# Marcar commits específicos con asas simples.
+		
+* Log:
+
+	- git log
+		#  Muestra una lista de commits en una rama junto con todos los detalles.
+		
+* Reset:
+
+	- git reset - -hard HEAD
+		#  Resetear el index y el directorio que está trabajando al último estado comprometido.
+		
+* Rm:
+
+	- git rm filename.txt
+		# Remover archivos del index y del directorio que está trabajando.
+		
+* Stash:
+
+	- git stash
+		# Salvar cambios que no están por ser comprometidos inmediatamente, pero temporalmente.
+		
+* Show:
+
+	- git show
+		# Mostrar información sobre cualquier objeto git.
+		
+* Fetch:
+	
+	- git fetch origin
+		# Buscar todos los objetos de un repositorio remoto que actualmente no reside en el directorio local que está trabajando.
+		
+* Ls-tree:
+
+	- git ls-tree HEAD
+		# Ver un objeto de árbol junto con el nombre y modo de cada uno de ellos, y el valor blob´s SHA-1, se usa.
+		
+* Cat-file:
+
+	- git cat-file –p d670460b4b4aece5915caf5c68d12f560a9fe3e4
+		# Usando el valor SHA-1, se puede ver el tipo de objeto usando este comando.
+		
+* Grep:
+
+	- git grep “www.tupaginaweb.com”
+		# Este comando le permite al usuario buscar en los árboles de contenido cualquier frase o palabra. Por ejemplo, para buscar por www.tupaginaweb.com en todos los archivos.
+		
+* Gitk:
+
+	- gitk
+		# Interfaz gráfica para un repositorio local.
+		
+* Instaweb:
+
+	- git instaweb –http=webrick
+		# un servidor web puede correr interconectado con el repositorio local. Un navegador web también está automáticamente dirigido a el.
+		
+* Gc:
+
+	- git gc
+		# Para optimizar el repositorio por medio de una recolección de basura, que limpiara archivos innecesarios y los optimizara.
+		
+* Archive:
+
+	- git archive – -format=tar master
+		# Este comando le permite al usuario crear archivos zip o tar que contengan los constituyentes de un solo árbol de repositorio.
+		
+* Prune:
+
+	- git prune
+		# Con este comando los objetos que no tengan ningún puntero entrante serán eliminados.
+		
+* Fsck:
+		
+	- git fsck
+		# Hacer un chequeo de integridad del sistema de archivos git. Cualquier objeto corrompido será detectado.
+		
+* Rebase
+
+	- git rebase master
+		# Este comando se usa para la re aplicación de los compromisos en otra rama.
+		
+

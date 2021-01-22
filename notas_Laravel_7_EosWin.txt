@@ -7,7 +7,7 @@ Notas Laravel 7 para el proyecto 'EosWin Cloud'
 	
 	- Crear proyecto (Alternativa al modo de crear con Composer)
 		laravel new eoswin
-			(Se ha instalado la v.7.20)
+			(Se ha instalado la v.7.27)
 
 ** Para el AUTH **
 
@@ -81,4 +81,72 @@ Notas Laravel 7 para el proyecto 'EosWin Cloud'
 	- Por:
 		mix.js('resources/js/app.js', 'public/js')
 			.sass('resources/sass/app.scss', 'public/css').js('node_modules/popper.js/dist/popper.js', 'public/js').sourceMaps();
+			
+** DOMPDF **
+
+	- Instalar
+		composer require barryvdh/laravel-dompdf
+		
+	- Modificar config/app.php
+		'providers' => [
+			....
+			Barryvdh\DomPDF\ServiceProvider::class,
+		],
+		'aliases' => [
+			....
+			'PDF' => Barryvdh\DomPDF\Facade::class,
+		]
+		
+	- Ruta
+		Route::get('generate-pdf','HomeController@generatePDF');
+		
+	- En controller:
+		use PDF;
+		public function generatePDF(){
+			$data = ['title' => 'Titulo Ejemplo'];
+			$pdf = PDF::loadView('myPDF', $data);
+
+			return $pdf->download('archivoEjemplo.pdf');
+		}
+		
+** Intervention Image **
+
+	- Instalar
+		composer require intervention/image
+		
+	- Notas:
+		En php.ini, ampliar:
+			- upload_max_filesize
+			- post_max_size
+			- memory_limit
+			
+** Migraciones **
+
+	- Añadir campos a la tabla users:
+		php artisan make:migration add_campos_users --table=users
+		
+	- Up en add_campos_users:
+		$table->string('instanciaDB');
+		$table->string('puertoDB')->nullable();
+		$table->string('usuarioDB')->nullable();
+		$table->string('passwordDB')->nullable();
 	
+	- Migración de nueva tabla para users_ajustes
+		php artisan make:migration create_users_ajustes_table
+		
+		$table->foreignId('id_user');
+		$table->string('ultimaEmpresa')->nullable();
+        $table->integer('ultimoEjercicio')->nullable();
+		...
+		
+	- Migración de nueva tabla para libros
+		php artisan make:migration create_libros_table
+		
+		...
+		
+	- Migración de nueva tabla para libros_users
+		php artisan make:migration create_libros_users_table
+		
+		...
+		
+		
